@@ -8,9 +8,9 @@ A plan for the chatbot we're building for the Treehouse website. Please read thr
 
 A chat assistant that lives on your website. Its job:
 
-- Make pricing clear
-- Show guests the perks of booking direct (breakfast included, no OTA fees)
+- Show guests the perks of booking direct (breakfast included)
 - Close direct bookings — including 3am sales you can't be awake for
+- Make pricing clear
 
 Price-match is one of its tools, but it's not the whole job. Most visitors aren't comparing OTA prices — they're trying to decide whether Treehouse is the right place for their trip. The chatbot helps them get there.
 
@@ -29,7 +29,6 @@ For specific dates the guest asks about, the chatbot shows the rate from your we
 ### 3. Surfaces the direct-booking perks every time
 
 - Breakfast included on direct rate
-- No OTA fees on top
 - Immediate confirmation
 
 ### 4. Price-match — three options for the guest
@@ -69,18 +68,12 @@ Your existing check-in policy is the protection — the guest's ID has to match 
 
 ## Questions I need your answers on
 
-1. **Your Booking.com and Expedia contracts.** What do they say about offering lower direct rates on your own site? Some contracts forbid quoting lower rates publicly (which means the chatbot can offer a coupon but can't openly state a lower number in chat). Others have carve-outs.
+1. **Little Hotelier discount codes.** Can I look through Little Hotelier to see how the codes are generated? 
 
-2. **Little Hotelier discount codes.** Does Little Hotelier let me create discount codes through their software automatically? (Their support team can confirm.) If yes, the chatbot creates them on the spot. If not, you'd pre-generate a batch and the chatbot dispenses from the batch.
+2. **Reach-you-directly channel.** When a guest picks "reach you directly" in the price-match path, what's the best way for the chatbot to hand them off to you? Same phone number? 
 
-3. **Front desk contact channel.** When the chatbot escalates to the front desk, what should it use — SMS, WhatsApp, something else? And what's the number?
+3. **Languages.** Should the chatbot launch in English only, English + Spanish, or both?
 
-4. **Reach-you-directly channel.** When a guest picks "reach you directly" in the price-match path, what's the best way for the chatbot to hand them off to you? Same channel as front desk, or different?
+4. **How long the discount code stays valid.** Working assumption: 24 hours after the chatbot issues it. Does that feel right?
 
-5. **Languages.** Should the chatbot launch in English only, English + Spanish, or both?
-
-6. **Minimum price difference worth matching.** Working assumption: $10 USD. If the OTA is only $3 cheaper, is it worth offering a coupon? Where's your threshold?
-
-7. **How long the discount code stays valid.** Working assumption: 24 hours after the chatbot issues it. Does that feel right?
-
-8. **Hotel info document.** The chatbot needs a document with rooms, amenities, policies, FAQs, local recommendations. Does one exist somewhere already, or do we need to put one together?
+5. **Hotel info document.** The chatbot needs a document with rooms, amenities, policies, FAQs, local recommendations. Should we just use the information on the website or is there more?

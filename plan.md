@@ -20,7 +20,6 @@ The bot surfaces the rate already shown on the hotel's website for the dates the
 
 ### 3. Surfaces direct-booking perks every time
 - Breakfast included on direct rate (OTAs don't include it)
-- No OTA fees on top
 - Immediate confirmation
 
 ### 4. Price-match path
@@ -94,15 +93,15 @@ The hotel's check-in policy already controls fraud — ID must match the credit 
 ## Ideas to entertain (NOT in v1)
 
 - Replacing Little Hotelier's booking engine
-- WhatsApp as a primary guest channel
 - Abandoned-cart recovery / follow-up sequences
+- Improving sales psychology for hotel booking! Such as add-to-cart and prompting for comparisons within the chatbot or making this fun
 - Exit-intent prompts
 - Social proof / scarcity messaging in chat
 - Comparison panels (Direct vs OTA side-by-side)
 - Upsell catalog (breakfast upgrade, spa, transfers, etc.)
 - Returning-guest recognition (lookup against LH prior stays)
 - MCP server exposing the hotel to ChatGPT / Claude / Perplexity
-- Mandarin support
+- Multi-lingual support
 - Multi-tenant onboarding flow for hotel #2+
 - Business model / pricing
 - Success metrics & evaluation harness
