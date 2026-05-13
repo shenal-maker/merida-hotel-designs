@@ -2,11 +2,9 @@
 
 For Treehouse Boutique Hotel. Drafted 2026-05-13. PMS: Little Hotelier.
 
-Stripped to what the owner and Adele have actually verified. Everything speculative moved to **Ideas to entertain** at the bottom.
-
 ---
 
-## Goal (per the owner)
+## Goal
 
 Make pricing clear. Surface the perks of booking direct. Incentivize direct bookings — including 3am sales the owner can't be awake to close. Price-match is one tool among several.
 
@@ -15,7 +13,7 @@ Make pricing clear. Surface the perks of booking direct. Incentivize direct book
 ## What v1 does
 
 ### 1. Answers visitor questions from a knowledge base
-Rooms, amenities, policies, location. Source-of-truth: a written doc (need to confirm whether this exists or needs to be drafted).
+Rooms, amenities, policies, location. Source-of-truth: a written doc maintained by the hotel.
 
 ### 2. Quotes live rates from Little Hotelier
 For specific dates, bot pulls availability and rate from LH and quotes them. Always notes "taxes and fees added at checkout" so the rate isn't mistaken for the total.
@@ -75,8 +73,8 @@ The hotel's check-in policy already controls fraud — ID must match the credit 
 2. **Little Hotelier coupon API** — does it exist? If yes, bot creates codes live. If not, owner pre-generates a date-range pool.
 3. **Front desk escalation channel** — SMS, WhatsApp, or other? What's the number?
 4. **Languages at launch** — English only, English + Spanish, both?
-5. **Minimum price differential for a match to be worth offering** — best guess so far: $10 USD; owner sets this.
-6. **Coupon expiry duration** — how long valid after issue? Best guess: 24h; owner sets this.
+5. **Minimum price differential for a match to be worth offering.** Working assumption: $10 USD.
+6. **Coupon expiry duration after issue.** Working assumption: 24h.
 7. **Source of truth for hotel info (amenities, policies, FAQs)** — does it exist as a written doc, or do we need to draft one?
 
 ---
