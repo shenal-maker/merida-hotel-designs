@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TREE HOUSE — Boutique Hotel / Santa Ana, Mérida, MX</title>
-  <meta name="description" content="Tree House Boutique Hotel. An adults-only 15-room property in Santa Ana, Mérida. First Michelin Key in Mérida. Namesake venue for Treehouse × SoHo Galleries.">
+  <meta name="description" content="Tree House Boutique Hotel. Adults-only 15-room property in Santa Ana, Mérida. First Michelin Key in Mérida.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="../assets/hero-tree-courtyard.jpg">
   <link rel="stylesheet" href="css/style.css">
-  <!-- JS-on flag — set before paint so initial-hidden reveal styles gate cleanly -->
+  <!-- JS-on flag — set before paint so brutalist-snap reveal styles gate cleanly -->
   <script>document.documentElement.classList.add('js');</script>
   <noscript>
     <style>
-      /* JS-off fallback — force-reveal anything the IO observers normally animate in. */
-      .manifesto-line, .plate, .space-gallery-item img { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+      /* JS-off fallback — force-reveal any element gated by .brutalist-snap. */
+      .brutalist-snap { opacity: 1 !important; transform: none !important; }
     </style>
   </noscript>
 </head>
@@ -23,40 +23,37 @@
   <!-- SKIP TO CONTENT -->
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- CURSOR DATA READOUT -->
+  <!-- CURSOR DATA READOUT (crosshair coordinate readout — V3 motion fingerprint) -->
   <div class="cursor-readout" aria-hidden="true">
     <span class="cursor-readout-x">X: 0000</span>
     <span class="cursor-readout-y">Y: 0000</span>
     <span class="cursor-readout-z">SANTA ANA</span>
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (sticky brutalist mono bar — Reserve CTA is load-bearing) -->
   <nav class="nav" aria-label="Primary navigation">
     <div class="nav-logo">TREE HOUSE / SANTA ANA</div>
-    <button class="nav-menu-btn" aria-expanded="false" aria-controls="menu-overlay">INDEX</button>
+    <div class="nav-right">
+      <a class="nav-cta" href="https://treehouseboutiquehotel.com" target="_blank" rel="noopener">RESERVE</a>
+      <button class="nav-menu-btn" aria-expanded="false" aria-controls="menu-overlay">INDEX</button>
+    </div>
   </nav>
 
   <!-- MENU OVERLAY -->
   <div class="menu-overlay" id="menu-overlay" role="dialog" aria-modal="true" aria-label="Site index" aria-hidden="true" inert>
     <button class="menu-close">CLOSE</button>
-    <div class="menu-meta">— <span lang="es-MX">SECCIONES</span> / SECTIONS — 15 KEYS · MICHELIN KEY 2025</div>
-    <a href="#manifesto"><span class="menu-num">01</span><span>Manifesto</span></a>
-    <a href="#data"><span class="menu-num">02</span><span>Specifications</span></a>
-    <a href="#collection"><span class="menu-num">03</span><span>The Collection</span></a>
-    <a href="#michelin"><span class="menu-num">04</span><span>The Michelin Key</span></a>
-    <a href="#exhibition"><span class="menu-num">05</span><span>The Exhibition</span></a>
-    <a href="#arboretum"><span class="menu-num">06</span><span>The Arboretum</span></a>
-    <a href="#journal"><span class="menu-num">07</span><span>Field Dispatches</span></a>
-    <a href="#experiences"><span class="menu-num">08</span><span>Curated Mérida</span></a>
-    <a href="#reviews"><span class="menu-num">09</span><span>Field Notes</span></a>
-    <a href="#counters"><span class="menu-num">10</span><span>Index</span></a>
-    <a href="#space"><span class="menu-num">11</span><span>The Space</span></a>
+    <div class="menu-meta">— <span lang="es-MX">SECCIONES</span> / SECTIONS — 15 KEYS · MICHELIN KEY</div>
+    <a href="#rooms"><span class="menu-num">01</span><span>Rooms</span></a>
+    <a href="#art"><span class="menu-num">02</span><span>Art Collaboration</span></a>
+    <a href="#location"><span class="menu-num">03</span><span>Location</span></a>
+    <a href="#offers"><span class="menu-num">04</span><span>Offers</span></a>
+    <a href="https://treehouseboutiquehotel.com" target="_blank" rel="noopener"><span class="menu-num">05</span><span>Reserve</span></a>
     <div class="menu-foot"><span lang="es-MX">BARRIO DE SANTA ANA</span>, MÉRIDA, YUC.</div>
   </div>
 
   <main id="main" tabindex="-1">
 
-  <!-- SECTION 1: LANDING (DARK — entry inversion) -->
+  <!-- SECTION 1: HERO (DARK — brutalist wordmark + coords + Michelin accolade strip) -->
   <section class="landing" id="landing" aria-label="Tree House Boutique Hotel">
     <div class="landing-bg" aria-hidden="true"></div>
     <div class="landing-veil" aria-hidden="true"></div>
@@ -67,13 +64,10 @@
     <div class="landing-corner landing-corner--tl">
       <div>FILE / 01</div>
       <div>TREEHOUSE.MÉRIDA</div>
-      <div>v.2026.MMXXVI</div>
     </div>
-    <!-- Coords kept only here (entry watermark) and footer (exit watermark) -->
     <div class="landing-corner landing-corner--tr">
       <div>20.9704° N</div>
       <div>89.6260° W</div>
-      <div>ELEV. 9 M / 30 FT</div>
     </div>
 
     <h1 class="landing-title" aria-label="Tree House">
@@ -86,801 +80,191 @@
     </h1>
     <div class="landing-byline">
       <span class="byline-rule"></span>
-      <span>ADULTS ONLY · BARRIO DE SANTA ANA</span>
+      <span>ADULTS ONLY · 15 ROOMS · <span lang="es-MX">SANTA ANA, MÉRIDA</span></span>
       <span class="byline-rule"></span>
     </div>
     <div class="landing-tagline">
-      FIFTEEN ROOMS UNDER ONE CANOPY / GARDENS THAT COOL THE AIR / MÉRIDA, YUCATÁN, MX
+      COLONIAL CHARM MEETS CONTEMPORARY COMFORT
     </div>
 
-    <div class="landing-subtitle">EST. MMXIX — RESTORED CASONA / 15 KEYS / 3 COURTYARDS</div>
+    <a class="landing-cta" href="https://treehouseboutiquehotel.com" target="_blank" rel="noopener">RESERVE →</a>
 
-    <!-- Michelin landing stamp — bumped scale, no box, bottom-right (out of TR corner-data band) -->
-    <div class="landing-michelin-stamp" aria-label="Michelin Key 2025">
-      <img src="https://treehouseboutiquehotel.com/wp-content/uploads/2026/03/1-michelin-key_2025_round_red-150x150.webp" alt="Michelin Key 2025" width="150" height="150" loading="eager">
+    <!-- MICHELIN KEY accolade strip — small mono stamp + key image, in-hero (not its own section) -->
+    <div class="landing-michelin-stamp" aria-label="First Michelin Key in Mérida">
+      <img src="https://treehouseboutiquehotel.com/wp-content/uploads/2026/03/1-michelin-key_2025_round_red-150x150.webp" alt="Michelin Key" width="150" height="150" loading="eager">
       <div class="landing-michelin-stamp-meta">
-        <span>MICHELIN KEY</span>
-        <span class="landing-michelin-stamp-year">MMXXV</span>
-        <span class="landing-michelin-stamp-note">FIRST · MÉRIDA, YUC.</span>
+        <span class="landing-michelin-stamp-year">MICHELIN KEY</span>
+        <span class="landing-michelin-stamp-note">FIRST · <span lang="es-MX">MÉRIDA, YUC.</span></span>
       </div>
     </div>
 
     <div class="landing-scroll-indicator">SCROLL ↓ CATALOG</div>
   </section>
 
-  <!-- SECTION 2: MANIFESTO (LIMESTONE) -->
-  <div class="section-label">01 / <span lang="es-MX">MANIFIESTO</span> — DECLARATION OF INTENT</div>
-  <section class="manifesto" id="manifesto" aria-labelledby="manifesto-heading">
-    <h2 id="manifesto-heading" class="sr-only">Manifesto</h2>
-    <div class="manifesto-meta">
-      <span>FILE: MANIFESTO.TXT</span>
-      <span>EST. MMXIX / <span lang="es-MX">SANTA ANA, MÉRIDA</span></span>
-    </div>
-    <div class="manifesto-lines">
-      <div class="manifesto-line">FIFTEEN ROOMS.</div>
-      <div class="manifesto-line">ONE CANOPY.</div>
-      <div class="manifesto-line">NO CHILDREN.</div>
-      <div class="manifesto-line">FORTY-TWO SPECIES.</div>
-      <div class="manifesto-line">ONE GARDENER.</div>
-      <div class="manifesto-line manifesto-line--whisper">whisper, not shout. adults only, always.</div>
-    </div>
-    <div class="manifesto-coda">
-      <p><span lang="es-MX">Una casa en el barrio de Santa Ana.</span> A restored colonial casona wrapped in foliage — three courtyards of vine, fan-palm, and frangipani that cool the rooms before the air conditioning ever has to. <em>Fifteen quiet rooms.</em> Coffee at six. The exhibition is everywhere you stand.</p>
-    </div>
-    <div class="manifesto-strip" aria-hidden="true">
-      <div class="manifesto-strip__track">
-        <img src="../assets/sanctuary-arched-windows.jpg" alt="" width="1600" height="1067" loading="lazy">
-        <img src="../assets/canopy-waterfall.jpg" alt="" width="1600" height="1067" loading="lazy">
-        <img src="../assets/sanctuary-corridor-day.jpg" alt="" width="1600" height="1067" loading="lazy">
-        <img src="../assets/breath-hammock-waterfall.jpg" alt="" width="1600" height="1067" loading="lazy">
-        <img src="../assets/sanctuary-staircase.jpg" alt="" width="1600" height="1067" loading="lazy">
-        <img src="../assets/canopy-tree-pool.jpg" alt="" width="1600" height="1067" loading="lazy">
-        <img src="../assets/sanctuary-arched-windows.jpg" alt="" width="1600" height="1067" loading="lazy">
-        <img src="../assets/canopy-waterfall.jpg" alt="" width="1600" height="1067" loading="lazy">
-        <img src="../assets/sanctuary-corridor-day.jpg" alt="" width="1600" height="1067" loading="lazy">
-      </div>
-    </div>
-  </section>
+  <!-- SECTION 2: ROOMS — 4 categories, brutalist catalog register -->
+  <div class="section-label">01 / <span lang="es-MX">LA COLECCIÓN</span> — ROOMS</div>
+  <section class="collection" id="rooms" aria-labelledby="rooms-heading">
+    <h2 id="rooms-heading" class="sr-only">Rooms</h2>
 
-  <!-- NOISE FLASH -->
-  <div class="section-noise" aria-hidden="true"></div>
-
-  <!-- SECTION 3: DATA GRID (LIMESTONE — inversion retired; 12-col 3x3) -->
-  <div class="section-label">02 / <span lang="es-MX">ESPECIFICACIONES</span> — THE HOUSE AS DATA</div>
-  <section class="data-grid" id="data" aria-labelledby="data-heading">
-    <h2 id="data-heading" class="sr-only">Specifications — the house as data</h2>
-    <div class="data-grid-inner">
-      <div class="data-cell" tabindex="0">
-        <div class="data-cell-bg" style="background-image: url('../assets/room-balcony-doors.jpg')" aria-hidden="true"></div>
-        <span>ROOMS: FIFTEEN<br><small>// 15 KEYS</small></span>
-      </div>
-      <div class="data-cell" tabindex="0">
-        <div class="data-cell-bg" style="background-image: url('../assets/sanctuary-staircase.jpg')" aria-hidden="true"></div>
-        <span>BUILT: c. 1907<br><small>// RESTORED 2019</small></span>
-      </div>
-      <div class="data-cell" tabindex="0">
-        <div class="data-cell-bg" style="background-image: url('../assets/canopy-courtyard-wing.jpg')" aria-hidden="true"></div>
-        <span>COURTYARDS: III<br><small>// <span lang="es-MX">PATIO + JARDÍN + AZOTEA</span></small></span>
-      </div>
-      <div class="data-cell" tabindex="0">
-        <div class="data-cell-bg" style="background-image: url('../assets/canopy-tree-pool.jpg')" aria-hidden="true"></div>
-        <span>CANOPY: ~640 M²<br><small>FOLIAGE COVERAGE</small></span>
-      </div>
-      <div class="data-cell" tabindex="0">
-        <div class="data-cell-bg" style="background-image: url('../assets/canopy-waterfall.jpg')" aria-hidden="true"></div>
-        <span>SPECIES: 42<br><small>// CATALOGUED FLORA</small></span>
-      </div>
-      <div class="data-cell" tabindex="0">
-        <div class="data-cell-bg" style="background-image: url('../assets/canopy-overhead-pool.jpg')" aria-hidden="true"></div>
-        <span>GARDENER: ONE<br><small>// L. CETINA, SINCE 2019, BY HAND</small></span>
-      </div>
-      <div class="data-cell" tabindex="0">
-        <div class="data-cell-bg" style="background-image: url('../assets/breath-night-arch.jpg')" aria-hidden="true"></div>
-        <span>NEIGHBORS:<br><small><span lang="es-MX">PARQUE · 40 M / IGLESIA · 90 M / MERCADO · 60 M</span></small></span>
-      </div>
-      <div class="data-cell" tabindex="0">
-        <div class="data-cell-bg" style="background-image: url('../assets/art-window-painting.jpg')" aria-hidden="true"></div>
-        <span>MICHELIN KEY: 2025<br><small>FIRST · <span lang="es-MX">CIUDAD DE MÉRIDA</span></small></span>
-      </div>
-      <div class="data-cell" tabindex="0">
-        <div class="data-cell-bg" style="background-image: url('../assets/art-bar-figurines.jpg')" aria-hidden="true"></div>
-        <span>EXHIBITION: ACTIVE<br><small>TREEHOUSE × SOHO GALLERIES · VOL. III</small></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 4: COLLECTION (ROOMS) — inversion retired across rooms -->
-  <div class="section-label">03 / <span lang="es-MX">LA COLECCIÓN</span> — ROOMS AS CATALOG</div>
-  <section class="collection" id="collection" aria-labelledby="collection-heading">
-    <h2 id="collection-heading" class="sr-only">The Collection — Rooms as catalog</h2>
-
-    <!-- GARDEN KING -->
-    <article class="room-block">
+    <!-- ROOM I -->
+    <article class="room-block brutalist-snap">
       <div class="room-header">
         <div class="room-num">№ I</div>
         <h3 class="room-name">KING<br>GARDEN<br>ROOM</h3>
       </div>
-      <div class="room-version">> CATALOG ENTRY 01 / 04 &nbsp;·&nbsp; 28 M² / 301 SQ FT</div>
       <div class="room-image-wrap">
-        <img src="../assets/room-balcony-doors.jpg" alt="King Garden Room — French doors flung open onto a wrought-iron balcony with a tree just outside" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="room-caption">Plate I — King Garden Room, ground floor, opens onto the south patio.</div>
+        <img src="../assets/room-balcony-doors.jpg" alt="King Garden Room — French doors opening onto a wrought-iron balcony with a tree just outside" width="1600" height="1067" loading="lazy" decoding="async">
       </div>
       <div class="room-specs">
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">ORIGEN</span><span class="room-spec-value" lang="es-MX">SANTA ANA, MÉRIDA</span></div>
-        <div class="room-spec"><span class="room-spec-label">PERIOD</span><span class="room-spec-value"><span lang="es-MX">CASONA</span> / RESTORED 2019</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">SUPERFICIE</span><span class="room-spec-value">28 M² / 301 SQ FT</span></div>
-        <div class="room-spec"><span class="room-spec-label">VIEW</span><span class="room-spec-value">PATIO + FRANGIPANI</span></div>
-        <div class="room-spec"><span class="room-spec-label">BED</span><span class="room-spec-value">KING / <span lang="es-MX">LINOS DE LINO</span></span></div>
-        <div class="room-spec"><span class="room-spec-label">BATH</span><span class="room-spec-value"><span lang="es-MX">CHUKUM</span>, RAIN SHOWER</span></div>
+        <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">01 / 04</span></div>
+        <div class="room-spec"><span class="room-spec-label">BED</span><span class="room-spec-value">KING</span></div>
         <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">02 ADULTOS</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">$295 USD / <span lang="es-MX">NOCHE</span></span></div>
+        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">PRICE ON REQUEST</span></div>
       </div>
-      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">GATHER — №&nbsp;I →</a>
+      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">RESERVE — №&nbsp;I →</a>
     </article>
 
-    <!-- QUEEN COURTYARD -->
-    <article class="room-block">
+    <!-- ROOM II -->
+    <article class="room-block brutalist-snap">
       <div class="room-header">
         <div class="room-num">№ II</div>
         <h3 class="room-name">QUEEN<br>COURTYARD<br>SUITE</h3>
       </div>
-      <div class="room-version">> CATALOG ENTRY 02 / 04 &nbsp;·&nbsp; 42 M² / 452 SQ FT</div>
       <div class="room-image-wrap">
         <img src="../assets/room-slat-headboard.jpg" alt="Queen Courtyard Suite with slat headboard, sitting corner, and decorative tile floor strip" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="room-caption">Plate II — Queen Courtyard Suite, first floor, north wing, opens to vine-walled patio.</div>
       </div>
       <div class="room-specs">
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">ORIGEN</span><span class="room-spec-value" lang="es-MX">SANTA ANA, MÉRIDA</span></div>
-        <div class="room-spec"><span class="room-spec-label">PERIOD</span><span class="room-spec-value"><span lang="es-MX">CASONA</span> / RESTORED 2019</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">SUPERFICIE</span><span class="room-spec-value">42 M² / 452 SQ FT</span></div>
-        <div class="room-spec"><span class="room-spec-label">VIEW</span><span class="room-spec-value">VINE COURTYARD</span></div>
-        <div class="room-spec"><span class="room-spec-label">SITTING</span><span class="room-spec-value">SITTING NOOK / <span lang="es-MX">ESCRITORIO</span></span></div>
-        <div class="room-spec"><span class="room-spec-label">BATH</span><span class="room-spec-value">SOAKING TUB + RAIN SHOWER</span></div>
+        <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">02 / 04</span></div>
+        <div class="room-spec"><span class="room-spec-label">BED</span><span class="room-spec-value">QUEEN</span></div>
         <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">02 ADULTOS</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">$375 USD / <span lang="es-MX">NOCHE</span></span></div>
+        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">PRICE ON REQUEST</span></div>
       </div>
-      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">GATHER — №&nbsp;II →</a>
+      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">RESERVE — №&nbsp;II →</a>
     </article>
 
-    <!-- KING GARDEN SUITE -->
-    <article class="room-block">
+    <!-- ROOM III -->
+    <article class="room-block brutalist-snap">
       <div class="room-header">
         <div class="room-num">№ III</div>
         <h3 class="room-name">KING<br>GARDEN<br>SUITE</h3>
       </div>
-      <div class="room-version">> CATALOG ENTRY 03 / 04 &nbsp;·&nbsp; 58 M² / 624 SQ FT</div>
       <div class="room-image-wrap">
         <img src="../assets/room-staggered-stick.jpg" alt="King Garden Suite with sculptural vertical wood-stick headboard, onyx wall sconces, and geometric floor tile" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="room-caption">Plate III — King Garden Suite, garden wing, private terraza opens to the central jardín.</div>
       </div>
       <div class="room-specs">
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">ORIGEN</span><span class="room-spec-value" lang="es-MX">SANTA ANA, MÉRIDA</span></div>
-        <div class="room-spec"><span class="room-spec-label">PERIOD</span><span class="room-spec-value"><span lang="es-MX">CASONA</span> / RESTORED 2019</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">SUPERFICIE</span><span class="room-spec-value">58 M² / 624 SQ FT</span></div>
-        <div class="room-spec"><span class="room-spec-label">VIEW</span><span class="room-spec-value" lang="es-MX">JARDÍN + TERRAZA</span></div>
-        <div class="room-spec"><span class="room-spec-label">SITTING</span><span class="room-spec-value">LIVING + DINING NOOK</span></div>
-        <div class="room-spec"><span class="room-spec-label">BATH</span><span class="room-spec-value">DOUBLE VANITY, SOAKING TUB</span></div>
+        <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">03 / 04</span></div>
+        <div class="room-spec"><span class="room-spec-label">BED</span><span class="room-spec-value">KING</span></div>
         <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">02 ADULTOS</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">$545 USD / <span lang="es-MX">NOCHE</span></span></div>
+        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">PRICE ON REQUEST</span></div>
       </div>
-      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">GATHER — №&nbsp;III →</a>
+      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">RESERVE — №&nbsp;III →</a>
     </article>
 
-    <!-- PENTHOUSE CANOPY -->
-    <article class="room-block">
+    <!-- ROOM IV -->
+    <article class="room-block brutalist-snap">
       <div class="room-header">
         <div class="room-num">№ IV</div>
         <h3 class="room-name">PENT-<br>HOUSE<br>CANOPY</h3>
       </div>
-      <div class="room-version">> CATALOG ENTRY 04 / 04 &nbsp;·&nbsp; 105 M² / 1131 SQ FT</div>
       <div class="room-image-wrap">
-        <img src="../assets/room-limestone-skylight.jpg" alt="Penthouse Canopy bedroom — raw cut-stone limestone feature wall, three rectangular skylights, walnut bed frame" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="room-caption">Plate IV — Penthouse Canopy, top floor, private azotea overlooks the canopy and Parque Santa Ana.</div>
+        <img src="../assets/room-limestone-skylight.jpg" alt="Penthouse Canopy — raw cut-stone limestone feature wall, three rectangular skylights, walnut bed frame" width="1600" height="1067" loading="lazy" decoding="async">
       </div>
       <div class="room-specs">
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">ORIGEN</span><span class="room-spec-value" lang="es-MX">SANTA ANA, MÉRIDA</span></div>
-        <div class="room-spec"><span class="room-spec-label">PERIOD</span><span class="room-spec-value"><span lang="es-MX">CASONA</span> / RESTORED 2019</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">SUPERFICIE</span><span class="room-spec-value">105 M² / 1131 SQ FT</span></div>
-        <div class="room-spec"><span class="room-spec-label">VIEW</span><span class="room-spec-value" lang="es-MX">AZOTEA + PARQUE SANTA ANA</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">AZOTEA</span><span class="room-spec-value">PRIVATE 32 M² ROOFTOP GARDEN</span></div>
-        <div class="room-spec"><span class="room-spec-label">BATH</span><span class="room-spec-value">DOUBLE VANITY + WET ROOM</span></div>
+        <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">04 / 04</span></div>
+        <div class="room-spec"><span class="room-spec-label">BED</span><span class="room-spec-value">KING</span></div>
         <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">02 ADULTOS</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">$925 USD / <span lang="es-MX">NOCHE</span></span></div>
+        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">PRICE ON REQUEST</span></div>
       </div>
-      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">GATHER — №&nbsp;IV →</a>
+      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">RESERVE — №&nbsp;IV →</a>
     </article>
 
   </section>
 
-  <!-- SECTION 5: MICHELIN KEY (LIMESTONE — Finding 4 Option A) -->
-  <div class="section-label">04 / <span lang="es-MX">LA LLAVE</span> — THE MICHELIN KEY</div>
-  <section class="michelin" id="michelin" aria-labelledby="michelin-heading">
-    <div class="michelin-inner">
-      <div class="michelin-mark">
-        <img src="https://treehouseboutiquehotel.com/wp-content/uploads/2026/03/1-michelin-key_2025_round_red-150x150.webp" alt="One Michelin Key 2025" width="150" height="150" loading="lazy" decoding="async">
-        <div class="michelin-mark-stamp">
-          <strong>MICHELIN KEY · MMXXV</strong>
-          <span>FIRST IN MÉRIDA</span>
-          <span lang="es-MX">YUCATÁN, MX</span>
-        </div>
-      </div>
-      <div class="michelin-body">
-        <div class="michelin-eyebrow">
-          <span>MICHELIN GUIDE — KEYS PROGRAM</span>
-          <span class="michelin-eyebrow-line"></span>
-          <span>MMXXV</span>
-        </div>
-        <h2 id="michelin-heading" class="michelin-title">
-          <span>ONE</span>
-          <span class="michelin-title-em">KEY.</span>
-          <span class="michelin-title-line">THE FIRST IN MÉRIDA.</span>
-        </h2>
-        <blockquote class="michelin-quote">
-          <p>"A small, adults-only house in Santa Ana wrapped in its own microclimate of foliage. Fifteen keys, three courtyards, and a contemporary art program that lives in the rooms rather than in a separate gallery — the property runs as one continuous, considered gesture."</p>
-          <cite>— MICHELIN INSPECTORS' NOTE, MÉRIDA / 2025</cite>
-        </blockquote>
-        <div class="michelin-editors-note">
-          <p>— EDITOR'S NOTE / SANTA ANA, FEB. 2025</p>
-          <p><em>The inspector arrived on a Tuesday in the off-season. We did not know it was an inspection. They asked for the gardener by name and sat in the library for forty minutes reading the herbarium. They took the room rate sheet, made one note, and left. The Key was announced six weeks later. We changed nothing.</em></p>
-        </div>
-        <div class="michelin-coda">
-          <p>Fifteen quiet rooms, three courtyards, and a small red sun over the front desk.</p>
-        </div>
-        <details class="michelin-meaning">
-          <summary>What the Key means</summary>
-          <p>The Michelin Key is to hotels what the star is to restaurants. One Key recognises a property as "a very special stay" — judged on a sense of place, craft of design and service, personality, and value. Tree House holds the only one in Mérida.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 6: EXHIBITION — THE CENTERPIECE (DARK — only mid-page inversion) -->
-  <div class="section-label section-label--exhibit">05 / <span lang="es-MX">LA EXPOSICIÓN</span> — TREEHOUSE × SOHO GALLERIES · NAMESAKE VENUE</div>
-  <section class="exhibition" id="exhibition" aria-labelledby="exhibition-heading">
-    <div class="exhibit-masthead">
-      <div class="exhibit-eyebrow">
-        <span>CURRENT EXHIBITION</span>
-        <span class="exhibit-eyebrow-line"></span>
-        <span>VOL. III</span>
-        <span class="exhibit-eyebrow-line"></span>
+  <!-- SECTION 3: ART COLLABORATION — Treehouse × SoHo Galleries, namesake venue. One sentence + 3 on-property art photos. -->
+  <div class="section-label section-label--exhibit">02 / <span lang="es-MX">LA COLABORACIÓN</span> — TREEHOUSE × SOHO GALLERIES</div>
+  <section class="art-collab" id="art" aria-labelledby="art-heading">
+    <div class="art-collab-inner">
+      <div class="art-collab-eyebrow">
+        <span>CURATED ART PROGRAM</span>
+        <span class="art-collab-eyebrow-line"></span>
         <span>NAMESAKE VENUE</span>
       </div>
-      <h2 id="exhibition-heading" class="exhibit-title" lang="es-MX">
-        <span class="exhibit-title-line">EL DOSEL</span>
-        <span class="exhibit-title-line exhibit-title-line--ital">verde</span>
+      <h2 id="art-heading" class="art-collab-title">
+        <span>LIVE INSIDE</span>
+        <span class="art-collab-title-em">THE EXHIBITION.</span>
       </h2>
-      <div class="exhibit-dates">
-        <span>OPENING</span>
-        <span class="exhibit-dates-val">15 MAY 2026</span>
-        <span class="exhibit-rule"></span>
-        <span>CLOSING</span>
-        <span class="exhibit-dates-val">14 SEP 2026</span>
-      </div>
-      <div class="exhibit-credit">
-        <span>CURATED BY</span>
-        <strong>TREEHOUSE × SOHO GALLERIES (MÉRIDA)</strong>
-        <span>— ON VIEW THROUGHOUT THE HOUSE, ROTATES QUARTERLY</span>
-      </div>
-      <div class="exhibit-namesake">
-        <span class="exhibit-namesake-tag">NAMESAKE</span>
-        <span>Tree House is the founding venue of the <strong>Treehouse</strong> program. The "Treehouse" in Treehouse × SoHo Galleries is, literally, this house. The collaboration began in March 2024 over coffee on the azotea with SoHo's director, J. Casares; the first work — a Maza textile — was hung in the stairwell six weeks later. The program has rotated through here every quarter since.</span>
-      </div>
-    </div>
-
-    <div class="exhibit-statement">
-      <div class="exhibit-statement-label">— CURATORIAL STATEMENT</div>
-      <p><em>What does a private interior owe the foliage it lives inside?</em></p>
-      <p>The question has been pinned to the herbarium wall, in pencil, since the program began. <em>El dosel verde</em> gathers seven Yucatecan and Latin-American artists whose practice circles it from seven different mediums: ceramic-fiber, hand-dyed cotton, oil on Belgian linen, photogravure, brass tuning forks, ink and gouache. The building answers in canopy. Forty-two species overhead, three courtyards underfoot, fifteen rooms that the gallery has agreed to call its rooms for the duration of the show.</p>
-      <p>Plates are installed where the canopy puts them — beneath the ceiba, against the stairwell, on the azotea after dark, at the foot of bed №&nbsp;7 in Suite II. They rotate at the close of every fourth lunar month, so the foliage outside and the work inside are never in the same configuration twice. The catalog is hand-bound in Santa Ana and ships at checkout.</p>
-      <div class="exhibit-statement-sign">
-        <span>— S. RAMÍREZ &amp; J. CASARES, CO-CURATORS</span>
-        <span>SANTA ANA, MÉRIDA · ABR. 2026</span>
-      </div>
-    </div>
-
-    <div class="exhibit-roster">
-      <div class="exhibit-roster-label">— ARTISTS IN ROTATION / VOL. III</div>
-      <ol class="exhibit-artist-list">
-        <li><span class="artist-num">i.</span><span class="artist-name">Lourdes Maza</span><span class="artist-meta">b. 1981, Mérida — textile / fiber</span></li>
-        <li><span class="artist-num">ii.</span><span class="artist-name">Renato Pech</span><span class="artist-meta">b. 1974, Valladolid — ceramic, henequén</span></li>
-        <li><span class="artist-num">iii.</span><span class="artist-name">Aurora Quiñones</span><span class="artist-meta">b. 1989, CDMX — oil on linen</span></li>
-        <li><span class="artist-num">iv.</span><span class="artist-name">D. Solís &amp; M. Caamal</span><span class="artist-meta">est. 2017, Mérida — sculpture, duo</span></li>
-        <li><span class="artist-num">v.</span><span class="artist-name">Inés Verástegui</span><span class="artist-meta">b. 1965, Oaxaca — photogravure</span></li>
-        <li><span class="artist-num">vi.</span><span class="artist-name">Tomás Aké</span><span class="artist-meta">b. 1992, Tixkokob — sound, installation</span></li>
-        <li class="artist--cetina"><span class="artist-num">vii.</span><span class="artist-name">Paloma Cetina</span><span class="artist-meta">b. 1986, Mérida — botanical illustration · see Plate 06 + Arboretum</span></li>
-      </ol>
-    </div>
-
-    <div class="exhibit-plates">
-      <figure class="plate plate--01" id="plate-01">
-        <div class="plate-img-wrap">
+      <p class="art-collab-statement brutalist-snap">
+        Tree House is the namesake venue of <strong>Treehouse × SoHo Galleries</strong> — a rotating, curated art program co-presented with SoHo Galleries, Mérida. Works live throughout the house: in the bar, in the lounge, against the courtyard walls. Guests sleep inside the exhibition.
+      </p>
+      <div class="art-collab-plates">
+        <figure class="art-plate brutalist-snap">
           <img src="../assets/art-bar-figurines.jpg" alt="Bar wall with grid-shelving, aged plaster, walnut frames, and two bronze figurine sculptures" width="1600" height="1067" loading="lazy" decoding="async">
-        </div>
-        <figcaption class="plate-caption">
-          <div class="plate-num"><span>PLATE 01</span></div>
-          <div class="plate-title" lang="es-MX"><em>Sin título (henequén III)</em></div>
-          <div class="plate-meta">Renato Pech, 2025 — fired clay, <span lang="es-MX">henequén</span> fiber, hemp cord. 140 × 90 × 22 cm.</div>
-          <div class="plate-loc">INSTALLED — <span lang="es-MX">JARDÍN</span>, NORTH WALL · BENEATH THE CEIBA</div>
-          <div class="plate-note"><em>The <span lang="es-MX">henequén</span> is from Hacienda Sotuta. The cord, hand-laid.</em></div>
-        </figcaption>
-      </figure>
-
-      <figure class="plate plate--02" id="plate-02">
-        <div class="plate-img-wrap">
-          <img src="../assets/art-window-painting.jpg" alt="Evening view through an arched steel-frame window into the lit lounge; a colorful painting hangs on the green wall inside" width="1600" height="1067" loading="lazy" decoding="async">
-        </div>
-        <figcaption class="plate-caption">
-          <div class="plate-num"><span>PLATE 02</span></div>
-          <div class="plate-title" lang="es-MX"><em>Habitación 7, mañana</em></div>
-          <div class="plate-meta">Aurora Quiñones, 2024 — oil on Belgian linen. 180 × 120 cm.</div>
-          <div class="plate-loc">INSTALLED — SUITE №&nbsp;II, EAST WALL</div>
-        </figcaption>
-      </figure>
-
-      <figure class="plate plate--03" id="plate-03">
-        <div class="plate-img-wrap">
-          <img src="../assets/sanctuary-staircase.jpg" alt="Moody stairwell with wooden ceiling slats and iron-and-wood staircase — installation site for Maza's suspended fiber piece" width="1600" height="1067" loading="lazy" decoding="async">
-        </div>
-        <figcaption class="plate-caption">
-          <div class="plate-num"><span>PLATE 03</span></div>
-          <div class="plate-title" lang="es-MX"><em>El dosel (study iii of vii)</em></div>
-          <div class="plate-meta">Lourdes Maza, 2026 — hand-dyed cotton, sisal, brass. Dimensions variable.</div>
-          <div class="plate-loc">INSTALLED — STAIRWELL, FLOORS 1–3</div>
-          <div class="plate-note"><em>The first work hung at this property. March 2024.</em></div>
-        </figcaption>
-      </figure>
-
-      <figure class="plate plate--04" id="plate-04">
-        <div class="plate-img-wrap">
-          <img src="../assets/strip-tile-detail.jpg" alt="Hard-edged half cement-tile pattern abutting raw concrete — material study" width="1600" height="1067" loading="lazy" decoding="async">
-        </div>
-        <figcaption class="plate-caption">
-          <div class="plate-num"><span>PLATE 04</span></div>
-          <div class="plate-title" lang="es-MX"><em>Cenote (prueba v / vii)</em></div>
-          <div class="plate-meta">Inés Verástegui, 2023 — photogravure on Hahnemühle. Edition of 7, plate v.</div>
-          <div class="plate-loc">INSTALLED — PENTHOUSE CANOPY, BEDSIDE</div>
-          <div class="plate-note"><em>The cenote in the prints is not named. The artist has been asked. She declines.</em></div>
-        </figcaption>
-      </figure>
-
-      <figure class="plate plate--05" id="plate-05">
-        <div class="plate-img-wrap">
-          <img src="../assets/strip-onyx-sconce.jpg" alt="Alabaster-tiled cylindrical wall sconce glowing yellow against off-white plaster, louvered window shadows striping the wall" width="1600" height="1067" loading="lazy" decoding="async">
-        </div>
-        <figcaption class="plate-caption">
-          <div class="plate-num"><span>PLATE 05</span></div>
-          <div class="plate-title" lang="es-MX"><em>Cuarto sin techo</em></div>
-          <div class="plate-meta">Tomás Aké, 2026 — 4-channel sound, brass tuning forks. 28 min loop.</div>
-          <div class="plate-loc">INSTALLED — <span lang="es-MX">AZOTEA</span>, CONTINUOUS</div>
-        </figcaption>
-      </figure>
-
-      <figure class="plate plate--06" id="plate-06">
-        <div class="plate-img-wrap">
-          <img src="../assets/art-chair-tableau.jpg" alt="Two mid-century chairs facing each other across a walnut table with a eucalyptus posy, stacked books on a raw-wood bench behind — library installation context" width="1600" height="1067" loading="lazy" decoding="async">
-        </div>
-        <figcaption class="plate-caption">
-          <div class="plate-num"><span>PLATE 06</span><span class="plate-cross">SEE TAXA №§ 001, 007, 014, 018, 022 ↗</span></div>
-          <div class="plate-title"><em>Herbarium, <span lang="es-MX">Santa Ana</span></em></div>
-          <div class="plate-meta">Paloma Cetina, 2026 — ink and gouache on archival paper. Set of 12 (42 × 30 cm each). Library set Nos. 04–12; entrance set Nos. 01–03.</div>
-          <div class="plate-loc">INSTALLED — LIBRARY (NOS. 04–12) + ENTRANCE ALCOVE (NOS. 01–03)</div>
-          <div class="plate-note"><em>Twelve plates, painted from life in the garden, between October and February. The artist is the gardener's sister.</em></div>
-        </figcaption>
-      </figure>
-    </div>
-
-    <!-- FLOORPLAN — structured grid only (ASCII killed per Finding 8A) -->
-    <div class="exhibit-floorplan" aria-label="Schematic floorplan showing installation locations">
-      <div class="floorplan-label">
-        <span>— SCHEMATIC / GROUND-FLOOR INSTALLATION MAP</span>
-        <span class="floorplan-compass">N ↑</span>
-      </div>
-      <div class="floorplan-grid">
-        <a class="fp fp--entrance" href="#plate-06" aria-label="Entrance — jump to Plate 06, Cetina (Nos. 01–03 of 12)">
-          <span class="fp-tag">A</span>
-          <span class="fp-name">ENTRANCE</span>
-          <span class="fp-piece">PL. 06 — CETINA (NOS. 01–03 OF 12)</span>
-        </a>
-        <a class="fp fp--library" href="#plate-06" aria-label="Library — jump to Plate 06, Cetina (Nos. 04–12 of 12)">
-          <span class="fp-tag">C</span>
-          <span class="fp-name">LIBRARY</span>
-          <span class="fp-piece">PL. 06 — CETINA (NOS. 04–12 OF 12)</span>
-        </a>
-        <a class="fp fp--room1" href="#plate-02" aria-label="Suite № II — jump to Plate 02, Quiñones">
-          <span class="fp-tag">E</span>
-          <span class="fp-name">SUITE № II</span>
-          <span class="fp-piece">PL. 02 — QUIÑONES</span>
-        </a>
-        <a class="fp fp--courtyard" href="#plate-01" aria-label="Jardín, beneath the ceiba — jump to Plate 01, Pech">
-          <span class="fp-tag">B</span>
-          <span class="fp-name" lang="es-MX">JARDÍN — CEIBA</span>
-          <span class="fp-piece">PL. 01 — PECH (BENEATH CEIBA)</span>
-        </a>
-        <a class="fp fp--stair" href="#plate-03" aria-label="Stairwell — jump to Plate 03, Maza (Floors 1–3)">
-          <span class="fp-tag">D</span>
-          <span class="fp-name">STAIRWELL</span>
-          <span class="fp-piece">PL. 03 — MAZA (FLOORS 1–3)</span>
-        </a>
-        <a class="fp fp--room2" href="#plate-04" aria-label="Azotea / Penthouse — jump to Plates 04 (Verástegui) and 05 (Aké)">
-          <span class="fp-tag">F</span>
-          <span class="fp-name"><span lang="es-MX">AZOTEA</span> / PENTHOUSE</span>
-          <span class="fp-piece">PL. 04 — VERÁSTEGUI · PL. 05 — AKÉ</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="exhibit-foot">
-      <div class="exhibit-foot-block">
-        <span class="exhibit-foot-label">PARTNERS</span>
-        <strong>SoHo Galleries, Mérida</strong>
-        <span>Calle 60 × 41, Centro</span>
-      </div>
-      <div class="exhibit-foot-block">
-        <span class="exhibit-foot-label">PROGRAM</span>
-        <strong>Treehouse — Hotel-as-Gallery Series</strong>
-        <span>Founded 2024 at this property / Rotates quarterly</span>
-      </div>
-      <div class="exhibit-foot-block">
-        <span class="exhibit-foot-label">CATALOG</span>
-        <strong>Vol. III — El dosel verde</strong>
-        <span>Ships with checkout / Edition of 300</span>
-      </div>
-      <a href="https://treehouseboutiquehotel.com" class="exhibit-cta" target="_blank" rel="noopener">TEND THE WALKTHROUGH →</a>
-    </div>
-  </section>
-
-  <!-- SECTION 7: ARBORETUM — herbarium apparatus (Finding 7) -->
-  <div class="section-label">06 / <span lang="es-MX">EL ARBORETUM</span> — HERBARIUM, <span lang="es-MX">SANTA ANA</span></div>
-  <section class="arboretum" id="arboretum" aria-labelledby="arboretum-heading">
-    <div class="arboretum-masthead">
-      <div class="arboretum-eyebrow">
-        <span>SPECIMEN CATALOG</span>
-        <span class="arboretum-eyebrow-line"></span>
-        <span>FORTY-TWO SPECIES</span>
-      </div>
-      <h2 id="arboretum-heading" class="arboretum-title" lang="es-MX">
-        <span class="arboretum-title-line">EL</span>
-        <span class="arboretum-title-line arboretum-title-line--ital">arboretum</span>
-      </h2>
-      <p class="arboretum-statement">Forty-two species under the canopy. Each one labelled in situ on a small brass tag bearing the number you see here, maintained quietly by L. Cetina, gardener, by hand, since 2019. The plates marked <span class="plate-cross">PL. 06 ↗</span> are these same species painted in ink and gouache by Paloma Cetina — his sister — and hang in the library upstairs (see <a href="#exhibition">Exhibition / Plate 06</a>). The catalog and the garden are the same list, drawn twice.</p>
-    </div>
-
-    <div class="arboretum-grid" aria-label="Plant species index">
-      <div class="taxon" id="arboretum-001" tabindex="0">
-        <div class="taxon-num">001</div>
-        <div class="taxon-cross">PL. 06 ↗</div>
-        <div class="taxon-glyph" aria-hidden="true">Ceiba</div>
-        <div class="taxon-latin">Ceiba pentandra</div>
-        <div class="taxon-common"><span lang="es-MX">Ceiba</span> · Kapok · Ya'axche'</div>
-        <div class="taxon-meta">
-          <span class="fam">f.</span><span class="fam">malvaceae</span> · <span lang="es-MX">JARDÍN</span>, CENTRAL · ~85 YR
-          <div class="taxon-note">Sacred tree of the Maya. Property anchor.</div>
-        </div>
-      </div>
-
-      <div class="taxon" id="arboretum-007" tabindex="0">
-        <div class="taxon-num">007</div>
-        <div class="taxon-cross">PL. 06 ↗</div>
-        <div class="taxon-glyph" aria-hidden="true">Plumeria</div>
-        <div class="taxon-latin">Plumeria rubra</div>
-        <div class="taxon-common">Frangipani · Nikté</div>
-        <div class="taxon-meta">
-          <span class="fam">f.</span><span class="fam">apocynaceae</span> · <span lang="es-MX">PATIO SUR</span> — TWO · BLOOM MAY–SEP
-          <div class="taxon-note">Scent intensifies at dusk.</div>
-        </div>
-      </div>
-
-      <div class="taxon" id="arboretum-011" tabindex="0">
-        <div class="taxon-num">011</div>
-        <div class="taxon-glyph" aria-hidden="true">Chamaedorea</div>
-        <div class="taxon-latin">Chamaedorea seifrizii</div>
-        <div class="taxon-common">Bamboo Palm · Xiat</div>
-        <div class="taxon-meta">
-          <span class="fam">f.</span><span class="fam">arecaceae</span> · STAIRWELL · ~14 CLUMPS
-          <div class="taxon-note">Filters light before it reaches Suite № II.</div>
-        </div>
-      </div>
-
-      <div class="taxon" id="arboretum-014" tabindex="0">
-        <div class="taxon-num">014</div>
-        <div class="taxon-cross">PL. 06 ↗</div>
-        <div class="taxon-glyph" aria-hidden="true">Bougainvillea</div>
-        <div class="taxon-latin">Bougainvillea glabra</div>
-        <div class="taxon-common" lang="es-MX">Bugambilia</div>
-        <div class="taxon-meta">
-          <span class="fam">f.</span><span class="fam">nyctaginaceae</span> · WEST WALL — TRAINED · YEAR-ROUND BLOOM
-          <div class="taxon-note">Not native. Everyone forgives it.</div>
-        </div>
-      </div>
-
-      <div class="taxon" id="arboretum-018" tabindex="0">
-        <div class="taxon-num">018</div>
-        <div class="taxon-cross">PL. 06 ↗</div>
-        <div class="taxon-glyph" aria-hidden="true">Monstera</div>
-        <div class="taxon-latin">Monstera deliciosa</div>
-        <div class="taxon-common" lang="es-MX">Piñanona</div>
-        <div class="taxon-meta">
-          <span class="fam">f.</span><span class="fam">araceae</span> · LIBRARY · 3 LARGE SPECIMENS
-          <div class="taxon-note">Fenestrations widen with age.</div>
-        </div>
-      </div>
-
-      <div class="taxon" id="arboretum-022" tabindex="0">
-        <div class="taxon-num">022</div>
-        <div class="taxon-cross">PL. 06 ↗</div>
-        <div class="taxon-glyph" aria-hidden="true">Agave</div>
-        <div class="taxon-latin">Agave angustifolia</div>
-        <div class="taxon-common"><span lang="es-MX">Henequén</span> · Kiij</div>
-        <div class="taxon-meta">
-          <span class="fam">f.</span><span class="fam">asparagaceae</span> · ENTRANCE — ROW OF 5
-          <div class="taxon-note">Nod to the state's monoculture past.</div>
-        </div>
-      </div>
-
-      <div class="taxon" id="arboretum-027" tabindex="0">
-        <div class="taxon-num">027</div>
-        <div class="taxon-glyph" aria-hidden="true">Brugmansia</div>
-        <div class="taxon-latin">Brugmansia suaveolens</div>
-        <div class="taxon-common"><span lang="es-MX">Floripondio</span> · Angel's Trumpet</div>
-        <div class="taxon-meta">
-          <span class="fam">f.</span><span class="fam">solanaceae</span> · <span lang="es-MX">PATIO NORTE</span> — ONE · BLOOMS AT NIGHT
-          <div class="taxon-note">Toxic. Kept out of reach by design.</div>
-        </div>
-      </div>
-
-      <div class="taxon" id="arboretum-033" tabindex="0">
-        <div class="taxon-num">033</div>
-        <div class="taxon-glyph" aria-hidden="true">Tillandsia</div>
-        <div class="taxon-latin">Tillandsia usneoides</div>
-        <div class="taxon-common">Spanish Moss · <span lang="es-MX">Barba de Viejo</span></div>
-        <div class="taxon-meta">
-          <span class="fam">f.</span><span class="fam">bromeliaceae</span> · CEIBA — DRAPED · EPIPHYTE
-          <div class="taxon-note">Reads as grey at noon, green at dusk.</div>
-        </div>
-      </div>
-
-      <div class="taxon" id="arboretum-042" tabindex="0">
-        <div class="taxon-num">042</div>
-        <div class="taxon-glyph" aria-hidden="true">Citrus</div>
-        <div class="taxon-latin">Citrus × aurantium</div>
-        <div class="taxon-common"><span lang="es-MX">Naranjo Agrio</span> · Bitter Orange</div>
-        <div class="taxon-meta">
-          <span class="fam">f.</span><span class="fam">rutaceae</span> · <span lang="es-MX">AZOTEA</span> — ONE POT
-          <div class="taxon-note">Provides the marmalade.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="arboretum-foot">
-      <span class="arboretum-foot-tag">PARTIAL INDEX</span>
-      <span>9 of 42 specimens shown. The remaining thirty-three are on the brass tags and in the library, painted. Ask at the front desk; the gardener walks the grounds at 0900 on Tuesdays and Fridays.</span>
-    </div>
-  </section>
-
-  <!-- SECTION 8: JOURNAL / FIELD DISPATCHES -->
-  <div class="section-label">07 / <span lang="es-MX">DIARIO DE CAMPO</span> — FIELD DISPATCHES</div>
-  <section class="journal" id="journal" aria-labelledby="journal-heading">
-    <h2 id="journal-heading" class="sr-only">Field Dispatches — The Journal</h2>
-    <div class="journal-intro">
-      <div class="journal-intro-label">— THE JOURNAL</div>
-      <p>The staff and the artists in residence keep field notes. Some are useful (the cenotes that empty out on a Tuesday). Some are seasonal (six weeks of frangipani). All are hand-edited and frequently late.</p>
-    </div>
-    <div class="journal-grid">
-      <article class="journal-card" tabindex="0">
-        <div class="journal-meta"><span>ENTRY 01</span><span>MAY 2026</span></div>
-        <h3 class="journal-title">Hidden cenotes of Yucatán: a partial map</h3>
-        <p class="journal-body">Five cenotes east of Mérida, ranked not by depth or temperature but by emptiness on a Tuesday at 10 a.m. Maps drawn by hand. Photocopies at the front desk.</p>
-        <div class="journal-byline">— BY THE CONCIERGE TEAM</div>
-      </article>
-      <article class="journal-card" tabindex="0">
-        <div class="journal-meta"><span>ENTRY 02</span><span>APR 2026</span></div>
-        <h3 class="journal-title">A morning at the Mercado Santa Ana</h3>
-        <p class="journal-body">Forty meters from the front door. What to ask for, who to ask, what to never ask for in October. Includes the cochinita stand we have used for breakfast since 2019.</p>
-        <div class="journal-byline">— BY E. CANCHÉ, BREAKFAST CHEF</div>
-      </article>
-      <article class="journal-card" tabindex="0">
-        <div class="journal-meta"><span>ENTRY 03</span><span>MAR 2026</span></div>
-        <h3 class="journal-title">Frangipani, six weeks.</h3>
-        <p class="journal-body">The frangipani opens for six weeks and the courtyards smell like nothing else for the rest of the year. Notes on which suite catches the bloom at which hour.</p>
-        <div class="journal-byline">— BY L. CETINA, GARDENER</div>
-      </article>
-      <article class="journal-card" tabindex="0">
-        <div class="journal-meta"><span>ENTRY 04</span><span>FEB 2026</span></div>
-        <h3 class="journal-title">A reader's centro: three bookshops, two record shops, one Thursday bar.</h3>
-        <p class="journal-body">Three small bookshops, two record shops, one bar that opens only on Thursdays. A reader's route through the centro, drawn by an artist in residence.</p>
-        <div class="journal-byline">— BY A. QUIÑONES, ARTIST IN RESIDENCE</div>
-      </article>
-    </div>
-  </section>
-
-  <!-- SECTION 9: EXPERIENCES -->
-  <div class="section-label">08 / <span lang="es-MX">MÉRIDA CURADA</span> — EXPERIENCES, BY ALLOCATION</div>
-  <section class="experiences" id="experiences" aria-labelledby="experiences-heading">
-    <h2 id="experiences-heading" class="sr-only">Curated Mérida — Experiences, by allocation</h2>
-    <div class="experiences-intro">
-      <div class="experiences-intro-label">— CURATED MÉRIDA</div>
-      <p>Four programs, booked through the concierge. The drivers and operators are ones the house has used personally — most of them for longer than the house has been open. Long stays preferred; canopy first, city after. Itineraries on paper only if asked.</p>
-    </div>
-    <div class="experiences-grid">
-      <article class="exp-card" tabindex="0">
-        <div class="exp-num">01</div>
-        <h3 class="exp-name">CENOTES &amp; HACIENDAS</h3>
-        <div class="exp-meta">
-          <span>DURATION</span><span>FULL DAY / ~9 HR</span>
-          <span>PARTY</span><span>2–4 ADULTS</span>
-          <span>RADIUS</span><span>~80 KM SE OF MÉRIDA</span>
-          <span>INCLUDES</span><span>DRIVER, LUNCH, GUIDE</span>
-        </div>
-        <p class="exp-body">Three cenotes selected for water clarity and emptiness — typically the Cuzamá ring — followed by a long lunch at a restored henequén hacienda. Swim, eat, return under the canopy by sunset.</p>
-        <div class="exp-from">DESDE $480 USD / PARTY</div>
-      </article>
-
-      <article class="exp-card" tabindex="0">
-        <div class="exp-num">02</div>
-        <h3 class="exp-name">LONG-STAY ALLOCATION</h3>
-        <div class="exp-meta">
-          <span>NIGHTS</span><span>5 OR MORE</span>
-          <span>DISCOUNT</span><span>−30% ON ROOM</span>
-          <span>INCLUDES</span><span>BREAKFAST · GARDEN TOUR</span>
-          <span>UPGRADE</span><span>ON AVAILABILITY</span>
-        </div>
-        <p class="exp-body">Stay five nights or more and the rate drops by thirty percent across all room categories. Includes a slow breakfast in the jardín and a guided walk through the forty-two-species arboretum with our gardener.</p>
-        <div class="exp-from">−30% / NO ADDITIONAL FEE</div>
-      </article>
-
-      <article class="exp-card" tabindex="0">
-        <div class="exp-num">03</div>
-        <h3 class="exp-name">IN-SUITE WELLNESS</h3>
-        <div class="exp-meta">
-          <span>DURATION</span><span>60 / 90 / 120 MIN</span>
-          <span>VENUE</span><span>YOUR SUITE OR THE AZOTEA</span>
-          <span>PRACTITIONERS</span><span>2, LOCAL</span>
-          <span>NOTICE</span><span>4 HR MIN.</span>
-        </div>
-        <p class="exp-body">Mayan-influenced bodywork delivered to your suite or, by request, to the rooftop garden at dusk. Copal optional. Silent format on request.</p>
-        <div class="exp-from">DESDE $240 USD / SESSION</div>
-      </article>
-
-      <article class="exp-card" tabindex="0">
-        <div class="exp-num">04</div>
-        <h3 class="exp-name">PRIVATE TRANSFER · MID</h3>
-        <div class="exp-meta">
-          <span>ROUTE</span><span>MID ↔ HOTEL</span>
-          <span>VEHICLE</span><span>SUV / SEDAN</span>
-          <span>TRAVEL TIME</span><span>~18 MIN</span>
-          <span>WAITING</span><span>INCLUDED 30 MIN</span>
-        </div>
-        <p class="exp-body">Private airport transfer (Manuel Crescencio Rejón / MID) in a fully insured vehicle with an English-speaking driver. Complimentary water; cold towel on arrival in the lobby.</p>
-        <div class="exp-from">$85 USD / ONE-WAY</div>
-      </article>
-    </div>
-
-    <div class="experiences-offer">
-      <div class="offer-row">
-        <span class="offer-tag">LONG-STAY ALLOCATION</span>
-        <span class="offer-body">5+ NIGHTS → −30% ON ROOM RATE + GUIDED ARBORETUM WALK, INCLUDED.</span>
-      </div>
-      <div class="offer-row">
-        <span class="offer-tag">SUMMER QUIET — MMXXVI</span>
-        <span class="offer-body">−20% / JUN 01 – AUG 31, 2026. APPLICABLE TO ALL ROOM CATEGORIES.</span>
+        </figure>
+        <figure class="art-plate brutalist-snap">
+          <img src="../assets/art-chair-tableau.jpg" alt="Two mid-century chairs facing each other across a walnut table on layered cement tiles" width="1600" height="1067" loading="lazy" decoding="async">
+        </figure>
+        <figure class="art-plate brutalist-snap">
+          <img src="../assets/art-window-painting.jpg" alt="Evening view through an arched steel-frame window into the lit lounge, painting visible inside" width="1600" height="1067" loading="lazy" decoding="async">
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 10: REVIEWS (LIMESTONE — inversion retired) -->
-  <div class="section-label">09 / <span lang="es-MX">NOTAS DE CAMPO</span> — FIELD NOTES</div>
-  <section class="reviews" id="reviews" aria-labelledby="reviews-heading">
-    <h2 id="reviews-heading" class="sr-only">Field Notes — Guest reviews</h2>
-    <div class="reviews-heading">FIELD NOTES / ARCHIVE — TRANSCRIBED FROM GUEST LEDGER, <span lang="es-MX">SANTA ANA</span>, 2024–2026</div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stamp" aria-hidden="true">№ 041 · 12 MAR 2026</div>
-        <div class="review-text">"Walked through the front door and the temperature dropped six degrees before anyone offered us a glass of water. The canopy is real. The Michelin Key is earned."</div>
-        <div class="review-author">— M.H. / SAN FRANCISCO, CA<br><span>STAY: 04 NIGHTS / SUITE № III</span></div>
+  <!-- SECTION 4: LOCATION — Santa Ana address + 2-3 nearby anchors. Brutalist data-strip register. -->
+  <div class="section-label">03 / <span lang="es-MX">UBICACIÓN</span> — LOCATION</div>
+  <section class="location" id="location" aria-labelledby="location-heading">
+    <h2 id="location-heading" class="sr-only">Location</h2>
+    <div class="location-grid">
+      <div class="location-block location-block--address brutalist-snap">
+        <div class="location-label">— ADDRESS</div>
+        <div class="location-text" lang="es-MX">
+          TREE HOUSE BOUTIQUE HOTEL<br>
+          CALLE 43 × 58 Y 60, №489<br>
+          BARRIO DE SANTA ANA<br>
+          MÉRIDA, YUCATÁN, 97000<br>
+          MÉXICO
+        </div>
       </div>
-      <div class="review-card">
-        <div class="review-stamp" aria-hidden="true">№ 047 · 28 APR 2026</div>
-        <div class="review-text">"The art is not decoration. There is a Pech piece under the ceiba I could not look away from at breakfast for three consecutive mornings. The catalog ships with checkout. We kept it."</div>
-        <div class="review-author">— L. &amp; R. / LISBOA, PT<br><span>STAY: 06 NIGHTS / PENTHOUSE CANOPY</span></div>
+      <div class="location-block brutalist-snap">
+        <div class="location-label">— NEARBY</div>
+        <ul class="location-list">
+          <li><span class="location-list-name" lang="es-MX">Parque Santa Ana</span><span class="location-list-meta">2 MIN ON FOOT</span></li>
+          <li><span class="location-list-name">Paseo de Montejo</span><span class="location-list-meta">8 MIN ON FOOT</span></li>
+          <li><span class="location-list-name" lang="es-MX">Centro Histórico</span><span class="location-list-meta">10 MIN ON FOOT</span></li>
+        </ul>
       </div>
-      <div class="review-card">
-        <div class="review-stamp" aria-hidden="true">№ 033 · 18 DEC 2025</div>
-        <div class="review-text">"The gardener walked us through every plant by its Latin name. By the third specimen I had stopped pretending to remember and started simply listening. Worth the trip on its own."</div>
-        <div class="review-author">— A.K. / LONDON, UK<br><span>STAY: 05 NIGHTS / SUITE № II</span></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stamp" aria-hidden="true">№ 029 · 21 NOV 2025</div>
-        <div class="review-text">"Booked it for a honeymoon. Spent the first afternoon doing nothing in the courtyard, the second doing nothing on the <span lang="es-MX">azotea</span>. By night three I had stopped checking my phone. The reservation they made us on the last night was at a place we wouldn't have found ourselves — I'd rather not say where."</div>
-        <div class="review-author">— J.P. / NYC, USA<br><span>STAY: 07 NIGHTS / PENTHOUSE CANOPY</span></div>
-      </div>
-      <div class="review-card">
-        <div class="review-stamp" aria-hidden="true">№ 022 · 04 OCT 2025</div>
-        <div class="review-text">"<span lang="es-MX">Santa Ana</span> is the quiet <span lang="es-MX">barrio</span>. The hotel is the quiet inside the quiet. We extended twice."</div>
-        <div class="review-author">— C.D. / <span lang="es-MX">CDMX</span>, MX<br><span>STAY: 03 NIGHTS / SUITE № I</span></div>
+      <div class="location-block brutalist-snap">
+        <div class="location-label">— HOURS</div>
+        <div class="location-text">
+          CHECK-IN 15:00<br>
+          CHECK-OUT 12:00<br>
+          CONCIERGE 24 / 7<br>
+          FRONT DESK 07:00–23:00
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 11: COUNTERS (4 cells × span-3 on 12-col) -->
-  <div class="section-label">10 / <span lang="es-MX">ÍNDICE</span> — THE HOUSE BY NUMBERS</div>
-  <section class="counters" id="counters" aria-labelledby="counters-heading">
-    <h2 id="counters-heading" class="sr-only">The house by numbers</h2>
-    <div class="counter-cell">
-      <div class="counter-number" data-target="15" data-suffix="">15</div>
-      <div class="counter-label" lang="es-MX">LLAVES</div>
-      <div class="counter-line"></div>
-    </div>
-    <div class="counter-cell counter-cell--zero">
-      <div class="counter-number" data-target="0" data-suffix="" data-text="CERO" lang="es-MX">CERO</div>
-      <div class="counter-label" lang="es-MX">NIÑOS</div>
-      <div class="counter-line"></div>
-    </div>
-    <div class="counter-cell">
-      <div class="counter-number" data-target="42" data-suffix="">42</div>
-      <div class="counter-label" lang="es-MX">ESPECIES</div>
-      <div class="counter-line"></div>
-    </div>
-    <div class="counter-cell">
-      <div class="counter-number" data-target="2019" data-suffix="" data-nodecimal="true">2019</div>
-      <div class="counter-label" lang="es-MX">FUNDADO</div>
-      <div class="counter-line"></div>
-    </div>
-  </section>
-
-  <!-- SECTION 12: THE SPACE (LIMESTONE — inversion retired) -->
-  <div class="section-label">11 / <span lang="es-MX">EL ESPACIO</span> — INTERIORS</div>
-  <section class="the-space" id="space" aria-labelledby="space-heading">
-    <h2 id="space-heading" class="the-space-heading" lang="es-MX">El Espacio<span class="the-space-heading-sub" lang="es-MX">— SANTA ANA, MÉRIDA</span></h2>
-    <div class="space-gallery">
-      <div class="space-gallery-item">
-        <img src="../assets/hero-ficus-twilight.jpg" alt="Root-buttressed ficus at blue hour, illuminated from below, with the linear pool lit cyan" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="space-gallery-tag">FIG. 01 — <span lang="es-MX">JARDÍN</span></div>
+  <!-- SECTION 5: OFFERS — 5+ nights = 30% off. One offer, brutalist stamp. -->
+  <div class="section-label">04 / <span lang="es-MX">OFERTAS</span> — OFFERS</div>
+  <section class="offers" id="offers" aria-labelledby="offers-heading">
+    <h2 id="offers-heading" class="sr-only">Offers</h2>
+    <div class="offers-inner brutalist-snap">
+      <div class="offers-stamp">
+        <span class="offers-stamp-label">— LONG STAY</span>
+        <span class="offers-stamp-num">−30%</span>
+        <span class="offers-stamp-meta">5+ NIGHTS</span>
       </div>
-      <div class="space-gallery-item">
-        <img src="../assets/editorial-shower-tree.jpg" alt="Bathroom shower with a full-height window framing the courtyard's gnarled tree branches" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="space-gallery-tag">FIG. 02 — SUITE № I</div>
-      </div>
-      <div class="space-gallery-item">
-        <img src="../assets/sanctuary-arched-windows.jpg" alt="Pair of tall arched steel-frame windows opening from the green-tile lounge onto the white-stucco fountain" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="space-gallery-tag">FIG. 03 — SUITE № II</div>
-      </div>
-      <div class="space-gallery-item">
-        <img src="../assets/sanctuary-corridor-evening.jpg" alt="Open-air ground-floor corridor at night, palms spilling in, glowing pendant lanterns over polished concrete" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="space-gallery-tag">FIG. 04 — <span lang="es-MX">PATIO NORTE</span></div>
-      </div>
-      <div class="space-gallery-item">
-        <img src="../assets/strip-door-shadow.jpg" alt="Warm walnut door with iron handle, leaf-shadow play across the grain" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="space-gallery-tag">FIG. 05 — SUITE № III</div>
-      </div>
-      <div class="space-gallery-item">
-        <img src="../assets/canopy-waterfall.jpg" alt="Trees growing out of the linear pool, twin waterfall spouts down a tall plaster wall, fern fronds in foreground" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="space-gallery-tag">FIG. 06 — CANOPY</div>
-      </div>
-      <div class="space-gallery-item">
-        <img src="../assets/canopy-overhead-pool.jpg" alt="Overhead view of plunge pool surrounded by lush palms and tropical foliage" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="space-gallery-tag">FIG. 07 — PENTHOUSE</div>
-      </div>
-      <div class="space-gallery-item">
-        <img src="../assets/breath-blue-hour.jpg" alt="Round white fountain at twilight, cobalt sky, bamboo wall, palms, ground uplighting" width="1600" height="1067" loading="lazy" decoding="async">
-        <div class="space-gallery-tag">FIG. 08 — <span lang="es-MX">AZOTEA</span></div>
-      </div>
-    </div>
-    <div class="space-info">
-      <div class="space-info-inner">
-        <div class="space-address-stamp" lang="es-MX">
-          TREE HOUSE BOUTIQUE HOTEL / CALLE 43 × 58 Y 60 №489 / BARRIO DE SANTA ANA / MÉRIDA, YUCATÁN / 97000 / MÉXICO
-        </div>
-        <div class="space-hours">
-          CHECK-IN 15:00 / CHECK-OUT 12:00<br>
-          CONCIERGE 24 / 7 &nbsp;·&nbsp; FRONT DESK 07:00 – 23:00 &nbsp;·&nbsp; 18 MIN FROM MID
-        </div>
+      <div class="offers-body">
+        <p>Stay five nights or more and the room rate drops by thirty percent across all categories. Bookable directly through the property.</p>
+        <a href="https://treehouseboutiquehotel.com" class="offers-cta" target="_blank" rel="noopener">RESERVE →</a>
       </div>
     </div>
   </section>
 
   </main><!-- /#main -->
 
-  <!-- FOOTER (DARK — sign-off inversion) -->
+  <!-- FOOTER (DARK — sign-off, contact, sister property) -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-block">
@@ -889,49 +273,42 @@
         </div>
         <div class="footer-label">— RESERVE</div>
         <div class="footer-text">CALLE 43 × 58 Y 60 №489<br><span lang="es-MX">SANTA ANA, MÉRIDA, YUC.</span><br>97000 / MX</div>
+        <a class="footer-cta" href="https://treehouseboutiquehotel.com" target="_blank" rel="noopener">RESERVE →</a>
       </div>
       <div class="footer-block">
         <div class="footer-label">— CONTACT</div>
         <div class="footer-text">
-          <a href="mailto:reservations@treehouseboutiquehotel.com">reservations@treehouseboutiquehotel.com</a><br>
-          <a href="tel:+529991234567">+52 (999) 123 4567</a><br>
+          <a href="https://treehouseboutiquehotel.com" target="_blank" rel="noopener">treehouseboutiquehotel.com</a><br>
           <a href="https://www.instagram.com/" target="_blank" rel="noopener">@treehousemerida</a>
+        </div>
+      </div>
+      <div class="footer-block">
+        <div class="footer-label">— SISTER PROPERTY</div>
+        <div class="footer-text">
+          <a href="../../boutique/v3/index.html">Boutique by The Museo</a><br>
+          <span lang="es-MX">PASEO DE MONTEJO, MÉRIDA</span>
         </div>
       </div>
       <div class="footer-block">
         <div class="footer-label">— INDEX</div>
         <div class="footer-links">
-          <a href="#manifesto">MANIFESTO</a> / <a href="#collection">COLLECTION</a> / <a href="#michelin">KEY</a> / <a href="#exhibition">EXHIBITION</a> / <a href="#arboretum">ARBORETUM</a> / <a href="#journal">JOURNAL</a> / <a href="#space">SPACE</a>
+          <a href="#rooms">ROOMS</a> / <a href="#art">ART</a> / <a href="#location">LOCATION</a> / <a href="#offers">OFFERS</a> / <a href="/journal">JOURNAL</a>
         </div>
       </div>
-      <form class="footer-newsletter" id="newsletter-form" novalidate>
-        <div class="footer-label">— DISPATCHES, QUARTERLY</div>
-        <div class="footer-newsletter-row">
-          <span class="footer-newsletter-label">&gt;&nbsp;</span>
-          <input type="email" id="newsletter-email" name="email" placeholder="ENTER EMAIL"
-                 aria-label="Email for quarterly dispatches"
-                 aria-describedby="newsletter-status"
-                 autocomplete="email" inputmode="email" required>
-          <button type="submit">DISPATCH</button>
-        </div>
-        <div id="newsletter-status" class="footer-newsletter-status" role="status" aria-live="polite"></div>
-      </form>
     </div>
     <div class="footer-awards" aria-label="Awards">
       <span class="footer-awards-label">— AWARDS</span>
-      <img src="https://treehouseboutiquehotel.com/wp-content/uploads/2025/06/TC_2025_botb_badge-1024x1024.png" alt="Travellers' Choice Best of the Best 2025" width="1024" height="1024" loading="lazy" decoding="async">
+      <img src="https://treehouseboutiquehotel.com/wp-content/uploads/2025/06/TC_2025_botb_badge-1024x1024.png" alt="Travellers' Choice Best of the Best" width="1024" height="1024" loading="lazy" decoding="async">
     </div>
     <div class="footer-stamp">
       <span>20.9704° N · 89.6260° W</span>
       <span class="footer-stamp-rule"></span>
       <span>TREE HOUSE / <span lang="es-MX">SANTA ANA</span></span>
       <span class="footer-stamp-rule"></span>
-      <span class="footer-stamp-key">MICHELIN KEY · MMXXV</span>
-      <span class="footer-stamp-rule"></span>
-      <span>EST. MMXIX</span>
+      <span class="footer-stamp-key">MICHELIN KEY · FIRST IN MÉRIDA</span>
     </div>
     <div class="footer-copyright">
-      © 2019–2026 TREE HOUSE BOUTIQUE HOTEL / <span lang="es-MX">SANTA ANA, MÉRIDA, YUCATÁN, MX</span> / ALL RIGHTS RESERVED / <span lang="es-MX">EL DOSEL VERDE</span> — VOL. III ON VIEW
+      © TREE HOUSE BOUTIQUE HOTEL / <span lang="es-MX">SANTA ANA, MÉRIDA, YUCATÁN, MX</span> / ALL RIGHTS RESERVED
     </div>
   </footer>
 

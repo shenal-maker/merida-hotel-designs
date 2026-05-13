@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Tree House Boutique Hotel — Michelin Key, Santa Ana, Mérida</title>
+  <meta name="description" content="Adults-only luxury boutique hotel in the historic Santa Ana neighborhood of Mérida. First Michelin Key hotel in Mérida. Reserve directly." />
+  <meta name="theme-color" content="#1a2e1f" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preload" as="image" href="../assets/hero-tree-courtyard.jpg" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a class="brand" href="#top" aria-label="Tree House Boutique Hotel — home">
+        <span class="brand-mark">Tree House</span>
+        <span class="brand-sub">Boutique Hotel</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#rooms">Rooms</a>
+        <a href="#art">Art</a>
+        <a href="#location">Location</a>
+        <a href="#offers">Offers</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a class="btn btn-primary" href="#booking">Reserve</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top" aria-labelledby="hero-wordmark">
+      <div class="hero-media">
+        <img src="../assets/hero-tree-courtyard.jpg" alt="The courtyard at Tree House Boutique Hotel — a mature tree at the heart of the property, balconies and lanterns above." fetchpriority="high" />
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <p class="hero-eyebrow">Santa Ana · Mérida · Yucatán</p>
+
+          <div class="accolades" aria-label="Accolades">
+            <span class="accolade is-key"><span class="dot" aria-hidden="true"></span>Michelin Key · 2025</span>
+            <span class="accolade"><span class="dot" aria-hidden="true"></span>Travellers' Choice · 2025</span>
+            <span class="accolade"><span class="dot" aria-hidden="true"></span>Adults only</span>
+          </div>
+
+          <h1 class="hero-wordmark" id="hero-wordmark">
+            Tree House<br /><span class="accent">Boutique Hotel</span>
+          </h1>
+          <p class="hero-tagline">An adults-only sanctuary in Santa Ana. Fifteen rooms wrapped in mature trees and gardens — colonial charm, contemporary comfort, naturally cool.</p>
+        </div>
+
+        <form class="booking reveal" id="booking" aria-label="Check availability">
+          <label class="booking-field">
+            <span>Arrival</span>
+            <span class="field-row">
+              <i data-lucide="calendar" aria-hidden="true"></i>
+              <input type="date" data-role="arrival" aria-label="Arrival date" required />
+            </span>
+          </label>
+          <label class="booking-field">
+            <span>Departure</span>
+            <span class="field-row">
+              <i data-lucide="calendar" aria-hidden="true"></i>
+              <input type="date" data-role="departure" aria-label="Departure date" required />
+            </span>
+          </label>
+          <label class="booking-field">
+            <span>Guests</span>
+            <span class="field-row">
+              <i data-lucide="users" aria-hidden="true"></i>
+              <select data-role="guests" aria-label="Number of guests">
+                <option value="1">1 guest</option>
+                <option value="2" selected>2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+              </select>
+            </span>
+          </label>
+          <button type="submit" class="btn btn-primary btn-large">
+            <span>Check Availability</span>
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ ROOMS ============ -->
+    <section id="rooms" aria-labelledby="rooms-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <p class="section-eyebrow">The Rooms</p>
+            <h2 class="section-title" id="rooms-title">Fifteen rooms beneath the canopy.</h2>
+          </div>
+          <p class="section-lede">Each room is its own moment in the property — light from above, a balcony onto a tree, or a wall of raw limestone.</p>
+        </header>
+
+        <div class="rooms-grid">
+          <!-- placeholder pricing; replace with real rates -->
+          <article class="room-card reveal">
+            <div class="room-media">
+              <img src="../assets/room-limestone-skylight.jpg" alt="Limestone Skylight Room — raw stone feature wall, skylights above a walnut bed frame." loading="lazy" />
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Limestone Skylight</h3>
+              <p class="room-meta"><span>2 guests</span><span class="dot">·</span><span>King · skylights</span></p>
+              <p class="room-desc">Light pours from three rectangular skylights onto a raw limestone feature wall. Warm walnut, cement-tile floor, a room that breathes.</p>
+              <div class="room-foot">
+                <span class="room-price">From <strong data-placeholder="true">$295 / night</strong></span>
+                <a class="room-cta" href="#booking">Reserve</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- placeholder pricing; replace with real rates -->
+          <article class="room-card reveal">
+            <div class="room-media">
+              <img src="../assets/room-balcony-doors.jpg" alt="Tree-Balcony Room — French doors opening onto a wrought-iron balcony framing a courtyard tree." loading="lazy" />
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Tree-Balcony</h3>
+              <p class="room-meta"><span>2 guests</span><span class="dot">·</span><span>King · private balcony</span></p>
+              <p class="room-desc">French doors fling open onto a wrought-iron balcony, a tree directly outside. Wake up inside the canopy.</p>
+              <div class="room-foot">
+                <span class="room-price">From <strong data-placeholder="true">$395 / night</strong></span>
+                <a class="room-cta" href="#booking">Reserve</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- placeholder pricing; replace with real rates -->
+          <article class="room-card reveal">
+            <div class="room-media">
+              <img src="../assets/room-staggered-stick.jpg" alt="Staggered Stick Room — vertical wood-stick headboard above the bed, onyx wall sconces." loading="lazy" />
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Staggered Stick</h3>
+              <p class="room-meta"><span>2 guests</span><span class="dot">·</span><span>King · sculptural headboard</span></p>
+              <p class="room-desc">A pipe-organ-like wood-stick headboard rises above the bed, flanked by onyx sconces. The most design-forward room.</p>
+              <div class="room-foot">
+                <span class="room-price">From <strong data-placeholder="true">$545 / night</strong></span>
+                <a class="room-cta" href="#booking">Reserve</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- placeholder pricing; replace with real rates -->
+          <article class="room-card reveal">
+            <div class="room-media">
+              <img src="../assets/room-slat-headboard.jpg" alt="Slat Headboard Room — tall slat-wood headboard with a corner chair and decorative tile." loading="lazy" />
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Slat Headboard</h3>
+              <p class="room-meta"><span>2 guests</span><span class="dot">·</span><span>King · garden corner</span></p>
+              <p class="room-desc">A solid slat-wood headboard, a quiet corner for reading, decorative tile underfoot. Restful, square, considered.</p>
+              <div class="room-foot">
+                <span class="room-price">From <strong data-placeholder="true">$895 / night</strong></span>
+                <a class="room-cta" href="#booking">Reserve</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ART ============ -->
+    <section class="art" id="art" aria-labelledby="art-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <p class="section-eyebrow">The Art Collaboration</p>
+            <h2 class="section-title" id="art-title">Treehouse × SoHo Galleries.</h2>
+          </div>
+        </header>
+
+        <div class="art-grid">
+          <div class="art-copy reveal">
+            <p>Tree House Hotel is the namesake venue for Treehouse — a curated art program in partnership with SoHo Galleries, Mérida. Rotating works live in the bar, the lounge, the corridors. Guests live inside the exhibition.</p>
+            <p>It is the only thing about the hotel that changes. Everything else is the property, the canopy, the quiet.</p>
+            <a class="art-link" href="../../boutique/v4-minimal/index.html" aria-label="Visit the sister property — Boutique by The Museo">
+              <span>The sister property · Boutique by The Museo</span>
+              <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="art-photos reveal">
+            <figure class="photo-1">
+              <img src="../assets/art-window-painting.jpg" alt="Evening view through an arched steel-frame window into the lit lounge, a painting visible on the green wall." loading="lazy" />
+            </figure>
+            <figure class="photo-2">
+              <img src="../assets/art-bar-figurines.jpg" alt="Bar with grid shelving, walnut frames, bronze figurine sculptures." loading="lazy" />
+            </figure>
+            <figure class="photo-3">
+              <img src="../assets/art-chair-tableau.jpg" alt="Two mid-century chairs across a walnut table on a layered cement-tile floor — a curated tableau." loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOCATION ============ -->
+    <section id="location" aria-labelledby="location-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <p class="section-eyebrow">Location</p>
+            <h2 class="section-title" id="location-title">In Santa Ana, on Calle 43.</h2>
+          </div>
+          <p class="section-lede">A quiet, walkable barrio in Mérida's historic center. Cafés, markets, and the Paseo de Montejo are all within reach on foot.</p>
+        </header>
+
+        <div class="location-grid">
+          <div class="location-map reveal">
+            <iframe
+              title="Map of Tree House Boutique Hotel, Santa Ana, Mérida"
+              src="https://www.google.com/maps?q=Calle+43+%23489+Santa+Ana+M%C3%A9rida+Yucat%C3%A1n&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+          <div class="location-info reveal">
+            <dl>
+              <div>
+                <dt>Address</dt>
+                <dd>Calle 43 × 58 y 60, #489<br />Santa Ana, Mérida, México 97000</dd>
+              </div>
+              <div>
+                <dt>Airport</dt>
+                <dd>20 minutes by car from Mérida International (MID)</dd>
+              </div>
+              <div>
+                <dt>Reservations</dt>
+                <dd><a href="mailto:info@treehouseboutiquehotel.com">info@treehouseboutiquehotel.com</a></dd>
+              </div>
+            </dl>
+
+            <div class="anchors" aria-label="Nearby">
+              <div class="anchor"><span class="name">Parque de Santa Ana</span><span class="dist">3 min walk</span></div>
+              <div class="anchor"><span class="name">Paseo de Montejo</span><span class="dist">8 min walk</span></div>
+              <div class="anchor"><span class="name">Plaza Grande</span><span class="dist">12 min walk</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OFFER ============ -->
+    <section class="offer" id="offers" aria-labelledby="offer-title">
+      <div class="container reveal">
+        <div class="offer-copy">
+          <p class="section-eyebrow">Stay Longer</p>
+          <h3 id="offer-title">Five nights or more, 30% off.</h3>
+          <p>Book five nights or longer directly — your rate drops 30% across the stay. Available year-round for direct reservations.</p>
+        </div>
+        <a class="btn btn-primary btn-large" href="#booking">
+          <span>Check Availability</span>
+          <i data-lucide="arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer" id="contact" aria-labelledby="footer-title">
+      <h2 id="footer-title" class="visually-hidden">Contact and re-booking</h2>
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <p class="footer-brand">Tree House Boutique Hotel</p>
+            <p class="footer-text">Adults-only. Fifteen rooms in Santa Ana, Mérida. First Michelin Key hotel in Mérida.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Visit</h4>
+            <ul>
+              <li><a href="#rooms">Rooms</a></li>
+              <li><a href="#art">Art Collaboration</a></li>
+              <li><a href="#location">Location</a></li>
+              <li><a href="#offers">Offers</a></li>
+              <li><a href="#">Journal</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:info@treehouseboutiquehotel.com">info@treehouseboutiquehotel.com</a></li>
+              <li><a href="tel:+52999000000">+52 999 ___ ____</a></li>
+              <li>Calle 43 × 58 y 60, #489, Santa Ana, Mérida 97000</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Sister Property</h4>
+            <ul>
+              <li><a href="../../boutique/v4-minimal/index.html">Boutique by The Museo · Paseo de Montejo</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-rebook">
+          <h4>Reserve directly</h4>
+          <form class="booking booking--compact" aria-label="Re-book strip">
+            <label class="booking-field">
+              <span>Arrival</span>
+              <span class="field-row">
+                <i data-lucide="calendar" aria-hidden="true"></i>
+                <input type="date" data-role="arrival" aria-label="Arrival date" required />
+              </span>
+            </label>
+            <label class="booking-field">
+              <span>Departure</span>
+              <span class="field-row">
+                <i data-lucide="calendar" aria-hidden="true"></i>
+                <input type="date" data-role="departure" aria-label="Departure date" required />
+              </span>
+            </label>
+            <label class="booking-field">
+              <span>Guests</span>
+              <span class="field-row">
+                <i data-lucide="users" aria-hidden="true"></i>
+                <select data-role="guests" aria-label="Number of guests">
+                  <option>1 guest</option>
+                  <option selected>2 guests</option>
+                  <option>3 guests</option>
+                  <option>4 guests</option>
+                </select>
+              </span>
+            </label>
+            <button type="submit" class="btn btn-primary">
+              <span>Reserve</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="footer-base">
+          <span>© Tree House Boutique Hotel · Santa Ana, Mérida, Yucatán, México</span>
+          <span>v4 · minimal</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

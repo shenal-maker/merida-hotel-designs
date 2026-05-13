@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-MX">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tree House Boutique Hotel — Fifteen Rooms Under the Canopy, Santa Ana, Mérida</title>
-  <meta name="description" content="Adults-only luxury boutique hotel in Santa Ana, Mérida. Fifteen rooms wrapped in greenery. The first Michelin Key hotel in Mérida. A botanical sanctuary on Calle 43.">
+  <title>Tree House Boutique Hotel — Adults-Only, Santa Ana, Mérida</title>
+  <meta name="description" content="Adults-only luxury boutique hotel in Santa Ana, Mérida. Fifteen rooms wrapped in greenery. The first Michelin Key hotel in Mérida.">
   <meta name="theme-color" content="#1a2e1f">
 
   <!-- Preconnect -->
@@ -20,28 +20,20 @@
   <!-- Preload hero image -->
   <link rel="preload" as="image" href="../assets/hero-tree-courtyard.jpg">
 
-  <!-- No-JS fallback (Finding 1): never lock scroll, hide intro overlay,
-       reveal all .reveal elements at their final state. Page works statically. -->
+  <!-- No-JS fallback: never lock scroll, hide intro overlay,
+       reveal all .cinematic-rise elements at their final state. -->
   <noscript>
     <style>
       body { overflow: auto !important; cursor: auto !important; }
       .intro-overlay { display: none !important; }
       .cursor, .cursor-trail, .grain-overlay { display: none !important; }
-      .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-img, .reveal-stat {
-        opacity: 1 !important; transform: none !important;
-      }
-      .origin-divider { width: 80px !important; }
-      .art-divider { width: 60px !important; }
-      .accent-line { transform: scaleX(1) !important; }
+      .cinematic-rise { opacity: 1 !important; transform: none !important; }
       .hero-bg img { transform: scale(1) !important; }
-      .hero-eyebrow, .hero-tagline, .hero-cta, .hero-meta, .scroll-indicator, .hero-michelin {
+      .hero-eyebrow, .hero-tagline, .hero-cta, .hero-accolade, .scroll-indicator {
         opacity: 1 !important; animation: none !important;
       }
       .hero-title .char { opacity: 1 !important; transform: none !important; animation: none !important; }
       .intro-mark__word, .intro-mark__leaf, .intro-mark__line, .intro-mark__sub { opacity: 1 !important; animation: none !important; }
-      .testimonial-item { position: static !important; opacity: 1 !important; transform: none !important; margin-bottom: 2rem; }
-      .testimonial-dots, .testimonial-controls { display: none !important; }
-      .voices-content { min-height: 0 !important; }
     </style>
   </noscript>
 </head>
@@ -77,23 +69,6 @@
   <!-- Progress Bar -->
   <div class="progress-bar" aria-hidden="true"></div>
 
-  <!-- Scroll to Top -->
-  <button class="scroll-to-top" type="button" aria-label="Scroll to top"></button>
-
-  <!-- Navigation Dots -->
-  <nav class="nav-dots" aria-label="Section navigation">
-    <button class="nav-dot active" data-target="#hero" data-label="Hero" aria-label="Go to Hero"></button>
-    <button class="nav-dot" data-target="#sanctuary" data-label="Sanctuary" aria-label="Go to Sanctuary"></button>
-    <button class="nav-dot" data-target="#michelin" data-label="Michelin" aria-label="Go to Michelin"></button>
-    <button class="nav-dot" data-target="#rooms" data-label="Rooms" aria-label="Go to Rooms"></button>
-    <button class="nav-dot" data-target="#art" data-label="Treehouse" aria-label="Go to Art Collab"></button>
-    <button class="nav-dot" data-target="#journal" data-label="Journal" aria-label="Go to Journal"></button>
-    <button class="nav-dot" data-target="#curated" data-label="Curated" aria-label="Go to Curated Mérida"></button>
-    <button class="nav-dot" data-target="#voices" data-label="Voices" aria-label="Go to Voices"></button>
-    <button class="nav-dot" data-target="#location" data-label="Calle 43" aria-label="Go to Location"></button>
-    <button class="nav-dot" data-target="#footer" data-label="Reserve" aria-label="Go to Footer"></button>
-  </nav>
-
   <!-- Top Navigation -->
   <header class="top-nav">
     <a href="#hero" class="logo">
@@ -105,11 +80,10 @@
     </a>
     <nav aria-label="Primary">
       <ul class="nav-links">
-        <li><a href="#sanctuary">Sanctuary</a></li>
         <li><a href="#rooms">Rooms</a></li>
         <li><a href="#art">Treehouse &middot; SoHo</a></li>
-        <li><a href="#journal">Journal</a></li>
         <li><a href="#location">Santa Ana</a></li>
+        <li><a href="#offers">Offers</a></li>
         <li><a href="#footer" class="nav-cta">Reserve</a></li>
       </ul>
     </nav>
@@ -120,36 +94,44 @@
   <!-- ==================== SECTION 1: HERO ==================== -->
   <section class="section-hero" id="hero" data-section="hero">
     <div class="hero-bg">
-      <img src="../assets/hero-tree-courtyard.jpg" alt="A mature higuera tree growing through the courtyard of Tree House, the two-story casona wrapped around it, lanterns lit in dappled light" width="2000" height="3000" loading="eager" fetchpriority="high" decoding="async">
+      <img src="../assets/hero-tree-courtyard.jpg" alt="A mature tree growing through the courtyard of Tree House, the two-story casona wrapped around it, lanterns lit in dappled light" width="2000" height="3000" loading="eager" fetchpriority="high" decoding="async">
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-vignette"></div>
 
-    <!-- Michelin Key floating prestige badge -->
-    <div class="hero-michelin">
-      <img src="assets/michelin-key.webp" alt="One Michelin Key 2025" width="44" height="44" loading="eager" decoding="async">
-      <div class="hero-michelin__txt">
-        <span class="hero-michelin__lbl">One Michelin Key</span>
-        <span class="hero-michelin__sub">First in Mérida · 2025</span>
-      </div>
-    </div>
-
     <div class="hero-content">
       <span class="hero-eyebrow">Adults Only · <span lang="es-MX">Santa Ana, Mérida</span></span>
       <h1 class="display-huge hero-title">Tree <em>House</em></h1>
-      <p class="hero-tagline">Where the courtyard breathes. Fifteen rooms. <em>One canopy.</em></p>
+      <p class="hero-tagline">Colonial charm, contemporary comfort. <em>Fifteen rooms under the canopy.</em></p>
       <div class="hero-cta">
-        <a href="#footer" class="magnetic-btn">Hold a key under the canopy →</a>
-        <a href="#sanctuary" class="hero-cta-secondary">Walk under the leaves →</a>
+        <a href="#footer" class="magnetic-btn primary-cta">Reserve →</a>
+        <a href="#rooms" class="hero-cta-secondary">Walk under the leaves →</a>
       </div>
     </div>
 
-    <div class="hero-meta">
-      <div class="hero-meta__item"><span class="hero-meta__num">15</span><span class="hero-meta__lbl">Rooms</span></div>
-      <div class="hero-meta__divider"></div>
-      <div class="hero-meta__item"><span class="hero-meta__num">18+</span><span class="hero-meta__lbl">Adults Only</span></div>
-      <div class="hero-meta__divider"></div>
-      <div class="hero-meta__item"><span class="hero-meta__num">21°N</span><span class="hero-meta__lbl">Yucatán</span></div>
+    <!-- Michelin Key accolade strip — in-hero, not a dedicated section -->
+    <div class="hero-accolade">
+      <div class="hero-accolade__item">
+        <img src="assets/michelin-key.webp" alt="Michelin Key" width="34" height="34" loading="eager" decoding="async">
+        <div class="hero-accolade__txt">
+          <span class="hero-accolade__lbl">One Michelin Key</span>
+          <span class="hero-accolade__sub">First in Mérida</span>
+        </div>
+      </div>
+      <span class="hero-accolade__divider" aria-hidden="true"></span>
+      <div class="hero-accolade__item">
+        <div class="hero-accolade__txt">
+          <span class="hero-accolade__lbl">Travellers' Choice</span>
+          <span class="hero-accolade__sub">Tripadvisor</span>
+        </div>
+      </div>
+      <span class="hero-accolade__divider" aria-hidden="true"></span>
+      <div class="hero-accolade__item">
+        <div class="hero-accolade__txt">
+          <span class="hero-accolade__lbl">15 Rooms · Adults Only</span>
+          <span class="hero-accolade__sub" lang="es-MX">Santa Ana</span>
+        </div>
+      </div>
     </div>
 
     <div class="scroll-indicator">
@@ -158,726 +140,244 @@
     </div>
   </section>
 
-  <!-- ==================== SECTION 2: THE SANCTUARY ==================== -->
-  <section class="section-sanctuary" id="sanctuary" data-section="sanctuary">
-    <div class="sanctuary-image-wrap">
-      <img src="../assets/sanctuary-arched-windows.jpg" alt="Tall arched steel-frame windows opening from the green-tile lounge onto the white-stucco courtyard fountain, mid-century chairs in the foreground" width="1800" height="2400" loading="lazy" decoding="async">
-      <span class="sanctuary-caption">N° 01 · La Casa Verde</span>
-    </div>
-
-    <div class="sanctuary-content">
-      <span class="label reveal" lang="es-MX">El Refugio Botánico</span>
-      <p class="geo-caption reveal">20°58'N · 89°37'W — <span lang="es-MX">Barrio de Santa Ana, Mérida</span></p>
-      <h2 class="display-medium reveal">A house wrapped in <em>leaves</em>, kept quiet on purpose.</h2>
-      <div class="origin-divider reveal"></div>
-      <p class="body-large reveal sanctuary-secondary">
-        There is no front desk. There is a person who already knows your flight, your coffee, and which courtyard chair gets the last of the sun.
-      </p>
-      <p class="body-large reveal">
-        A colonial house in <span lang="es-MX">Santa Ana</span>, smothered in the kind of greenery that cools the air ten degrees before you've finished breathing in. Built in 1898, quietly opened after a four-year restoration in 2019. The trees that wrap it are older — one mature <span lang="es-MX">higuera</span> through the courtyard, two <span lang="es-MX">flamboyanes</span> leaning over the south wall, and fifty years of botanical accumulation that nobody had the heart to thin.
-      </p>
-      <div class="sanctuary-rule reveal" aria-hidden="true"></div>
-      <p class="body-large reveal sanctuary-coda">
-        Adults only — for couples on their second decade, friends on their fortieth year, and anyone who has finished apologizing for sleeping in. The pool is open at five in the morning. The bar pours until the last guest. The mornings, again, start when you do.
-      </p>
-
-      <div class="sanctuary-pillars reveal">
-        <div class="pillar">
-          <span class="pillar__num">I</span>
-          <span class="pillar__title">Canopy</span>
-          <span class="pillar__desc">32°C on Calle 43 at three in the afternoon. 22°C under the leaves at the same hour. The difference is the house.</span>
-        </div>
-        <div class="pillar">
-          <span class="pillar__num">II</span>
-          <span class="pillar__title">Adults Only</span>
-          <span class="pillar__desc">Fifteen keys. No children. No lobby music. No reason to be downstairs by nine.</span>
-        </div>
-        <div class="pillar">
-          <span class="pillar__num">III</span>
-          <span class="pillar__title">Barrio</span>
-          <span class="pillar__desc">Santa Ana — the plaza that empties earliest, the cathedral two blocks away you'll keep walking past.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== SECTION 3: THE MICHELIN KEY ==================== -->
-  <section class="section-michelin" id="michelin" data-section="michelin">
-    <div class="michelin-bg">
-      <img src="../assets/sanctuary-staircase.jpg" alt="" width="2400" height="1500" loading="lazy" decoding="async">
-    </div>
-    <div class="michelin-overlay"></div>
-
-    <div class="michelin-content">
-      <div class="michelin-key-wrap reveal">
-        <img class="michelin-key" src="assets/michelin-key.webp" alt="One Michelin Key 2025" width="132" height="132" decoding="async">
-      </div>
-      <span class="label michelin-eyebrow reveal" lang="es-MX">La Llave Michelin</span>
-      <h2 class="display-medium michelin-title reveal">The first <em>Michelin Key</em> in Mérida.</h2>
-      <div class="accent-line center reveal"></div>
-      <p class="michelin-deck reveal">
-        Michelin began handing out Keys in 2025 — finally rating the rooms the way they've rated the kitchens for a century. Of the hotels in Mérida, they named ours.
-      </p>
-
-      <div class="michelin-grid reveal">
-        <div class="michelin-cell">
-          <span class="michelin-cell__num">01</span>
-          <span class="michelin-cell__lbl">What the inspectors <em>noticed.</em></span>
-          <span class="michelin-cell__desc">The cook brings coffee out before you ask. The bath fills from a brass tap that takes its time. The leaves above the courtyard are not pruned. We were told afterward that these were the things — the lack of hurry.</span>
-        </div>
-        <div class="michelin-cell">
-          <span class="michelin-cell__num">02</span>
-          <span class="michelin-cell__lbl">What we didn't <em>change</em> for them.</span>
-          <span class="michelin-cell__desc">The fountain still gurgles unevenly. The middle stair still creaks at the third step. Breakfast is still whenever you ask. The house was doing what it does the day they came, and the day after.</span>
-        </div>
-        <div class="michelin-cell">
-          <span class="michelin-cell__num">03</span>
-          <span class="michelin-cell__lbl">First in Mérida. <em>One</em> in the city.</span>
-          <span class="michelin-cell__desc">The 2025 guide named exactly one property in the Yucatán capital. This one.</span>
-        </div>
-      </div>
-
-      <p class="michelin-fine reveal">
-        <a href="https://guide.michelin.com/" target="_blank" rel="noopener">Read the Michelin citation →</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- ==================== BREATHING PULL QUOTE ==================== -->
-  <section class="section-breath" aria-label="Field-note pull quote">
-    <div class="breath-bg" aria-hidden="true">
-      <img src="../assets/breath-blue-hour.jpg" alt="" width="2400" height="1500" loading="lazy" decoding="async">
-    </div>
-    <div class="breath-overlay" aria-hidden="true"></div>
-    <blockquote class="breath-content reveal">
-      <p class="breath-quote">"Some houses keep you from the heat. <em>This one keeps you from the noise.</em>"</p>
-      <cite class="breath-attr">— Field notes, March</cite>
-    </blockquote>
-  </section>
-
-  <!-- ==================== SECTION 4: ROOMS ==================== -->
+  <!-- ==================== SECTION 2: ROOMS ==================== -->
   <section class="section-rooms-wrap" id="rooms" data-section="rooms">
-  <div class="rooms-header">
-    <span class="label label-leaf reveal" lang="es-MX">Las Habitaciones</span>
-    <h2 class="display-large reveal">Four ways to disappear.</h2>
-    <p class="rooms-subtitle reveal">Fifteen keys across four categories. Each one opens to leaves; none of them open to a corridor.</p>
-    <div class="leaf-divider reveal" aria-hidden="true">
-      <svg class="leaf-glyph" viewBox="0 0 24 24"><path d="M12 2 C 7 6, 5 12, 7 17 C 9 22, 15 22, 17 17 C 19 12, 17 6, 12 2 Z M 12 4 L 12 21" fill="none" stroke="currentColor" stroke-width="0.9"/></svg>
+    <div class="rooms-header">
+      <span class="label label-leaf cinematic-rise" lang="es-MX">Las Habitaciones</span>
+      <h2 class="display-large cinematic-rise">Fifteen keys. <em>Four ways to disappear.</em></h2>
+      <p class="rooms-subtitle cinematic-rise">Each one opens to leaves. Labels below are placeholders — the house will confirm category names at booking.</p>
+      <div class="leaf-divider cinematic-rise" aria-hidden="true">
+        <svg class="leaf-glyph" viewBox="0 0 24 24"><path d="M12 2 C 7 6, 5 12, 7 17 C 9 22, 15 22, 17 17 C 19 12, 17 6, 12 2 Z M 12 4 L 12 21" fill="none" stroke="currentColor" stroke-width="0.9"/></svg>
+      </div>
     </div>
-  </div>
 
-  <div class="section-rooms">
-    <!-- Room 1: King Garden Room -->
-    <article class="room-card" data-expandable>
-      <div class="room-card-bg">
-        <img src="../assets/room-balcony-doors.jpg" alt="King Garden Room — French doors flung open onto a wrought-iron balcony with a tree right outside, slat-wood headboard, soft daylight" width="1600" height="2000" loading="lazy" decoding="async">
-      </div>
-      <div class="room-card-overlay"></div>
-      <div class="room-card-content">
-        <span class="label">N° 01 · Habitación</span>
-        <h3 class="display-small">King Garden Room</h3>
-        <p class="room-summary">The smallest key, and the one that learns your morning first — the courtyard light arrives at this window before the others.</p>
-
-        <div class="room-specs">
-          <div class="room-spec">
-            <div class="room-spec-label">Sleeps</div>
-            <div class="room-spec-value">Two</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">Bed</div>
-            <div class="room-spec-value">King</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">Outlook</div>
-            <div class="room-spec-value">Garden</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">m²</div>
-            <div class="room-spec-value">26</div>
+    <div class="section-rooms">
+      <article class="room-card cinematic-rise">
+        <div class="room-card-bg">
+          <img src="../assets/room-balcony-doors.jpg" alt="King Garden Room — French doors opening onto a wrought-iron balcony with a tree right outside, slat-wood headboard" width="1600" height="2000" loading="lazy" decoding="async">
+        </div>
+        <div class="room-card-overlay"></div>
+        <div class="room-card-content">
+          <span class="label">N° 01</span>
+          <h3 class="display-small">King Garden Room</h3>
+          <p class="room-summary">A king bed, a balcony into the courtyard, and the morning light through leaves.</p>
+          <div class="room-card-cta">
+            <a href="#footer">Reserve →</a>
           </div>
         </div>
+      </article>
 
-        <div class="room-card-cta">
-          <a href="#footer">Hold this room →</a>
+      <article class="room-card cinematic-rise">
+        <div class="room-card-bg">
+          <img src="../assets/room-slat-headboard.jpg" alt="Queen Courtyard Suite — tall slat-wood headboard, chair-and-side-table corner, decorative-tile floor strip" width="1600" height="2000" loading="lazy" decoding="async">
         </div>
-      </div>
-    </article>
-
-    <!-- Room 2: Queen Courtyard Suite -->
-    <article class="room-card" data-expandable>
-      <div class="room-card-bg">
-        <img src="../assets/room-slat-headboard.jpg" alt="Queen Courtyard Suite — tall slat wood headboard, chair and side-table corner, decorative-tile floor strip" width="1600" height="2000" loading="lazy" decoding="async">
-      </div>
-      <div class="room-card-overlay"></div>
-      <div class="room-card-content">
-        <span class="label">N° 02 · Suite</span>
-        <h3 class="display-small">Queen Courtyard Suite</h3>
-        <p class="room-summary">Two queens, a terrace the size of a small living room, and the courtyard murmuring two floors below. The one we put friends in.</p>
-
-        <div class="room-specs">
-          <div class="room-spec">
-            <div class="room-spec-label">Sleeps</div>
-            <div class="room-spec-value">Two</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">Bed</div>
-            <div class="room-spec-value">Two Queens</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">Outlook</div>
-            <div class="room-spec-value">Courtyard</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">m²</div>
-            <div class="room-spec-value">38</div>
+        <div class="room-card-overlay"></div>
+        <div class="room-card-content">
+          <span class="label">N° 02</span>
+          <h3 class="display-small">Queen Courtyard Suite</h3>
+          <p class="room-summary">A terrace over the courtyard, the murmur of the fountain, and room enough to host the friends you came with.</p>
+          <div class="room-card-cta">
+            <a href="#footer">Reserve →</a>
           </div>
         </div>
+      </article>
 
-        <div class="room-card-cta">
-          <a href="#footer">Hold this room →</a>
+      <article class="room-card cinematic-rise">
+        <div class="room-card-bg">
+          <img src="../assets/room-limestone-skylight.jpg" alt="Grand Foliage Suite — raw cut-stone limestone feature wall with three skylights above the bed, walnut bed frame, geometric cement floor tile" width="1600" height="2000" loading="lazy" decoding="async">
         </div>
-      </div>
-    </article>
-
-    <!-- Room 3: Grand Foliage Suite -->
-    <article class="room-card" data-expandable>
-      <div class="room-card-bg">
-        <img src="../assets/room-limestone-skylight.jpg" alt="Grand Foliage Suite — raw cut-stone limestone feature wall with three rectangular skylights above the bed, walnut bed frame, geometric green-and-rust cement floor tile" width="1600" height="2000" loading="lazy" decoding="async">
-      </div>
-      <div class="room-card-overlay"></div>
-      <div class="room-card-content">
-        <span class="label">N° 03 · Grand Suite</span>
-        <h3 class="display-small">Grand Foliage Suite</h3>
-        <p class="room-summary">The principal room. A claw-foot bath in the middle of the floor, leaves on three sides, a ceiling vaulted high enough to lose a conversation in.</p>
-
-        <div class="room-specs">
-          <div class="room-spec">
-            <div class="room-spec-label">Sleeps</div>
-            <div class="room-spec-value">Two</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">Bed</div>
-            <div class="room-spec-value">King</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">Outlook</div>
-            <div class="room-spec-value">Triple-aspect</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">m²</div>
-            <div class="room-spec-value">54</div>
+        <div class="room-card-overlay"></div>
+        <div class="room-card-content">
+          <span class="label">N° 03</span>
+          <h3 class="display-small">Grand Foliage Suite</h3>
+          <p class="room-summary">Limestone, skylights, leaves on three sides. Our principal room.</p>
+          <div class="room-card-cta">
+            <a href="#footer">Reserve →</a>
           </div>
         </div>
+      </article>
 
-        <div class="room-card-cta">
-          <a href="#footer">Hold this room →</a>
+      <article class="room-card cinematic-rise">
+        <div class="room-card-bg">
+          <img src="../assets/room-staggered-stick.jpg" alt="Penthouse Canopy — sculptural vertical wood-stick headboard, onyx wall sconces flanking the bed" width="1600" height="2000" loading="lazy" decoding="async">
         </div>
-      </div>
-    </article>
-
-    <!-- Room 4: Penthouse Canopy -->
-    <article class="room-card" data-expandable>
-      <div class="room-card-bg">
-        <img src="../assets/room-staggered-stick.jpg" alt="Penthouse Canopy — sculptural pipe-organ-like vertical wood-stick headboard, onyx wall sconces flanking the bed, geometric floor tile" width="1600" height="2000" loading="lazy" decoding="async">
-      </div>
-      <div class="room-card-overlay"></div>
-      <div class="room-card-content">
-        <span class="label">N° 04 · Penthouse</span>
-        <h3 class="display-small">Penthouse Canopy</h3>
-        <p class="room-summary">The top of the tree. A private rooftop, a plunge pool, and the whole Mérida sky between you and anyone who isn't here.</p>
-
-        <div class="room-specs">
-          <div class="room-spec">
-            <div class="room-spec-label">Sleeps</div>
-            <div class="room-spec-value">Two</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">Bed</div>
-            <div class="room-spec-value">King + Day Bed</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">Outlook</div>
-            <div class="room-spec-value">Rooftop &amp; Canopy</div>
-          </div>
-          <div class="room-spec">
-            <div class="room-spec-label">m²</div>
-            <div class="room-spec-value">88</div>
+        <div class="room-card-overlay"></div>
+        <div class="room-card-content">
+          <span class="label">N° 04</span>
+          <h3 class="display-small">Penthouse Canopy</h3>
+          <p class="room-summary">A private rooftop and the whole Mérida sky between you and anyone who isn't here.</p>
+          <div class="room-card-cta">
+            <a href="#footer">Reserve →</a>
           </div>
         </div>
-
-        <div class="room-card-cta">
-          <a href="#footer">Hold the penthouse →</a>
-        </div>
-      </div>
-    </article>
-  </div>
+      </article>
+    </div>
   </section>
 
-  <!-- ==================== SECTION 5: THE ART COLLABORATION ==================== -->
+  <!-- ==================== SECTION 3: ART COLLABORATION ==================== -->
   <section class="section-art" id="art" data-section="art">
-
-    <div class="art-hero">
-      <div class="art-hero-bg">
-        <img src="../assets/art-window-painting.jpg" alt="Evening view from the courtyard looking through an arched steel-frame window into the lit lounge — a colorful painting on the green wall, rope chandelier, tree branches reaching into frame" width="2400" height="1500" loading="lazy" decoding="async">
-      </div>
-      <div class="art-hero-overlay"></div>
-
-      <div class="art-hero-content">
-        <span class="label art-eyebrow reveal">An Ongoing Collaboration · Anchor Venue</span>
-        <h2 class="display-large art-title reveal">Treehouse<span class="art-cross">x</span>SoHo Galleries</h2>
-        <p class="art-deck reveal">The collaboration is named for this house. The collection sleeps where you do.</p>
-        <div class="art-divider reveal"></div>
-        <p class="art-manifesto reveal">
-          <span class="dropcap">T</span>reehouse is the name of a gallery program. It is also the name of this house, because this house is where the program started. Drawings in the corridors. Ceramics on the courtyard ledge. Photography at the foot of the stairs. The collection rotates four times a year — and the work sleeps where you sleep. The rooms are not its backdrop. They are the room.
-        </p>
-      </div>
+    <div class="art-header">
+      <span class="label art-eyebrow cinematic-rise">An Ongoing Collaboration · Namesake Venue</span>
+      <h2 class="display-large art-title cinematic-rise">Treehouse<span class="art-cross">x</span>SoHo Galleries</h2>
+      <div class="art-divider cinematic-rise"></div>
+      <p class="art-deck cinematic-rise">
+        Treehouse is the name of a curated art program with SoHo Galleries, Mérida. This house is its namesake venue — work lives in the corridors, on the courtyard ledges, at the foot of the stairs. The rooms are not its backdrop. They are the room.
+      </p>
     </div>
 
-    <!-- Art Marquee -->
-    <div class="art-marquee" aria-hidden="true">
-      <div class="art-marquee-track">
-        <span>Treehouse &middot; SoHo Galleries</span><span class="art-marquee-dot">●</span>
-        <span>Anchor Venue · Tree House · Santa Ana</span><span class="art-marquee-dot">●</span>
-        <span>Four rotations a year</span><span class="art-marquee-dot">●</span>
-        <span>Mérida — México</span><span class="art-marquee-dot">●</span>
-        <span>Treehouse &middot; SoHo Galleries</span><span class="art-marquee-dot">●</span>
-        <span>Anchor Venue · Tree House · Santa Ana</span><span class="art-marquee-dot">●</span>
-        <span>Four rotations a year</span><span class="art-marquee-dot">●</span>
-        <span>Mérida — México</span><span class="art-marquee-dot">●</span>
-      </div>
-    </div>
-
-    <!-- Current Rotation -->
-    <div class="art-rotation">
-      <div class="art-rotation-header">
-        <span class="label label-leaf reveal" lang="es-MX">La Rotación Actual</span>
-        <h3 class="display-small reveal">Rotation N° V &mdash; <em lang="es-MX">Bajo el Dosel</em></h3>
-        <p class="art-rotation-deck reveal">"Under the Canopy." Five Yucatecan artists. Eighteen works installed across the corridors, the four suite vestibules, and the small reading room beside the pool.</p>
-      </div>
-
-      <div class="art-pieces">
-        <figure class="art-piece reveal-img">
-          <div class="art-piece-img">
-            <img src="../assets/art-bar-figurines.jpg" alt="Bar wall with grid shelving and aged plaster behind it, walnut frames, two bronze figurine sculptures perched on the shelves under an Edison-bulb-and-rope chandelier" loading="lazy" width="1200" height="1500" decoding="async">
-          </div>
-          <figcaption>
-            <span class="art-piece-num">N° 01</span>
-            <span class="art-piece-title">Treehouse &times; SoHo · Bar Wall</span>
-            <span class="art-piece-meta">Rotation V installation view</span>
-          </figcaption>
-        </figure>
-
-        <figure class="art-piece reveal-img">
-          <div class="art-piece-img">
-            <img src="../assets/art-chair-tableau.jpg" alt="Two mid-century chairs facing each other across a walnut table with a small eucalyptus posy, layered patchwork cement tiles underfoot, a raw-wood bench with a Panama hat and books in the background" loading="lazy" width="1500" height="1875" decoding="async">
-          </div>
-          <figcaption>
-            <span class="art-piece-num">N° 02</span>
-            <span class="art-piece-title">Treehouse &times; SoHo · Reading Corner</span>
-            <span class="art-piece-meta">Rotation V installation view</span>
-          </figcaption>
-        </figure>
-
-        <figure class="art-piece reveal-img">
-          <div class="art-piece-img">
-            <img src="../assets/editorial-eucalyptus.jpg" alt="A glass cube of eucalyptus on a floor of seafoam-and-cream cement tile" loading="lazy" width="1200" height="1500" decoding="async">
-          </div>
-          <figcaption>
-            <span class="art-piece-num">N° 03</span>
-            <span class="art-piece-title">Treehouse &times; SoHo · Pool Vestibule</span>
-            <span class="art-piece-meta">Rotation V installation view</span>
-          </figcaption>
-        </figure>
-      </div>
-
-      <p class="art-rotation-note reveal">Artist credits for Rotation V follow at install &mdash; published in the house leaflet on arrival.</p>
-
-      <div class="art-cta-row reveal">
-        <a href="#footer" class="art-cta">Walk the rotation with us →</a>
-        <span class="art-cta-meta">For in-house guests · Friday &amp; Saturday, five o'clock</span>
-      </div>
-    </div>
-
-    <blockquote class="art-quote">
-      <p class="art-quote-text">"The house is named for the leaves. The collaboration is named for the house. <em>It begins here.</em>"</p>
-      <cite class="art-quote-attr">— Treehouse × SoHo Galleries, founding statement</cite>
-    </blockquote>
-  </section>
-
-  <!-- ==================== SECTION 6: THE JOURNAL ==================== -->
-  <section class="section-journal" id="journal" data-section="journal">
-    <div class="journal-header">
-      <span class="label label-leaf reveal" lang="es-MX">El Diario</span>
-      <h2 class="display-large reveal">The Journal.</h2>
-      <p class="journal-intro reveal">Field guides written by people who actually live here. Updated when something is worth telling.</p>
-      <div class="leaf-divider reveal" aria-hidden="true">
-        <svg class="leaf-glyph" viewBox="0 0 24 24"><path d="M12 2 C 7 6, 5 12, 7 17 C 9 22, 15 22, 17 17 C 19 12, 17 6, 12 2 Z M 12 4 L 12 21" fill="none" stroke="currentColor" stroke-width="0.9"/></svg>
-      </div>
-    </div>
-
-    <div class="journal-grid">
-      <article class="journal-card reveal">
-        <div class="journal-card__img">
-          <img src="../assets/canopy-overhead-pool.jpg" alt="Overhead view of a plunge pool surrounded by lush palms and tropical foliage" width="2000" height="1250" loading="lazy" decoding="async">
+    <div class="art-pieces">
+      <figure class="art-piece cinematic-rise">
+        <div class="art-piece-img">
+          <img src="../assets/art-bar-figurines.jpg" alt="Bar wall with grid shelving and aged plaster, walnut frames, two bronze figurine sculptures under an Edison-bulb-and-rope chandelier" loading="lazy" width="1200" height="1500" decoding="async">
         </div>
-        <span class="journal-card__date">N° 12 · April 2026</span>
-        <h3 class="journal-card__title">Hidden cenotes of Yucatán</h3>
-        <p class="journal-card__excerpt">Four limestone pools that almost no one writes about. Three of them ask for a key. One asks for a phone call.</p>
-        <span class="journal-card__cta">Read on →</span>
-      </article>
+      </figure>
 
-      <article class="journal-card reveal">
-        <div class="journal-card__img">
-          <img src="../assets/culture-quartet.jpg" alt="A string quartet performing in the courtyard, seated around the round white fountain, with the two-story arched-stone facade behind them" width="2000" height="1250" loading="lazy" decoding="async">
+      <figure class="art-piece cinematic-rise">
+        <div class="art-piece-img">
+          <img src="../assets/art-chair-tableau.jpg" alt="Two mid-century chairs facing each other across a walnut table with a small eucalyptus posy, layered patchwork cement tiles underfoot" loading="lazy" width="1500" height="1875" decoding="async">
         </div>
-        <span class="journal-card__date">N° 11 · March 2026</span>
-        <h3 class="journal-card__title">A morning at Mercado Santiago</h3>
-        <p class="journal-card__excerpt">Where to stand. What to order. Why the <span lang="es-MX">cochinita</span> stops being made by ten — <em lang="es-MX">se acaba cuando se acaba</em> — and how to be there before it does.</p>
-        <span class="journal-card__cta">Read on →</span>
-      </article>
+      </figure>
 
-      <article class="journal-card reveal">
-        <div class="journal-card__img">
-          <img src="../assets/editorial-shower-tree.jpg" alt="Bathroom shower with a full-height window framing the courtyard's gnarled tree branches and stone wall" width="2000" height="1250" loading="lazy" decoding="async">
+      <figure class="art-piece cinematic-rise">
+        <div class="art-piece-img">
+          <img src="../assets/art-window-painting.jpg" alt="Evening view from the courtyard through an arched window into the lit lounge — a colorful painting on the green wall, rope chandelier, tree branches reaching into frame" loading="lazy" width="1200" height="1500" decoding="async">
         </div>
-        <span class="journal-card__date">N° 10 · February 2026</span>
-        <h3 class="journal-card__title">The dry season, slowly</h3>
-        <p class="journal-card__excerpt">February through April is when Santa Ana is most itself. A week of recommendations from the housekeeper who has lived on the next street for thirty years.</p>
-        <span class="journal-card__cta">Read on →</span>
-      </article>
-
-      <article class="journal-card reveal">
-        <div class="journal-card__img">
-          <img src="../assets/canopy-courtyard-wing.jpg" alt="Wide establishing view of a courtyard wing — giant ficus trunk and aerial roots on the left, the long linear pool with waterfall on the right, multi-story stucco facades" width="2000" height="1250" loading="lazy" decoding="async">
-        </div>
-        <span class="journal-card__date">N° 09 · January 2026</span>
-        <h3 class="journal-card__title">Three haciendas, two cars</h3>
-        <p class="journal-card__excerpt">A loop of working henequen estates. A driver, a guide, lunch in a place that still grows what built this state.</p>
-        <span class="journal-card__cta">Read on →</span>
-      </article>
+      </figure>
     </div>
   </section>
 
-  <!-- ==================== SECTION 7: CURATED MÉRIDA ==================== -->
-  <section class="section-curated" id="curated" data-section="curated">
-    <div class="curated-header">
-      <span class="label label-leaf reveal" lang="es-MX">Mérida a tu medida</span>
-      <h2 class="display-large reveal">Mérida, on your hours.</h2>
-      <p class="curated-intro reveal">Four things we do, made for the pace we keep.</p>
-      <div class="leaf-divider reveal" aria-hidden="true">
-        <svg class="leaf-glyph" viewBox="0 0 24 24"><path d="M12 2 C 7 6, 5 12, 7 17 C 9 22, 15 22, 17 17 C 19 12, 17 6, 12 2 Z M 12 4 L 12 21" fill="none" stroke="currentColor" stroke-width="0.9"/></svg>
-      </div>
-    </div>
-
-    <div class="curated-grid">
-      <div class="curated-card reveal">
-        <span class="curated-num">01</span>
-        <span class="curated-tag" lang="es-MX">Luna de Miel</span>
-        <h3 class="curated-title">The Honeymoon</h3>
-        <p class="curated-desc">Five mornings nobody else has access to. A cenote at dawn, mezcal at the rooftop, breakfast served wherever you ended up — a week you'll remember out of order.</p>
-        <span class="curated-meta">5 — 7 nights · Penthouse Canopy</span>
-      </div>
-
-      <div class="curated-card reveal">
-        <span class="curated-num">02</span>
-        <span class="curated-tag" lang="es-MX">Expediciones</span>
-        <h3 class="curated-title">Cenotes &amp; Haciendas</h3>
-        <p class="curated-desc">Limestone water, then lunch on a working henequen estate. Our driver knows which gate to use, which cenote will be empty, and when to leave so you make it back for siesta.</p>
-        <span class="curated-meta">Day excursions · Arranged the night before</span>
-      </div>
-
-      <div class="curated-card reveal">
-        <span class="curated-num">03</span>
-        <span class="curated-tag">Wellness</span>
-        <h3 class="curated-title">In-Suite Wellness</h3>
-        <p class="curated-desc">A door knock at the hour you chose. Copal, cacao, cool stone. The therapist trained in Mayan technique, the room kept dim, the bath drawn for after.</p>
-        <span class="curated-meta">90 — 180 min · In-suite</span>
-      </div>
-
-      <div class="curated-card reveal">
-        <span class="curated-num">04</span>
-        <span class="curated-tag">Transfers</span>
-        <h3 class="curated-title">Private Airport Transfers</h3>
-        <p class="curated-desc">A car waiting before you land. A driver who waits without checking the time. 15 minutes from Manuel Crescencio Rejón.</p>
-        <span class="curated-meta">MID → Santa Ana</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== PHOTO STRIP ==================== -->
-  <section class="section-photo-strip" aria-label="House photography">
-    <div class="photo-strip-track">
-      <div class="photo-strip-item">
-        <img src="../assets/strip-leaves-stone.jpg" alt="Top-down: fallen leaves on limestone pavers, palm fronds intruding from the edge, a small inset uplight" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="photo-strip-item">
-        <img src="../assets/strip-tile-detail.jpg" alt="Half green-and-rust fleur cement-tile pattern, half raw concrete" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="photo-strip-item">
-        <img src="../assets/strip-onyx-sconce.jpg" alt="An alabaster-tiled cylindrical wall sconce glowing yellow against off-white plaster, louvered window shadows striping the wall" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="photo-strip-item">
-        <img src="../assets/strip-door-shadow.jpg" alt="Warm walnut door with iron handle, leaf-shadow play across the grain, defocused green fronds in the foreground" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="photo-strip-item">
-        <img src="../assets/strip-ceramic-bottles.jpg" alt="Three handmade ceramic bottles labeled Shampoo, Conditioner, Bath gel on a wood surface with a burlap mat" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <!-- Duplicated for seamless loop -->
-      <div class="photo-strip-item" aria-hidden="true">
-        <img src="../assets/strip-leaves-stone.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="photo-strip-item" aria-hidden="true">
-        <img src="../assets/strip-tile-detail.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="photo-strip-item" aria-hidden="true">
-        <img src="../assets/strip-onyx-sconce.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="photo-strip-item" aria-hidden="true">
-        <img src="../assets/strip-door-shadow.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-      <div class="photo-strip-item" aria-hidden="true">
-        <img src="../assets/strip-ceramic-bottles.jpg" alt="" width="1200" height="800" loading="lazy" decoding="async">
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== SECTION 8: VOICES ==================== -->
-  <section class="section-voices" id="voices" data-section="voices"
-           aria-roledescription="carousel" aria-label="Guest voices">
-    <div class="voices-bg" aria-hidden="true">
-      <img src="../assets/hero-ficus-twilight.jpg" alt="" loading="lazy" width="2400" height="1500" decoding="async">
-    </div>
-
-    <div class="voices-content" aria-live="polite" aria-atomic="true">
-      <span class="label voices-label"><span lang="es-MX">Las Voces</span> &mdash; <span lang="es-MX">Notas escritas al partir</span></span>
-
-      <blockquote class="testimonial-item active">
-        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
-        <p class="testimonial-text">Four nights, and we lost track by the second. The courtyard does most of the work. The leaves do the rest.</p>
-        <cite class="testimonial-author">— C &amp; J · Berlin</cite>
-      </blockquote>
-
-      <blockquote class="testimonial-item">
-        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
-        <p class="testimonial-text">The wifi is honestly mediocre in the back rooms. I have stopped caring. Stayed twice this year and going again in November.</p>
-        <cite class="testimonial-author">— Sébastien · Paris</cite>
-      </blockquote>
-
-      <blockquote class="testimonial-item">
-        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
-        <p class="testimonial-text">Penthouse at sunset. The cicadas were exactly as loud as a room of two people should be.</p>
-        <cite class="testimonial-author">— M · <span lang="es-MX">Mexico City</span></cite>
-      </blockquote>
-
-      <blockquote class="testimonial-item">
-        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
-        <p class="testimonial-text">They sent us to a cenote that nobody else was at. Somehow they knew when we'd be back — there was a cold towel by the door. I don't know what to call that. It's not service exactly.</p>
-        <cite class="testimonial-author">— Iris · Copenhagen</cite>
-      </blockquote>
-
-      <blockquote class="testimonial-item">
-        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
-        <p class="testimonial-text">Best hotel breakfast in <span lang="es-MX">México</span>. That's the whole review.</p>
-        <cite class="testimonial-author">— Travel Diary · 2026</cite>
-      </blockquote>
-    </div>
-
-    <div class="testimonial-controls">
-      <button class="testimonial-arrow testimonial-prev" type="button" aria-label="Previous voice">&lsaquo;</button>
-      <div class="testimonial-dots" role="tablist" aria-label="Voice selection">
-        <button class="testimonial-dot active" type="button" role="tab" aria-label="Voice 1" aria-selected="true"></button>
-        <button class="testimonial-dot" type="button" role="tab" aria-label="Voice 2" aria-selected="false"></button>
-        <button class="testimonial-dot" type="button" role="tab" aria-label="Voice 3" aria-selected="false"></button>
-        <button class="testimonial-dot" type="button" role="tab" aria-label="Voice 4" aria-selected="false"></button>
-        <button class="testimonial-dot" type="button" role="tab" aria-label="Voice 5" aria-selected="false"></button>
-      </div>
-      <button class="testimonial-arrow testimonial-next" type="button" aria-label="Next voice">&rsaquo;</button>
-    </div>
-  </section>
-
-  <!-- ==================== INTERSTITIAL ==================== -->
-  <section class="section-interstitial" aria-label="Spanish coda">
-    <div class="interstitial-bg" aria-hidden="true">
-      <img src="../assets/breath-night-arch.jpg" alt="" loading="lazy" width="2400" height="1500" decoding="async">
-    </div>
-    <div class="interstitial-overlay" aria-hidden="true"></div>
-    <blockquote class="interstitial-content reveal">
-      <p class="pull-quote" lang="es-MX">"No hay recepción. <em>Hay alguien que ya sabe en qué silla cae la última luz.</em>"</p>
-      <cite class="interstitial-attr"><span class="visually-hidden">English: </span>No front desk. Someone who already knows which chair the last light falls on.</cite>
-    </blockquote>
-  </section>
-
-  <!-- ==================== SECTION 9: LOCATION ==================== -->
+  <!-- ==================== SECTION 4: LOCATION ==================== -->
   <section class="section-location" id="location" data-section="location">
     <div class="location-image-wrap">
-      <img src="../assets/sanctuary-corridor-evening.jpg" alt="A ground-floor open-air corridor at night — palms spilling in from the left, glowing pendant lanterns, tile inlays on polished concrete" width="1800" height="2400" loading="lazy" decoding="async">
+      <img src="../assets/sanctuary-corridor-evening.jpg" alt="A ground-floor open-air corridor at night — palms spilling in, glowing pendant lanterns, tile inlays on polished concrete" width="1800" height="2400" loading="lazy" decoding="async">
     </div>
 
     <div class="location-content">
-      <span class="label reveal"><span lang="es-MX">El Sitio · Calle 43</span></span>
-      <h2 class="display-medium reveal">A house on <em lang="es-MX">Calle 43.</em></h2>
-      <div class="accent-line reveal"></div>
+      <span class="label cinematic-rise"><span lang="es-MX">El Sitio · Calle 43</span></span>
+      <h2 class="display-medium cinematic-rise">A house on <em lang="es-MX">Calle 43.</em></h2>
+      <div class="accent-line cinematic-rise"></div>
 
-      <p class="body-large reveal">
-        <span lang="es-MX">Barrio de Santa Ana</span> — the quietest plaza in <span lang="es-MX">Mérida</span>, and slow-walking distance to almost everywhere worth walking to. Two blocks from the cathedral. One from the <span lang="es-MX">Mercado Santiago</span>. Fifteen minutes from the airport, and most of those are the driveway.
+      <p class="body-large cinematic-rise">
+        <span lang="es-MX">Barrio de Santa Ana</span> — the quietest plaza in <span lang="es-MX">Mérida</span>, and slow-walking distance to almost everywhere worth walking to.
       </p>
 
-      <div class="location-grid reveal">
+      <div class="location-grid cinematic-rise">
         <div class="location-row">
           <span class="location-key">Address</span>
-          <span class="location-val" lang="es-MX">Calle 43 × 58 y 60, #489 · Santa Ana · Mérida</span>
+          <span class="location-val" lang="es-MX">Calle 43 × 58 y 60, #489 · Santa Ana · Mérida 97000</span>
         </div>
         <div class="location-row">
           <span class="location-key" lang="es-MX">Plaza Santa Ana</span>
-          <span class="location-val">40 metres · 1 min on foot</span>
-        </div>
-        <div class="location-row">
-          <span class="location-key" lang="es-MX">Plaza Grande</span>
-          <span class="location-val">700 m · 9 min on foot</span>
+          <span class="location-val">A short walk · the neighbourhood plaza</span>
         </div>
         <div class="location-row">
           <span class="location-key" lang="es-MX">Paseo de Montejo</span>
-          <span class="location-val">1.2 km · 14 min on foot</span>
+          <span class="location-val">Walking distance · Mérida's main avenue</span>
         </div>
         <div class="location-row">
           <span class="location-key">Airport — MID</span>
-          <span class="location-val">15 min by car · Private transfer available</span>
-        </div>
-        <div class="location-row">
-          <span class="location-key">Nearest Cenote</span>
-          <span class="location-val"><span lang="es-MX">Cuzamá</span> · 60 min by car</span>
+          <span class="location-val">A short drive · Private transfer available</span>
         </div>
       </div>
 
-      <div class="location-cta reveal">
+      <div class="location-cta cinematic-rise">
         <a href="https://maps.google.com/?q=Calle+43+489+Santa+Ana+Merida" target="_blank" rel="noopener" class="magnetic-btn">Find Calle 43 →</a>
       </div>
     </div>
   </section>
 
-  <!-- ==================== SECTION 10: OFFERS + FOOTER ==================== -->
-  <section class="section-footer" id="footer" data-section="footer">
+  <!-- ==================== SECTION 5: OFFERS ==================== -->
+  <section class="section-offers" id="offers" data-section="offers">
+    <div class="offers-bg" aria-hidden="true">
+      <img src="../assets/canopy-waterfall.jpg" alt="" width="2400" height="1500" loading="lazy" decoding="async">
+    </div>
 
-    <!-- Offers -->
-    <div class="offers-section">
-      <div class="offers-bg">
-        <img src="../assets/canopy-waterfall.jpg" alt="" width="2400" height="1500" loading="lazy" decoding="async">
-      </div>
+    <div class="offers-content">
+      <span class="label cinematic-rise" lang="es-MX">Las Ofertas</span>
+      <h2 class="display-medium cinematic-rise">Stay a little <em>longer.</em></h2>
 
-      <div class="offers-content">
-        <span class="label reveal" lang="es-MX">Las Ofertas</span>
-        <h2 class="display-medium reveal">Stay a little <em>longer.</em></h2>
-
-        <div class="offers-grid reveal">
-          <div class="offer offer-feature">
-            <span class="offer-num">01</span>
-            <span class="offer-tag">The Canopy Allocation</span>
-            <h3 class="offer-title">Five nights, 30% off.</h3>
-            <p class="offer-desc">Stay five nights or more and the house drops 30% on every category. Year-round. The longer week is the one Tree House was built for — and the one our housekeeper keeps asking us to recommend.</p>
-            <span class="offer-fine">Use code <strong>CANOPY30</strong> · Minimum 5 nights · Subject to availability</span>
-          </div>
-
-          <div class="offer">
-            <span class="offer-num">02</span>
-            <span class="offer-tag">Resident's Welcome</span>
-            <h3 class="offer-title">A private welcome.</h3>
-            <p class="offer-desc">Every reservation arrives the same way: a car at the airport, a welcome amenity in the room, and a slow walk through the current Treehouse rotation when you're ready.</p>
-            <span class="offer-fine">Complimentary · All stays · Year-round</span>
-          </div>
+      <div class="offers-grid cinematic-rise">
+        <div class="offer offer-feature">
+          <span class="offer-num">01</span>
+          <span class="offer-tag">The Canopy Allocation</span>
+          <h3 class="offer-title">Five nights, 30% off.</h3>
+          <p class="offer-desc">Stay five nights or more and the house drops 30% on every category. The longer week is the one Tree House was built for.</p>
+          <span class="offer-fine">Minimum 5 nights · Subject to availability</span>
         </div>
 
-        <form class="reserve-form reveal" aria-label="Reservation enquiry" novalidate>
-          <div class="reserve-field">
-            <label for="arrival">Arrival</label>
-            <input type="date" id="arrival" name="arrival" required>
-          </div>
-          <div class="reserve-field">
-            <label for="departure">Departure</label>
-            <input type="date" id="departure" name="departure" required>
-          </div>
-          <div class="reserve-field">
-            <label for="guests">Guests</label>
-            <select id="guests" name="guests">
-              <option>1 adult</option>
-              <option selected>2 adults</option>
-              <option>3 adults</option>
-              <option>4 adults</option>
-            </select>
-          </div>
-          <button type="submit" class="reserve-submit">Write to the house →</button>
-        </form>
+        <div class="offer">
+          <span class="offer-num">02</span>
+          <span class="offer-tag">Sister Property</span>
+          <h3 class="offer-title">Boutique by The Museo.</h3>
+          <p class="offer-desc">Our sister hotel on Paseo de Montejo — a 15-room sanctuary in the historic centre, steps from Palacio Cantón. Pair a stay across both houses.</p>
+          <span class="offer-fine">Ask the house · combined-stay rates available</span>
+        </div>
+      </div>
 
-        <p class="reserve-status" role="status" aria-live="polite"></p>
-        <p class="reserve-helper">A preview enquiry form. Real bookings travel through <a href="mailto:reservations@treehouseboutiquehotel.com">reservations@treehouseboutiquehotel.com</a>.</p>
+      <p class="offers-direct cinematic-rise">
+        Hold a key — write directly to <a href="mailto:reservations@treehouseboutiquehotel.com">reservations@treehouseboutiquehotel.com</a>
+      </p>
+    </div>
+  </section>
 
-        <p class="offers-direct reveal">
-          Or write directly — <a href="mailto:reservations@treehouseboutiquehotel.com">reservations@treehouseboutiquehotel.com</a>
-        </p>
+  <!-- ==================== SECTION 6: FOOTER ==================== -->
+  <footer class="footer" id="footer" data-section="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="logo">
+          <span class="logo__word">Tree</span>
+          <svg class="logo__leaf" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2 C 7 6, 5 12, 7 17 C 9 22, 15 22, 17 17 C 19 12, 17 6, 12 2 Z M 12 4 L 12 21" fill="none" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <span class="logo__word">House</span>
+        </a>
+        <p>Fifteen rooms wrapped in leaves, in the Santa Ana barrio of Mérida. Adults only. The first Michelin Key hotel in the city.</p>
+        <p class="footer-spanish" lang="es-MX"><em>Una casa bajo el dosel. Quince llaves. Sólo adultos.</em></p>
+        <div class="footer-michelin">
+          <img src="assets/michelin-key.webp" alt="One Michelin Key" width="32" height="32" decoding="async">
+          <span>One Michelin Key</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>The House</h4>
+        <ul>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#art">Treehouse × SoHo</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#offers">Offers</a></li>
+          <li><a href="/journal">Journal</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="https://maps.google.com/?q=Calle+43+489+Santa+Ana+Merida" target="_blank" rel="noopener" lang="es-MX">Calle 43 × 58 y 60, #489</a></li>
+          <li><span lang="es-MX">Santa Ana · Mérida 97000</span></li>
+          <li><a href="https://treehouseboutiquehotel.com/" target="_blank" rel="noopener">treehouseboutiquehotel.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Reserve</h4>
+        <ul>
+          <li><a href="mailto:reservations@treehouseboutiquehotel.com">Write to the house</a></li>
+          <li><a href="#offers">Canopy Allocation</a></li>
+          <li><a href="https://boutiquebythemuseo.com/" target="_blank" rel="noopener">Sister: Boutique by The Museo</a></li>
+        </ul>
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#hero" class="logo">
-            <span class="logo__word">Tree</span>
-            <svg class="logo__leaf" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2 C 7 6, 5 12, 7 17 C 9 22, 15 22, 17 17 C 19 12, 17 6, 12 2 Z M 12 4 L 12 21" fill="none" stroke="currentColor" stroke-width="1"/>
-            </svg>
-            <span class="logo__word">House</span>
-          </a>
-          <p>Fifteen rooms wrapped in leaves, in the Santa Ana barrio of Mérida. Adults only. The first Michelin Key hotel in the city, and still doing the same things it was doing the day they came.</p>
-          <p class="footer-spanish" lang="es-MX"><em>Una casa bajo el dosel. Quince llaves. Sólo adultos.</em></p>
-          <div class="footer-michelin">
-            <img src="assets/michelin-key.webp" alt="One Michelin Key 2025" width="32" height="32" decoding="async">
-            <span>One Michelin Key &mdash; 2025</span>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>The House</h4>
-          <ul>
-            <li><a href="#sanctuary">The Sanctuary</a></li>
-            <li><a href="#michelin">Michelin Key</a></li>
-            <li><a href="#rooms">Rooms</a></li>
-            <li><a href="#art">Art Programme</a></li>
-            <li><a href="#location">Location</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Curated</h4>
-          <ul>
-            <li><a href="#curated">Honeymoon</a></li>
-            <li><a href="#curated">Cenotes &amp; Haciendas</a></li>
-            <li><a href="#curated">In-Suite Wellness</a></li>
-            <li><a href="#curated">Private Transfers</a></li>
-            <li><a href="#journal">The Journal</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Reserve</h4>
-          <ul>
-            <li><a href="mailto:reservations@treehouseboutiquehotel.com">Write to the house</a></li>
-            <li><a href="tel:+529999000000">+52 (999) 900 0000</a></li>
-            <li><a href="https://treehouseboutiquehotel.com/" target="_blank" rel="noopener">Original site</a></li>
-            <li><a href="#footer">Canopy Allocation</a></li>
-          </ul>
-        </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tree House Boutique Hotel · <span lang="es-MX">Calle 43 · Santa Ana · Mérida, Yucatán · México</span></p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="mailto:reservations@treehouseboutiquehotel.com" aria-label="Email">EM</a>
       </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Tree House Boutique Hotel · Calle 43 · Santa Ana · Mérida, Yucatán · México</p>
-        <div class="footer-social">
-          <a href="#" aria-label="Instagram">IG</a>
-          <a href="#" aria-label="Facebook">FB</a>
-          <a href="mailto:reservations@treehouseboutiquehotel.com" aria-label="Email">EM</a>
-        </div>
-      </div>
-    </footer>
-  </section>
+    </div>
+  </footer>
 
   </main>
 

@@ -1,13 +1,11 @@
 /* ============================================
    TREE HOUSE BOUTIQUE HOTEL — V3 BRUTALIST ART-FORWARD
-   Hotel-as-arboretum, hotel-as-gallery.
-   Santa Ana, Mérida, Yucatán.
-   R1 revision: 12-col grid, 3 mono tiers, inversion cut to 3,
-   terracotta carved to ~7 roles, cenote deployed, focus trapped,
-   arboretum given herbarium apparatus, ledger stamps for reviews.
+   Hotel-as-gallery, Santa Ana, Mérida, Yucatán.
+   Trimmed: 6 sections (Hero / Rooms / Art / Location / Offers / Footer).
+   Motion fingerprint: brutalist-snap / staccato.
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;700;800&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@300;400;500;700;800&family=Cormorant:ital,wght@0,400;1,400&display=swap');
 
 /* --- RESET & BASE --- */
 *, *::before, *::after {
@@ -17,44 +15,35 @@
 }
 
 :root {
-  /* Tree House palette — green-coded brutalist treatment */
+  /* Palette — green-coded brutalist + cenote teal + terracotta carving */
   --moss:         #2f4a32;
-  --moss-rgb:     47, 74, 50;
-  --canopy:       #1a2e1f;   /* deep near-black green for inverted bg */
-  --canopy-rgb:   26, 46, 31;
+  --canopy:       #1a2e1f;
   --leaf:         #6b8e5f;
   --sage:         #b5c4a8;
   --ivory:        #f7f3eb;
-  --ivory-rgb:    247, 243, 235;
   --limestone:    #ecdfc9;
-  --ochre:        #c69960;
   --terracotta:   #b85a3a;
-  --terracotta-rgb: 184, 90, 58;
   --ink:          #14110d;
-  --ink-rgb:      20, 17, 13;
   --bark:         #5b4632;
-  --cenote:       #1f5e64;   /* cool non-green anchor — deployed sparingly */
-  --cenote-rgb:   31, 94, 100;
+  --cenote:       #1f5e64;
 
   /* Type stacks */
-  --mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --sans:    'Archivo', 'Inter', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --serif:   'Cormorant', Georgia, 'Times New Roman', serif;
+  --mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --sans:  'Archivo', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --serif: 'Cormorant', Georgia, 'Times New Roman', serif;
 
-  /* MONO TIERS — three only, enforced (matches Boutique V3 R1) */
-  --mono-micro-size:    0.55rem;  /* legals, watermark coords, plate numbers */
+  /* MONO TIERS — three tiers, preserved from R3 */
+  --mono-micro-size:    0.55rem;
   --mono-micro-track:   0.32em;
-  --mono-meta-size:     0.7rem;   /* labels, section labels, run-of-page */
+  --mono-meta-size:     0.7rem;
   --mono-meta-track:    0.16em;
-  --mono-data-size:     0.82rem;  /* numerical specs needing glance-readability */
+  --mono-data-size:     0.82rem;
   --mono-data-track:    0.08em;
 
-  /* CANONICAL GRID */
+  /* Grid */
   --grid-cols: 12;
-  --gutter: 0;
   --page-pad: 2rem;
 
-  /* Grid lines — limestone vs canopy variants */
   --line-on-canopy:    1px solid rgba(247, 243, 235, 0.14);
   --line-on-limestone: 1px solid rgba(20, 17, 13, 0.14);
 
@@ -66,11 +55,9 @@ html {
   scroll-behavior: auto; /* brutalist — no smooth */
   overflow-x: hidden;
   background: var(--limestone);
-  /* Nav clearance for in-page anchor jumps (skip link, menu, floorplan, footer index) */
   scroll-padding-top: 4rem;
 }
 :target { scroll-margin-top: 4rem; }
-/* Don't trigger focus ring on programmatic-only target like #main wrapper */
 main[id="main"]:focus { outline: none; }
 
 body {
@@ -87,10 +74,7 @@ body {
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
-::selection {
-  background: var(--moss);
-  color: var(--ivory);
-}
+::selection { background: var(--moss); color: var(--ivory); }
 
 .sr-only {
   position: absolute;
@@ -126,23 +110,14 @@ input:focus-visible,
   outline: 2px solid var(--canopy);
   outline-offset: 2px;
 }
-/* On dark surfaces (canopy / ink) — use ivory for 4.5:1+ contrast */
 .menu-overlay a:focus-visible,
 .menu-overlay button:focus-visible,
-.michelin a:focus-visible,
-.michelin button:focus-visible,
-.exhibition a:focus-visible,
-.exhibition button:focus-visible,
-.reviews a:focus-visible,
-.reviews button:focus-visible,
-.the-space a:focus-visible,
-.the-space button:focus-visible,
-.footer a:focus-visible,
-.footer button:focus-visible,
-.footer input:focus-visible,
 .landing a:focus-visible,
 .landing button:focus-visible,
-.nav button:focus-visible {
+.nav button:focus-visible,
+.nav .nav-cta:focus-visible,
+.footer a:focus-visible,
+.footer button:focus-visible {
   outline: 2px solid var(--ivory);
   outline-offset: 2px;
 }
@@ -156,7 +131,7 @@ input:focus-visible,
   cursor: default !important;
 }
 
-/* --- CURSOR READOUT --- */
+/* --- CURSOR READOUT (crosshair coordinate readout — V3 motion fingerprint) --- */
 .cursor-readout {
   position: fixed;
   top: 0; left: 0;
@@ -178,12 +153,9 @@ input:focus-visible,
 }
 .cursor-readout.hidden { opacity: 0; }
 .cursor-readout-z { color: rgba(247, 243, 235, 0.55); }
+@media (hover: none) { .cursor-readout { display: none; } }
 
-@media (hover: none) {
-  .cursor-readout { display: none; }
-}
-
-/* --- NAVIGATION --- */
+/* --- NAVIGATION (sticky, mono, Reserve CTA load-bearing) --- */
 .nav {
   position: fixed;
   top: 0; left: 0;
@@ -196,7 +168,6 @@ input:focus-visible,
   mix-blend-mode: difference;
   color: var(--ivory);
 }
-
 .nav-logo {
   font-family: var(--mono);
   font-size: var(--mono-meta-size);
@@ -204,7 +175,12 @@ input:focus-visible,
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
-
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.nav-cta,
 .nav-menu-btn {
   font-family: var(--mono);
   font-size: var(--mono-meta-size);
@@ -216,11 +192,14 @@ input:focus-visible,
   color: inherit;
   padding: 0.5rem 1.2rem;
   cursor: pointer;
-  transition: background 0s;
+  /* V3 hover: instant flip, no transition */
+  transition: background 0s, color 0s;
 }
+.nav-cta:hover,
 .nav-menu-btn:hover {
-  background: var(--ivory);
-  color: var(--canopy);
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--ivory);
 }
 
 /* --- MENU OVERLAY --- */
@@ -234,7 +213,6 @@ input:focus-visible,
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0s;
@@ -253,7 +231,6 @@ input:focus-visible,
   text-align: center;
   color: var(--leaf);
 }
-
 .menu-overlay a {
   font-family: var(--sans);
   font-size: clamp(1.2rem, 4.4vw, 2.8rem);
@@ -267,7 +244,7 @@ input:focus-visible,
   border-bottom: var(--line-on-canopy);
   padding: 0.35em 0;
   width: min(720px, 92%);
-  transition: color 0s, padding 0.15s ease;
+  transition: padding 0.15s ease;
 }
 .menu-overlay a:hover {
   color: var(--leaf);
@@ -278,11 +255,9 @@ input:focus-visible,
   font-size: var(--mono-meta-size);
   font-weight: 400;
   letter-spacing: 0.15em;
-  color: var(--ivory);
   opacity: 0.5;
   min-width: 2em;
 }
-
 .menu-foot {
   font-family: var(--mono);
   font-size: var(--mono-micro-size);
@@ -292,7 +267,6 @@ input:focus-visible,
   margin-top: 2rem;
   text-align: center;
 }
-
 .menu-close {
   position: absolute;
   top: 1.1rem;
@@ -310,7 +284,7 @@ input:focus-visible,
 .menu-close:hover { background: var(--ivory); color: var(--canopy); }
 
 /* ============================================
-   SECTION 1 — LANDING (DARK — entry, one of 3 inversions)
+   SECTION 1 — HERO / LANDING (DARK)
    ============================================ */
 .landing {
   position: relative;
@@ -326,7 +300,6 @@ input:focus-visible,
   cursor: crosshair;
   border-bottom: var(--line-on-canopy);
 }
-
 .landing-bg {
   position: absolute;
   inset: 0;
@@ -337,8 +310,6 @@ input:focus-visible,
   filter: contrast(1.05) saturate(0.9) hue-rotate(-6deg);
   z-index: 0;
 }
-
-/* Green tritone overlay */
 .landing-veil {
   position: absolute;
   inset: 0;
@@ -348,7 +319,6 @@ input:focus-visible,
   z-index: 1;
   pointer-events: none;
 }
-
 .landing-grid-lines,
 .landing-grid-h1,
 .landing-grid-h2 {
@@ -391,14 +361,11 @@ input:focus-visible,
   opacity: 0.8;
 }
 
-/* MICHELIN KEY STAMP on landing — bumped scale, stripped frame */
+/* MICHELIN KEY accolade strip — small mono stamp + key image, in-hero (not a section) */
 .landing-michelin-stamp {
   position: absolute;
-  top: auto;
   bottom: 5.5rem;
   right: 2rem;
-  left: auto;
-  transform: none;
   z-index: 3;
   display: flex;
   align-items: center;
@@ -437,11 +404,9 @@ input:focus-visible,
   font-weight: 700;
   letter-spacing: 0.25em;
 }
-.landing-michelin-stamp-note {
-  opacity: 0.7;
-}
+.landing-michelin-stamp-note { opacity: 0.7; }
 
-/* TREE HOUSE title — Option B from critique: tracked-out TREE to match HOUSE width */
+/* TREE HOUSE wordmark */
 .landing-title {
   position: relative;
   z-index: 3;
@@ -457,23 +422,25 @@ input:focus-visible,
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
 }
-.landing-title .word {
-  display: block;
-}
-/* TREE is shorter — track it out so the two lines visually align as a block */
+.landing-title .word { display: block; }
 .landing-title .word--tree {
   letter-spacing: 0.18em;
-  padding-left: 0.18em; /* compensate for last-letter tracking */
+  padding-left: 0.18em;
 }
-.landing-title .word--house {
-  letter-spacing: -0.055em;
-}
+.landing-title .word--house { letter-spacing: -0.055em; }
 .landing-title .letter {
   display: inline-block;
   transition: transform 0.15s steps(3);
   will-change: transform;
+}
+/* V3 motion fingerprint — wordmark letters appear one-by-one, 35ms per letter, no easing */
+html.js .landing-title .letter {
+  opacity: 0;
+}
+html.js .landing-title.letters-in .letter {
+  opacity: 1;
+  /* no transition — snap-on, brutalist */
 }
 
 .landing-byline {
@@ -500,7 +467,6 @@ input:focus-visible,
   background: var(--leaf);
   opacity: 0.7;
 }
-
 .landing-tagline {
   position: relative;
   z-index: 3;
@@ -516,19 +482,41 @@ input:focus-visible,
   line-height: 1.9;
 }
 
-.landing-subtitle {
-  position: absolute;
-  bottom: 2rem; left: 2rem;
+/* Hero CTA — brutalist mono, instant terracotta flip on hover */
+.landing-cta {
+  position: relative;
   z-index: 3;
+  margin-top: 2rem;
+  display: inline-block;
+  padding: 1.1rem 3rem;
+  border: 2px solid var(--ivory);
   font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: 0.25em;
+  font-size: var(--mono-meta-size);
+  font-weight: 700;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  opacity: 0.6;
-  max-width: 45%;
-  line-height: 1.7;
+  color: var(--ivory);
+  background: none;
+  transition: background 0s, color 0s, border-color 0s;
 }
-/* landing-coords removed — coords kept only at landing-tr + footer (Finding 18) */
+.landing-cta:hover {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--ivory);
+}
+
+/* Coordinate readout flicker — 3 opacity flashes after wordmark lands */
+.landing-corner--tr.flicker {
+  animation: coord-flicker 200ms steps(1) 1;
+}
+@keyframes coord-flicker {
+  0%   { opacity: 0; }
+  20%  { opacity: 0.8; }
+  35%  { opacity: 0; }
+  55%  { opacity: 0.8; }
+  70%  { opacity: 0; }
+  100% { opacity: 0.8; }
+}
 
 .landing-scroll-indicator {
   position: absolute;
@@ -560,13 +548,6 @@ input:focus-visible,
   opacity: 0.85;
   font-weight: 500;
 }
-.section-label--dark {
-  background: var(--canopy);
-  color: var(--ivory);
-  border-bottom: var(--line-on-canopy);
-  opacity: 1;
-}
-.section-label--dark::after { background: var(--ivory); }
 .section-label--exhibit {
   background: var(--canopy);
   color: var(--terracotta);
@@ -574,7 +555,6 @@ input:focus-visible,
   opacity: 1;
   font-weight: 700;
 }
-.section-label--exhibit::after { background: var(--terracotta); }
 .section-label::after {
   content: '';
   position: absolute;
@@ -585,243 +565,27 @@ input:focus-visible,
   background: var(--moss);
   transition: width 0.6s var(--snap);
 }
+.section-label--exhibit::after { background: var(--terracotta); }
 .section-label.line-drawn::after { width: 88px; }
 
-/* --- NOISE FLASH ---
-   The fullscreen mix-blend-mode layer is only attached during the brief flash.
-   When idle, the element is visibility:hidden so it doesn't pin a compositor layer. */
-.section-noise {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(20,17,13,0.04) 0px,
-    rgba(20,17,13,0.04) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-}
-.section-noise.flash {
-  visibility: visible;
-  mix-blend-mode: multiply;
-  animation: noise-flash 0.15s steps(3) forwards;
-}
-@keyframes noise-flash {
-  0% { opacity: 0; }
-  30% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
 /* ============================================
-   SECTION 2 — MANIFESTO (LIMESTONE)
+   V3 MOTION FINGERPRINT — BRUTALIST-SNAP / STACCATO
+   - translateY(8px → 0) + opacity 0 → 1 in 80ms linear (essentially a hard cut)
+   - Stagger 40ms between siblings
+   - NO fade — this is a stepped reveal
    ============================================ */
-.manifesto {
-  background: var(--limestone);
-  padding: 12vh 2rem 8vh;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-bottom: var(--line-on-limestone);
-  position: relative;
-}
-
-.manifesto-meta {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  opacity: 0.45;
-  margin-bottom: 3vh;
-  max-width: 1200px;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.manifesto-lines { max-width: 1200px; }
-
-.manifesto-line {
-  font-family: var(--sans);
-  font-size: clamp(2rem, 7vw, 6rem);
-  font-weight: 900;
-  line-height: 1.02;
-  text-transform: uppercase;
-  letter-spacing: -0.035em;
-  transition: opacity 0.4s ease, transform 0.4s ease, border-left-color 0.6s ease;
-  border-left: 3px solid transparent;
-  padding-left: 1.2rem;
-  margin-bottom: 0.05em;
-  color: var(--canopy);
-}
-/* Hidden-then-revealed only when JS is available to flip the .visible class.
-   Without JS, manifesto reads as a static catalog of declarative beats. */
-html.js .manifesto-line {
+html.js .brutalist-snap {
   opacity: 0;
-  transform: translateX(-30px);
+  transform: translateY(8px);
 }
-.manifesto-line.visible {
+html.js .brutalist-snap.in {
   opacity: 1;
-  transform: translateX(0);
-  border-left-color: rgba(47, 74, 50, 0.2);
-}
-/* ONE terracotta line — the strongest declarative beat (NO CHILDREN) */
-.manifesto-line:nth-child(3) {
-  color: var(--terracotta);
-}
-.manifesto-line:nth-child(3).visible {
-  border-left-color: var(--terracotta);
-}
-/* whisper line — Cormorant italic, lowercase, quieter — line called whisper actually whispers */
-.manifesto-line--whisper {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.4rem, 4vw, 3.4rem);
-  text-transform: none;
-  letter-spacing: -0.005em;
-  color: var(--canopy);
-  opacity: 0.55;
-  line-height: 1.1;
-  padding-left: 1.4rem;
-  border-left: 1px solid rgba(20, 17, 13, 0.2);
-}
-.manifesto-line--whisper.visible {
-  border-left-color: rgba(20, 17, 13, 0.3);
-}
-.manifesto-line.glitch { animation: manifesto-glitch 0.2s steps(2) forwards; }
-@keyframes manifesto-glitch {
-  0%   { text-shadow: 2px 0 var(--moss), -2px 0 var(--terracotta); }
-  50%  { text-shadow: -1px 0 var(--moss), 1px 0 var(--terracotta); }
-  100% { text-shadow: none; }
-}
-
-.manifesto-coda {
-  max-width: 680px;
-  margin-top: 5vh;
-  padding-left: 1.4rem;
-  border-left: 1px solid rgba(20, 17, 13, 0.2);
-}
-.manifesto-coda p {
-  font-family: var(--serif);
-  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
-  line-height: 1.6;
-  font-weight: 400;
-  color: var(--bark);
-  letter-spacing: 0.005em;
-}
-.manifesto-coda em {
-  font-style: italic;
-  color: var(--canopy);
-}
-
-.manifesto-strip {
-  width: 100%;
-  height: 30vh;
-  min-height: 220px;
-  margin-top: 8vh;
-  overflow: hidden;
-  position: relative;
-  border-top: var(--line-on-limestone);
-  border-bottom: var(--line-on-limestone);
-}
-.manifesto-strip__track {
-  display: flex;
-  height: 100%;
-  width: max-content;
-  animation: stripScroll 28s linear infinite;
-  animation-play-state: paused; /* paused until manifesto section enters view */
-}
-.manifesto.strip-in-view .manifesto-strip__track {
-  animation-play-state: running;
-}
-.manifesto-strip__track img {
-  height: 100%;
-  width: auto;
-  object-fit: cover;
-  flex-shrink: 0;
-  filter: saturate(0.9);
-}
-@keyframes stripScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  transform: translateY(0);
+  transition: opacity 80ms linear, transform 80ms linear;
 }
 
 /* ============================================
-   SECTION 3 — DATA GRID (now LIMESTONE — 12-col, 3x3 of span-4)
-   ============================================ */
-.data-grid {
-  background: var(--limestone);
-  color: var(--ink);
-  border-bottom: var(--line-on-limestone);
-  cursor: crosshair;
-}
-.data-grid-inner {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-}
-.data-cell {
-  grid-column: span 4;
-  border-right: var(--line-on-limestone);
-  border-bottom: var(--line-on-limestone);
-  padding: 2.5rem 2rem;
-  font-family: var(--mono);
-  font-size: var(--mono-data-size);
-  font-weight: 500;
-  letter-spacing: var(--mono-data-track);
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  min-height: 140px;
-  display: flex;
-  align-items: center;
-  transition: opacity 0.1s, background 0.15s ease;
-  color: var(--ink);
-}
-.data-cell:nth-child(3n) { border-right: none; }
-.data-cell small {
-  display: block;
-  font-size: 0.85em;
-  opacity: 0.55;
-  margin-top: 0.4em;
-  letter-spacing: var(--mono-meta-track);
-  color: var(--moss);
-  font-weight: 400;
-}
-.data-cell-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 0.15s steps(4);
-  filter: brightness(0.85) saturate(0.95);
-}
-.data-cell:hover .data-cell-bg,
-.data-cell:focus-within .data-cell-bg {
-  opacity: 0.35;
-}
-.data-cell span {
-  position: relative;
-  z-index: 1;
-}
-.data-cell:hover,
-.data-cell:focus {
-  background: rgba(20, 17, 13, 0.06);
-}
-.data-grid-inner:hover .data-cell:not(:hover) { opacity: 0.6; }
-/* Row/col highlight subsystem retired in R3 — :hover/:focus state above is the
-   single source of truth. Was a pointer-only JS handler that split sighted-vs-keyboard
-   users and contradicted the dimming rule above. */
-
-/* ============================================
-   SECTION 4 — COLLECTION (ROOMS) — single value, no inversion
+   SECTION 2 — ROOMS / COLLECTION
    ============================================ */
 .collection {
   background: var(--limestone);
@@ -833,8 +597,6 @@ html.js .manifesto-line {
   background: var(--limestone);
   color: var(--ink);
 }
-/* Inversion retired from rooms — single calm surface (matches Boutique V3 R1) */
-
 .room-header {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -843,7 +605,6 @@ html.js .manifesto-line {
   border-bottom: var(--line-on-limestone);
   gap: 2rem;
 }
-
 .room-num {
   font-family: var(--mono);
   font-size: var(--mono-data-size);
@@ -863,18 +624,6 @@ html.js .manifesto-line {
   text-align: right;
   margin: 0;
 }
-
-.room-version {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  padding: 0.9rem 2rem;
-  border-bottom: var(--line-on-limestone);
-  color: var(--moss);
-  opacity: 0.75;
-}
-
 .room-image-wrap {
   width: 100%;
   height: 70vh;
@@ -885,26 +634,11 @@ html.js .manifesto-line {
 .room-image-wrap img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: filter 0.4s ease, transform 0.5s ease;
 }
+/* Brutalist hover: terracotta block-highlight, instant — no transition */
 .room-image-wrap:hover img {
-  filter: brightness(1.04);
-  transform: scale(1.01);
+  filter: saturate(1.1);
 }
-.room-caption {
-  position: absolute;
-  bottom: 0; left: 0;
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 0.7rem 1rem;
-  background: rgba(20, 17, 13, 0.78);
-  color: var(--ivory);
-  border-top: 1px solid rgba(247, 243, 235, 0.3);
-  max-width: 80%;
-}
-
 .room-specs {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -918,6 +652,7 @@ html.js .manifesto-line {
   font-family: var(--mono);
   text-transform: uppercase;
 }
+.room-spec:last-child { border-right: none; }
 .room-spec-label {
   display: block;
   opacity: 0.5;
@@ -944,1467 +679,255 @@ html.js .manifesto-line {
   text-transform: uppercase;
   background: none;
   color: var(--canopy);
-  cursor: pointer;
-  transition: all 0s;
-  text-decoration: none;
+  /* V3: instant flip, no transition */
+  transition: background 0s, color 0s, border-color 0s;
 }
 .room-cta:hover {
-  background: var(--canopy);
-  border-color: var(--canopy);
+  background: var(--terracotta);
+  border-color: var(--terracotta);
   color: var(--ivory);
 }
 .room-cta.vibrate { animation: vibrate 0.15s steps(3); }
 @keyframes vibrate {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  50% { transform: translateX(3px); }
-  75% { transform: translateX(-2px); }
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-2px); }
+  50%  { transform: translateX(2px); }
+  75%  { transform: translateX(-1px); }
   100% { transform: translateX(0); }
 }
 
 /* ============================================
-   SECTION 5 — MICHELIN KEY (LIMESTONE — Option A from Finding 4 + 6)
-   Prestige as letterhead, not another dark moment.
+   SECTION 3 — ART COLLABORATION
+   (Treehouse × SoHo Galleries — namesake venue, 3 on-property photos only)
    ============================================ */
-.michelin {
-  background: var(--limestone);
-  color: var(--ink);
-  border-bottom: var(--line-on-limestone);
-  padding: 8vh 2rem;
-  position: relative;
+.art-collab {
+  background: var(--canopy);
+  color: var(--ivory);
+  border-bottom: var(--line-on-canopy);
+  padding: 8vh 2rem 6vh;
 }
-.michelin::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184,90,58,0.5), transparent);
-}
-/* Accent column to the left — moss hairline ties the Key to the botanical voice */
-.michelin::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 0;
-  width: 3px;
-  background: linear-gradient(180deg, rgba(184,90,58,0.45), rgba(47,74,50,0.3) 60%, transparent);
-}
-.michelin-inner {
+.art-collab-inner {
   display: grid;
-  grid-template-columns: minmax(220px, 320px) 1fr;
-  gap: 4rem;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
   align-items: start;
-  max-width: 1280px;
-  margin: 0 auto;
 }
-.michelin-mark {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  position: sticky;
-  top: 6rem;
-  padding: 2rem;
-  border: 1px solid rgba(20, 17, 13, 0.18);
-  background: var(--ivory);
-}
-.michelin-mark img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  filter: drop-shadow(0 0 14px rgba(184,90,58,0.25));
-}
-/* Travellers' Choice badge relegated to footer awards — removed here per Finding 6 */
-.michelin-mark-badge { display: none; }
-.michelin-mark-stamp {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  color: var(--moss);
-  text-align: center;
-  line-height: 1.8;
-  border-top: 1px solid rgba(20, 17, 13, 0.18);
-  padding-top: 1rem;
-  width: 100%;
-}
-.michelin-mark-stamp strong {
-  display: block;
-  color: var(--terracotta);
-  font-weight: 700;
-  letter-spacing: 0.28em;
-}
-
-.michelin-body { min-width: 0; }
-
-.michelin-eyebrow {
+.art-collab-eyebrow {
+  grid-column: 1 / 13;
   display: flex;
   align-items: center;
   gap: 1rem;
   font-family: var(--mono);
   font-size: var(--mono-meta-size);
-  letter-spacing: 0.3em;
+  letter-spacing: var(--mono-meta-track);
   text-transform: uppercase;
   color: var(--terracotta);
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-.michelin-eyebrow-line {
-  flex: 0 1 80px;
-  height: 1px;
-  background: var(--terracotta);
-  opacity: 0.6;
-}
-
-.michelin-title {
-  font-family: var(--sans);
-  font-size: clamp(3rem, 9vw, 8rem);
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.3em;
-  color: var(--canopy);
-}
-.michelin-title-em { color: var(--terracotta); }
-.michelin-title-line {
-  display: block;
-  width: 100%;
-  font-size: 0.45em;
-  font-weight: 800;
-  color: var(--moss);
-  letter-spacing: -0.02em;
-  margin-top: 0.3em;
-}
-
-.michelin-quote {
-  border-left: 3px solid var(--terracotta);
-  padding: 0.5rem 0 0.5rem 1.5rem;
-  margin: 2rem 0;
-  max-width: 760px;
-}
-.michelin-quote p {
-  font-family: var(--serif);
-  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
-  line-height: 1.45;
-  font-style: italic;
-  color: var(--ink);
   margin-bottom: 1rem;
 }
-.michelin-quote cite {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-style: normal;
-  color: var(--terracotta);
-  opacity: 0.85;
-}
-
-/* Editor's note — inspector-visit anecdote (R2 Finding 6) */
-.michelin-editors-note {
-  margin-top: 2rem;
-  max-width: 720px;
-  padding: 1.25rem 0;
-  border-top: 1px solid rgba(20, 17, 13, 0.22);
-  border-bottom: 1px solid rgba(20, 17, 13, 0.12);
-}
-.michelin-editors-note p:first-child {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  color: var(--terracotta);
-  margin: 0 0 0.6rem 0;
-  opacity: 0.85;
-}
-.michelin-editors-note p:last-child {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(0.98rem, 1.15vw, 1.12rem);
-  line-height: 1.55;
-  color: var(--bark);
-  margin: 0;
-}
-
-/* Plate curator-notes (R2 Finding 7) */
-.plate-note {
-  margin-top: 0.5rem;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 0.95rem;
-  line-height: 1.45;
-  color: var(--bark);
-  opacity: 0.85;
-  border-top: 1px dotted rgba(20, 17, 13, 0.22);
-  padding-top: 0.5rem;
-}
-
-/* Cormorant italic adults-only display moment (Finding 16 — display moment) */
-.michelin-coda {
-  margin-top: 2rem;
-  max-width: 760px;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-  line-height: 1.5;
-  color: var(--bark);
-}
-.michelin-coda em { color: var(--cenote); font-style: italic; }
-
-/* Specs grid removed (Finding 6) — what-the-key-means collapsed to <details> */
-.michelin-meaning {
-  margin-top: 2rem;
-  max-width: 760px;
-}
-.michelin-meaning summary {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  cursor: pointer;
-  color: var(--moss);
-  padding: 0.5rem 0;
-  border-top: 1px solid rgba(20, 17, 13, 0.18);
-  list-style: none;
-}
-.michelin-meaning summary::-webkit-details-marker { display: none; }
-.michelin-meaning summary::before {
-  content: '+ ';
-  color: var(--terracotta);
-  font-weight: 700;
-}
-.michelin-meaning[open] summary::before { content: '− '; }
-.michelin-meaning p {
-  font-family: var(--serif);
-  font-size: clamp(1rem, 1.3vw, 1.2rem);
-  line-height: 1.6;
-  color: var(--bark);
-  padding-top: 0.8rem;
-}
-
-/* ============================================
-   SECTION 6 — EXHIBITION (CENTERPIECE — only mid-page dark moment)
-   ============================================ */
-.exhibition {
-  background: var(--canopy);
-  color: var(--ivory);
-  padding: 8vh 0 0;
-  border-bottom: var(--line-on-canopy);
-}
-.exhibit-masthead {
-  padding: 2vh 2rem 5vh;
-  border-bottom: var(--line-on-canopy);
-}
-.exhibit-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--cenote);
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-.exhibit-eyebrow-line {
-  flex: 0 1 90px;
-  height: 1px;
-  background: var(--cenote);
-  opacity: 0.7;
-}
-.exhibit-title {
-  font-family: var(--sans);
-  font-size: clamp(3.5rem, 13vw, 14rem);
-  font-weight: 900;
-  line-height: 0.85;
-  letter-spacing: -0.06em;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-}
-.exhibit-title-line { display: block; }
-.exhibit-title-line--ital {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 300;
-  text-transform: lowercase;
-  letter-spacing: -0.01em;
-  color: var(--leaf);
-  font-size: 0.85em;
-  margin-top: -0.1em;
-}
-.exhibit-dates {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  font-family: var(--mono);
-  font-size: var(--mono-data-size);
-  letter-spacing: var(--mono-data-track);
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  color: var(--ivory);
-}
-.exhibit-dates-val {
-  color: var(--ivory);
-  font-weight: 700;
-}
-.exhibit-rule {
+.art-collab-eyebrow-line {
   display: inline-block;
-  width: 60px;
+  flex: 0 0 60px;
   height: 1px;
-  background: var(--ivory);
-  opacity: 0.4;
-}
-.exhibit-credit {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  align-items: baseline;
-  color: var(--sage);
-  margin-bottom: 2rem;
-}
-.exhibit-credit strong { color: var(--ivory); font-weight: 700; }
-
-.exhibit-namesake {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem 1.2rem;
-  border: 1px solid rgba(31, 94, 100, 0.5);
-  background: rgba(31, 94, 100, 0.08);
-  font-family: var(--mono);
-  font-size: var(--mono-data-size);
-  letter-spacing: var(--mono-data-track);
-  line-height: 1.7;
-  max-width: 920px;
-  color: var(--ivory);
-}
-.exhibit-namesake-tag {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  color: var(--terracotta);
-  font-weight: 700;
-  white-space: nowrap;
-  padding-top: 0.2rem;
-}
-.exhibit-namesake strong {
-  color: var(--terracotta);
-}
-
-.exhibit-statement {
-  padding: 5vh 2rem;
-  border-bottom: var(--line-on-canopy);
-  max-width: 920px;
-}
-.exhibit-statement-label,
-.exhibit-roster-label,
-.floorplan-label {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  opacity: 0.65;
-  margin-bottom: 1.5rem;
-  color: var(--leaf);
-}
-.exhibit-statement p {
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
-  line-height: 1.55;
-  color: var(--ivory);
-  margin-bottom: 1.2rem;
-}
-.exhibit-statement em {
-  font-style: italic;
-  color: var(--leaf);
-}
-.exhibit-statement-sign {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  opacity: 0.55;
-  line-height: 1.8;
-}
-
-/* ARTIST ROSTER — opt into 12-col */
-.exhibit-roster {
-  padding: 4vh 2rem 6vh;
-  border-bottom: var(--line-on-canopy);
-}
-.exhibit-artist-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 0;
-  border-top: 1px solid rgba(247, 243, 235, 0.12);
-}
-.exhibit-artist-list li {
-  grid-column: span 4;
-  display: grid;
-  grid-template-columns: 2.5rem 1fr;
-  align-items: baseline;
-  gap: 0.4rem 1rem;
-  padding: 1rem 0.5rem;
-  border-bottom: 1px solid rgba(247, 243, 235, 0.12);
-  border-right: 1px solid rgba(247, 243, 235, 0.06);
-  font-family: var(--mono);
-  font-size: var(--mono-data-size);
-  letter-spacing: var(--mono-data-track);
-}
-.artist-num {
-  font-family: var(--serif);
-  font-style: italic;
-  color: var(--leaf);
-  font-size: 1rem;
-  font-weight: 400;
-}
-.artist-name {
-  font-family: var(--sans);
-  font-weight: 700;
-  font-size: 1.05rem;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: var(--ivory);
-}
-.artist-meta {
-  grid-column: 2;
-  color: var(--sage);
-  opacity: 0.8;
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  margin-top: 0.2rem;
-}
-/* Cetina (item 7) — marked as the herbarium artist for plate 06 ↔ arboretum link */
-.exhibit-artist-list li.artist--cetina .artist-name::after {
-  content: ' · PL. 06 ↗';
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  color: var(--terracotta);
-  font-weight: 400;
-  margin-left: 0.6em;
-}
-
-/* PLATES — already 12-col */
-.exhibit-plates {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(280px, auto);
-  gap: 0;
-  border-bottom: var(--line-on-canopy);
-}
-.plate {
-  position: relative;
-  border-right: var(--line-on-canopy);
-  border-bottom: var(--line-on-canopy);
-  display: flex;
-  flex-direction: column;
-  background: var(--canopy);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-/* JS-on: plates fade in via the IO observer. JS-off: plates render statically. */
-html.js .plate {
-  opacity: 0;
-  transform: translateY(20px);
-}
-.plate.in-view { opacity: 1; transform: translateY(0); }
-
-.plate--01 { grid-column: 1 / 7; grid-row: span 2; }
-.plate--02 { grid-column: 7 / 13; grid-row: span 1; }
-.plate--03 { grid-column: 7 / 10; grid-row: span 1; }
-.plate--04 { grid-column: 10 / 13; grid-row: span 1; }
-.plate--05 { grid-column: 1 / 5; grid-row: span 1; }
-.plate--06 { grid-column: 5 / 13; grid-row: span 1; }
-
-.plate-img-wrap {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-  min-height: 280px;
-  background: var(--ink);
-}
-.plate-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: saturate(0.92);
-  transition: transform 0.5s ease, filter 0.5s ease;
-}
-.plate:hover .plate-img-wrap img {
-  transform: scale(1.02);
-  filter: saturate(1.05);
-}
-.plate-caption {
-  padding: 1.2rem 1.4rem;
-  border-top: var(--line-on-canopy);
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  line-height: 1.6;
-  background: rgba(20,17,13,0.4);
-}
-.plate-num {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-}
-.plate-cross {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  color: var(--leaf);
-  text-transform: uppercase;
-  margin-left: auto;
-}
-.plate-title {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--ivory);
-  margin-bottom: 0.4rem;
-}
-.plate-title em { font-style: italic; }
-.plate-meta {
-  color: var(--sage);
-  margin-bottom: 0.4rem;
-  opacity: 0.85;
-  font-size: var(--mono-meta-size);
-}
-.plate-loc {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--leaf);
-  border-top: 1px dashed rgba(247, 243, 235, 0.18);
-  padding-top: 0.5rem;
-}
-
-/* FLOORPLAN — structured grid only, 12-col, with cenote-teal compass and walls */
-.exhibit-floorplan {
-  padding: 5vh 2rem;
-  border-bottom: var(--line-on-canopy);
-  position: relative;
-}
-.floorplan-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.floorplan-compass {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  color: var(--cenote);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-.floorplan-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(130px, auto);
-  border: 2px solid var(--cenote); /* property edge frame */
-  background: rgba(20, 17, 13, 0.35);
-}
-.fp {
-  padding: 1.5rem;
-  border-right: 2px solid rgba(31, 94, 100, 0.55); /* walls in cenote */
-  border-bottom: 2px solid rgba(31, 94, 100, 0.55);
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  position: relative;
-  min-height: 130px;
-  /* Anchor cross-references — each cell jumps to its installed plate. */
-  color: inherit;
-  text-decoration: none;
-  transition: background 0.18s ease, border-color 0.18s ease;
-}
-.fp:hover,
-.fp:focus-visible {
-  background: rgba(31, 94, 100, 0.18);
-  outline: none;
-}
-.fp:focus-visible {
-  outline: 2px solid var(--ivory);
-  outline-offset: -4px;
-}
-.fp:hover .fp-tag,
-.fp:focus-visible .fp-tag {
-  color: var(--ivory);
-}
-.fp--entrance  { grid-column: 1 / 7;  grid-row: 1; }
-.fp--library   { grid-column: 7 / 13; grid-row: 1; }
-.fp--room1     { grid-column: 1 / 4;  grid-row: 2; }
-.fp--courtyard { grid-column: 4 / 10; grid-row: 2; background: rgba(31, 94, 100, 0.08); }
-.fp--stair     { grid-column: 1 / 7;  grid-row: 3; }
-.fp--room2     { grid-column: 7 / 13; grid-row: 3; }
-.fp--courtyard::after {
-  /* ceiba node centered in the courtyard cell */
-  content: '✿';
-  position: absolute;
-  bottom: 0.6rem;
-  right: 0.8rem;
-  color: var(--leaf);
-  opacity: 0.5;
-  font-size: 1.1rem;
-}
-.fp-tag {
-  position: absolute;
-  top: 0.8rem;
-  right: 1rem;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.5rem;
-  color: var(--cenote);
-  font-weight: 400;
-}
-.fp-name {
-  font-weight: 700;
-  font-size: var(--mono-data-size);
-  letter-spacing: var(--mono-data-track);
-  color: var(--ivory);
-}
-.fp-piece {
-  color: var(--leaf);
-  opacity: 0.9;
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-}
-
-/* EXHIBIT FOOT — 12-col */
-.exhibit-foot {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  padding: 4vh 2rem;
-  gap: 1rem;
-  align-items: end;
-}
-.exhibit-foot-block {
-  grid-column: span 3;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-}
-.exhibit-foot-label {
-  color: var(--leaf);
-  opacity: 0.75;
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-}
-.exhibit-foot-block strong {
-  font-weight: 700;
-  font-size: var(--mono-data-size);
-  color: var(--ivory);
-}
-.exhibit-cta {
-  grid-column: span 3;
-  display: inline-block;
-  padding: 1.25rem 2.5rem;
-  border: 2px solid var(--terracotta);
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  background: none;
-  color: var(--terracotta);
-  cursor: pointer;
-  transition: all 0s;
-  text-decoration: none;
-  justify-self: end;
-  align-self: end;
-  width: max-content;
-}
-.exhibit-cta:hover {
   background: var(--terracotta);
-  color: var(--canopy);
-}
-.exhibit-cta.vibrate { animation: vibrate 0.15s steps(3); }
-
-/* ============================================
-   SECTION 7 — ARBORETUM — herbarium apparatus (Finding 7)
-   ============================================ */
-.arboretum {
-  background: var(--limestone);
-  color: var(--ink);
-  border-bottom: var(--line-on-limestone);
-  padding: 6vh 0 4vh;
-  position: relative;
-}
-.arboretum::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(47,74,50,0.55), transparent);
-}
-.arboretum-masthead {
-  padding: 2vh 2rem 4vh;
-  border-bottom: var(--line-on-limestone);
-  display: grid;
-  grid-template-columns: 1fr;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-.arboretum-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--moss);
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-.arboretum-eyebrow-line {
-  flex: 0 1 90px;
-  height: 1px;
-  background: var(--moss);
   opacity: 0.6;
 }
-.arboretum-title {
+.art-collab-title {
+  grid-column: 1 / 13;
   font-family: var(--sans);
-  font-size: clamp(3.5rem, 13vw, 13rem);
+  font-size: clamp(2.2rem, 7vw, 6rem);
   font-weight: 900;
-  line-height: 0.85;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  color: var(--canopy);
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05em;
 }
-.arboretum-title-line { display: block; }
-.arboretum-title-line--ital {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 300;
-  text-transform: lowercase;
-  letter-spacing: -0.01em;
-  color: var(--moss);
-  font-size: 0.85em;
-  margin-top: -0.1em;
+.art-collab-title-em {
+  color: var(--terracotta);
 }
-.arboretum-statement {
+.art-collab-statement {
+  grid-column: 1 / 8;
   font-family: var(--serif);
-  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
   line-height: 1.55;
-  color: var(--bark);
-  max-width: 760px;
+  color: var(--sage);
+  margin-bottom: 3vh;
 }
-
-/* HERBARIUM-STYLE TAXON CARDS — sample-pin layout, hanging Latin binomials */
-.arboretum-grid {
+.art-collab-statement strong {
+  color: var(--ivory);
+  font-weight: 700;
+}
+.art-collab-plates {
+  grid-column: 1 / 13;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  border-top: var(--line-on-limestone);
-  border-left: var(--line-on-limestone);
+  gap: 1rem;
+  margin-top: 2vh;
 }
-.taxon {
+.art-plate { margin: 0; overflow: hidden; }
+.art-plate:nth-child(1) { grid-column: 1 / 6; }
+.art-plate:nth-child(2) { grid-column: 6 / 10; }
+.art-plate:nth-child(3) { grid-column: 10 / 13; }
+.art-plate img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  filter: saturate(0.9);
+}
+.art-plate:hover img { filter: saturate(1.05); }
+
+/* ============================================
+   SECTION 4 — LOCATION
+   ============================================ */
+.location {
+  background: var(--limestone);
+  border-bottom: var(--line-on-limestone);
+  padding: 0;
+}
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.location-block {
   grid-column: span 4;
+  padding: 4rem 2rem;
   border-right: var(--line-on-limestone);
   border-bottom: var(--line-on-limestone);
-  padding: 1.8rem 1.6rem 1.6rem 2.2rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  background: var(--ivory); /* herbarium sheet ground */
-  transition: background 0.2s ease, border-color 0.2s ease;
-  cursor: default;
+  min-height: 280px;
 }
-.taxon:hover,
-.taxon:focus {
-  background: var(--limestone);
-  outline: none;
-}
-/* Plate-number corner stamp, herbarium-sheet convention */
-.taxon-num {
-  position: absolute;
-  top: 0.9rem;
-  left: 1rem;
+.location-block:last-child { border-right: none; }
+.location-label {
   font-family: var(--mono);
   font-size: var(--mono-micro-size);
   letter-spacing: var(--mono-micro-track);
   text-transform: uppercase;
   color: var(--moss);
-  font-weight: 700;
-  opacity: 0.55;
+  margin-bottom: 1.5rem;
 }
-.taxon-num::before {
-  content: 'PL. ';
-}
-/* Plate-06 cross-reference for Cetina-linked taxa */
-.taxon-cross {
-  position: absolute;
-  top: 0.9rem;
-  right: 1rem;
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  color: var(--terracotta);
-  font-weight: 700;
-}
-/* Botanical silhouette block — moss-tinted, hairline framed, no photo mismatch */
-.taxon-img {
-  display: none; /* photographs of wrong plants removed entirely (Finding 19A) */
-}
-.taxon-glyph {
-  margin-top: 1.2rem;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: var(--moss);
-  opacity: 0.6;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 2rem;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid rgba(47, 74, 50, 0.3);
-  padding-bottom: 0.4rem;
-}
-.taxon-glyph::before {
-  /* small botanical mark per family */
-  content: '❦';
-  margin-right: 0.5em;
-  color: var(--leaf);
-  font-size: 1.4rem;
-}
-
-/* Hanging Latin binomial — Cormorant italic, bigger, edge-set */
-.taxon-latin {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
-  line-height: 1.05;
-  color: var(--canopy);
-  font-weight: 500;
-  margin-top: 0.4rem;
-  letter-spacing: -0.005em;
-}
-/* Common name — indented like a vernacular line in a real herbarium */
-.taxon-common {
-  padding-left: 1.5em;
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  color: var(--moss);
-  opacity: 0.85;
-}
-/* Single caption tier — "f. malvaceae · jardín · ~85 yr" — no data-grid pairs */
-.taxon-meta {
-  border-top: 1px dashed rgba(20, 17, 13, 0.22);
-  padding-top: 0.7rem;
-  margin-top: 0.3rem;
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--bark);
-  line-height: 1.7;
-}
-.taxon-meta .fam {
-  font-style: italic;
-  font-family: var(--serif);
-  color: var(--moss);
-  letter-spacing: 0.04em;
-  text-transform: lowercase;
-  font-size: 1.05em;
-  margin-right: 0.4em;
-}
-.taxon-note {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--bark);
-  line-height: 1.5;
-  letter-spacing: 0;
-  text-transform: none;
-  padding-top: 0.4rem;
-}
-
-.arboretum-foot {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 2.5rem 2rem 1rem;
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  line-height: 1.7;
-  color: var(--bark);
-  flex-wrap: wrap;
-}
-.arboretum-foot-tag {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--moss);
-  white-space: nowrap;
-}
-.arboretum-foot em {
-  font-family: var(--serif);
-  font-style: italic;
-  color: var(--canopy);
-}
-.arboretum-foot a,
-.arboretum-statement a {
-  color: var(--terracotta);
-  border-bottom: 1px solid currentColor;
-  font-weight: 500;
-}
-
-/* ============================================
-   SECTION 8 — JOURNAL
-   ============================================ */
-.journal {
-  background: var(--ivory);
-  color: var(--ink);
-  padding: 6vh 2rem 8vh;
-  border-bottom: var(--line-on-limestone);
-}
-.journal-intro {
-  display: grid;
-  gap: 1rem;
-  max-width: 760px;
-  margin-bottom: 4vh;
-}
-.journal-intro-label {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  opacity: 0.55;
-  color: var(--moss);
-}
-.journal-intro p {
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-  line-height: 1.5;
-  color: var(--bark);
-}
-.journal-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  border-top: var(--line-on-limestone);
-  border-left: var(--line-on-limestone);
-}
-.journal-card {
-  grid-column: span 3;
-  padding: 1.6rem 1.5rem 1.8rem;
-  border-right: var(--line-on-limestone);
-  border-bottom: var(--line-on-limestone);
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  background: var(--ivory);
-  transition: background 0.2s ease;
-  cursor: default;
-}
-.journal-card:hover,
-.journal-card:focus {
-  background: var(--limestone);
-  outline: none;
-}
-.journal-meta {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  color: var(--moss);
-  opacity: 0.7;
-}
-.journal-title {
-  font-family: var(--sans);
-  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  text-transform: none;
-  color: var(--canopy);
-  margin: 0;
-}
-.journal-body {
-  font-family: var(--serif);
-  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
-  line-height: 1.55;
-  color: var(--bark);
-}
-.journal-byline {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  color: var(--moss);
-  opacity: 0.7;
-  border-top: 1px dashed rgba(20,17,13,0.2);
-  padding-top: 0.6rem;
-}
-
-/* ============================================
-   SECTION 9 — EXPERIENCES
-   ============================================ */
-.experiences {
-  background: var(--limestone);
-  color: var(--ink);
-  padding: 6vh 2rem 6vh;
-  border-bottom: var(--line-on-limestone);
-}
-.experiences-intro {
-  display: grid;
-  gap: 1rem;
-  max-width: 760px;
-  margin-bottom: 5vh;
-}
-.experiences-intro-label {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  opacity: 0.55;
-  color: var(--moss);
-}
-.experiences-intro p {
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-  line-height: 1.5;
-  color: var(--bark);
-}
-
-.experiences-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  border-top: var(--line-on-limestone);
-  border-left: var(--line-on-limestone);
-  margin-bottom: 4vh;
-}
-.exp-card {
-  grid-column: span 3;
-  padding: 2rem 1.8rem;
-  border-right: var(--line-on-limestone);
-  border-bottom: var(--line-on-limestone);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  background: var(--limestone);
-  transition: background 0.2s ease;
-  cursor: default;
-}
-.exp-card:hover, .exp-card:focus { background: var(--ivory); outline: none; }
-
-.exp-num {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  color: var(--moss);
-  font-weight: 700;
-  opacity: 0.7;
-}
-.exp-name {
-  font-family: var(--sans);
-  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: var(--canopy);
-  margin: 0;
-}
-.exp-meta {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 0.3rem 1rem;
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  line-height: 1.5;
-  border-top: 1px dashed rgba(20,17,13,0.2);
-  border-bottom: 1px dashed rgba(20,17,13,0.2);
-  padding: 0.7rem 0;
-}
-.exp-meta span:nth-child(odd) {
-  color: var(--moss);
-  opacity: 0.65;
-}
-.exp-body {
-  font-family: var(--serif);
-  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-  line-height: 1.55;
-  color: var(--bark);
-}
-.exp-from {
-  margin-top: auto;
+.location-text {
   font-family: var(--mono);
   font-size: var(--mono-data-size);
-  font-weight: 700;
   letter-spacing: var(--mono-data-track);
+  line-height: 1.9;
   text-transform: uppercase;
-  color: var(--canopy);
+  font-weight: 500;
+  color: var(--ink);
 }
-
-.experiences-offer {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  border-top: var(--line-on-limestone);
-  padding-top: 2.5rem;
-}
-.offer-row {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  flex-wrap: wrap;
-}
-.offer-tag {
+.location-block--address .location-text {
   font-weight: 700;
   color: var(--canopy);
-  letter-spacing: 0.22em;
-  border: 1px solid var(--canopy);
-  padding: 0.4rem 0.8rem;
-  white-space: nowrap;
-  font-size: var(--mono-micro-size);
 }
-.offer-body {
-  color: var(--canopy);
-  opacity: 0.9;
-}
-
-/* ============================================
-   SECTION 10 — REVIEWS (LIMESTONE — inversion retired from reviews)
-   ============================================ */
-.reviews {
-  padding: 8vh 2rem 10vh;
-  position: relative;
-  min-height: 80vh;
-  border-bottom: var(--line-on-limestone);
-  background: var(--limestone);
-  color: var(--ink);
-}
-.reviews-heading {
+.location-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  margin-bottom: 6vh;
-  opacity: 0.6;
-  color: var(--moss);
 }
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto auto;
-  gap: 1rem;
-  position: relative;
-}
-.review-card {
-  background: var(--ivory);
-  color: var(--ink);
-  border: 1px solid rgba(20,20,16,0.18);
-  padding: 2rem 1.8rem;
-  position: relative;
-  transition: transform 0.25s var(--snap), border-color 0.25s ease;
-}
-.review-card:nth-child(1) {
-  grid-column: 1 / 6;
-  grid-row: 1;
-  transform: rotate(-2deg);
-  z-index: 2;
-}
-.review-card:nth-child(2) {
-  grid-column: 5 / 10;
-  grid-row: 1;
-  transform: rotate(1.5deg);
-  margin-top: 4rem;
-  z-index: 3;
-}
-.review-card:nth-child(3) {
-  grid-column: 9 / 13;
-  grid-row: 1 / 3;
-  transform: rotate(-1deg);
-  margin-top: -1.5rem;
-  z-index: 1;
-}
-.review-card:nth-child(4) {
-  grid-column: 1 / 5;
-  grid-row: 2;
-  transform: rotate(2.4deg);
-  margin-top: -3rem;
-  z-index: 4;
-}
-.review-card:nth-child(5) {
-  grid-column: 4 / 9;
-  grid-row: 2;
-  transform: rotate(-1.5deg);
-  z-index: 2;
-}
-.review-card:hover {
-  transform: rotate(0) translateY(-3px) !important;
-  border-color: rgba(20, 17, 13, 0.4);
-}
-
-/* LEDGER STAMP — replaces TripAdvisor ★★★★★ (Finding 13) */
-.review-stamp {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--moss);
-  opacity: 0.7;
-  margin-bottom: 0.9rem;
+.location-list li {
   display: flex;
-  align-items: center;
-  gap: 0.7rem;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(20, 17, 13, 0.08);
 }
-.review-stamp::after {
-  content: '';
-  display: inline-block;
-  width: 36px;
-  height: 1px;
-  background: var(--ink);
-  opacity: 0.3;
-}
-
-.review-text {
+.location-list-name {
+  font-size: 1rem;
   font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
-  line-height: 1.5;
-  margin-bottom: 1.2rem;
-  color: var(--ink);
+  color: var(--canopy);
 }
-.review-author {
-  font-family: var(--mono);
+.location-list-meta {
   font-size: var(--mono-meta-size);
   letter-spacing: var(--mono-meta-track);
   text-transform: uppercase;
-  color: var(--moss);
-  line-height: 1.6;
-  opacity: 0.75;
-  font-weight: 500;
-}
-.review-author span {
-  opacity: 0.6;
-  font-size: var(--mono-micro-size);
-  letter-spacing: 0.12em;
+  color: var(--cenote);
+  font-weight: 700;
 }
 
 /* ============================================
-   SECTION 11 — COUNTERS (12-col, 4 cells × span-3)
+   SECTION 5 — OFFERS (single offer: 5+ nights = 30% off)
    ============================================ */
-.counters {
+.offers {
+  background: var(--limestone);
+  border-bottom: var(--line-on-limestone);
+  padding: 8vh 2rem;
+}
+.offers-inner {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  border-bottom: var(--line-on-limestone);
-  background: var(--limestone);
+  gap: 2rem;
+  align-items: center;
+  border: 1px solid rgba(20, 17, 13, 0.22);
+  padding: 4vh 3rem;
+  background: var(--ivory);
 }
-.counter-cell {
-  grid-column: span 3;
-  padding: 6vh 1rem;
-  text-align: center;
-  border-right: var(--line-on-limestone);
+.offers-stamp {
+  grid-column: 1 / 6;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.8s ease;
+  gap: 0.5rem;
+  border-right: 1px solid rgba(20, 17, 13, 0.18);
+  padding-right: 2rem;
 }
-.counter-cell:last-child { border-right: none; }
-.counter-cell.counted {
-  background: rgba(47, 74, 50, 0.05);
+.offers-stamp-label {
+  font-family: var(--mono);
+  font-size: var(--mono-meta-size);
+  letter-spacing: var(--mono-meta-track);
+  text-transform: uppercase;
+  color: var(--moss);
 }
-.counter-number {
+.offers-stamp-num {
   font-family: var(--sans);
-  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-size: clamp(4rem, 11vw, 9rem);
   font-weight: 900;
-  color: var(--canopy);
   line-height: 1;
-  letter-spacing: -0.04em;
-}
-/* Cenote teal accent on the CERO counter — the gag now has a color of its own */
-.counter-cell--zero .counter-number { color: var(--cenote); }
-/* The data-text="CERO" override shows a 4-character word, not a number — tighten so it doesn't overflow */
-.counter-number[data-text="CERO"] {
-  font-size: clamp(2.5rem, 7.5vw, 7rem);
+  color: var(--terracotta);
   letter-spacing: -0.05em;
 }
-.counter-number--small { font-size: clamp(3.5rem, 10vw, 9rem); }
-
-.counter-label {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  margin-top: 1rem;
-  color: var(--moss);
-  opacity: 0.7;
-}
-.counter-line {
-  width: 0;
-  height: 1px;
-  background: var(--moss);
-  margin-top: 0.8rem;
-  transition: width 0.4s ease;
-}
-.counter-line.drawn { width: 24px; }
-
-/* ============================================
-   SECTION 12 — THE SPACE (LIMESTONE — inversion retired)
-   ============================================ */
-.the-space {
-  padding: 0;
-  background: var(--limestone);
-  color: var(--ink);
-  border-bottom: var(--line-on-limestone);
-  position: relative;
-}
-.the-space-heading {
-  font-family: var(--serif);
-  font-size: clamp(3.5rem, 11vw, 13rem);
-  font-style: italic;
-  font-weight: 400;
-  line-height: 0.9;
-  padding: 4rem 2rem 2rem;
-  margin: 0;
-  border-bottom: var(--line-on-limestone);
-  color: var(--canopy);
-}
-.the-space-heading-sub {
-  display: inline-block;
-  margin-left: 1rem;
-  font-family: var(--mono);
-  font-style: normal;
-  font-size: 0.4em;
-  vertical-align: middle;
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-  color: var(--moss);
-  opacity: 0.7;
-}
-.space-gallery {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 40vh 40vh;
-  gap: 0;
-}
-.space-gallery-item {
-  overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(20, 17, 13, 0.1);
-}
-.space-gallery-item img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: saturate(0.92);
-  transition: filter 0.15s steps(3), clip-path 0.3s ease, transform 0.4s ease;
-  clip-path: inset(3%);
-  transform: scale(1.02);
-}
-.space-gallery-item img.revealed {
-  clip-path: inset(0);
-  transform: scale(1);
-  filter: saturate(1);
-}
-.space-gallery-item:hover img { filter: saturate(1.1) brightness(1.04); }
-
-.space-gallery-tag {
-  position: absolute;
-  bottom: 0; left: 0;
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  background: rgba(20, 17, 13, 0.85);
-  color: var(--ivory);
-  padding: 0.5rem 0.8rem;
-  border-top: 1px solid rgba(247, 243, 235, 0.3);
-  border-right: 1px solid rgba(247, 243, 235, 0.3);
-}
-
-.space-gallery-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1; }
-.space-gallery-item:nth-child(2) { grid-column: 6 / 9; grid-row: 1; }
-.space-gallery-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1; }
-.space-gallery-item:nth-child(4) { grid-column: 1 / 4; grid-row: 2; }
-.space-gallery-item:nth-child(5) { grid-column: 4 / 8; grid-row: 2; }
-.space-gallery-item:nth-child(6) { grid-column: 8 / 11; grid-row: 2; }
-.space-gallery-item:nth-child(7) { grid-column: 11 / 13; grid-row: 2; }
-.space-gallery-item:nth-child(8) { display: none; }
-
-.space-info {
-  padding: 3rem 2rem;
-  display: flex;
-  justify-content: flex-end;
-  border-top: var(--line-on-limestone);
-}
-.space-info-inner { text-align: right; }
-.space-address-stamp {
+.offers-stamp-meta {
   font-family: var(--mono);
   font-size: var(--mono-data-size);
   letter-spacing: var(--mono-data-track);
   text-transform: uppercase;
-  line-height: 2;
+  color: var(--canopy);
   font-weight: 700;
-  border: 1px solid rgba(20, 17, 13, 0.25);
-  padding: 1rem 1.5rem;
-  display: inline-block;
-  color: var(--ink);
 }
-.space-hours {
+.offers-body {
+  grid-column: 6 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.offers-body p {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--bark);
+}
+.offers-cta {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 1.1rem 3rem;
+  border: 2px solid var(--canopy);
   font-family: var(--mono);
   font-size: var(--mono-meta-size);
-  letter-spacing: var(--mono-meta-track);
-  opacity: 0.6;
-  margin-top: 1rem;
-  line-height: 1.8;
-  color: var(--bark);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--canopy);
+  background: none;
+  transition: background 0s, color 0s, border-color 0s;
+}
+.offers-cta:hover {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--ivory);
 }
 
 /* ============================================
-   FOOTER (DARK — sign-off, third of three inversions)
+   FOOTER (DARK)
    ============================================ */
 .footer {
   padding: 4rem 2rem 2rem;
@@ -2425,15 +948,7 @@ html.js .plate {
   flex-direction: column;
   gap: 0.7rem;
 }
-.footer-newsletter {
-  grid-column: span 3;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-.footer-logo-wrap {
-  margin-bottom: 0.5rem;
-}
+.footer-logo-wrap { margin-bottom: 0.5rem; }
 .footer-logo-wrap img {
   max-width: 110px;
   height: auto;
@@ -2458,6 +973,24 @@ html.js .plate {
 }
 .footer-text a:hover { color: var(--leaf); }
 
+.footer-cta {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid var(--terracotta);
+  color: var(--terracotta);
+  font-family: var(--mono);
+  font-size: var(--mono-meta-size);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: background 0s, color 0s;
+}
+.footer-cta:hover {
+  background: var(--terracotta);
+  color: var(--ivory);
+}
+
 .footer-links {
   font-family: var(--mono);
   font-size: var(--mono-meta-size);
@@ -2470,84 +1003,7 @@ html.js .plate {
   display: inline-block;
   padding: 0 0.2em;
 }
-.footer-links a::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 100%;
-  background: rgba(107, 142, 95, 0.18);
-  z-index: -1;
-  transition: width 0.3s var(--snap);
-}
 .footer-links a:hover { color: var(--leaf); }
-.footer-links a:hover::before { width: 100%; }
-
-.footer-newsletter-row {
-  display: flex;
-  align-items: center;
-}
-.footer-newsletter-label {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--leaf);
-  padding: 0.6rem 0;
-  animation: blink-cursor 0.8s steps(1) infinite;
-}
-.footer-newsletter input {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  background: none;
-  border: none;
-  border-bottom: 1px solid rgba(247, 243, 235, 0.3);
-  color: var(--ivory);
-  padding: 0.6rem 0.8rem;
-  outline: none;
-  flex: 1;
-  min-width: 0;
-  letter-spacing: var(--mono-data-track);
-}
-.footer-newsletter input::placeholder {
-  color: rgba(247, 243, 235, 0.35);
-  letter-spacing: 0.15em;
-}
-.footer-newsletter input:focus { border-bottom-color: var(--cenote); }
-.footer-newsletter button {
-  font-family: var(--mono);
-  font-size: var(--mono-meta-size);
-  background: none;
-  border: 1px solid rgba(247, 243, 235, 0.3);
-  color: var(--ivory);
-  padding: 0.6rem 1rem;
-  cursor: pointer;
-  letter-spacing: var(--mono-meta-track);
-  text-transform: uppercase;
-}
-.footer-newsletter button:hover {
-  background: var(--ivory);
-  border-color: var(--ivory);
-  color: var(--canopy);
-}
-/* Pseudo-ledger stamp shown on successful enroll (or error message on failure) */
-.footer-newsletter-status {
-  font-family: var(--mono);
-  font-size: var(--mono-micro-size);
-  letter-spacing: var(--mono-micro-track);
-  text-transform: uppercase;
-  color: var(--leaf);
-  min-height: 1.3em; /* reserve so the live announce never causes CLS */
-  margin-top: 0.4rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.footer-newsletter.enrolled .footer-newsletter-status,
-.footer-newsletter-status[data-state="error"] {
-  opacity: 1;
-}
-.footer-newsletter-status[data-state="error"] { color: var(--terracotta); }
-.footer-newsletter.enrolled input,
-.footer-newsletter.enrolled button {
-  opacity: 0.5;
-}
 
 .footer-stamp {
   display: flex;
@@ -2564,7 +1020,6 @@ html.js .plate {
   color: var(--ivory);
   opacity: 0.7;
 }
-/* Terracotta only on the year/key element — the prestige carry-through */
 .footer-stamp .footer-stamp-key {
   color: var(--terracotta);
   font-weight: 700;
@@ -2574,7 +1029,6 @@ html.js .plate {
   width: 30px; height: 1px;
   background: rgba(247, 243, 235, 0.4);
 }
-/* Travellers' Choice badge relegated here (Finding 6) */
 .footer-awards {
   display: flex;
   justify-content: center;
@@ -2597,7 +1051,6 @@ html.js .plate {
   color: var(--sage);
   opacity: 0.65;
 }
-
 .footer-copyright {
   text-align: center;
   font-family: var(--mono);
@@ -2609,154 +1062,34 @@ html.js .plate {
   color: var(--sage);
 }
 
-/* --- CURSOR BLINK --- */
-@keyframes blink-cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
 /* ============================================
    RESPONSIVE — 12-col halves to 6, then to 1
    ============================================ */
 @media (max-width: 1024px) {
-  .data-cell { grid-column: span 6; }
-  .data-cell:nth-child(3n) { border-right: var(--line-on-limestone); }
-  .data-cell:nth-child(2n) { border-right: none; }
-
   .room-spec { grid-column: span 6; }
+  .room-spec:nth-child(2n) { border-right: none; }
 
-  .taxon { grid-column: span 6; }
+  .location-block { grid-column: span 12; border-right: none; min-height: auto; }
 
-  .journal-card { grid-column: span 6; }
-  .exp-card { grid-column: span 6; }
+  .art-collab-statement { grid-column: 1 / 13; }
+  .art-plate:nth-child(1),
+  .art-plate:nth-child(2),
+  .art-plate:nth-child(3) { grid-column: span 12; }
 
-  .counter-cell { grid-column: span 6; border-bottom: var(--line-on-limestone); }
-
-  .exhibit-foot-block { grid-column: span 6; }
-  .exhibit-cta { grid-column: span 12; justify-self: start; }
-
-  .exhibit-artist-list li { grid-column: span 6; }
-
-  .floorplan-grid { grid-template-columns: repeat(6, 1fr); }
-  .fp--entrance  { grid-column: 1 / 7; grid-row: 1; }
-  .fp--library   { grid-column: 1 / 7; grid-row: 2; }
-  .fp--room1     { grid-column: 1 / 4; grid-row: 3; }
-  .fp--courtyard { grid-column: 4 / 7; grid-row: 3; }
-  .fp--stair     { grid-column: 1 / 4; grid-row: 4; }
-  .fp--room2     { grid-column: 4 / 7; grid-row: 4; }
+  .offers-stamp { grid-column: 1 / 13; border-right: none; border-bottom: 1px solid rgba(20,17,13,0.18); padding-right: 0; padding-bottom: 2rem; }
+  .offers-body { grid-column: 1 / 13; }
 
   .footer-block { grid-column: span 6; }
-  .footer-newsletter { grid-column: span 6; }
 
-  .exhibit-plates {
-    grid-template-columns: repeat(6, 1fr);
-  }
-  .plate--01 { grid-column: 1 / 7; grid-row: span 1; }
-  .plate--02 { grid-column: 1 / 7; grid-row: span 1; }
-  .plate--03 { grid-column: 1 / 4; grid-row: span 1; }
-  .plate--04 { grid-column: 4 / 7; grid-row: span 1; }
-  .plate--05 { grid-column: 1 / 4; grid-row: span 1; }
-  .plate--06 { grid-column: 4 / 7; grid-row: span 1; }
-
-  .michelin-inner {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .michelin-mark {
-    position: static;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .michelin-mark img { max-width: 140px; }
-  .michelin-mark-stamp { border-top: none; border-left: 1px solid rgba(20,17,13,0.18); padding-top: 0; padding-left: 1rem; text-align: left; }
-
-  .reviews-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .review-card,
-  .review-card:nth-child(1),
-  .review-card:nth-child(2),
-  .review-card:nth-child(3),
-  .review-card:nth-child(4),
-  .review-card:nth-child(5) {
-    grid-column: 1; grid-row: auto;
-    margin-top: 0;
-    transform: none;
-  }
-  .review-card:nth-child(odd) { transform: rotate(-0.6deg); }
-  .review-card:nth-child(even) { transform: rotate(0.5deg); }
-
-  .space-gallery {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-  }
-  .space-gallery-item,
-  .space-gallery-item:nth-child(1),
-  .space-gallery-item:nth-child(2),
-  .space-gallery-item:nth-child(3),
-  .space-gallery-item:nth-child(4),
-  .space-gallery-item:nth-child(5),
-  .space-gallery-item:nth-child(6),
-  .space-gallery-item:nth-child(7) {
-    grid-column: auto; grid-row: auto;
-    height: 35vh;
-  }
-  .space-info { justify-content: flex-start; }
-  .space-info-inner { text-align: left; }
-
-  .landing-michelin-stamp {
-    bottom: 4.5rem;
-    right: 1.5rem;
-  }
+  .landing-michelin-stamp { bottom: 4.5rem; right: 1.5rem; }
 }
 
 @media (max-width: 720px) {
-  .data-cell { grid-column: span 12; border-right: none; }
-  .room-spec { grid-column: span 12; }
-  .taxon { grid-column: span 12; }
-  .journal-card { grid-column: span 12; }
-  .exp-card { grid-column: span 12; }
-  .exhibit-artist-list li { grid-column: span 12; }
-  .exhibit-foot-block { grid-column: span 12; }
+  .room-spec { grid-column: span 12; border-right: none; }
   .footer-block { grid-column: span 12; }
-  .footer-newsletter { grid-column: span 12; }
-
-  .counter-cell { grid-column: span 6; }
-  .counter-number--small { font-size: clamp(2rem, 7vw, 3rem); }
-
-  .floorplan-grid { grid-template-columns: 1fr; }
-  .fp--entrance, .fp--library, .fp--room1, .fp--courtyard, .fp--stair, .fp--room2 {
-    grid-column: 1; grid-row: auto;
-  }
-
-  .exhibit-plates { grid-template-columns: 1fr; }
-  .plate--01,
-  .plate--02,
-  .plate--03,
-  .plate--04,
-  .plate--05,
-  .plate--06 { grid-column: 1; grid-row: auto; }
-
-  .room-header {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-  }
-  .room-name { text-align: left; font-size: clamp(2.2rem, 13vw, 4.5rem); }
-
-  .space-gallery { grid-template-columns: 1fr; }
-  .space-gallery-item,
-  .space-gallery-item:nth-child(1),
-  .space-gallery-item:nth-child(2),
-  .space-gallery-item:nth-child(3),
-  .space-gallery-item:nth-child(4),
-  .space-gallery-item:nth-child(5),
-  .space-gallery-item:nth-child(6),
-  .space-gallery-item:nth-child(7) {
-    height: 30vh;
-  }
-
   .nav { padding: 1rem; }
-  .landing-subtitle { left: 1rem; bottom: 1rem; max-width: 70%; font-size: var(--mono-micro-size); }
+  .nav-cta { padding: 0.4rem 0.9rem; font-size: 0.6rem; }
+  .nav-menu-btn { padding: 0.4rem 0.9rem; font-size: 0.6rem; }
   .landing-scroll-indicator { display: none; }
   .landing-corner--tl,
   .landing-corner--tr { font-size: 0.5rem; }
@@ -2766,19 +1099,19 @@ html.js .plate {
   }
   .landing-michelin-stamp img { width: 44px; height: 44px; }
   .landing-michelin-stamp-meta { font-size: 0.5rem; }
-
+  .landing-cta { padding: 0.9rem 2rem; font-size: 0.6rem; }
   .menu-overlay a { font-size: clamp(1.1rem, 6vw, 2rem); gap: 1rem; padding: 0.3em 0; }
-
-  .space-address-stamp { font-size: var(--mono-meta-size); padding: 0.7rem 1rem; }
-
-  .michelin {
-    padding: 6vh 1.25rem;
+  .room-header {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
   }
-  .michelin-mark { flex-direction: column; align-items: flex-start; }
-  .michelin-mark img { max-width: 110px; }
-  .michelin-quote { padding-left: 1rem; }
+  .room-name { text-align: left; font-size: clamp(2.2rem, 13vw, 4.5rem); }
+  .offers-inner { padding: 3vh 1.5rem; }
 }
 
+/* ============================================
+   REDUCED MOTION — every reveal becomes opacity:1; transform:none
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2787,14 +1120,16 @@ html.js .plate {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  html.js .manifesto-line,
-  .manifesto-line {
+  html.js .brutalist-snap,
+  .brutalist-snap {
     opacity: 1 !important;
     transform: none !important;
   }
-  html.js .plate,
-  .plate {
+  html.js .landing-title .letter {
     opacity: 1 !important;
-    transform: none !important;
+  }
+  .landing-corner--tr.flicker {
+    animation: none !important;
+    opacity: 0.8 !important;
   }
 }

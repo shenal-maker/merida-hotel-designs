@@ -1,19 +1,14 @@
 /* ============================================
    Tree House Boutique Hotel — V2 Editorial Magazine
-   Light Mode — ivory, sage/moss, ochre accent, botanical hairlines
-   Anchor: masgirbau.com (field-journal flavor)
-   Sister to Boutique by The Museo V2 — distinct via:
-     • sage/moss dominance (vs Boutique's ochre lead)
-     • plant-Latin botanical labels woven through
-     • dedicated Michelin-Key editorial moment
-     • El Diario / Journal section
+   Light Mode — ivory, sage/moss, ochre accent
+   Trimmed: hero + accolade strip, rooms, art, visit, offer, footer
+   Motion: V2 page-turn — clip-path L→R sweep, 520ms cubic-bezier(0.45, 0, 0.15, 1)
    ============================================ */
 
 /* --- Reset & Base --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  /* Palette per BRIEF — Tree House botanical/light */
   --ivory:        #f7f3eb;
   --limestone:    #ecdfc9;
   --paper-deep:   #efe7d6;
@@ -22,19 +17,16 @@
   --bark:         #5b4632;
   --ink:          #14110d;
 
-  /* Green hierarchy — the brand character */
-  --canopy:       #1a2e1f;   /* near-black green */
-  --moss:         #2f4a32;   /* primary brand green */
-  --leaf:         #6b8e5f;   /* mid green */
-  --sage:         #8a9a7b;   /* dusty sage */
-  --sage-pale:    #b5c4a8;   /* pale sage */
+  --canopy:       #1a2e1f;
+  --moss:         #2f4a32;
+  --leaf:         #6b8e5f;
+  --sage:         #8a9a7b;
+  --sage-pale:    #b5c4a8;
 
-  /* Warmth accents — used sparingly so green leads */
   --ochre:        #c69960;
   --ochre-deep:   #a87b44;
-  --terracotta:   #b85a3a;   /* Michelin red echo */
+  --terracotta:   #b85a3a;
 
-  /* Typography */
   --display: 'DM Serif Display', 'Cormorant Garamond', Georgia, serif;
   --serif:   'Cormorant Garamond', Georgia, serif;
   --sans:    'Inter', -apple-system, system-ui, sans-serif;
@@ -42,7 +34,6 @@
 
 html {
   scroll-behavior: smooth;
-  /* Anchor jumps + skip-link land below the fixed masthead (Critique R3 §20). */
   scroll-padding-top: 96px;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -59,7 +50,7 @@ body {
   position: relative;
 }
 
-/* Paper grain */
+/* Paper grain — preserved (editorial register) */
 body::before {
   content: '';
   position: fixed;
@@ -72,25 +63,6 @@ body::before {
   background-repeat: repeat;
   background-size: 256px 256px;
   mix-blend-mode: multiply;
-}
-
-/* Botanical leaf-hairline left-margin motif — runs the spine of the document */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(107, 142, 95, 0.12) 8%,
-    rgba(107, 142, 95, 0.12) 92%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 9997;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -120,104 +92,13 @@ input:focus-visible {
 
 img { display: block; max-width: 100%; height: auto; }
 
-/* Plant-Latin small-cap label utility */
-.botanical {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.92em;
-  color: var(--moss);
-  letter-spacing: 0.01em;
+/* Page intro — 280ms paper-stock fade-in of <main> */
+main {
+  animation: paper-fade-in 280ms ease-out both;
 }
-
-/* Plate reference helper — used in body copy */
-.plate-ref {
-  font-style: italic;
-  color: var(--moss);
-  font-family: var(--display);
-  font-size: 0.98em;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-
-/* --- Reading Progress Bar (editorial spine) --- */
-/* Drives via transform: scaleY (compositor) — height transition removed so
-   the rAF updates don't fight a CSS animation (Critique R3 §5). */
-.reading-progress {
-  position: fixed;
-  top: 0;
-  left: 1.5rem;
-  width: 1px;
-  height: 100vh;
-  background: var(--moss);
-  z-index: 9998;
-  transform: scaleY(0);
-  transform-origin: top;
-  will-change: transform;
-  pointer-events: none;
-}
-
-/* --- Page Number Counter (Roman numerals — field-journal apparatus) --- */
-.page-counter {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
-  color: var(--stone);
-  z-index: 100;
-  transition: opacity 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-  text-transform: uppercase;
-  background: rgba(247, 243, 235, 0.74);
-  padding: 0.45rem 0.7rem;
-  border: 1px solid rgba(138, 154, 123, 0.25);
-}
-.page-counter-current {
-  display: inline-block;
-  overflow: hidden;
-  height: 1.2em;
-  line-height: 1.2em;
-  position: relative;
-}
-.page-num {
-  display: inline-block;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink);
-  font-family: var(--display);
-  font-size: 1.1em;
-  letter-spacing: 0;
-  will-change: transform;
-}
-/* Flip transition is applied via class so the global reduced-motion safety
-   net (CSS) wins over JS-driven motion (Critique R3 §3 / §13). */
-.page-num--flipping {
-  transition: transform 0.35s ease-out;
-}
-.page-counter-leaf {
-  /* Tree-House-specific botanical glyph (sextile floret) — distinguishes
-     from Boutique V2's bare slash separator (Critique R1 §15). */
-  color: var(--leaf);
-  font-size: 0.78em;
-  line-height: 1;
-  display: inline-block;
-  transform: translateY(-1px);
-}
-.page-counter-label {
-  color: var(--moss);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-}
-.page-counter[data-hidden="true"] {
-  opacity: 0;
-  pointer-events: none;
-}
-.page-counter[data-hidden="true"] .page-num,
-.page-counter[data-hidden="true"] .page-counter-leaf {
-  visibility: hidden;
+@keyframes paper-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* --- Section Marker --- */
@@ -227,13 +108,12 @@ img { display: block; max-width: 100%; height: auto; }
   font-weight: 500;
   letter-spacing: 0.28em;
   color: var(--moss);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.6rem;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
 }
-/* Botanical leaf-hairline before the marker */
 .section-marker::before {
   content: '';
   display: inline-block;
@@ -242,146 +122,66 @@ img { display: block; max-width: 100%; height: auto; }
   background: var(--leaf);
 }
 
-/* --- Scroll Reveal --- */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-line {
-  display: block;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.reveal-line.visible {
-  clip-path: inset(0 0 0 0);
-}
-
-/* --- HR draw animation --- */
+/* --- HR draw --- */
 .draw-line {
   border: none;
   height: 1px;
   background: var(--leaf);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 1.3s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s;
+  transition: transform 1.1s cubic-bezier(0.45, 0, 0.15, 1) 0.2s;
 }
-.draw-line.visible {
-  transform: scaleX(1);
-}
+.draw-line.visible { transform: scaleX(1); }
 .draw-line--short  { max-width: 64px;  margin: 0 0 2.5rem 0; }
-.draw-line--medium { max-width: 128px; margin: 0 0 4rem 0; }
 
+/* ============================================
+   V2 MOTION SIGNATURE — page-turn / clip-path sweep
+   Left-to-right curtain reveal, 520ms, no opacity fade.
+   Class: .editorial-sweep
+   ============================================ */
+.editorial-sweep {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 520ms cubic-bezier(0.45, 0, 0.15, 1);
+}
+.editorial-sweep.visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Hero image — image fills in 300ms after text, cross-dissolve 400ms */
+.hero-image-wrap.editorial-sweep {
+  clip-path: none;
+  opacity: 0;
+  transition: opacity 400ms ease-out 300ms;
+}
+.hero-image-wrap.editorial-sweep.visible {
+  opacity: 1;
+}
 
 /* --- Image treatments --- */
-.editorial-img {
+.editorial-img,
+.room-image,
+.art-plate,
+.hero-image-wrap {
   overflow: hidden;
   position: relative;
   background: var(--limestone);
 }
-.editorial-img img {
-  transform: scale(1.04);
-  transition: transform 1.4s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.6s ease;
-  /* Softer paper-stock warmth — preserves cenote turquoise + bugambilia color
-     (Critique R1 §14 — filter was flattening palette across long scroll). */
-  filter: saturate(0.94) brightness(0.99);
+.room-image img,
+.art-plate img,
+.hero-image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.45, 0, 0.15, 1);
 }
-.editorial-img.visible img {
-  transform: scale(1);
-}
-.editorial-img:hover img {
-  filter: saturate(1) brightness(1);
+.room-image:hover img,
+.art-plate:hover img {
   transform: scale(1.02);
 }
-/* Sage/ochre tint overlay on hover — botanical hue */
-.editorial-img::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  mix-blend-mode: multiply;
-  opacity: 0;
-  background: linear-gradient(125deg, rgba(47, 74, 50, 0.08) 0%, transparent 50%, rgba(198, 153, 96, 0.06) 100%);
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-.editorial-img:hover::after {
-  opacity: 1;
-}
-
-/* Image captions */
-.img-caption {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.64rem;
-  font-style: normal;
-  font-weight: 500;
-  color: var(--stone);
-  margin-top: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-.img-caption em {
-  font-style: italic;
-  letter-spacing: 0.04em;
-  text-transform: none;
-  font-family: var(--display);
-  font-size: 1.1em;
-  color: var(--moss);
-}
-
-/* Drop cap — moss/leaf green for botanical voice */
-/* Baseline math: matches sibling Boutique V2 — cap top sits on body cap-line,
-   cap bottom sits roughly on third line baseline at body line-height ~1.85. */
-.drop-cap {
-  padding-top: 0.22rem;
-}
-.drop-cap::first-letter {
-  font-family: var(--display);
-  font-size: 4em;
-  float: left;
-  line-height: 0.78;
-  margin-right: 0.12em;
-  margin-top: 0.1em;
-  padding-right: 0.04em;
-  color: var(--moss);
-  font-weight: 400;
-  font-style: normal; /* ensure cap stays roman even if parent text begins italic */
-}
-/* Dateline lives above the prose so ::first-letter targets the first
-   word of the body, not the leading numeral (Critique R3 §4). */
-.drop-cap .dateline {
-  display: block;
-  font-family: var(--sans);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--stone);
-  margin-bottom: 0.9rem;
-}
-.drop-cap .dateline em {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--moss);
-}
-
 
 /* ============================================
    MASTHEAD
    ============================================ */
-
 .masthead-bar {
   display: flex;
   justify-content: space-between;
@@ -407,7 +207,6 @@ img { display: block; max-width: 100%; height: auto; }
   align-items: center;
   gap: 0.8rem;
 }
-
 .masthead-logo-mark {
   font-family: var(--display);
   font-size: 1.05rem;
@@ -417,7 +216,6 @@ img { display: block; max-width: 100%; height: auto; }
   padding: 0.15rem 0.55rem;
   line-height: 1;
 }
-
 .masthead-logo-word {
   font-family: var(--display);
   font-size: 1rem;
@@ -425,19 +223,8 @@ img { display: block; max-width: 100%; height: auto; }
   letter-spacing: 0.04em;
 }
 .masthead-logo-dot {
-  /* Was <em> — italicising a middle-dot was a no-op; this is the same
-     visual treatment without the false italic semantic (Critique R1 §17). */
   color: var(--moss);
   padding: 0 0.1em;
-}
-
-.masthead-logo-key {
-  display: inline-flex;
-  align-items: center;
-  margin-left: 0.2rem;
-}
-.masthead-logo-key img {
-  display: block;
 }
 
 .masthead-nav {
@@ -446,41 +233,37 @@ img { display: block; max-width: 100%; height: auto; }
   list-style: none;
   align-items: center;
 }
-
 .masthead-nav a {
   font-family: var(--sans);
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--stone);
-  transition: color 0.3s;
   font-weight: 500;
   position: relative;
+  padding-bottom: 4px;
+  /* V2 hover: underline draws L→R via background-size sweep */
+  background-image: linear-gradient(var(--leaf), var(--leaf));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 280ms ease-out, color 280ms ease-out;
 }
-.masthead-nav a:hover { color: var(--moss); }
-
-.masthead-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--leaf);
-  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+.masthead-nav a:hover {
+  color: var(--moss);
+  background-size: 100% 1px;
 }
-.masthead-nav a:hover::after { width: 100%; }
 
 .masthead-nav-cta {
   color: var(--ivory) !important;
-  background: var(--moss);
+  background: var(--moss) !important;
+  background-image: none !important;
   border: 1px solid var(--moss);
   padding: 0.55rem 1.1rem;
   transition: background 0.4s, color 0.4s !important;
 }
-.masthead-nav-cta::after { display: none; }
 .masthead-nav-cta:hover {
-  background: var(--canopy);
+  background: var(--canopy) !important;
   border-color: var(--canopy);
   color: var(--ivory) !important;
 }
@@ -509,22 +292,18 @@ img { display: block; max-width: 100%; height: auto; }
   transform: translateY(-3.75px) rotate(-45deg);
 }
 
-
 /* ============================================
    1. HERO
    ============================================ */
-
 .hero {
   min-height: 100vh;
-  padding: 9rem 3rem 6rem;
+  padding: 9rem 3rem 5rem;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
 }
-
-/* Subtle leaf-veiny botanical hairline behind the hero — pure CSS, light touch */
 .hero::before {
   content: '';
   position: absolute;
@@ -538,7 +317,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 .hero-meta-row {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.9rem;
   font-family: var(--sans);
@@ -546,21 +325,21 @@ img { display: block; max-width: 100%; height: auto; }
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--stone);
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   position: relative;
   z-index: 2;
+  width: fit-content;
 }
-.hero-meta-item { display: inline-block; color: var(--ink); }
-.hero-meta-sep { color: var(--leaf); }
+.hero-meta-item { color: var(--ink); }
+.hero-meta-sep  { color: var(--leaf); }
 
 .hero-title {
   line-height: 0.9;
-  margin-bottom: 2.6rem;
+  margin-bottom: 2rem;
   max-width: 72%;
   position: relative;
   z-index: 2;
 }
-
 .hero-title .line-1 {
   display: block;
   font-family: var(--sans);
@@ -571,8 +350,8 @@ img { display: block; max-width: 100%; height: auto; }
   color: var(--stone);
   margin-bottom: 1.2rem;
 }
-
 .hero-title .line-2 {
+  display: block;
   font-family: var(--display);
   font-size: clamp(5rem, 12.5vw, 13.5rem);
   font-weight: 400;
@@ -580,50 +359,40 @@ img { display: block; max-width: 100%; height: auto; }
   line-height: 0.88;
   color: var(--canopy);
 }
-
 .hero-title .line-3 {
+  display: block;
   font-family: var(--display);
-  font-size: clamp(3rem, 7.5vw, 8rem);
+  font-size: clamp(2.4rem, 5vw, 5rem);
   font-weight: 400;
   font-style: italic;
   letter-spacing: -0.005em;
   color: var(--moss);
   margin-top: 0.1rem;
 }
-.hero-title .hero-by {
-  font-style: italic;
-  color: var(--ochre-deep);
-  font-size: 0.7em;
-  padding-right: 0.2em;
-}
 
 .hero-deck {
   max-width: 60ch;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   font-size: 1.18rem;
   line-height: 1.7;
   color: var(--bark);
   position: relative;
   z-index: 2;
 }
-.hero-deck em {
-  font-style: italic;
-  color: var(--moss);
-}
 .hero-deck-emph {
-  display: inline;
   color: var(--ink);
-  /* italic stripped — italic discipline reserved for Spanish/Latin/term-of-art (Critique R1 §17) */
+  font-weight: 500;
 }
 
 .hero-cta-row {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 2.6rem;
+  display: inline-flex;
+  gap: 1.2rem;
+  margin-top: 2.4rem;
   flex-wrap: wrap;
   align-items: center;
   position: relative;
   z-index: 2;
+  width: fit-content;
 }
 
 .hero-cta {
@@ -639,12 +408,25 @@ img { display: block; max-width: 100%; height: auto; }
   background: var(--canopy);
   padding: 1.05rem 1.8rem;
   border: 1px solid var(--canopy);
+  position: relative;
   transition: background 0.4s, color 0.4s, border-color 0.4s;
+}
+.hero-cta::after {
+  /* V2 CTA rule: a 1px ochre rule that prints L→R on hover */
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
+  width: 0;
+  background: var(--ochre);
+  transition: width 280ms ease-out;
 }
 .hero-cta:hover {
   background: var(--moss);
   border-color: var(--moss);
 }
+.hero-cta:hover::after { width: 100%; }
 .hero-cta-arrow {
   display: inline-block;
   transition: transform 0.3s;
@@ -654,7 +436,6 @@ img { display: block; max-width: 100%; height: auto; }
 .hero-cta--ghost {
   background: transparent;
   color: var(--canopy);
-  border: 1px solid var(--canopy);
 }
 .hero-cta--ghost:hover {
   background: var(--canopy);
@@ -662,42 +443,42 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .hero-cta--ghost:hover .hero-cta-arrow { transform: translateY(3px); }
 
-/* The Michelin Key badge sitting on the hero — a small editorial deference */
-.hero-keybadge {
+/* --- Accolade strip (Michelin Key + Travellers' Choice + sister property) --- */
+.accolade-strip {
   margin-top: 2.6rem;
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.9rem;
-  padding: 0.8rem 1.1rem 0.8rem 0.85rem;
-  border: 1px solid var(--leaf);
-  background: rgba(184, 90, 58, 0.04);
-  width: fit-content;
-  position: relative;
-  z-index: 2;
-}
-.hero-keybadge img {
-  display: block;
-  width: 44px;
-  height: 44px;
-}
-.hero-keybadge-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-.hero-keybadge-line-1 {
-  font-family: var(--display);
-  font-size: 1rem;
-  color: var(--terracotta);
-  letter-spacing: 0.02em;
-  line-height: 1.1;
-}
-.hero-keybadge-line-2 {
+  padding: 0.7rem 1rem;
+  border-top: 1px solid var(--leaf);
+  border-bottom: 1px solid var(--leaf);
   font-family: var(--sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--stone);
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+}
+.accolade-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.accolade-item strong {
+  color: var(--terracotta);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.accolade-item--key img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+.accolade-sep {
+  color: var(--leaf);
 }
 
 .hero-image-wrap {
@@ -707,420 +488,23 @@ img { display: block; max-width: 100%; height: auto; }
   width: 38%;
   max-width: 480px;
   z-index: 0;
-  pointer-events: auto;
-  aspect-ratio: 3/4;
-  /* Promote to its own layer so the JS parallax stays off the main thread
-     (Critique R3 §6). */
-  will-change: transform, opacity;
-}
-.hero-image-wrap .img-caption {
-  position: absolute;
-  bottom: -2rem;
-  right: 0;
-  color: var(--stone);
-}
-
-.hero-scroll-hint {
-  position: absolute;
-  bottom: 3rem;
-  left: 3rem;
-  font-family: var(--sans);
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--moss);
-  writing-mode: vertical-rl;
-  z-index: 2;
-}
-
-
-/* ============================================
-   2. EDITOR'S NOTE
-   ============================================ */
-
-.editors-note {
-  padding: 11rem 3rem 9rem;
-  position: relative;
-}
-
-.editors-note-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.editors-note-text {
-  grid-column: 1 / 3;
-  padding-left: 8%;
-  padding-top: 3rem;
-}
-
-.editors-note-text h2 {
-  font-family: var(--display);
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  font-weight: 400;
-  line-height: 1.05;
-  margin-bottom: 2.2rem;
-  max-width: 14ch;
-  color: var(--ink);
-}
-.editors-note-text h2 em {
-  font-weight: 400;
-  font-style: italic;
-  color: var(--moss);
-}
-.editors-note-text h2 .kicker {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.35em;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--moss);
-  font-weight: 500;
-  margin-bottom: 0.9rem;
-}
-
-.editors-note-text p {
-  max-width: 44ch;
-  font-size: 1.1rem;
-  line-height: 1.85;
-  color: var(--bark);
-  margin-bottom: 1.4rem;
-}
-.editors-note-text p em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.editors-note-text .signature {
-  margin-top: 3.2rem;
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--stone);
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-.signature-mark { color: var(--leaf); font-size: 1rem; letter-spacing: 0; }
-.signature-name {
-  font-family: var(--display);
-  font-size: 1.2rem;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-  text-transform: none;
-  font-style: italic;
-}
-
-.editors-note-image {
-  grid-column: 3 / 6;
-  margin-top: 6rem;
-  position: relative;
-}
-
-.editors-note-image .editorial-img {
-  width: 100%;
-  aspect-ratio: 3/4;
-}
-.editors-note-image .editorial-img .img-caption {
-  position: absolute;
-  bottom: -1.6rem;
-  left: 0;
-}
-
-.editors-note-aside {
-  margin-top: 4rem;
-  padding: 1.4rem 1.4rem 1.4rem 1.6rem;
-  border-left: 2px solid var(--leaf);
-  background: rgba(138, 154, 123, 0.06);
-  max-width: 32ch;
-  margin-left: auto;
-}
-.aside-eyebrow {
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.28em;
-  color: var(--moss);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 0.6rem;
-}
-.editors-note-aside p {
-  font-family: var(--display);
-  font-size: 1.18rem;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--bark);
-}
-.editors-note-aside p em {
-  color: var(--moss);
-}
-
-
-/* ============================================
-   3. SANCTUARY
-   ============================================ */
-
-.sanctuary {
-  padding: 9rem 3rem 7rem;
-  background: var(--limestone);
-  position: relative;
-}
-
-.sanctuary-headline {
-  margin-bottom: 4rem;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: end;
-  gap: 1.5rem;
-}
-
-.sanctuary-headline .small-caps {
-  font-family: var(--sans);
-  font-size: clamp(0.78rem, 1.1vw, 1rem);
-  font-weight: 500;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--stone);
-  padding-bottom: 2.4rem;
-}
-.sanctuary-headline .small-caps em {
-  font-style: italic;
-  color: var(--moss);
-  text-transform: none;
-  letter-spacing: 0.04em;
-  font-family: var(--display);
-  font-size: 1.4em;
-}
-.sanctuary-headline .small-caps--right {
-  text-align: right;
-}
-
-.sanctuary-headline .big-word {
-  font-family: var(--display);
-  font-size: clamp(5rem, 11vw, 13rem);
-  font-weight: 400;
-  line-height: 0.85;
-  letter-spacing: -0.03em;
-  color: var(--canopy);
-  text-align: center;
-}
-
-.sanctuary-grid {
-  display: grid;
-  grid-template-columns: 0.95fr 1fr 0.85fr;
-  gap: 2.5rem;
-  align-items: start;
-  margin-top: 3rem;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.sanctuary-img-left {
-  aspect-ratio: 4/5;
-}
-
-.sanctuary-text-center {
-  padding: 3rem 1rem 0;
-  align-self: center;
-}
-
-.sanctuary-lede {
-  font-family: var(--display);
-  font-size: clamp(1.5rem, 2vw, 1.85rem);
-  font-style: italic;
-  line-height: 1.4;
-  color: var(--canopy);
-  margin-bottom: 1.8rem;
-  max-width: 32ch;
-}
-.sanctuary-lede em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.sanctuary-text-center p {
-  font-size: 1.02rem;
-  line-height: 1.9;
-  max-width: 38ch;
-  color: var(--bark);
-  margin-bottom: 1.2rem;
-}
-.sanctuary-text-center p em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.sanctuary-detail {
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.24em;
-  color: var(--stone);
-  margin-top: 1.8rem;
-  text-transform: uppercase;
-}
-.sanctuary-img-right {
-  margin-top: 7rem;
   aspect-ratio: 3/4;
 }
 
-
 /* ============================================
-   4. MICHELIN KEY — dedicated editorial sidebar moment
+   2. ROOMS
    ============================================ */
-
-.michelin {
-  padding: 8rem 3rem 8rem;
-  background: var(--ivory);
-  position: relative;
-}
-
-.michelin-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
-/* Apparatus normalized to the standard section-marker pattern used elsewhere
-   on the page (Critique R1 §8 — was eyebrow + folio + rule + kicker).
-   Color darkened to clear AA on ivory at 0.68rem (Critique R3 §19). */
-.michelin .section-marker {
-  margin-bottom: 2.6rem;
-  color: #9c4828;
-}
-.michelin .section-marker::before {
-  background: #9c4828;
-}
-
-.michelin-grid {
-  display: grid;
-  grid-template-columns: 0.65fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.michelin-key {
-  position: sticky;
-  top: 8rem;
-  text-align: center;
-  padding: 2rem 1rem;
-  border: 1px solid var(--terracotta);
-  background: rgba(184, 90, 58, 0.04);
-}
-.michelin-key img {
-  display: block;
-  width: 180px;
-  height: 180px;
-  max-width: 100%;
-  margin: 0 auto 1.2rem;
-}
-.michelin-key-caption {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--terracotta);
-  letter-spacing: 0.04em;
-}
-
-.michelin-text h2 {
-  font-family: var(--display);
-  /* Sized up — prestige moment must out-scale neighbour h2s (Critique R1 §6). */
-  font-size: clamp(3.4rem, 7vw, 6rem);
-  font-weight: 400;
-  line-height: 1.02;
-  margin-bottom: 2rem;
-  color: var(--ink);
-  max-width: 14ch;
-}
-.michelin-text h2 em {
-  font-style: italic;
-  color: var(--terracotta);
-}
-.michelin-text h2 .kicker {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.32em;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--moss);
-  font-weight: 500;
-  margin-bottom: 0.7rem;
-}
-
-.michelin-text p {
-  max-width: 52ch;
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: var(--bark);
-  margin-bottom: 1.3rem;
-}
-.michelin-text p em {
-  font-style: italic;
-  color: var(--terracotta);
-}
-
-.michelin-stats {
-  list-style: none;
-  margin-top: 3rem;
-  border-top: 1px solid var(--warm-gray);
-  padding-top: 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.5rem;
-}
-.michelin-stats li {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.michelin-stat-num {
-  font-family: var(--display);
-  font-size: 2.2rem;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--terracotta);
-  letter-spacing: -0.01em;
-}
-.michelin-stat-label {
-  font-family: var(--sans);
-  font-size: 0.66rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--stone);
-  line-height: 1.5;
-}
-.michelin-stat-label em {
-  font-family: var(--display);
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0.04em;
-  color: var(--moss);
-  font-size: 1.12em;
-}
-
-
-/* ============================================
-   5. LAS HABITACIONES
-   ============================================ */
-
 .rooms {
-  padding: 10rem 3rem 9rem;
+  padding: 9rem 3rem 8rem;
+  background: var(--ivory);
 }
-
 .rooms-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   max-width: 700px;
 }
-
 .rooms-header h2 {
   font-family: var(--display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 400;
   line-height: 1.02;
   color: var(--ink);
@@ -1129,1041 +513,170 @@ img { display: block; max-width: 100%; height: auto; }
   font-style: italic;
   color: var(--moss);
 }
-
 .rooms-sub {
   font-family: var(--display);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-style: italic;
   color: var(--stone);
   margin-top: 0.6rem;
 }
-
-.rooms-draw {
-  margin-bottom: 5rem;
-}
+.rooms-draw { margin-bottom: 4rem; }
 
 .rooms-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem 6rem;
-  max-width: 1400px;
+  gap: 4rem 5rem;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
 .room-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
-
-.room-card--offset {
-  margin-top: 6rem;
-}
+.room-card--offset { margin-top: 4rem; }
 
 .room-image {
   aspect-ratio: 4/5;
-  margin-bottom: 2.4rem;
-}
-
-.room-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--moss);
-  margin-bottom: 1rem;
-}
-.room-sep { color: var(--stone); }
-.room-type { color: var(--stone); }
-.room-type .botanical {
-  letter-spacing: 0.04em;
-  text-transform: none;
+  margin-bottom: 1.8rem;
 }
 
 .room-name {
   font-family: var(--display);
-  font-size: clamp(2.4rem, 3.6vw, 3.6rem);
+  font-size: clamp(2rem, 3vw, 2.8rem);
   font-weight: 400;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1rem;
   line-height: 1.05;
   color: var(--ink);
-}
-.room-name em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.room-specs {
-  list-style: none;
-  margin-bottom: 2rem;
-  max-width: 380px;
-}
-.room-specs li {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid var(--warm-gray);
-  display: flex;
-  justify-content: space-between;
-  color: var(--bark);
-  gap: 0.6rem;
-}
-.room-specs .label {
-  color: var(--stone);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.66rem;
-}
-.room-specs li em {
-  font-style: italic;
-  color: var(--moss);
-  font-family: var(--display);
-  font-size: 1.05rem;
-  letter-spacing: 0;
-  text-transform: none;
 }
 
 .room-tasting {
   font-family: var(--display);
-  font-size: 1.18rem;
+  font-size: 1.15rem;
   font-style: italic;
   color: var(--bark);
-  line-height: 1.65;
-  margin-bottom: 2rem;
-  max-width: 38ch;
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+  max-width: 40ch;
 }
-.room-tasting em {
-  font-style: italic;
-  color: var(--moss);
+
+.room-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--warm-gray);
+}
+.room-price {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.room-price strong {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
 }
 
 .room-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 0.95rem 2.2rem;
+  padding: 0.85rem 1.7rem;
   border: 1px solid var(--canopy);
   color: var(--canopy);
-  transition: background 0.45s, color 0.45s, border-color 0.45s;
   position: relative;
-  overflow: hidden;
-  z-index: 1;
+  background: transparent;
+  transition: background 0.4s ease-out, color 0.4s ease-out;
 }
-.room-cta::before {
+.room-cta::after {
   content: '';
   position: absolute;
-  inset: 0;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
   width: 0;
-  background: var(--canopy);
-  z-index: -1;
-  transition: width 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  background: var(--ochre);
+  transition: width 280ms ease-out;
 }
 .room-cta:hover {
+  background: var(--canopy);
   color: var(--ivory);
 }
-.room-cta:hover::before {
-  width: 100%;
-}
-
+.room-cta:hover::after { width: 100%; }
 .room-cta--filled {
   background: var(--canopy);
   color: var(--ivory);
 }
-.room-cta--filled::before {
-  background: var(--moss);
-}
-.room-cta--filled:hover {
-  color: var(--ivory);
-  border-color: var(--moss);
-}
-
+.room-cta--filled:hover { background: var(--moss); border-color: var(--moss); }
 
 /* ============================================
-   6. EL ESTÁNDAR (Privacidad / Botánica / Curaduría)
+   3. ART COLLAB
    ============================================ */
-
-.standard {
-  padding: 10rem 3rem 9rem;
-  background: var(--canopy);
-  color: var(--ivory);
-  position: relative;
+.art {
+  padding: 9rem 3rem 8rem;
+  background: var(--paper-deep);
 }
-.standard .section-marker {
-  color: var(--sage-pale);
+.art-header {
+  margin-bottom: 4rem;
+  max-width: 760px;
 }
-.standard .section-marker::before {
-  background: var(--sage-pale);
-}
-
-.standard-header {
-  margin-bottom: 5rem;
-  max-width: 800px;
-}
-
-.standard-header h2 {
+.art-header h2 {
   font-family: var(--display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 400;
   line-height: 1.02;
-  color: var(--ivory);
-}
-.standard-header h2 em {
-  font-style: italic;
-  color: var(--sage-pale);
-}
-.standard-deck {
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-style: italic;
-  color: rgba(247, 243, 235, 0.65);
-  margin-top: 0.8rem;
-}
-
-.standard-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0;
-  max-width: 1300px;
-}
-
-.standard-item {
-  padding: 3rem 2.5rem;
-  border-left: 1px solid rgba(247, 243, 235, 0.14);
-  position: relative;
-}
-.standard-item:first-child {
-  border-left: none;
-  padding-left: 0;
-}
-
-.standard-number {
-  font-family: var(--display);
-  font-size: clamp(4rem, 6vw, 6rem);
-  font-weight: 400;
-  color: var(--leaf);
-  opacity: 0.32;
-  line-height: 1;
-  margin-bottom: 1.4rem;
-}
-
-.standard-spanish {
-  display: block;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--sage-pale);
-  letter-spacing: 0.03em;
-  margin-bottom: 0.5rem;
-}
-
-.standard-item h3 {
-  font-family: var(--display);
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: 1.4rem;
-  color: var(--ivory);
-  letter-spacing: -0.005em;
-}
-
-.standard-item p {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(247, 243, 235, 0.74);
-  max-width: 32ch;
-}
-.standard-item p em {
-  color: var(--sage-pale);
-  font-style: italic;
-}
-
-.standard-stat {
-  font-family: var(--display);
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: var(--ivory);
-  margin-top: 2rem;
-  display: block;
-  letter-spacing: -0.01em;
-}
-.standard-stat-unit {
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  /* Lifted to AA-comfortable contrast on canopy ground (Critique R1 §7). */
-  color: rgba(247, 243, 235, 0.72);
-  text-transform: uppercase;
-  display: inline-block;
-  margin-left: 0.4rem;
-}
-
-
-/* ============================================
-   7. TREEHOUSE × SoHo GALLERIES
-   ============================================ */
-
-.treehouse {
-  padding: 10rem 0 9rem;
-  background: var(--ivory);
-  position: relative;
-}
-
-.treehouse-frontispiece {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  padding: 0 3rem;
-  max-width: 1500px;
-  margin: 0 auto 5rem;
-  align-items: end;
-}
-
-.treehouse-frontispiece-text {
-  padding-bottom: 2rem;
-}
-
-.treehouse-marker {
-  margin-bottom: 1.8rem;
-}
-
-.treehouse-pretitle {
-  display: block;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--moss);
-  letter-spacing: 0.04em;
-  margin-bottom: 1rem;
-}
-.treehouse-pretitle em {
-  color: var(--moss);
-  font-style: italic;
-}
-
-.treehouse-title {
-  font-family: var(--display);
-  font-size: clamp(2.8rem, 5.5vw, 5.4rem);
-  font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.02em;
   color: var(--ink);
-  margin-bottom: 2.4rem;
 }
-/* Cleaner: only italic axis is the SoHo wordmark; "The" sits roman small-caps
-   on the baseline (no floating vertical-align), "×" sits inline as a single
-   light-weight leaf-color glyph (Critique R1 §11). */
-.treehouse-title .treehouse-and {
-  font-family: var(--display);
-  font-style: normal;
-  font-size: 0.45em;
-  color: var(--stone);
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-right: 0.35em;
+.art-header h2 em {
+  font-style: italic;
+  color: var(--moss);
 }
-.treehouse-title .treehouse-cross {
-  font-style: normal;
+.art-cross {
   color: var(--leaf);
+  font-style: normal;
   font-size: 0.7em;
   margin: 0 0.18em;
 }
-.treehouse-title .treehouse-soho {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.treehouse-deck {
+.art-deck {
   font-family: var(--display);
-  font-size: clamp(1.15rem, 1.4vw, 1.4rem);
-  line-height: 1.7;
-  color: var(--bark);
-  max-width: 54ch;
-  margin-top: 1.5rem;
-}
-.treehouse-deck em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.treehouse-credits {
-  display: block;
-  margin-top: 2.4rem;
-  font-family: var(--sans);
-  font-size: 0.66rem;
-  letter-spacing: 0.22em;
-  color: var(--stone);
-  text-transform: uppercase;
-  line-height: 2;
-}
-
-.treehouse-frontispiece-image {
-  aspect-ratio: 4/5;
-}
-.treehouse-frontispiece-image .img-caption {
-  position: absolute;
-  bottom: -1.7rem;
-  left: 0;
-}
-
-/* Full bleed plate */
-.treehouse-fullbleed {
-  margin: 7rem 0 5rem;
-  aspect-ratio: 21/9;
-  width: 100%;
-  position: relative;
-}
-.treehouse-fullbleed-caption {
-  position: absolute;
-  bottom: -3rem;
-  left: 3rem;
-  right: 3rem;
-  display: flex;
-  gap: 1.6rem;
-  align-items: baseline;
-  max-width: 800px;
-}
-.treehouse-fullbleed-num {
-  font-family: var(--sans);
-  font-size: 0.66rem;
-  letter-spacing: 0.24em;
-  color: var(--moss);
-  text-transform: uppercase;
-  flex-shrink: 0;
-}
-.treehouse-fullbleed-text {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--bark);
-  line-height: 1.55;
-}
-.treehouse-fullbleed-text em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-/* Pull quote — critic */
-.treehouse-pullquote {
-  margin: 9rem auto 7rem;
-  max-width: 950px;
-  padding: 0 3rem;
-  text-align: center;
-  position: relative;
-}
-.treehouse-pullquote::before,
-.treehouse-pullquote::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 1px;
-  background: var(--leaf);
-  margin: 0 auto 2.5rem;
-}
-.treehouse-pullquote::after {
-  margin: 2.5rem auto 0;
-}
-.treehouse-pullquote p {
-  font-family: var(--display);
-  font-size: clamp(1.5rem, 2.6vw, 2.3rem);
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--ink);
-  margin-bottom: 2rem;
-  letter-spacing: -0.005em;
-}
-.treehouse-pullquote p em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.treehouse-pullquote cite {
-  font-style: normal;
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
-  color: var(--stone);
-  text-transform: uppercase;
-  display: inline-flex;
-  gap: 0.8rem;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.cite-name { color: var(--ink); }
-.cite-sep { color: var(--leaf); }
-.cite-pub em {
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0.04em;
-  font-family: var(--display);
-  font-size: 1.15em;
-  color: var(--moss);
-}
-
-/* Three plates */
-.treehouse-plates {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
-  padding: 0 3rem;
-  max-width: 1500px;
-  margin: 0 auto 5rem;
-}
-.treehouse-plate {
-  aspect-ratio: 3/4;
-}
-.treehouse-plate figcaption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1.2rem;
-  background: linear-gradient(transparent, rgba(26, 46, 31, 0.85));
-  color: var(--ivory);
-  transform: translateY(60%);
-  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-.treehouse-plate:hover figcaption {
-  transform: translateY(0);
-}
-.plate-tag {
-  font-family: var(--sans);
-  font-size: 0.6rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--sage-pale);
-}
-.plate-title {
-  font-family: var(--display);
-  font-size: 1.15rem;
-  color: var(--ivory);
-}
-.plate-title em {
-  font-style: italic;
-  color: var(--sage-pale);
-}
-.plate-meta {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  color: rgba(247, 243, 235, 0.78);
-}
-.plate-meta em {
-  color: var(--sage-pale);
-  font-style: italic;
-  font-family: var(--display);
-  font-size: 1.05em;
-  letter-spacing: 0.04em;
-}
-
-.treehouse-coda {
-  max-width: 700px;
-  margin: 4rem auto 0;
-  padding: 0 3rem;
-  text-align: center;
-}
-.treehouse-coda-eyebrow {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.64rem;
-  letter-spacing: 0.28em;
-  color: var(--moss);
-  text-transform: uppercase;
-  margin-bottom: 0.8rem;
-}
-.treehouse-coda p {
-  font-family: var(--display);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-style: italic;
   line-height: 1.6;
   color: var(--bark);
-}
-.treehouse-coda p em {
-  color: var(--moss);
-}
-
-
-/* ============================================
-   8. EL DIARIO — Journal (Tree House exclusive)
-   ============================================ */
-
-.diario {
-  padding: 10rem 3rem 9rem;
-  background: var(--paper-deep);
-}
-
-.diario-header {
-  margin-bottom: 2rem;
-  max-width: 700px;
-}
-.diario-header h2 {
-  font-family: var(--display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 400;
-  line-height: 1.02;
-  color: var(--ink);
-}
-.diario-header h2 em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.diario-deck {
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-style: italic;
-  color: var(--stone);
-  margin-top: 0.6rem;
-}
-.diario-deck em {
-  color: var(--moss);
-}
-
-.diario-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem 3rem;
-  max-width: 1200px;
-  margin: 4rem auto 0;
-}
-
-.diario-entry {
-  padding: 2.4rem 0;
-  border-top: 1px solid var(--leaf);
-  transition: padding-left 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-  position: relative;
-  /* cursor:pointer removed — only the .diario-read anchor is actually
-     interactive now (Critique R1 §12). */
-}
-.diario-entry:hover {
-  padding-left: 1rem;
-}
-.diario-entry:focus-within {
-  padding-left: 1rem;
-}
-
-.diario-folio {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--moss);
-  margin-bottom: 0.9rem;
-}
-
-.diario-entry h3 {
-  font-family: var(--display);
-  font-size: clamp(1.6rem, 2.2vw, 2rem);
-  font-weight: 400;
-  color: var(--ink);
-  line-height: 1.15;
-  margin-bottom: 0.4rem;
-}
-
-.diario-tag {
-  display: block;
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 0.92rem;
-  color: var(--moss);
-  margin-bottom: 1rem;
-  letter-spacing: 0.02em;
-}
-
-.diario-entry p {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--bark);
-  max-width: 50ch;
-  margin-bottom: 1.2rem;
-}
-.diario-entry p em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.diario-read {
-  font-family: var(--sans);
-  font-size: 0.64rem;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--moss);
-  transition: color 0.3s, gap 0.3s;
-  display: inline-flex;
-  gap: 0.5rem;
-  align-items: center;
-  /* Now a decorative <span aria-hidden="true"> (Critique R3 §10) — no
-     keyboard target, no anchor to a nonexistent destination. The visual
-     affordance remains for the sighted reader. */
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-}
-.diario-entry:hover .diario-read {
-  color: var(--canopy);
-  gap: 0.8rem;
-  border-bottom-color: var(--leaf);
-}
-
-
-/* ============================================
-   9. CURATED MÉRIDA
-   ============================================ */
-
-.merida {
-  padding: 10rem 3rem 9rem;
-  background: var(--limestone);
-}
-
-.merida-header {
-  margin-bottom: 2rem;
-  max-width: 700px;
-}
-.merida-header h2 {
-  font-family: var(--display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 400;
-  line-height: 1.02;
-  color: var(--ink);
-}
-.merida-header h2 em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.merida-deck {
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-style: italic;
-  color: var(--stone);
-  margin-top: 0.6rem;
-}
-.merida-deck em {
-  color: var(--moss);
-}
-
-.merida-list {
-  list-style: none;
-  max-width: 1100px;
-  margin: 4rem auto 0;
-  counter-reset: merida;
-}
-
-.merida-entry {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 3rem;
-  padding: 2.6rem 0;
-  border-bottom: 1px solid var(--warm-gray);
-  align-items: start;
-  transition: padding-left 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.merida-entry:hover {
-  padding-left: 1.2rem;
-}
-.merida-entry:last-child {
-  border-bottom: none;
-}
-
-.merida-num {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 2.2rem;
-  color: var(--moss);
-  line-height: 1;
-}
-
-.merida-body h3 {
-  font-family: var(--display);
-  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-  font-weight: 400;
-  color: var(--ink);
-  margin-bottom: 0.4rem;
-  line-height: 1.1;
-}
-.merida-body h3 em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.merida-tag {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.64rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--moss);
-  margin-bottom: 1.2rem;
-}
-.merida-tag em {
-  font-style: italic;
-  color: var(--ochre-deep);
-  letter-spacing: 0.04em;
-  text-transform: none;
-  font-family: var(--display);
-  font-size: 1.1em;
-}
-
-.merida-body p {
-  font-size: 1.08rem;
-  line-height: 1.75;
-  color: var(--bark);
-  max-width: 60ch;
-}
-.merida-body p em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-
-/* ============================================
-   10. VOICES
-   ============================================ */
-
-.voices {
-  padding: 10rem 3rem 8rem;
-}
-
-.voices-header {
-  margin-bottom: 5rem;
-}
-
-.voices-header h2 {
-  font-family: var(--display);
-  font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 400;
-  line-height: 1;
-  color: var(--ink);
-}
-.voices-header h2 em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.voices-sub {
-  font-family: var(--display);
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--stone);
-  margin-top: 0.6rem;
-}
-.voices-sub em {
-  color: var(--moss);
-}
-
-.voices-track {
-  display: flex;
-  gap: 3.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 3rem;
-  scrollbar-width: none;
-  cursor: grab;
-}
-.voices-track::-webkit-scrollbar { display: none; }
-.voices-track.dragging { cursor: grabbing; }
-
-.voice-card {
-  flex: 0 0 min(80vw, 620px);
-  scroll-snap-align: start;
-  padding: 4rem 3rem;
-  position: relative;
-  border-left: 1px solid var(--warm-gray);
-  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.voice-card:first-child { border-left: none; }
-.voice-card:hover { transform: translateY(-3px); }
-
-.voice-card::before {
-  content: '\201C';
-  font-family: var(--display);
-  font-size: 7rem;
-  color: var(--leaf);
-  opacity: 0.3;
-  position: absolute;
-  top: 0.5rem;
-  left: 1.2rem;
-  line-height: 1;
-}
-
-.voice-quote {
-  font-family: var(--display);
-  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-  font-style: italic;
-  line-height: 1.55;
-  margin-bottom: 2.2rem;
-  position: relative;
-  z-index: 1;
-  color: var(--ink);
-}
-.voice-quote em {
-  font-style: italic;
-  color: var(--moss);
-}
-
-.voice-card figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-.voice-author {
-  font-style: normal;
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-.voice-place {
-  font-family: var(--display);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--stone);
-}
-
-.voices-scroll-progress {
-  width: 100%;
-  height: 1px;
-  background: var(--warm-gray);
   margin-top: 1rem;
-  position: relative;
-}
-.voices-scroll-bar {
-  height: 100%;
-  background: var(--moss);
-  width: 0%;
-  transition: width 0.15s linear;
+  max-width: 54ch;
 }
 
-
-/* ============================================
-   11. EDITORIAL INTERSTITIAL
-   ============================================ */
-
-.editorial-interstitial {
-  padding: 4rem 3rem 10rem;
-  background: var(--ivory);
-}
-
-.interstitial-header {
-  margin-bottom: 4rem;
-  max-width: 700px;
-}
-.interstitial-header h3 {
-  font-family: var(--display);
-  font-size: clamp(2.4rem, 4vw, 3.8rem);
-  font-weight: 400;
-  line-height: 1.05;
-  color: var(--ink);
-  margin-top: 0.5rem;
-}
-.interstitial-header h3 em {
-  font-style: italic;
-  color: var(--moss);
-}
-.interstitial-intro {
-  font-family: var(--display);
-  font-style: italic;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--bark);
-  margin-top: 1.4rem;
-  max-width: 56ch;
-}
-.interstitial-intro em {
-  color: var(--moss);
-  font-style: italic;
-}
-
-.interstitial-row {
+.art-plates {
   display: grid;
-  grid-template-columns: 1fr 1.4fr 0.8fr;
-  gap: 1.8rem;
-  align-items: end;
-  margin-bottom: 2.4rem;
-}
-
-.interstitial-1 { aspect-ratio: 1/1; }
-.interstitial-2 { aspect-ratio: 16/10; margin-bottom: 4rem; }
-.interstitial-3 { aspect-ratio: 3/4; }
-
-.interstitial-row--offset {
-  grid-template-columns: 0.7fr 1fr 1.2fr;
-  align-items: center;
-}
-.interstitial-4 { aspect-ratio: 4/5; }
-.interstitial-5 { aspect-ratio: 3/4; }
-
-.interstitial-pull-quote {
-  padding: 3rem 2rem;
-  text-align: center;
-  position: relative;
-}
-.interstitial-pull-quote::before,
-.interstitial-pull-quote::after {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 1px;
-  background: var(--leaf);
-  margin: 1.4rem auto;
-}
-.interstitial-pull-quote p {
-  font-family: var(--display);
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
-  font-style: italic;
-  line-height: 1.55;
-  color: var(--ink);
-  max-width: 28ch;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.6rem;
+  max-width: 1300px;
   margin: 0 auto;
 }
-.interstitial-pull-quote p em {
-  color: var(--moss);
+.art-plate {
+  aspect-ratio: 3/4;
 }
-.interstitial-pull-quote-cite {
-  display: block;
-  margin-top: 1rem;
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.24em;
-  color: var(--stone);
-  text-transform: uppercase;
-}
-
-.interstitial-row--final {
-  grid-template-columns: 1.1fr 0.6fr 1fr;
-  align-items: start;
-}
-.interstitial-6 { aspect-ratio: 16/9; }
-.interstitial-7 { aspect-ratio: 1/1; margin-top: 3rem; }
-.interstitial-8 { aspect-ratio: 4/5; }
-
-.interstitial-row:hover .editorial-img {
-  opacity: 0.78;
-  transition: opacity 0.45s ease;
-}
-.interstitial-row:hover .editorial-img:hover {
-  opacity: 1;
-}
-
 
 /* ============================================
-   12. VISIT
+   4. VISIT / LOCATION
    ============================================ */
-
 .visit {
-  padding: 10rem 3rem 9rem;
+  padding: 9rem 3rem 8rem;
   background: var(--canopy);
   color: var(--ivory);
 }
@@ -2171,12 +684,12 @@ img { display: block; max-width: 100%; height: auto; }
 .visit .section-marker::before { background: var(--sage-pale); }
 
 .visit-header {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   max-width: 800px;
 }
 .visit-header h2 {
   font-family: var(--display);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 400;
   line-height: 1.02;
   color: var(--ivory);
@@ -2187,307 +700,216 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .visit-deck {
   font-family: var(--display);
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   font-style: italic;
-  color: rgba(247, 243, 235, 0.7);
-  margin-top: 0.8rem;
-}
-.visit-deck em {
-  color: var(--sage-pale);
+  color: rgba(247, 243, 235, 0.74);
+  margin-top: 0.6rem;
 }
 
 .visit-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1.4fr;
-  gap: 2rem;
-  max-width: 1400px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.4rem;
+  max-width: 1300px;
 }
 
 .visit-card {
-  padding: 2.4rem 2rem;
-  border-top: 1px solid rgba(247, 243, 235, 0.18);
+  padding: 2.2rem 0 0;
+  border-top: 1px solid rgba(247, 243, 235, 0.22);
 }
 
 .visit-eyebrow {
   display: block;
   font-family: var(--sans);
-  font-size: 0.62rem;
+  font-size: 0.64rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--sage-pale);
   margin-bottom: 1.2rem;
-}
-
-.visit-card h3 {
-  font-family: var(--display);
-  font-size: 1.9rem;
-  font-weight: 400;
-  margin-bottom: 1.2rem;
-  color: var(--ivory);
-}
-.visit-card h3 em {
-  font-style: italic;
-  color: var(--sage-pale);
 }
 
 .visit-card p {
   font-size: 1rem;
   line-height: 1.75;
-  color: rgba(247, 243, 235, 0.82);
+  color: rgba(247, 243, 235, 0.85);
 }
-.visit-card p em {
-  color: var(--sage-pale);
-  font-style: italic;
-}
-
-.visit-detail-mono {
-  display: block;
-  margin-top: 1.4rem;
+.visit-card p + p { margin-top: 0.8rem; }
+.visit-hours {
   font-family: var(--sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.24em;
-  /* Lifted from 0.5 → 0.72 for AA at small caps size (Critique R1 §7). */
-  color: rgba(247, 243, 235, 0.72);
-  text-transform: uppercase;
-}
-
-.visit-card--feature {
-  border-top: 1px solid var(--ochre);
-  background: rgba(198, 153, 96, 0.07);
-  padding: 2.6rem 2.2rem;
-}
-
-.visit-cta {
-  display: inline-block;
-  margin-top: 1.6rem;
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  font-weight: 500;
+  font-size: 0.66rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 0.95rem 1.6rem;
-  background: var(--ochre);
-  color: var(--canopy);
-  transition: background 0.4s, color 0.4s;
-  word-break: break-word;
-}
-.visit-cta:hover {
-  background: var(--ivory);
-  color: var(--canopy);
+  color: rgba(247, 243, 235, 0.72);
+  margin-top: 1rem !important;
 }
 
+.visit-anchors {
+  list-style: none;
+}
+.visit-anchors li {
+  padding: 0.55rem 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: rgba(247, 243, 235, 0.85);
+  border-bottom: 1px solid rgba(247, 243, 235, 0.12);
+}
+.visit-anchors li:last-child { border-bottom: none; }
 
 /* ============================================
-   13. COLOPHON
+   5. OFFER
    ============================================ */
-
-.colophon {
-  padding: 6rem 3rem 3rem;
-  background: var(--ivory);
-  position: relative;
+.offer {
+  padding: 8rem 3rem;
+  background: var(--limestone);
 }
-
-.colophon-rule {
-  height: 1px;
-  background: var(--leaf);
-  opacity: 0.4;
-  margin-bottom: 5rem;
+.offer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
 }
-
-.colophon-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
-  gap: 4rem;
-  margin-bottom: 5rem;
+.offer-inner .section-marker {
+  justify-content: center;
 }
-
-.colophon-brand-logo {
-  margin-bottom: 1.2rem;
-}
-.colophon-brand-logo img {
-  max-width: 120px;
-  height: auto;
-  opacity: 0.85;
-}
-
-.colophon-brand {
+.offer-inner h2 {
   font-family: var(--display);
-  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
   font-weight: 400;
-  margin-bottom: 1.4rem;
-  line-height: 1.1;
+  line-height: 1.08;
   color: var(--ink);
+  margin: 0.8rem 0 1.4rem;
 }
-.colophon-brand em {
+.offer-inner h2 em {
   font-style: italic;
   color: var(--moss);
 }
-
-.colophon-brand-desc {
-  font-size: 0.98rem;
-  line-height: 1.8;
+.offer-inner p {
+  font-size: 1.08rem;
+  line-height: 1.75;
   color: var(--bark);
-  max-width: 44ch;
+  margin-bottom: 2rem;
+  max-width: 52ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.colophon-publication {
-  font-family: var(--sans);
-  font-size: 0.66rem;
-  letter-spacing: 0.24em;
-  color: var(--moss);
-  margin-top: 1.5rem;
-  text-transform: uppercase;
-}
-
-.colophon-section h4 {
-  font-family: var(--sans);
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--moss);
-  margin-bottom: 1.5rem;
-}
-
-.colophon-section p,
-.colophon-section a {
-  display: block;
-  font-family: var(--display);
-  font-size: 1.02rem;
-  line-height: 2;
-  color: var(--bark);
-  letter-spacing: 0.005em;
-}
-.colophon-section p strong {
-  font-weight: 600;
-  color: var(--ink);
-}
-.colophon-section a {
-  position: relative;
-  width: fit-content;
-}
-.colophon-section a::after {
-  content: '';
-  position: absolute;
-  bottom: 0.35rem;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--leaf);
-  transition: width 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.colophon-section a:hover {
-  color: var(--moss);
-}
-.colophon-section a:hover::after { width: 100%; }
-
-/* Newsletter */
-.newsletter-blurb {
-  margin-bottom: 0.6rem;
-}
-.newsletter-form {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-  gap: 0;
-}
-.newsletter-status {
-  flex-basis: 100%;
-  margin-top: 0.7rem;
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  color: var(--moss);
-  min-height: 1em;
-}
-.newsletter-status:empty { display: none; }
-.newsletter-input {
+.offer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
   font-family: var(--sans);
   font-size: 0.74rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--warm-gray);
-  border-right: none;
-  background: transparent;
-  color: var(--bark);
-  flex: 1;
-  outline: none;
-  letter-spacing: 0.04em;
-  min-width: 0;
-}
-.newsletter-input::placeholder { color: var(--stone); }
-.newsletter-input:focus {
-  border-color: var(--moss);
-  box-shadow: 0 0 0 2px rgba(47, 74, 50, 0.12);
-}
-.newsletter-btn {
-  font-family: var(--sans);
-  font-size: 0.66rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 0.85rem 1.4rem;
-  min-height: 44px;
-  border: 1px solid var(--canopy);
+  padding: 1.1rem 2rem;
   background: var(--canopy);
   color: var(--ivory);
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  border: 1px solid var(--canopy);
+  position: relative;
+  transition: background 0.4s, color 0.4s;
 }
-.newsletter-btn:hover {
-  background: var(--moss);
-  border-color: var(--moss);
+.offer-cta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
+  width: 0;
+  background: var(--ochre);
+  transition: width 280ms ease-out;
 }
+.offer-cta:hover { background: var(--moss); border-color: var(--moss); }
+.offer-cta:hover::after { width: 100%; }
+.offer-cta-arrow { transition: transform 0.3s; display: inline-block; }
+.offer-cta:hover .offer-cta-arrow { transform: translateX(3px); }
 
-.colophon-masthead {
-  display: flex;
-  justify-content: center;
-  gap: 1.4rem;
-  align-items: center;
-  margin: 3rem 0;
-  padding: 2rem 0;
+/* ============================================
+   6. FOOTER
+   ============================================ */
+.site-footer {
+  padding: 5rem 3rem 2.5rem;
+  background: var(--ivory);
   border-top: 1px solid var(--warm-gray);
-  border-bottom: 1px solid var(--warm-gray);
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--stone);
-  flex-wrap: wrap;
 }
-.colophon-masthead-edition,
-.colophon-masthead-place,
-.colophon-masthead-year {
+.site-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem;
+  max-width: 1300px;
+  margin: 0 auto 3rem;
+}
+.site-footer-logo {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
   color: var(--ink);
 }
-.colophon-masthead-sep { color: var(--leaf); }
-.colophon-masthead-key {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--terracotta);
+.site-footer-logo em {
+  font-style: italic;
+  color: var(--moss);
+}
+.site-footer-desc {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--bark);
+  max-width: 42ch;
 }
 
-.colophon-bottom {
+.site-footer-col h4 {
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 1.2rem;
+}
+.site-footer-col p,
+.site-footer-col a {
+  display: block;
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--bark);
+}
+.site-footer-col a {
+  position: relative;
+  width: fit-content;
+  background-image: linear-gradient(var(--leaf), var(--leaf));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 280ms ease-out, color 280ms ease-out;
+}
+.site-footer-col a:hover {
+  color: var(--moss);
+  background-size: 100% 1px;
+}
+
+.site-footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 2rem;
-  gap: 2rem;
+  border-top: 1px solid var(--warm-gray);
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
-
-.colophon-legal {
+.site-footer-legal {
   font-family: var(--sans);
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   letter-spacing: 0.18em;
-  color: var(--stone);
   text-transform: uppercase;
+  color: var(--stone);
 }
-
-.colophon-social {
+.site-footer-social {
   display: flex;
-  gap: 2rem;
+  gap: 1.6rem;
 }
-.colophon-social a {
+.site-footer-social a {
   font-family: var(--sans);
   font-size: 0.66rem;
   letter-spacing: 0.22em;
@@ -2495,151 +917,50 @@ img { display: block; max-width: 100%; height: auto; }
   color: var(--stone);
   transition: color 0.3s;
 }
-.colophon-social a:hover { color: var(--moss); }
+.site-footer-social a:hover { color: var(--moss); }
 
 
 /* ============================================
    RESPONSIVE
    ============================================ */
-
 @media (max-width: 1024px) {
   .hero-image-wrap {
-    width: 50%;
+    width: 48%;
     right: 0;
     bottom: 0;
   }
   .hero-title { max-width: 100%; }
 
-  .editors-note-inner {
-    grid-template-columns: 1fr;
-  }
-  .editors-note-text {
-    grid-column: 1;
-    padding-left: 0;
-    padding-top: 0;
-  }
-  .editors-note-image {
-    grid-column: 1;
-    margin-top: 4rem;
-  }
-
-  /* Preserve the small-caps / big-word / small-caps trio relationship at tablet
-     by stacking into a centered 3-row layout (Critique R1 §9). */
-  .sanctuary-headline {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 0.6rem;
-  }
-  .sanctuary-headline .big-word {
-    text-align: center;
-    line-height: 0.9;
-  }
-  .sanctuary-headline .small-caps,
-  .sanctuary-headline .small-caps--right {
-    text-align: center;
-    padding-bottom: 0;
-  }
-  .sanctuary-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .sanctuary-text-center {
-    grid-column: 1 / -1;
-    padding: 0;
-    order: -1;
-  }
-  .sanctuary-img-right {
-    margin-top: 0;
-  }
-
-  .michelin-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .michelin-key {
-    position: static;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  .michelin-stats {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
   .rooms-grid {
     grid-template-columns: 1fr;
-    gap: 5rem;
+    gap: 4rem;
   }
   .room-card--offset { margin-top: 0; }
 
-  .standard-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .standard-item {
-    border-left: none;
-    border-top: 1px solid rgba(247, 243, 235, 0.14);
-    padding: 2.5rem 0;
-  }
-  .standard-item:first-child {
-    border-top: none;
-    padding-top: 0;
-  }
-
-  .treehouse-frontispiece {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .treehouse-frontispiece-image {
-    aspect-ratio: 16/10;
-  }
-  .treehouse-fullbleed-caption {
-    position: static;
-    margin-top: 1.4rem;
-    padding: 0 3rem;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  .treehouse-fullbleed {
-    margin-bottom: 2rem;
-  }
-  .treehouse-plates {
+  .art-plates {
     grid-template-columns: 1fr 1fr;
   }
-  .treehouse-plates .treehouse-plate:last-child {
+  .art-plates .art-plate:last-child {
     grid-column: 1 / -1;
-  }
-
-  .diario-grid {
-    grid-template-columns: 1fr;
+    aspect-ratio: 16/9;
   }
 
   .visit-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .visit-card--feature {
-    grid-column: 1 / -1;
-  }
 
-  .colophon-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-  }
-
-  .interstitial-row,
-  .interstitial-row--offset,
-  .interstitial-row--final {
+  .site-footer-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .interstitial-2 { margin-bottom: 0; }
-  .interstitial-7 { margin-top: 0; }
 }
 
 @media (max-width: 768px) {
   html { scroll-padding-top: 72px; }
+
   .masthead-bar {
     padding: 1rem 1.5rem;
   }
   .masthead-logo-word { display: none; }
-  .masthead-logo-key img { width: 18px; height: 18px; }
 
   .mobile-menu-toggle { display: flex; }
 
@@ -2667,9 +988,6 @@ img { display: block; max-width: 100%; height: auto; }
     font-size: 0.85rem;
     letter-spacing: 0.25em;
   }
-  .masthead-nav-cta {
-    padding: 0.85rem 1.6rem;
-  }
 
   .hero {
     padding: 8rem 1.5rem 4rem;
@@ -2678,7 +996,7 @@ img { display: block; max-width: 100%; height: auto; }
     flex-wrap: wrap;
     gap: 0.6rem;
     font-size: 0.6rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: 2rem;
   }
   .hero-image-wrap {
     position: relative;
@@ -2686,151 +1004,58 @@ img { display: block; max-width: 100%; height: auto; }
     bottom: 0;
     width: 100%;
     max-width: none;
-    margin-top: 3rem;
+    margin-top: 2.6rem;
     aspect-ratio: 4/5;
-  }
-  .hero-image-wrap .img-caption {
-    position: static;
-    margin-top: 0.7rem;
   }
   .hero-title .line-2 {
     font-size: clamp(3.2rem, 14vw, 5.5rem);
   }
   .hero-title .line-3 {
-    font-size: clamp(2rem, 9vw, 3.6rem);
+    font-size: clamp(1.8rem, 8vw, 3rem);
   }
   .hero-cta-row {
     flex-direction: column;
     gap: 1rem;
     align-items: stretch;
+    width: 100%;
   }
-  .hero-cta {
-    justify-content: center;
-  }
-  .hero-keybadge {
+  .hero-cta { justify-content: center; }
+  .accolade-strip {
     width: 100%;
     justify-content: center;
+    font-size: 0.62rem;
   }
-  .hero-scroll-hint { display: none; }
 
-  .editors-note,
-  .sanctuary,
-  .michelin,
   .rooms,
-  .standard,
-  .diario,
-  .merida,
-  .voices,
-  .visit {
-    padding: 6rem 1.5rem;
+  .art,
+  .visit,
+  .offer {
+    padding: 5.5rem 1.5rem;
   }
 
-  .editors-note-image {
-    margin-top: 3rem;
-  }
-  .editors-note-aside {
-    margin: 2.5rem auto 0;
-    max-width: 100%;
-  }
-
-  .sanctuary-grid {
+  .art-plates {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
-
-  .michelin-stats {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
-  .rooms-grid {
-    gap: 4rem;
-  }
-
-  .treehouse {
-    padding: 6rem 0;
-  }
-  .treehouse-frontispiece {
-    padding: 0 1.5rem;
-    gap: 2.5rem;
-  }
-  .treehouse-fullbleed {
-    margin: 4rem 0 3rem;
-    aspect-ratio: 4/5;
-  }
-  .treehouse-fullbleed-caption {
-    padding: 0 1.5rem;
-  }
-  .treehouse-pullquote {
-    margin: 4rem auto;
-    padding: 0 1.5rem;
-  }
-  .treehouse-plates {
-    grid-template-columns: 1fr;
-    padding: 0 1.5rem;
-  }
-  .treehouse-plates .treehouse-plate:last-child {
-    grid-column: auto;
-  }
-  .treehouse-plate figcaption {
-    transform: translateY(0);
-    background: linear-gradient(transparent 30%, rgba(26, 46, 31, 0.78));
-  }
-  .treehouse-coda {
-    padding: 0 1.5rem;
-  }
-
-  .merida-entry {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-    padding: 2rem 0;
-  }
-  .merida-entry:hover { padding-left: 0; }
-
-  .voice-card {
-    flex: 0 0 88vw;
-    padding: 3rem 1.6rem;
+  .art-plates .art-plate:last-child {
+    aspect-ratio: 3/4;
   }
 
   .visit-grid {
     grid-template-columns: 1fr;
+    gap: 1.8rem;
   }
 
-  .editorial-interstitial {
-    padding: 3rem 1.5rem 5rem;
+  .site-footer {
+    padding: 3.5rem 1.5rem 2rem;
   }
-  .interstitial-row,
-  .interstitial-row--offset,
-  .interstitial-row--final {
+  .site-footer-grid {
     grid-template-columns: 1fr;
-    gap: 1.2rem;
+    gap: 2.4rem;
   }
-
-  .colophon {
-    padding: 4rem 1.5rem 2.5rem;
-  }
-  .colophon-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .colophon-masthead {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 0.6rem;
-    font-size: 0.6rem;
-  }
-  .colophon-bottom {
+  .site-footer-bottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.2rem;
-  }
-
-  .page-counter {
-    bottom: 1rem;
-    right: 1rem;
-  }
-  .reading-progress {
-    left: 0.6rem;
+    gap: 1rem;
   }
 }
 
@@ -2838,18 +1063,12 @@ img { display: block; max-width: 100%; height: auto; }
   .hero {
     padding: 7rem 1.2rem 3rem;
   }
-  .hero-title .line-1 {
-    font-size: 0.72rem;
-    letter-spacing: 0.28em;
-  }
   .hero-deck {
     font-size: 1.04rem;
   }
-  .drop-cap::first-letter {
-    font-size: 3.4em;
-  }
   .room-cta,
-  .visit-cta {
+  .hero-cta,
+  .offer-cta {
     padding: 1rem 1.6rem;
     font-size: 0.68rem;
     min-height: 48px;
@@ -2857,68 +1076,28 @@ img { display: block; max-width: 100%; height: auto; }
     align-items: center;
     justify-content: center;
   }
-  .merida-num {
-    font-size: 1.8rem;
-  }
-  .treehouse-pullquote::before,
-  .treehouse-pullquote::after {
-    margin-bottom: 1.6rem;
-  }
-  .colophon-social {
-    flex-wrap: wrap;
-    gap: 1.2rem;
-  }
-  .michelin-key img {
-    width: 140px;
-    height: 140px;
+  .offer-inner h2 {
+    font-size: clamp(2rem, 9vw, 2.6rem);
   }
 }
 
 
 /* ============================================
-   MICRO-INTERACTIONS
+   REDUCED MOTION
    ============================================ */
-
-.rooms-header h2,
-.standard-header h2,
-.voices-header h2,
-.merida-header h2,
-.diario-header h2,
-.visit-header h2,
-.treehouse-title {
-  transition: letter-spacing 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.rooms-header h2:hover,
-.standard-header h2:hover,
-.voices-header h2:hover,
-.merida-header h2:hover,
-.diario-header h2:hover,
-.visit-header h2:hover {
-  letter-spacing: 0.004em;
-}
-
-@media (hover: none) {
-  .treehouse-plate figcaption {
-    transform: translateY(0);
-    background: linear-gradient(transparent 30%, rgba(26, 46, 31, 0.78));
-  }
-}
-
-/* Honour reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal, .reveal-line { opacity: 1; transform: none; clip-path: none; }
-  .editorial-img img { transform: none; }
+  main { animation: none; }
+  .editorial-sweep,
+  .editorial-sweep.visible {
+    clip-path: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-image-wrap.editorial-sweep { opacity: 1; }
   .draw-line { transform: scaleX(1); }
   html { scroll-behavior: auto; }
-  /* JS-driven flip is also skipped in JS; this guarantees no transform
-     animation remains even if a stylesheet load races (Critique R3 §3). */
-  .page-num,
-  .page-num--flipping {
-    transition: none !important;
-    transform: none !important;
-  }
 }

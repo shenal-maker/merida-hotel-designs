@@ -121,10 +121,13 @@
   /* Variants grid */
   .variants {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: clamp(1rem, 2vw, 1.8rem);
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.9rem, 1.6vw, 1.4rem);
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
+    .variants { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
     .variants { grid-template-columns: 1fr; }
   }
   .variant {
@@ -265,11 +268,11 @@
   <header class="masthead">
     <div class="container">
       <div class="masthead-eyebrow">Mérida · Yucatán · MMXXVI</div>
-      <h1 class="masthead-title">Two hotels.<br>Three directions <em>each.</em></h1>
+      <h1 class="masthead-title">Two hotels.<br>Four directions <em>each.</em></h1>
       <p class="masthead-deck">Design explorations for <em style="font-style: italic;">Boutique by The Museo</em> and <em style="font-style: italic;">Tree House Boutique Hotel</em> — sister properties in the historic center of Mérida.</p>
       <div class="masthead-meta">
-        <span><strong>6</strong> directions</span>
-        <span><strong>3</strong> rounds of refinement</span>
+        <span><strong>8</strong> directions</span>
+        <span><strong>3</strong> artistic + 1 shippable</span>
         <span><strong>2</strong> houses</span>
         <span><strong>1</strong> art collaboration</span>
       </div>
@@ -312,11 +315,21 @@
         <a class="variant" href="boutique/v3/">
           <span class="variant-num">V3</span>
           <h3 class="variant-name">Brutalist <em>Art-Forward</em></h3>
-          <p class="variant-desc">The hotel as catalog. Twelve-column grid, mono microcopy, plate captions in real museum register. The art collaboration the structural centerpiece.</p>
+          <p class="variant-desc">The hotel as catalog. Twelve-column grid, mono microcopy, snap-staccato reveals. Catalog-register CTAs.</p>
           <div class="variant-stack">
-            <span>Anchor — Peter &amp; Paul</span>
             <span>Brutalist catalog</span>
             <span>Limestone · ink · terracotta</span>
+          </div>
+          <span class="variant-cta">View →</span>
+        </a>
+
+        <a class="variant" href="boutique/v4-minimal/">
+          <span class="variant-num">V4</span>
+          <h3 class="variant-name">Minimal <em>Conversion</em></h3>
+          <p class="variant-desc">The one to actually ship. Booking widget in the hero. Sticky Reserve. Lucide icons. Six sections, ruthless whitespace, mobile-first.</p>
+          <div class="variant-stack">
+            <span>Conversion-first</span>
+            <span>Inter · Fraunces · Lucide</span>
           </div>
           <span class="variant-cta">View →</span>
         </a>
@@ -360,11 +373,21 @@
         <a class="variant" href="treehouse/v3/">
           <span class="variant-num">V3</span>
           <h3 class="variant-name">Brutalist <em>Art-Forward</em></h3>
-          <p class="variant-desc">Hotel as botanical and art catalog. An Arboretum section unique to this house. Cetina the painter and Eulogio the gardener as the brand's spine.</p>
+          <p class="variant-desc">Two-line TREE / HOUSE wordmark, 12-col grid, snap-staccato reveals. Michelin Key as a small data-strip, not a section.</p>
           <div class="variant-stack">
-            <span>Anchor — Peter &amp; Paul</span>
-            <span>Brutalist + herbarium</span>
+            <span>Brutalist + mono</span>
             <span>Canopy · limestone · cenote</span>
+          </div>
+          <span class="variant-cta">View →</span>
+        </a>
+
+        <a class="variant" href="treehouse/v4-minimal/">
+          <span class="variant-num">V4</span>
+          <h3 class="variant-name">Minimal <em>Conversion</em></h3>
+          <p class="variant-desc">The shippable direction. Booking widget in the hero. Michelin Key accolade strip above the wordmark. Sticky Reserve.</p>
+          <div class="variant-stack">
+            <span>Conversion-first</span>
+            <span>Inter · Fraunces · Lucide</span>
           </div>
           <span class="variant-cta">View →</span>
         </a>

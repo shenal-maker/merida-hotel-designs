@@ -1,21 +1,20 @@
 /* ============================================
-   TREE HOUSE BOUTIQUE HOTEL — V1 Cinematic
-   R3: motion + interaction + a11y pass.
-   Interactions, intro, cursor, reveals, carousel.
+   TREE HOUSE BOUTIQUE HOTEL — V1 Cinematic (trimmed)
+   Motion fingerprint: Sustained.
+   - Cinematic intro overlay (curtain dissolve)
+   - Hero ken-burns + per-char title reveal + staggered copy
+   - Scroll reveals on .cinematic-rise (1200ms cubic-bezier(0.16,1,0.3,1), 180ms stagger via CSS)
+   - Custom cursor with leaf-bright/ochre + difference-blend trail
    ============================================ */
 
 (function () {
   'use strict';
 
   // ---------- Reduced motion + pointer-type capability flags ----------
-  // Finding 7: gate JS-driven motion (parallax, cursor trail, hero ken-burns,
-  // carousel auto-advance) on a live-updating prefers-reduced-motion check.
   const reduceMotionMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
   let prefersReducedMotion = reduceMotionMQ.matches;
   reduceMotionMQ.addEventListener('change', e => { prefersReducedMotion = e.matches; });
 
-  // Finding 4: pointer-fine + hover are required for the custom cursor /
-  // magnetic affordance. Anything else gets the native cursor back.
   const pointerFineMQ = window.matchMedia('(pointer: fine)');
   const hoverHoverMQ = window.matchMedia('(hover: hover)');
   function applyPointerClass() {
@@ -27,8 +26,6 @@
   hoverHoverMQ.addEventListener('change', applyPointerClass);
 
   // ---------- Cinematic intro: wordmark + leaf appears, then overlay dissolves ----------
-  // Finding 1: scroll-lock is a JS class, not an inline style on <body>. No-JS
-  // users get no lock at all (the <noscript> block in <head> also unhides chrome).
   const introOverlay = document.getElementById('introOverlay');
   document.body.classList.add('intro-locked');
 
@@ -46,7 +43,7 @@
     if (introOverlay) introOverlay.style.display = 'none';
   }, 2400);
 
-  // ---------- Custom Cursor (leaf-green, brightens to ochre over images) ----------
+  // ---------- Custom Cursor (leaf-bright, warms to ochre over images) ----------
   const cursor = document.querySelector('.cursor');
   const cursorTrail = document.querySelector('.cursor-trail');
   let cursorX = 0, cursorY = 0;
@@ -67,7 +64,6 @@
 
     function animateTrail() {
       if (prefersReducedMotion) {
-        // Finding 7: snap-to-cursor when reduced motion — no easing loop
         trailX = cursorX;
         trailY = cursorY;
       } else {
@@ -80,10 +76,7 @@
     }
     animateTrail();
 
-    // Hover state on interactives
-    const interactives = document.querySelectorAll(
-      'a, button, .room-card, .nav-dot, .testimonial-dot, .journal-card, .curated-card'
-    );
+    const interactives = document.querySelectorAll('a, button, .room-card');
     interactives.forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.classList.add('hover');
@@ -95,10 +88,9 @@
       });
     });
 
-    // Finding 12: Cursor warms to ochre over images via CLASS toggle, not
-    // inline style. The class loses to `.hover` cleanly via CSS specificity.
+    // Cursor warms to ochre over images
     const imageContainers = document.querySelectorAll(
-      '.hero-bg, .sanctuary-image-wrap, .room-card-bg, .art-piece-img, .journal-card__img, .location-image-wrap, .interstitial-bg, .photo-strip-item'
+      '.hero-bg, .room-card-bg, .art-piece-img, .location-image-wrap'
     );
     imageContainers.forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('over-image'));
@@ -106,23 +98,10 @@
     });
   }
 
-  // ---------- Magnetic Buttons ----------
-  // Finding 11: exclude full-bleed submit on narrow viewports — the magnetic
-  // wobble on a 100%-wide button is uncalibrated.
-  const narrowMQ = window.matchMedia('(max-width: 900px)');
-  function magneticEligible(btn) {
-    if (!pointerFineMQ.matches || !hoverHoverMQ.matches) return false;
-    if (btn.classList.contains('reserve-submit')) return false;
-    if (narrowMQ.matches && btn.classList.contains('reserve-submit')) return false;
-    return true;
-  }
-
-  const magneticBtns = document.querySelectorAll(
-    '.magnetic-btn, .hero-cta a.magnetic-btn, .location-cta a'
-  );
-
+  // ---------- Magnetic primary CTA (hero + location) ----------
+  const magneticBtns = document.querySelectorAll('.magnetic-btn');
   magneticBtns.forEach(btn => {
-    if (!magneticEligible(btn)) return;
+    if (!pointerFineMQ.matches || !hoverHoverMQ.matches) return;
 
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
@@ -136,28 +115,6 @@
     btn.addEventListener('mouseleave', () => {
       btn.style.transform = '';
     });
-
-    // Click ripple (leaf-green wash)
-    btn.addEventListener('click', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const ripple = document.createElement('span');
-      ripple.style.cssText = `
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(142, 174, 125, 0.32);
-        width: 0; height: 0;
-        left: ${e.clientX - rect.left}px;
-        top: ${e.clientY - rect.top}px;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        animation: rippleOut 0.6s ease-out forwards;
-      `;
-      const prevPos = getComputedStyle(btn).position;
-      if (prevPos === 'static') btn.style.position = 'relative';
-      btn.style.overflow = 'hidden';
-      btn.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
-    });
   });
 
   // ---------- Progress Bar ----------
@@ -169,31 +126,6 @@
       progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
     }
   }
-
-  // ---------- Nav Dots ----------
-  // Finding 14: use getBoundingClientRect() so scroll-spy is document-position
-  // -agnostic and works whether section offsetParent is body or a wrapper.
-  const sections = document.querySelectorAll('[data-section]');
-  const navDots = document.querySelectorAll('.nav-dot');
-
-  function updateNavDots() {
-    if (sections.length === 0) return;
-    const center = window.innerHeight / 2;
-    let activeIdx = 0;
-    sections.forEach((section, i) => {
-      const r = section.getBoundingClientRect();
-      if (r.top <= center && r.bottom > center) activeIdx = i;
-    });
-    navDots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
-  }
-
-  navDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const target = dot.getAttribute('data-target');
-      const el = document.querySelector(target);
-      if (el) el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    });
-  });
 
   // ---------- Top Nav scroll effect ----------
   const topNav = document.querySelector('.top-nav');
@@ -230,7 +162,6 @@
         }
         node.parentNode.replaceChild(frag, node);
       } else if (node.nodeType === Node.ELEMENT_NODE) {
-        // Recurse for <em> etc.
         const children = Array.from(node.childNodes);
         children.forEach(c => animateNode(c, indexRef));
       }
@@ -239,8 +170,7 @@
     const indexRef = { i: 0 };
     Array.from(heroTitle.childNodes).forEach(n => animateNode(n, indexRef));
 
-    // Start the hero background slow zoom in sync with overlay dissolve
-    // (skipped under reduced motion — CSS already pins to scale(1))
+    // Hero ken-burns: scale 1.06 → 1.00 over ~11s (CSS-driven), kicked off after intro
     if (!prefersReducedMotion) {
       setTimeout(() => {
         const heroBg = document.querySelector('.hero-bg');
@@ -249,208 +179,23 @@
     }
   }
 
-  // ---------- Reveal on Scroll ----------
-  const revealElements = document.querySelectorAll(
-    '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-img, .reveal-stat'
-  );
+  // ---------- Reveal on Scroll: .cinematic-rise ----------
+  // 1200ms ease-out + translateY(40px→0) is in CSS. Stagger is also in CSS via :nth-child.
+  // JS only adds .visible when the element enters the viewport.
+  const revealElements = document.querySelectorAll('.cinematic-rise');
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
     });
   }, { threshold: 0.14, rootMargin: '0px 0px -60px 0px' });
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // Accent lines and dividers
-  const accentLines = document.querySelectorAll('.accent-line, .origin-divider, .art-divider');
-  const accentObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.4, rootMargin: '0px 0px -40px 0px' });
-  accentLines.forEach(el => accentObserver.observe(el));
-
-  // ---------- Sanctuary image parallax ----------
-  // Finding 7: parallax respects prefers-reduced-motion.
-  const sanctuaryImg = document.querySelector('.sanctuary-image-wrap img');
-
-  function updateParallax() {
-    if (!sanctuaryImg) return;
-    if (prefersReducedMotion) {
-      if (sanctuaryImg.style.transform) sanctuaryImg.style.transform = '';
-      return;
-    }
-    const wrap = sanctuaryImg.parentElement;
-    const rect = wrap.getBoundingClientRect();
-    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-    const progress = (rect.top + rect.height) / (window.innerHeight + rect.height);
-    const offset = (progress - 0.5) * 90;
-    sanctuaryImg.style.transform = `translateY(${offset}px) scale(1.05)`;
-  }
-
-  // ---------- Room card click-to-expand ----------
-  const roomCards = document.querySelectorAll('.room-card[data-expandable]');
-  roomCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      // Don't toggle on link clicks
-      if (e.target.closest('a')) return;
-      card.classList.toggle('expanded');
-    });
-  });
-
-  // ---------- Voices carousel (Finding 6) ----------
-  // Pausable on hover/focus, keyboard-navigable, prev/next buttons,
-  // aria-live polite announcements, paused under prefers-reduced-motion,
-  // paused on tab-hidden.
-  const voicesSection = document.querySelector('.section-voices');
-  const testimonials = document.querySelectorAll('.testimonial-item');
-  const testimDots = document.querySelectorAll('.testimonial-dot');
-  const testimPrev = document.querySelector('.testimonial-prev');
-  const testimNext = document.querySelector('.testimonial-next');
-  let currentTestimonial = 0;
-  let testimonialTimer = null;
-  let testimonialPaused = false;
-
-  function dwellMsFor(item) {
-    if (!item) return 6000;
-    const chars = (item.textContent || '').trim().length;
-    // ~50 chars/sec reading + a beat — clamp to 4.5s – 9s.
-    return Math.min(9000, Math.max(4500, 2200 + chars * 28));
-  }
-
-  function showTestimonial(index) {
-    if (testimonials[currentTestimonial]) {
-      testimonials[currentTestimonial].classList.add('exiting');
-      testimonials[currentTestimonial].classList.remove('active');
-    }
-
-    currentTestimonial = index;
-
-    setTimeout(() => {
-      testimonials.forEach(t => {
-        t.classList.remove('exiting');
-        t.classList.remove('active');
-      });
-      testimDots.forEach(d => {
-        d.classList.remove('active');
-        d.setAttribute('aria-selected', 'false');
-      });
-
-      if (testimonials[currentTestimonial]) {
-        testimonials[currentTestimonial].classList.add('active');
-      }
-      if (testimDots[currentTestimonial]) {
-        testimDots[currentTestimonial].classList.add('active');
-        testimDots[currentTestimonial].setAttribute('aria-selected', 'true');
-      }
-    }, 220);
-  }
-
-  function nextTestimonial() {
-    showTestimonial((currentTestimonial + 1) % testimonials.length);
-  }
-  function prevTestimonial() {
-    showTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length);
-  }
-
-  function scheduleNextTestimonial() {
-    clearTimeout(testimonialTimer);
-    if (testimonialPaused || prefersReducedMotion || testimonials.length === 0) return;
-    const ms = dwellMsFor(testimonials[currentTestimonial]);
-    testimonialTimer = setTimeout(() => {
-      nextTestimonial();
-      scheduleNextTestimonial();
-    }, ms);
-  }
-
-  function pauseTestimonials() {
-    testimonialPaused = true;
-    clearTimeout(testimonialTimer);
-  }
-  function resumeTestimonials() {
-    testimonialPaused = false;
-    scheduleNextTestimonial();
-  }
-
-  if (testimonials.length > 0) {
-    showTestimonial(0);
-    scheduleNextTestimonial();
-
-    testimDots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        clearTimeout(testimonialTimer);
-        showTestimonial(i);
-        scheduleNextTestimonial();
-      });
-      // Arrow-key navigation between dots (tablist convention)
-      dot.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          const next = (i + 1) % testimDots.length;
-          testimDots[next].focus();
-          showTestimonial(next);
-          scheduleNextTestimonial();
-        } else if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          const prev = (i - 1 + testimDots.length) % testimDots.length;
-          testimDots[prev].focus();
-          showTestimonial(prev);
-          scheduleNextTestimonial();
-        }
-      });
-    });
-
-    if (testimPrev) {
-      testimPrev.addEventListener('click', () => {
-        clearTimeout(testimonialTimer);
-        prevTestimonial();
-        scheduleNextTestimonial();
-      });
-    }
-    if (testimNext) {
-      testimNext.addEventListener('click', () => {
-        clearTimeout(testimonialTimer);
-        nextTestimonial();
-        scheduleNextTestimonial();
-      });
-    }
-
-    if (voicesSection) {
-      voicesSection.addEventListener('mouseenter', pauseTestimonials);
-      voicesSection.addEventListener('mouseleave', resumeTestimonials);
-      voicesSection.addEventListener('focusin', pauseTestimonials);
-      voicesSection.addEventListener('focusout', (e) => {
-        // Only resume when focus actually leaves the section
-        if (!voicesSection.contains(e.relatedTarget)) resumeTestimonials();
-      });
-    }
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) clearTimeout(testimonialTimer);
-      else if (!testimonialPaused) scheduleNextTestimonial();
-    });
-  }
-
-  // ---------- Scroll-to-top ----------
-  const scrollToTopBtn = document.querySelector('.scroll-to-top');
-  if (scrollToTopBtn) {
-    scrollToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    });
-  }
-  function updateScrollToTop() {
-    if (!scrollToTopBtn) return;
-    if (window.scrollY > window.innerHeight * 0.9) {
-      scrollToTopBtn.classList.add('visible');
-    } else {
-      scrollToTopBtn.classList.remove('visible');
-    }
-  }
-
   // ---------- Smooth anchor scroll ----------
-  // Finding 5: respect prefers-reduced-motion when issuing programmatic
-  // scrollIntoView. CSS scroll-padding-top handles the fixed-nav offset.
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');
@@ -463,66 +208,13 @@
     });
   });
 
-  // ---------- Reserve form (Finding 10) ----------
-  // Polite success / error announcements via aria-live status region.
-  // Arrival/Departure min dates derived from "today" (no yesterday-arrival).
-  const reserveForm = document.querySelector('.reserve-form');
-  const reserveStatus = document.querySelector('.reserve-status');
-  const arrivalInput = document.getElementById('arrival');
-  const departureInput = document.getElementById('departure');
-
-  if (arrivalInput && departureInput) {
-    const today = new Date().toISOString().split('T')[0];
-    arrivalInput.min = today;
-    departureInput.min = today;
-    arrivalInput.addEventListener('change', () => {
-      if (arrivalInput.value) departureInput.min = arrivalInput.value;
-    });
-  }
-
-  if (reserveForm) {
-    reserveForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const submit = reserveForm.querySelector('.reserve-submit');
-      if (!submit) return;
-      const original = submit.dataset.label || submit.textContent;
-      submit.dataset.label = original;
-
-      // Validate arrival < departure if both supplied
-      if (arrivalInput && departureInput && arrivalInput.value && departureInput.value &&
-          departureInput.value <= arrivalInput.value) {
-        if (reserveStatus) {
-          reserveStatus.classList.add('is-error');
-          reserveStatus.textContent = 'Departure must be after arrival.';
-        }
-        return;
-      }
-
-      submit.textContent = 'Enquiry sent';
-      submit.style.background = 'var(--leaf-bright)';
-      if (reserveStatus) {
-        reserveStatus.classList.remove('is-error');
-        reserveStatus.textContent = 'Enquiry received — the house will write back from reservations@treehouseboutiquehotel.com within a day.';
-      }
-
-      setTimeout(() => {
-        submit.textContent = original;
-        submit.style.background = '';
-        if (reserveStatus) reserveStatus.textContent = '';
-      }, 5000);
-    });
-  }
-
   // ---------- Unified scroll handler (rAF-throttled) ----------
   let ticking = false;
   function onScroll() {
     if (!ticking) {
       requestAnimationFrame(() => {
         updateProgress();
-        updateNavDots();
         updateNav();
-        updateParallax();
-        updateScrollToTop();
         ticking = false;
       });
       ticking = true;

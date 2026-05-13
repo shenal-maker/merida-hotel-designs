@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Boutique by The Museo — A 15-room sanctuary on Paseo de Montejo, Mérida</title>
+  <meta name="description" content="An intimate 15-room luxury hotel in the historic center of Mérida, Yucatán. Restored hacienda architecture steps from Palacio Cantón. Reserve directly." />
+  <meta name="theme-color" content="#1a1410" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preload" as="image" href="assets/hero.jpg" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a class="brand" href="#top" aria-label="Boutique by The Museo — home">
+        <span class="brand-mark">Boutique</span>
+        <span class="brand-sub">by The Museo</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#rooms">Rooms</a>
+        <a href="#art">Art</a>
+        <a href="#location">Location</a>
+        <a href="#offers">Offers</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a class="btn btn-primary" href="#booking">Reserve</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top" aria-labelledby="hero-wordmark">
+      <div class="hero-media">
+        <img src="assets/hero.jpg" alt="Interior of Boutique by The Museo, Mérida — restored colonial detail." fetchpriority="high" />
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <p class="hero-eyebrow">Mérida · Yucatán · México</p>
+          <h1 class="hero-wordmark" id="hero-wordmark">
+            Boutique<br /><span class="accent">by The Museo</span>
+          </h1>
+          <p class="hero-tagline">An intimate 15-room sanctuary in the historic center of Mérida, steps from Palacio Cantón on Paseo de Montejo.</p>
+        </div>
+
+        <form class="booking reveal" id="booking" aria-label="Check availability">
+          <label class="booking-field">
+            <span>Arrival</span>
+            <span class="field-row">
+              <i data-lucide="calendar" aria-hidden="true"></i>
+              <input type="date" data-role="arrival" aria-label="Arrival date" required />
+            </span>
+          </label>
+          <label class="booking-field">
+            <span>Departure</span>
+            <span class="field-row">
+              <i data-lucide="calendar" aria-hidden="true"></i>
+              <input type="date" data-role="departure" aria-label="Departure date" required />
+            </span>
+          </label>
+          <label class="booking-field">
+            <span>Guests</span>
+            <span class="field-row">
+              <i data-lucide="users" aria-hidden="true"></i>
+              <select data-role="guests" aria-label="Number of guests">
+                <option value="1">1 guest</option>
+                <option value="2" selected>2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+              </select>
+            </span>
+          </label>
+          <button type="submit" class="btn btn-primary btn-large">
+            <span>Check Availability</span>
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ ROOMS ============ -->
+    <section id="rooms" aria-labelledby="rooms-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <p class="section-eyebrow">The Rooms</p>
+            <h2 class="section-title" id="rooms-title">Fifteen rooms. Four characters.</h2>
+          </div>
+          <p class="section-lede">Each room is a quiet variation on the hacienda's restored interior — high ceilings, limestone, and the courtyard's hush.</p>
+        </header>
+
+        <div class="rooms-grid">
+          <!-- placeholder pricing; replace with real rates -->
+          <article class="room-card reveal">
+            <div class="room-media">
+              <img src="assets/room-deluxe.webp" alt="Deluxe Boutique Room interior" loading="lazy" />
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Deluxe Boutique Room</h3>
+              <p class="room-meta"><span>2 guests</span><span class="dot">·</span><span>Queen bed</span></p>
+              <p class="room-desc">A serene base in the historic core — pared-back stone, walnut floors, and a courtyard view.</p>
+              <div class="room-foot">
+                <span class="room-price">From <strong data-placeholder="true">$295 / night</strong></span>
+                <a class="room-cta" href="#booking">Reserve</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- placeholder pricing; replace with real rates -->
+          <article class="room-card reveal">
+            <div class="room-media">
+              <img src="assets/room-suite.jpg" alt="Deluxe Boutique Suite interior" loading="lazy" />
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Deluxe Boutique Suite</h3>
+              <p class="room-meta"><span>2 guests</span><span class="dot">·</span><span>King bed · sitting area</span></p>
+              <p class="room-desc">More room to settle in. A separate seating nook, considered art, and the same hush from the patio below.</p>
+              <div class="room-foot">
+                <span class="room-price">From <strong data-placeholder="true">$395 / night</strong></span>
+                <a class="room-cta" href="#booking">Reserve</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- placeholder pricing; replace with real rates -->
+          <article class="room-card reveal">
+            <div class="room-media">
+              <img src="assets/room-grand.jpg" alt="Grand Boutique Suite interior" loading="lazy" />
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Grand Boutique Suite</h3>
+              <p class="room-meta"><span>2 guests</span><span class="dot">·</span><span>King · lounge · bathtub</span></p>
+              <p class="room-desc">A larger footprint with a deep soaking tub, generous lounge, and the building's best afternoon light.</p>
+              <div class="room-foot">
+                <span class="room-price">From <strong data-placeholder="true">$545 / night</strong></span>
+                <a class="room-cta" href="#booking">Reserve</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- placeholder pricing; replace with real rates -->
+          <article class="room-card reveal">
+            <div class="room-media">
+              <img src="assets/room-penthouse.jpg" alt="Penthouse Suite at Boutique by The Museo" loading="lazy" />
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Penthouse Suite</h3>
+              <p class="room-meta"><span>2 guests</span><span class="dot">·</span><span>King · private terrace</span></p>
+              <p class="room-desc">The top floor — a private terrace over Mérida's rooftops, ideal for an arrival drink at dusk.</p>
+              <div class="room-foot">
+                <span class="room-price">From <strong data-placeholder="true">$895 / night</strong></span>
+                <a class="room-cta" href="#booking">Reserve</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ART ============ -->
+    <section class="art" id="art" aria-labelledby="art-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <p class="section-eyebrow">The Art Collaboration</p>
+            <h2 class="section-title" id="art-title">Treehouse × SoHo Galleries.</h2>
+          </div>
+        </header>
+
+        <div class="art-grid">
+          <div class="art-copy reveal">
+            <p>A curated art program rotates between our two houses in Mérida. Treehouse is the program; SoHo Galleries is the partner. Tree House Hotel — our sister property in Santa Ana — is the namesake venue, where guests live inside the exhibition.</p>
+            <p>Here at Boutique by The Museo, you'll see selected works in the public spaces, chosen to sit quietly alongside the restored hacienda.</p>
+            <a class="art-link" href="../../treehouse/v4-minimal/index.html" aria-label="Visit Tree House Boutique Hotel — the namesake venue">
+              <span>The namesake venue · Tree House Hotel</span>
+              <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="art-plate reveal" aria-hidden="false">
+            <span class="plate-eyebrow">Currently on view</span>
+            <p class="plate-line">A rotating selection from SoHo Galleries, presented across the houses.</p>
+            <div class="plate-meta">
+              <span>Treehouse</span>
+              <span class="rule"></span>
+              <span>SoHo Galleries · Mérida</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOCATION ============ -->
+    <section id="location" aria-labelledby="location-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <div>
+            <p class="section-eyebrow">Location</p>
+            <h2 class="section-title" id="location-title">On Paseo de Montejo, in the historic center.</h2>
+          </div>
+          <p class="section-lede">Fifteen minutes from Mérida International Airport. Walking distance to the city's most considered galleries, dining, and quiet plazas.</p>
+        </header>
+
+        <div class="location-grid">
+          <div class="location-map reveal">
+            <iframe
+              title="Map of Boutique by The Museo, Mérida"
+              src="https://www.google.com/maps?q=Paseo+de+Montejo+Mérida+Yucatán&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+          <div class="location-info reveal">
+            <dl>
+              <div>
+                <dt>Address</dt>
+                <dd>Paseo de Montejo<br />Centro Histórico, Mérida, Yucatán, México</dd>
+              </div>
+              <div>
+                <dt>Airport</dt>
+                <dd>15 minutes by car from Mérida International (MID)</dd>
+              </div>
+              <div>
+                <dt>Reservations</dt>
+                <dd><a href="mailto:info@boutiquebythemuseo.com">info@boutiquebythemuseo.com</a></dd>
+              </div>
+            </dl>
+
+            <div class="anchors" aria-label="Nearby">
+              <div class="anchor"><span class="name">Palacio Cantón</span><span class="dist">2 min walk</span></div>
+              <div class="anchor"><span class="name">Paseo de Montejo cafés</span><span class="dist">5 min walk</span></div>
+              <div class="anchor"><span class="name">Plaza Grande</span><span class="dist">10 min walk</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OFFER ============ -->
+    <section class="offer" id="offers" aria-labelledby="offer-title">
+      <div class="container reveal">
+        <div class="offer-copy">
+          <p class="section-eyebrow" style="color: var(--ochre);">Resident's Allocation</p>
+          <h3 id="offer-title">Six nights or more, on us at arrival.</h3>
+          <p>Book six nights or longer directly and we'll include a complimentary private airport transfer on arrival, plus a small Yucatecan welcome in your suite.</p>
+        </div>
+        <a class="btn btn-primary btn-large" href="#booking">
+          <span>Check Availability</span>
+          <i data-lucide="arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer" id="contact" aria-labelledby="footer-title">
+      <h2 id="footer-title" class="visually-hidden">Contact and re-booking</h2>
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <p class="footer-brand">Boutique by The Museo</p>
+            <p class="footer-text">A 15-room sanctuary in the historic center of Mérida — restored hacienda architecture on Paseo de Montejo.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Visit</h4>
+            <ul>
+              <li><a href="#rooms">Rooms &amp; Suites</a></li>
+              <li><a href="#art">Art Collaboration</a></li>
+              <li><a href="#location">Location</a></li>
+              <li><a href="#offers">Offers</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:info@boutiquebythemuseo.com">info@boutiquebythemuseo.com</a></li>
+              <li><a href="tel:+52999000000">+52 999 ___ ____</a></li>
+              <li>Paseo de Montejo, Mérida, México</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Sister Property</h4>
+            <ul>
+              <li><a href="../../treehouse/v4-minimal/index.html">Tree House Hotel · Santa Ana</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-rebook">
+          <h4>Reserve directly</h4>
+          <form class="booking booking--compact" aria-label="Re-book strip">
+            <label class="booking-field">
+              <span>Arrival</span>
+              <span class="field-row">
+                <i data-lucide="calendar" aria-hidden="true"></i>
+                <input type="date" data-role="arrival" aria-label="Arrival date" required />
+              </span>
+            </label>
+            <label class="booking-field">
+              <span>Departure</span>
+              <span class="field-row">
+                <i data-lucide="calendar" aria-hidden="true"></i>
+                <input type="date" data-role="departure" aria-label="Departure date" required />
+              </span>
+            </label>
+            <label class="booking-field">
+              <span>Guests</span>
+              <span class="field-row">
+                <i data-lucide="users" aria-hidden="true"></i>
+                <select data-role="guests" aria-label="Number of guests">
+                  <option>1 guest</option>
+                  <option selected>2 guests</option>
+                  <option>3 guests</option>
+                  <option>4 guests</option>
+                </select>
+              </span>
+            </label>
+            <button type="submit" class="btn btn-primary">
+              <span>Reserve</span>
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="footer-base">
+          <span>© Boutique by The Museo · Mérida, Yucatán, México</span>
+          <span>v4 · minimal</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
