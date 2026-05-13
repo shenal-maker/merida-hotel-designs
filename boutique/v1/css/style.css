@@ -67,7 +67,7 @@ body {
 
 /* Custom cursor only on devices that earn it */
 @media (pointer: fine) and (hover: hover) {
-  body { cursor: none; }
+  body { cursor: auto; }
 }
 body.coarse-pointer,
 body.coarse-pointer * { cursor: auto !important; }
@@ -127,7 +127,8 @@ em { font-style: italic; color: inherit; }
 }
 .skip-link:focus { top: 16px; }
 
-/* --- Custom Cursor --- */
+/* --- Custom Cursor (disabled; native cursor always visible) --- */
+.cursor, .cursor-trail { display: none !important; }
 .cursor {
   position: fixed;
   top: 0; left: 0;

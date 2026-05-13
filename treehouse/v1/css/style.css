@@ -79,7 +79,7 @@ body {
 
 /* Custom cursor only on fine pointer + hover */
 @media (pointer: fine) and (hover: hover) {
-  body { cursor: none; }
+  body { cursor: auto; }
 }
 body.coarse-pointer,
 body.coarse-pointer * { cursor: auto !important; }
@@ -165,7 +165,8 @@ em { font-style: italic; color: inherit; }
 }
 .skip-link:focus { top: 16px; }
 
-/* --- Custom Cursor (leaf-bright/ochre, difference-blend trail) --- */
+/* --- Custom Cursor (disabled; native cursor always visible) --- */
+.cursor, .cursor-trail { display: none !important; }
 .cursor {
   position: fixed;
   top: 0; left: 0;
@@ -351,7 +352,7 @@ em { font-style: italic; color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  cursor: none;
+  cursor: auto;
 }
 
 .top-nav .logo__leaf {
@@ -713,7 +714,7 @@ em { font-style: italic; color: inherit; }
   padding: 16px 36px;
   transition: transform 300ms ease, background 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
   font-weight: 500;
-  cursor: none;
+  cursor: auto;
   position: relative;
   overflow: hidden;
 }
@@ -783,7 +784,7 @@ em { font-style: italic; color: inherit; }
   flex: 1 1 0;
   min-width: 0;
   text-align: left;
-  cursor: none;
+  cursor: auto;
 }
 
 .hero-booking .booking-label {
@@ -807,7 +808,7 @@ em { font-style: italic; color: inherit; }
   padding: 4px 0;
   width: 100%;
   letter-spacing: 0.01em;
-  cursor: none;
+  cursor: auto;
   /* Hide the default focus ring; we paint our own */
   outline: none;
   appearance: none;
@@ -816,7 +817,7 @@ em { font-style: italic; color: inherit; }
 
 .hero-booking input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(40%) sepia(35%) saturate(370%) hue-rotate(355deg) brightness(94%) contrast(86%);
-  cursor: none;
+  cursor: auto;
   opacity: 0.65;
   transition: opacity 0.2s ease;
 }
@@ -856,7 +857,7 @@ em { font-style: italic; color: inherit; }
   padding: 14px 28px;
   margin-left: 14px;
   font-weight: 500;
-  cursor: none;
+  cursor: auto;
   transition: transform 300ms ease, background 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
   align-self: stretch;
   min-height: 44px;
@@ -1036,7 +1037,7 @@ body.coarse-pointer .hero-booking .booking-submit { cursor: pointer; }
   position: relative;
   min-height: 70vh;
   overflow: hidden;
-  cursor: none;
+  cursor: auto;
   background: var(--canopy);
 }
 
@@ -1457,7 +1458,7 @@ body.coarse-pointer .hero-booking .booking-submit { cursor: pointer; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  cursor: none;
+  cursor: auto;
 }
 
 .footer-brand .logo__leaf {
