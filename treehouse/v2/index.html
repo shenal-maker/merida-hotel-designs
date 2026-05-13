@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tree House Boutique Hotel &mdash; Edici&oacute;n Bot&aacute;nica No. 1, M&eacute;rida</title>
+  <meta name="description" content="Tree House Boutique Hotel — an adults-only 15-room sanctuary in Santa Ana, Mérida. First Michelin Key in the city. Wrapped in foliage; cooled by canopy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../assets/hero-tree-courtyard.jpg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Reading Progress Bar (editorial spine) -->
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <!-- Page Counter — Roman numerals for the field journal -->
+  <div class="page-counter" aria-hidden="true" data-hidden="true">
+    <span class="page-counter-current"><span class="page-num"></span></span>
+    <span class="page-counter-leaf" aria-hidden="true">&#10087;</span>
+    <span class="page-counter-label" lang="es-MX">Portada</span>
+  </div>
+
+  <!-- ============================================
+       MASTHEAD BAR
+       ============================================ -->
+  <header class="masthead-bar" role="banner">
+    <a href="#top" class="masthead-logo" aria-label="Tree House Boutique Hotel — home">
+      <span class="masthead-logo-mark">TH</span>
+      <span class="masthead-logo-word">Tree House <span class="masthead-logo-dot" aria-hidden="true">&middot;</span> Boutique</span>
+      <span class="masthead-logo-key" aria-label="One Michelin Key">
+        <img src="assets-external/michelin-key.webp"
+             alt="One Michelin Key" width="22" height="22" loading="eager" decoding="async">
+      </span>
+    </a>
+    <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="masthead-nav">
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+    <nav aria-label="Primary">
+      <ul class="masthead-nav" id="masthead-nav">
+        <li><a href="#sanctuary" lang="es-MX">El Santuario</a></li>
+        <li><a href="#michelin" lang="es-MX">La Llave</a></li>
+        <li><a href="#habitaciones" lang="es-MX">Habitaciones</a></li>
+        <li><a href="#treehouse">Treehouse</a></li>
+        <li><a href="#diario" lang="es-MX">El Diario</a></li>
+        <li><a href="#visit" lang="es-MX">Visitar</a></li>
+        <li><a href="#reserve" class="masthead-nav-cta">Reserve</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+  <!-- ============================================
+       1. HERO / MASTHEAD
+       ============================================ -->
+  <section class="hero" id="top" data-section="0" data-section-label="Portada">
+    <div class="hero-meta-row reveal">
+      <span class="hero-meta-item" lang="es-MX">Edici&oacute;n Bot&aacute;nica No. 1</span>
+      <span class="hero-meta-sep">&mdash;</span>
+      <span class="hero-meta-item" lang="es-MX">Santa Ana, M&eacute;rida</span>
+      <span class="hero-meta-sep">&mdash;</span>
+      <span class="hero-meta-item">MMXXVI</span>
+    </div>
+
+    <div class="hero-title">
+      <span class="line-1 reveal">A Field Journal &middot; <span lang="es-MX">Solo para Adultos</span></span>
+      <span class="line-2 reveal-line">Tree House</span>
+      <span class="line-3 reveal-line" lang="es-MX"><span class="hero-by">bajo</span> el Dosel</span>
+    </div>
+
+    <div class="hero-deck reveal">
+      <p>
+        <em lang="es-MX">Una casa bajo el follaje.</em> <span class="hero-deck-emph">Fifteen rooms, no children, one Michelin Key.</span> A small hotel for grown-ups in Santa Ana &mdash; the quietest <span lang="es-MX">barrio</span> of M&eacute;rida, in a courtyard that has not been hurried in seventy years.
+      </p>
+      <!-- italic stripped from hero-deck-emph (Critique R1 §17 — italic = Spanish/Latin only); R2 §10 — adults-only sensibility now leads. -->
+    </div>
+
+    <div class="hero-cta-row reveal">
+      <a href="#reserve" class="hero-cta">Reserve a Suite <span class="hero-cta-arrow">&rarr;</span></a>
+      <a href="#editors-note" class="hero-cta hero-cta--ghost">Read the Edition <span class="hero-cta-arrow">&darr;</span></a>
+    </div>
+
+    <div class="hero-keybadge reveal">
+      <img src="assets-external/michelin-key.webp"
+           alt="" width="44" height="44" loading="eager" decoding="async">
+      <span class="hero-keybadge-text">
+        <span class="hero-keybadge-line-1">One Michelin Key</span>
+        <span class="hero-keybadge-line-2"><span lang="es-MX">Primera en M&eacute;rida</span> &middot; MMXXV</span>
+      </span>
+    </div>
+
+    <div class="hero-image-wrap editorial-img">
+      <img src="../assets/hero-tree-courtyard.jpg"
+           alt="A mature ficus growing through the courtyard, two-story house wrapped around it, lanterns lit at midday — Tree House, Santa Ana, M&eacute;rida"
+           loading="eager" decoding="async">
+      <span class="img-caption" lang="es-MX">L&aacute;m. I &mdash; La casa bajo el dosel, Santa Ana</span>
+    </div>
+
+    <div class="hero-scroll-hint" aria-hidden="true" lang="es-MX">Pase la p&aacute;gina</div>
+  </section>
+
+  <!-- ============================================
+       2. EDITOR'S NOTE
+       ============================================ -->
+  <section class="editors-note" data-section="1" data-section-label="Nota" id="editors-note">
+    <div class="editors-note-inner">
+      <div class="editors-note-text">
+        <div class="section-marker reveal" lang="es-MX">01 / Nota de la Casa</div>
+        <h2 class="reveal">
+          <span class="kicker" lang="es-MX">Del cuaderno de</span>
+          The Editor's<br><em>Note</em>
+        </h2>
+        <hr class="draw-line draw-line--short">
+        <p class="reveal drop-cap">
+          <span class="dateline" lang="es-MX"><em>11 abril, MMXXVI.</em></span>
+          The <em lang="la">ficus</em> dropped a branch in the night &mdash; the first time in three rainy seasons it has asked for our attention. The gardener was out before the desk had finished the morning coffee. The house, on the other hand, has not asked for anything in seventy years. It was here before we were. We mostly try to keep up with it.
+        </p>
+        <p class="reveal">
+          What we keep, then, is fifteen rooms in the <em lang="es-MX">barrio</em> of Santa Ana &mdash; <em lang="es-MX">quince habitaciones</em>, a courtyard, a small pool, and a rooftop the size of a long breakfast. <em lang="es-MX">Sin ni&ntilde;os</em>, by house rule, so that the canopy may keep its hush. The two <em lang="es-MX">ceibas</em> at the corner of Calle 43 belong to the street; the neighbourhood will not let us prune them, and we have stopped suggesting it.
+        </p>
+        <p class="reveal">
+          In MMXXV the Michelin Guide gave us a Key &mdash; the first awarded in M&eacute;rida. The news arrived by email at 9:14 a.m. on a Tuesday; the front desk was on a coffee break. (See <em class="plate-ref" lang="es-MX">L&aacute;mina II</em>, opposite, for the corner of the patio at which the laptop was open.) We have not changed the towels since.
+        </p>
+        <p class="reveal">
+          What you are holding is a quiet field journal of the house &mdash; rooms, plants, neighbours, art &mdash; bound in one volume. <em lang="es-MX">P&aacute;sela despacio.</em>
+        </p>
+        <div class="signature reveal">
+          <span class="signature-mark">&mdash;</span>
+          <span class="signature-name" lang="es-MX">Apuntes del cuaderno verde</span>
+          <span class="signature-place" lang="es-MX"><em>Edici&oacute;n Bot&aacute;nica No. 1</em> &middot; Santa Ana, M&eacute;rida, abril MMXXVI</span>
+        </div>
+      </div>
+      <div class="editors-note-image">
+        <div class="editorial-img">
+          <img src="../assets/sanctuary-corridor-day.jpg"
+               alt="Upper-floor open-air corridor in daytime — wooden doors, iron-rail arches opening to courtyard greenery, ornate hanging lanterns"
+               loading="lazy" decoding="async">
+          <span class="img-caption" lang="es-MX">L&aacute;m. II &mdash; Esquina del patio, ma&ntilde;ana</span>
+        </div>
+        <div class="editors-note-aside reveal">
+          <span class="aside-eyebrow" lang="es-MX">Apunte bot&aacute;nico</span>
+          <p><em lang="la">Ficus benjamina</em>, planted c. 1955. The canopy keeps the patio four degrees cooler than the street &mdash; verified by an obsessive guest with a thermometer, August 2024.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       3. THE SANCTUARY
+       ============================================ -->
+  <section class="sanctuary" data-section="2" data-section-label="Santuario" id="sanctuary">
+    <div class="section-marker reveal" lang="es-MX">02 / El Santuario</div>
+    <div class="sanctuary-headline">
+      <span class="small-caps reveal">A House of</span>
+      <span class="big-word reveal-line" lang="es-MX">Quince</span>
+      <span class="small-caps reveal small-caps--right" lang="es-MX">habitaciones &mdash; <em>solo adultos</em></span>
+    </div>
+
+    <hr class="draw-line draw-line--medium">
+
+    <div class="sanctuary-grid">
+      <div class="sanctuary-img-left editorial-img">
+        <img src="../assets/canopy-courtyard-wing.jpg"
+             alt="Wide view of a courtyard wing — giant ficus trunk and aerial roots on the left, the long linear pool and waterfall on the right, multi-story stucco facades"
+             loading="lazy" decoding="async">
+        <span class="img-caption" lang="es-MX">L&aacute;m. III &mdash; Ala del patio, dosel y agua</span>
+      </div>
+
+      <div class="sanctuary-text-center reveal">
+        <p class="sanctuary-lede">
+          <em lang="es-MX">Un refugio bot&aacute;nico.</em> A sanctuary cooled by its own canopy &mdash; in Santa Ana, two blocks from the park and one street back from the tour-bus route.
+        </p>
+        <p class="drop-cap">
+          The building is colonial &mdash; one of the long low houses of Calle 43 &mdash; but the character of the house is the garden it grew into. <em>Tree house</em>, then, is literal: the walls are inside the leaves. At three in the afternoon (see <em class="plate-ref" lang="es-MX">L&aacute;m. XV</em>) the courtyard runs noticeably cooler than the street.
+        </p>
+        <p>
+          The house keeps fifteen rooms, a single check-in, a small pool the colour of cenote-water, and a roof terrace shaded by a pair of grown <span class="botanical" lang="la">Cocos nucifera</span>. No children &mdash; <em lang="es-MX">pol&iacute;tica de la casa</em> &mdash; and no parties louder than a long dinner.
+        </p>
+        <p>
+          What we kept: the original cantera floors, the cedar shutters, the iron-grille gates. What we added: linen, a curated front desk, a private gallery space (see <em class="plate-ref" lang="es-MX">L&aacute;m. X</em>), and the kind of <em lang="es-MX">servicio discreto</em> that knows your coffee by the second morning. The pool was added in 2021; the colour was chosen by a guest from Tulum who held a sample tile against a cenote photograph for forty minutes before she would agree.
+        </p>
+        <div class="sanctuary-detail" lang="es-MX">Calle 43 &times; 58 y 60 &mdash; Barrio de Santa Ana</div>
+      </div>
+
+      <div class="sanctuary-img-right editorial-img">
+        <img src="../assets/sanctuary-arched-windows.jpg"
+             alt="Pair of tall arched steel-frame windows opening from the green-tile lounge onto the white-stucco fountain, mid-century chairs in the foreground, palm fronds framing the courtyard"
+             loading="lazy" decoding="async">
+        <span class="img-caption" lang="es-MX">L&aacute;m. IV &mdash; Sal&oacute;n verde, hora bot&aacute;nica</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       4. THE MICHELIN KEY — Editorial sidebar moment
+       ============================================ -->
+  <section class="michelin" data-section="3" data-section-label="La Llave" id="michelin">
+    <div class="michelin-inner">
+      <div class="section-marker reveal" lang="es-MX">03 / La Llave</div>
+      <div class="michelin-grid">
+        <div class="michelin-key reveal">
+          <img src="assets-external/michelin-key.webp"
+               alt="One Michelin Key — 2025"
+               loading="lazy" decoding="async" width="180" height="180">
+          <span class="michelin-key-caption">One Michelin Key &middot; MMXXV</span>
+        </div>
+        <div class="michelin-text">
+          <h2 class="reveal">
+            <span class="kicker" lang="es-MX">Sobre</span>
+            <em lang="es-MX">La Llave.</em>
+          </h2>
+          <hr class="draw-line draw-line--short">
+          <p class="reveal drop-cap">
+            In May 2025 the Michelin Guide named Tree House the <em>first hotel in M&eacute;rida</em> to receive a Key &mdash; the guide's hotel equivalent of the star. <em lang="es-MX">Una llave</em>, then, in a city of restored colonial houses and not many small-hotel accolades.
+          </p>
+          <p class="reveal">
+            The inspectors are silent about what tipped them; the Guide does not publish a written notice. What we can say is what we did <em>not</em> change for the inspection: the courtyard, the gardener, the fifteen rooms, the silence after ten. The cantera floors that wave a half-centimetre off level by the western shutter. The hour the canopy cools the patio (3:00 to 5:00, give or take, per the obsessive guest below). We took it that the building, the program and the staff were being recognised together &mdash; not service layered on a structure, but a house that had grown its own.
+          </p>
+          <p class="reveal">
+            We do not write about it more than this. <em lang="es-MX">El que la tiene, la usa con cuidado.</em>
+          </p>
+          <ul class="michelin-stats reveal" data-stagger="120">
+            <li class="reveal" lang="es-MX">
+              <span class="michelin-stat-num">1</span>
+              <span class="michelin-stat-label">Llave de Michelin <em>&middot; otorgada MMXXV</em></span>
+            </li>
+            <li class="reveal" lang="es-MX">
+              <span class="michelin-stat-num">1</span>
+              <span class="michelin-stat-label"><em>primera</em> en la ciudad de M&eacute;rida</span>
+            </li>
+            <li class="reveal" lang="es-MX">
+              <span class="michelin-stat-num">15</span>
+              <span class="michelin-stat-label">habitaciones bajo dosel</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       5. LAS HABITACIONES
+       ============================================ -->
+  <section class="rooms" data-section="4" data-section-label="Habitaciones" id="habitaciones">
+    <div class="section-marker reveal" lang="es-MX">04 / Las Habitaciones</div>
+    <div class="rooms-header">
+      <h2 class="reveal">Las <em lang="es-MX">Habitaciones</em></h2>
+      <p class="rooms-sub reveal" lang="es-MX">Cuatro tipolog&iacute;as &mdash; cuatro maneras de habitar el dosel.</p>
+    </div>
+
+    <hr class="draw-line draw-line--short rooms-draw">
+
+    <div class="rooms-grid">
+      <!-- Room 01 — King Garden -->
+      <article class="room-card reveal">
+        <div class="room-image editorial-img">
+          <img src="../assets/room-slat-headboard.jpg"
+               alt="King Garden Room — tall slat-wood headboard, corner chair and side table, decorative-tile floor strip"
+               loading="lazy" decoding="async">
+          <span class="img-caption" lang="es-MX">L&aacute;m. VI &mdash; King Garden Room</span>
+        </div>
+        <div class="room-meta">
+          <span class="room-num" lang="es-MX">N&ordm; 01</span>
+          <span class="room-sep">&mdash;</span>
+          <span class="room-type">Bougainvillea wing</span>
+        </div>
+        <h3 class="room-name">King<br><em>Garden Room</em></h3>
+        <ul class="room-specs">
+          <li><span class="label" lang="es-MX">Capacidad</span><span lang="es-MX">2 hu&eacute;spedes</span></li>
+          <li><span class="label" lang="es-MX">Tama&ntilde;o</span><span>26 m&sup2;</span></li>
+          <li><span class="label" lang="es-MX">Vista</span><span lang="es-MX">Jard&iacute;n bajo</span></li>
+          <li><span class="label" lang="es-MX">Bot&aacute;nica</span><span><em lang="la">Bougainvillea spectabilis</em></span></li>
+        </ul>
+        <p class="room-tasting">A first room &mdash; cool, square, opening through cedar shutters onto the lowest tier of the garden. The bougainvillea is reachable from the bed; we do not advise picking it.</p>
+        <a href="#reserve" class="room-cta">Reserve</a>
+      </article>
+
+      <!-- Room 02 — Queen Courtyard -->
+      <article class="room-card reveal room-card--offset">
+        <div class="room-image editorial-img">
+          <img src="../assets/room-balcony-doors.jpg"
+               alt="Queen Courtyard Suite — French doors flung open onto a wrought-iron balcony with a tree right outside, slat wood headboard, work desk"
+               loading="lazy" decoding="async">
+          <span class="img-caption" lang="es-MX">L&aacute;m. VII &mdash; Queen Courtyard Suite</span>
+        </div>
+        <div class="room-meta">
+          <span class="room-num" lang="es-MX">N&ordm; 02</span>
+          <span class="room-sep">&mdash;</span>
+          <span class="room-type">Ficus wing</span>
+        </div>
+        <h3 class="room-name">Queen<br><em>Courtyard Suite</em></h3>
+        <ul class="room-specs">
+          <li><span class="label" lang="es-MX">Capacidad</span><span lang="es-MX">2 hu&eacute;spedes</span></li>
+          <li><span class="label" lang="es-MX">Tama&ntilde;o</span><span>38 m&sup2;</span></li>
+          <li><span class="label" lang="es-MX">Vista</span><span>Patio &amp; ficus</span></li>
+          <li><span class="label" lang="es-MX">Bot&aacute;nica</span><span><em lang="la">Ficus benjamina</em></span></li>
+        </ul>
+        <p class="room-tasting">A small sitting room and a bedroom, divided by a pair of original cedar doors. The window opens onto the canopy &mdash; you read by green light. <em lang="es-MX">Lectura de tarde.</em></p>
+        <a href="#reserve" class="room-cta">Reserve</a>
+      </article>
+
+      <!-- Room 03 — Garden Suite -->
+      <article class="room-card reveal">
+        <div class="room-image editorial-img">
+          <img src="../assets/room-staggered-stick.jpg"
+               alt="Garden Suite — sculptural pipe-organ vertical wood-stick headboard rising above the bed, two onyx wall sconces, geometric floor tile"
+               loading="lazy" decoding="async">
+          <span class="img-caption" lang="es-MX">L&aacute;m. VIII &mdash; Garden Suite</span>
+        </div>
+        <div class="room-meta">
+          <span class="room-num" lang="es-MX">N&ordm; 03</span>
+          <span class="room-sep">&mdash;</span>
+          <span class="room-type">Plumeria wing</span>
+        </div>
+        <h3 class="room-name">The<br><em>Garden Suite</em></h3>
+        <ul class="room-specs">
+          <li><span class="label" lang="es-MX">Capacidad</span><span lang="es-MX">2 hu&eacute;spedes</span></li>
+          <li><span class="label" lang="es-MX">Tama&ntilde;o</span><span>54 m&sup2;</span></li>
+          <li><span class="label" lang="es-MX">Vista</span><span lang="es-MX">Jard&iacute;n privado</span></li>
+          <li><span class="label" lang="es-MX">Bot&aacute;nica</span><span><em lang="la">Plumeria rubra</em></span></li>
+        </ul>
+        <p class="room-tasting">The widest of our suites, with a private walled garden &mdash; a <em>frangipani</em> we did not plant, an iron daybed we did, and an outdoor shower under the leaves.</p>
+        <a href="#reserve" class="room-cta">Reserve</a>
+      </article>
+
+      <!-- Room 04 — Penthouse Canopy -->
+      <article class="room-card reveal room-card--offset">
+        <div class="room-image editorial-img">
+          <img src="../assets/room-limestone-skylight.jpg"
+               alt="Penthouse Canopy — raw cut-stone limestone feature wall, three rectangular skylights cutting through above the bed, walnut bed frame, geometric cement floor tile"
+               loading="lazy" decoding="async">
+          <span class="img-caption" lang="es-MX">L&aacute;m. IX &mdash; Penthouse Canopy</span>
+        </div>
+        <div class="room-meta">
+          <span class="room-num" lang="es-MX">N&ordm; 04</span>
+          <span class="room-sep">&mdash;</span>
+          <span class="room-type">Cocos wing</span>
+        </div>
+        <h3 class="room-name">The<br><em>Penthouse Canopy</em></h3>
+        <ul class="room-specs">
+          <li><span class="label" lang="es-MX">Capacidad</span><span lang="es-MX">2 hu&eacute;spedes</span></li>
+          <li><span class="label" lang="es-MX">Tama&ntilde;o</span><span>72 m&sup2;</span></li>
+          <li><span class="label" lang="es-MX">Vista</span><span lang="es-MX">Azotea &amp; copa</span></li>
+          <li><span class="label" lang="es-MX">Bot&aacute;nica</span><span><em lang="la">Cocos nucifera</em></span></li>
+        </ul>
+        <p class="room-tasting">The top of the house &mdash; a private rooftop, two grown coconut palms, a plunge pool the colour of cenote-water and the long blue evening of Santa Ana laid out below. The two palms have names, but only to the gardener, who has never written down what he named them.</p>
+        <a href="#reserve" class="room-cta room-cta--filled">Reserve</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================
+       6. EL ESTÁNDAR — three pillars
+       ============================================ -->
+  <section class="standard" data-section="5" data-section-label="Est&aacute;ndar" id="standard">
+    <div class="section-marker reveal" lang="es-MX">05 / El Est&aacute;ndar</div>
+    <div class="standard-header">
+      <h2 class="reveal">El <em lang="es-MX">Est&aacute;ndar</em></h2>
+      <p class="standard-deck reveal">Three principles, kept in the order the canopy asks for them.</p>
+    </div>
+
+    <div class="standard-grid" data-stagger="200">
+      <div class="standard-item reveal">
+        <div class="standard-number" aria-hidden="true">01</div>
+        <span class="standard-spanish" lang="es-MX">Privacidad</span>
+        <h3>Privacy</h3>
+        <p>Fifteen rooms. <em lang="es-MX">Solo adultos.</em> No lobby loiter, no day-trippers through the gate, one front desk &mdash; never quite closed. Names remembered by the second morning; voices kept low. The canopy does the rest.</p>
+        <span class="standard-stat">15 <span class="standard-stat-unit"><span lang="es-MX">habitaciones</span> &middot; adults only</span></span>
+      </div>
+      <div class="standard-item reveal">
+        <div class="standard-number" aria-hidden="true">02</div>
+        <span class="standard-spanish" lang="es-MX">Bot&aacute;nica</span>
+        <h3>Botany</h3>
+        <p><em lang="la">Ficus benjamina</em> (c. 1955, patio, &asymp;14 m at the canopy), <em lang="la">Bougainvillea spectabilis</em> (south wall, three vines grafted onto two trunks), <em lang="la">Plumeria rubra</em>, <em lang="la">Cocos nucifera</em> (rooftop, paired), and twenty-three potted <em lang="la">Tillandsias</em> the gardener refuses to name aloud &mdash; brought, the green <span lang="es-MX">cuaderno</span> records, in a coffee tin from Campeche, 2019. We log every species. We do not log the gardener.</p>
+        <span class="standard-stat">23 <span class="standard-stat-unit" lang="es-MX">especies &middot; <em>al &uacute;ltimo recuento</em></span></span>
+      </div>
+      <div class="standard-item reveal">
+        <div class="standard-number" aria-hidden="true">03</div>
+        <span class="standard-spanish" lang="es-MX">Curadur&iacute;a</span>
+        <h3>Curation</h3>
+        <p>The cenote a guest swims at, the mezcal poured on the rooftop, the canvas hung along the eastern corridor &mdash; each is chosen by someone who has driven the road, tasted the bottle, watched the painter work. The spring rotation through the corridors is signed by Magdalena R&iacute;os; the henequen press at the hacienda we send guests to has been running since 1894. Nothing on this list arrived by catalogue.</p>
+        <span class="standard-stat">1 : 1 <span class="standard-stat-unit"><span lang="es-MX">staff a hu&eacute;sped</span></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       7. THE TREEHOUSE × SoHo GALLERIES — Art Feature (the namesake venue)
+       ============================================ -->
+  <section class="treehouse" data-section="6" data-section-label="Treehouse" id="treehouse">
+    <div class="treehouse-frontispiece">
+      <div class="treehouse-frontispiece-text">
+        <div class="section-marker reveal treehouse-marker" lang="es-MX">06 / La Galer&iacute;a Bajo el Dosel</div>
+        <span class="treehouse-pretitle reveal" lang="es-MX"><em>Este es el origen del nombre.</em></span>
+        <h2 class="reveal treehouse-title">
+          <span class="treehouse-and">The</span>
+          Treehouse
+          <span class="treehouse-cross" aria-hidden="true">&#215;</span>
+          <span class="treehouse-soho">SoHo Galleries</span>
+        </h2>
+        <hr class="draw-line draw-line--medium">
+        <p class="reveal treehouse-deck drop-cap">
+          Every spring a new rotation arrives. SoHo Galleries M&eacute;rida curates the cycle; we hang the work through the corridors, the suites, the courtyard (see <em class="plate-ref" lang="es-MX">L&aacute;ms. X&ndash;XIII</em>) &mdash; <em lang="es-MX">el nombre vive aqu&iacute;.</em> Guests live inside the exhibition for the length of their stay.
+        </p>
+        <span class="treehouse-credits reveal" lang="es-MX">
+          Curadur&iacute;a &mdash; SoHo Galleries M&eacute;rida<br>
+          Ciclo N&ordm; III &mdash; Primavera / Verano MMXXVI<br>
+          Sede &mdash; The Treehouse, Calle 43 &times; 58
+        </span>
+      </div>
+      <div class="treehouse-frontispiece-image editorial-img">
+        <img src="../assets/breath-night-arch.jpg"
+             alt="Looking from the dark courtyard up through tree foliage into the warmly-lit lounge through an arched steel window — the gallery seen through leaves"
+             loading="lazy" decoding="async">
+        <span class="img-caption" lang="es-MX">L&aacute;m. X &mdash; Sala mayor, vista desde el patio</span>
+      </div>
+    </div>
+
+    <!-- Full-bleed art plate -->
+    <figure class="treehouse-fullbleed editorial-img reveal">
+      <img src="../assets/sanctuary-corridor-evening.jpg"
+           alt="A ground-floor open-air corridor lit at night — palms spilling in from the left, glowing pendant lanterns, tile inlays on polished concrete"
+           loading="lazy" decoding="async">
+      <figcaption class="treehouse-fullbleed-caption">
+        <span class="treehouse-fullbleed-num" lang="es-MX">L&aacute;m. XI</span>
+        <span class="treehouse-fullbleed-text">
+          From <em lang="es-MX">Bot&aacute;nica de la Sombra</em>, the spring rotation &mdash; the eastern corridor at dusk, where the work is hung between the Plumeria and Cocos wings and the lanterns are lit before the canvases are.
+        </span>
+      </figcaption>
+    </figure>
+
+    <!-- Pull quote — critic's voice (R2 §5: different critic + publication than Boutique sibling) -->
+    <blockquote class="treehouse-pullquote reveal">
+      <p>
+        &ldquo;The work here lives in a humidity the gallery district does not have.
+        <em>Three of the canvases were stretched specifically for the Bougainvillea wing</em>
+        &mdash; the bougainvillea is not a metaphor; it is the room next door. Light falls on the work the way the leaves let it: some hours one canvas is lit, some hours another.&rdquo;
+      </p>
+      <cite>
+        <span class="cite-name">Lourdes Pacheco-Torres</span>
+        <span class="cite-sep">&middot;</span>
+        <span class="cite-pub">For <em lang="es-MX">Selva Dom&eacute;stica</em> &mdash; <span lang="es-MX">Cuaderno VII</span></span>
+      </cite>
+    </blockquote>
+
+    <!-- Three captioned plates -->
+    <div class="treehouse-plates">
+      <figure class="treehouse-plate editorial-img reveal">
+        <img src="../assets/art-window-painting.jpg"
+             alt="Evening view from the courtyard through an arched steel-frame window into the lit lounge — a colourful painting on the green wall inside, tree branches reaching into the upper frame"
+             loading="lazy" decoding="async">
+        <figcaption>
+          <span class="plate-tag" lang="es-MX">L&aacute;m. XII</span>
+          <span class="plate-title"><em lang="es-MX">Sombra Primera</em>, M. R&iacute;os</span>
+          <span class="plate-meta">Oil on linen &mdash; <span lang="es-MX">sal&oacute;n verde</span>, near the <em lang="la">ficus</em></span>
+        </figcaption>
+      </figure>
+      <figure class="treehouse-plate editorial-img reveal">
+        <img src="../assets/art-bar-figurines.jpg"
+             alt="A bar wall with grid-shelving, aged plaster behind it, walnut frames, and two bronze figurine sculptures perched on the shelves"
+             loading="lazy" decoding="async">
+        <figcaption>
+          <span class="plate-tag" lang="es-MX">L&aacute;m. XIII</span>
+          <span class="plate-title"><em lang="es-MX">Dos Figuras</em>, A. Pacheco</span>
+          <span class="plate-meta">Cast bronze on walnut &mdash; bar shelf, <span lang="es-MX">ala oriente</span></span>
+        </figcaption>
+      </figure>
+      <figure class="treehouse-plate editorial-img reveal">
+        <img src="../assets/art-chair-tableau.jpg"
+             alt="Two mid-century chairs facing each other across a walnut table with a small eucalyptus posy, on a layered patchwork of cement tiles; a wide raw-wood bench holds a Panama hat and stacked books"
+             loading="lazy" decoding="async">
+        <figcaption>
+          <span class="plate-tag" lang="es-MX">L&aacute;m. XIV</span>
+          <span class="plate-title"><em lang="es-MX">Conversaci&oacute;n</em>, tableau N&ordm; III</span>
+          <span class="plate-meta" lang="es-MX">Sillas, mesa, eucalipto &mdash; library alcove, north</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="treehouse-coda reveal">
+      <span class="treehouse-coda-eyebrow" lang="es-MX">Para hu&eacute;spedes</span>
+      <p>
+        The current cycle is on view through September. Guests may walk the rotation in their own hours &mdash; a printed catalogue is left in each room. Private viewings with the SoHo curators may be arranged at the front desk, <em lang="es-MX">sin costo.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       8. EL DIARIO / THE JOURNAL
+       ============================================ -->
+  <section class="diario" data-section="7" data-section-label="Diario" id="diario" lang="es-MX">
+    <div class="section-marker reveal">07 / El Diario</div>
+    <div class="diario-header">
+      <h2 class="reveal" lang="en">El <em lang="es-MX">Diario</em></h2>
+      <p class="diario-deck reveal" lang="en">A short, edited journal &mdash; <em lang="es-MX">cuadernos de campo</em>, written by the house for the house.</p>
+    </div>
+
+    <hr class="draw-line draw-line--short">
+
+    <div class="diario-grid">
+      <article class="diario-entry reveal" id="diario-01" tabindex="-1">
+        <span class="diario-folio">Cuaderno &mdash; N&ordm; 01</span>
+        <h3 id="diario-01-title">La Llave lleg&oacute; por correo electr&oacute;nico</h3>
+        <span class="diario-tag" lang="en">Field notes &middot; <span lang="es-MX">mayo MMXXV</span></span>
+        <p lang="en">The Michelin email arrived at 9:14 a.m. on a Tuesday in May. The desk was on its coffee break; the laptop was open on the long table by the patio (see <em class="plate-ref" lang="es-MX">L&aacute;m. II</em>). The gardener was the third person to know &mdash; we walked it out to him in the south corner because he does not carry a phone.</p>
+        <span class="diario-read" aria-hidden="true">Leer la entrada <span>&rarr;</span></span>
+      </article>
+      <article class="diario-entry reveal" id="diario-02" tabindex="-1">
+        <span class="diario-folio">Cuaderno &mdash; N&ordm; 02</span>
+        <h3 id="diario-02-title">El Mercado, antes que abra la cocina</h3>
+        <span class="diario-tag" lang="en">Field notes &middot; 6:20 a.m.</span>
+        <p lang="en">Most mornings our cook, Do&ntilde;a Marisol, walks to the <span lang="es-MX">Mercado de Santa Ana</span> before the kitchen lights are on. Two stalls for fruit (the second is run by Mari, daughter of the first Mari), one for <em lang="es-MX">cochinita</em>. The coffee on the corner opens at 6:30. The breakfast you eat at 8:30 has been at the market for two hours.</p>
+        <span class="diario-read" aria-hidden="true">Leer la entrada <span>&rarr;</span></span>
+      </article>
+      <article class="diario-entry reveal" id="diario-03" tabindex="-1">
+        <span class="diario-folio">Cuaderno &mdash; N&ordm; 03</span>
+        <h3 id="diario-03-title">Bot&aacute;nica de la Casa &mdash; un &iacute;ndice</h3>
+        <span class="diario-tag" lang="en">Field notes &middot; <span lang="es-MX">jard&iacute;n</span></span>
+        <p lang="en">An index of every species in the courtyard: <em lang="la">Ficus benjamina</em>, <em lang="la">Bougainvillea spectabilis</em>, <em lang="la">Plumeria rubra</em>, <em lang="la">Cocos nucifera</em>, and the twenty-three <em lang="la">Tillandsias</em> the gardener will not let us name. The bougainvillea ink the gardener makes from the south wall &mdash; one fistful of bracts, a half-cup of white vinegar, four hours in the sun &mdash; is what writes the guest cards.</p>
+        <span class="diario-read" aria-hidden="true">Leer la entrada <span>&rarr;</span></span>
+      </article>
+      <article class="diario-entry reveal" id="diario-04" tabindex="-1">
+        <span class="diario-folio">Cuaderno &mdash; N&ordm; 04</span>
+        <h3 id="diario-04-title">El jardinero, que no se llama Jardinero</h3>
+        <span class="diario-tag" lang="en">Field notes &middot; <span lang="es-MX">retrato</span></span>
+        <p lang="en">His name is Don Eulogio. He has worked on this courtyard since 1998 &mdash; longer than the current building has been a hotel, longer than the manager, longer than the espresso machine. He arrives at 5:40 a.m. He leaves when the patio cools. He will tell you about the <em lang="la">ficus</em>; he will not tell you about the <em lang="la">Tillandsias</em>. <em lang="en">Erratum:</em> Cuaderno No. 02 originally credited the <em lang="es-MX">cochinita</em> stall to Do&ntilde;a Mari; her daughter, Mari, runs it now. &mdash; <em lang="es-MX">La Editora, abril MMXXVI.</em></p>
+        <span class="diario-read" aria-hidden="true">Leer la entrada <span>&rarr;</span></span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================
+       9. CURATED MÉRIDA — experiences
+       ============================================ -->
+  <section class="merida" data-section="8" data-section-label="M&eacute;rida" id="merida">
+    <div class="section-marker reveal">08 / Curated M&eacute;rida</div>
+    <div class="merida-header">
+      <h2 class="reveal">Curated <em>M&eacute;rida</em></h2>
+      <p class="merida-deck reveal">Experiences arranged from the front desk &mdash; <em lang="es-MX">solo lo que recomendar&iacute;amos a un amigo.</em></p>
+    </div>
+
+    <hr class="draw-line draw-line--short">
+
+    <ol class="merida-list">
+      <li class="merida-entry reveal">
+        <span class="merida-num">i.</span>
+        <div class="merida-body">
+          <h3 lang="es-MX">Luna de Miel <em>&mdash; Bajo el Dosel</em></h3>
+          <span class="merida-tag">Honeymoon package</span>
+          <p>Champagne on the rooftop at sundown, a private dinner under the <em lang="la">ficus</em>, a sunrise breakfast in the canopy, a half-day at a cenote with no one else in it. Four nights minimum.</p>
+        </div>
+      </li>
+      <li class="merida-entry reveal">
+        <span class="merida-num">ii.</span>
+        <div class="merida-body">
+          <h3>Cenotes &amp; Haciendas</h3>
+          <span class="merida-tag" lang="es-MX">Un d&iacute;a fuera de la ciudad</span>
+          <p>A driver, a guide, a basket lunch. Three cenotes the tour buses do not know &mdash; one in <em class="plate-ref" lang="es-MX">L&aacute;m. XX</em>, one closed to the public on Tuesdays, one reachable only by a friend of the house. Best before 10 a.m. One restored hacienda that still keeps its henequen press. Returned to the canopy by sundown.</p>
+        </div>
+      </li>
+      <li class="merida-entry reveal">
+        <span class="merida-num">iii.</span>
+        <div class="merida-body">
+          <h3>In-Suite Wellness</h3>
+          <span class="merida-tag"><em lang="es-MX">Bienestar</em></span>
+          <p>Massage in the room, a <em lang="es-MX">temazcal</em> arranged with a local <em lang="es-MX">curandera</em>, a slow yoga hour on the rooftop before the city is fully awake. Botanical teas drawn from the garden &mdash; chamomile, lemon-verbena, <em lang="es-MX">flor de Jamaica</em>.</p>
+        </div>
+      </li>
+      <li class="merida-entry reveal">
+        <span class="merida-num">iv.</span>
+        <div class="merida-body">
+          <h3 lang="es-MX">Estancia Larga <span lang="en">&mdash; <em>30% off</em></span></h3>
+          <span class="merida-tag" lang="es-MX">5+ noches</span>
+          <p>Stay five nights or more and the rate softens by thirty percent &mdash; the canopy unhurries you anyway. Combinable with the airport transfer and a small house gift on arrival.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============================================
+       10. VOICES
+       ============================================ -->
+  <section class="voices" data-section="9" data-section-label="Voces" id="voices">
+    <div class="section-marker reveal" lang="es-MX">09 / Voces</div>
+    <div class="voices-header">
+      <h2 class="reveal"><em lang="es-MX">Voces</em></h2>
+      <p class="voices-sub reveal">From the guest book &mdash; <em lang="es-MX">del libro de hu&eacute;spedes.</em></p>
+    </div>
+
+    <div class="voices-track" role="group" aria-label="Guest testimonials, scroll horizontally">
+      <figure class="voice-card reveal" tabindex="0" lang="es-MX">
+        <blockquote class="voice-quote">Sol&iacute;a caminar por Calle 43 antes de que Santa Ana se &lsquo;pusiera de moda&rsquo;. Lo notable de Tree House es lo poco que se nota &mdash; la casa sigue siendo casa.</blockquote>
+        <figcaption>
+          <cite class="voice-author">Lic. Beatriz Cervera</cite>
+          <span class="voice-place">M&eacute;rida &mdash; Yucateca, hu&eacute;sped frecuente</span>
+        </figcaption>
+      </figure>
+      <figure class="voice-card reveal" tabindex="0">
+        <blockquote class="voice-quote">The third night the desk left a card on the pillow with our names hand-written in the bougainvillea ink the gardener makes from the south wall. Neither of us has thrown it away.</blockquote>
+        <figcaption>
+          <cite class="voice-author">C. &amp; D. Whitfield</cite>
+          <span class="voice-place">London &mdash; Garden Suite, <span lang="es-MX">noviembre 2025</span></span>
+        </figcaption>
+      </figure>
+      <figure class="voice-card reveal" tabindex="0">
+        <blockquote class="voice-quote">&ldquo;A fifteen-room Mexico townhouse where the canopy keeps the patio four degrees cooler than the street &mdash; and the first hotel in M&eacute;rida to wear a Michelin Key.&rdquo;</blockquote>
+        <figcaption>
+          <cite class="voice-author">Cond&eacute; Nast Traveler</cite>
+          <span class="voice-place">Hot List &mdash; MMXXVI</span>
+        </figcaption>
+      </figure>
+      <figure class="voice-card reveal" tabindex="0" lang="es-MX">
+        <blockquote class="voice-quote">Tres ma&ntilde;anas, tres caf&eacute;s, tres veces el mismo saludo por mi nombre. Volv&iacute; a casa con sue&ntilde;o atrasado de tres a&ntilde;os.</blockquote>
+        <figcaption>
+          <cite class="voice-author">Ana Sof&iacute;a Mendoza</cite>
+          <span class="voice-place">Ciudad de M&eacute;xico &mdash; Queen Courtyard</span>
+        </figcaption>
+      </figure>
+      <figure class="voice-card reveal" tabindex="0" lang="es-MX">
+        <blockquote class="voice-quote">Dorm&iacute; nueve horas seguidas. No hab&iacute;a pasado en a&ntilde;os. La almohada huele a hojas. <em>Gracias, casa.</em></blockquote>
+        <figcaption>
+          <cite class="voice-author">&mdash; Lola, 14 abril</cite>
+          <span class="voice-place">Del libro de hu&eacute;spedes &middot; <em>en l&aacute;piz</em></span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="voices-scroll-progress" aria-hidden="true">
+      <div class="voices-scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       11. PHOTO ESSAY INTERSTITIAL
+       ============================================ -->
+  <section class="editorial-interstitial" data-section="10" data-section-label="Ensayo">
+    <div class="interstitial-header reveal">
+      <span class="section-marker" lang="es-MX">10 / Ensayo Fotogr&aacute;fico</span>
+      <h3 lang="es-MX">Una casa <em>bajo el follaje</em></h3>
+      <p class="interstitial-intro reveal">A short visual essay &mdash; eight plates from the canopy, the rooms, and the <span lang="es-MX">barrio</span> around them. The patio at three o'clock is recorded in <em class="plate-ref" lang="es-MX">L&aacute;m. XV</em>; the <em lang="es-MX">bugambilia</em>, <em class="plate-ref" lang="es-MX">L&aacute;m. XIX</em>; the rooftop palms, <em class="plate-ref" lang="es-MX">L&aacute;m. XXI</em>.</p>
+    </div>
+
+    <div class="interstitial-row">
+      <figure class="editorial-img interstitial-1">
+        <img src="../assets/canopy-tree-pool.jpg"
+             alt="Trees rising from the linear pool, water spout to the right, balcony with hanging lanterns in the background — dappled, golden, intimate" loading="lazy" decoding="async">
+        <figcaption class="img-caption" lang="es-MX">L&aacute;m. XV &mdash; Patio, tres de la tarde</figcaption>
+      </figure>
+      <figure class="editorial-img interstitial-2">
+        <img src="../assets/breath-blue-hour.jpg"
+             alt="The round white-stucco fountain at twilight, deep cobalt sky, bamboo wall behind, palms on either side, ground uplighting" loading="lazy" decoding="async">
+        <figcaption class="img-caption" lang="es-MX">L&aacute;m. XVI &mdash; Fuente, hora azul</figcaption>
+      </figure>
+      <figure class="editorial-img interstitial-3">
+        <img src="../assets/strip-leaves-stone.jpg"
+             alt="Top-down view of fallen leaves on limestone pavers, palm fronds intruding from the edge, a small inset uplight" loading="lazy" decoding="async">
+        <figcaption class="img-caption" lang="es-MX">L&aacute;m. XVII &mdash; Detalle &mdash; hoja sobre piedra</figcaption>
+      </figure>
+    </div>
+
+    <div class="interstitial-row interstitial-row--offset">
+      <figure class="editorial-img interstitial-4">
+        <img src="../assets/strip-door-shadow.jpg"
+             alt="A warm walnut door with iron handle, leaf-shadow play across the grain, defocused green fronds in the foreground bokeh" loading="lazy" decoding="async">
+        <figcaption class="img-caption" lang="es-MX">L&aacute;m. XVIII &mdash; Puerta, sombra de hoja</figcaption>
+      </figure>
+      <div class="interstitial-pull-quote reveal">
+        <p>
+          &ldquo;By four in the afternoon the patio cools and the bougainvillea drops its shadow east. Most guests do not notice. The ones who do tend to stay a fifth night.&rdquo;
+        </p>
+        <span class="interstitial-pull-quote-cite">&mdash; from the house ledger, July MMXXV</span>
+      </div>
+      <figure class="editorial-img interstitial-5">
+        <img src="../assets/editorial-eucalyptus.jpg"
+             alt="A small glass cube of eucalyptus on a floor of seafoam-and-cream cement tile — botanical, tile and green palette in one frame" loading="lazy" decoding="async">
+        <figcaption class="img-caption" lang="es-MX">L&aacute;m. XIX &mdash; Eucalipto sobre azulejo</figcaption>
+      </figure>
+    </div>
+
+    <div class="interstitial-row interstitial-row--final">
+      <figure class="editorial-img interstitial-6">
+        <img src="../assets/canopy-waterfall.jpg"
+             alt="The water-channel section of the patio: trees growing out of the pool, twin waterfall spouts down a tall plaster wall, fern fronds in the foreground" loading="lazy" decoding="async">
+        <figcaption class="img-caption" lang="es-MX">L&aacute;m. XX &mdash; Agua del patio, ma&ntilde;ana</figcaption>
+      </figure>
+      <figure class="editorial-img interstitial-7">
+        <img src="../assets/canopy-overhead-pool.jpg"
+             alt="Overhead view of a plunge pool surrounded by lush palms and tropical foliage — calatheas, ferns" loading="lazy" decoding="async">
+        <figcaption class="img-caption" lang="es-MX">L&aacute;m. XXI &mdash; Palmas, azotea</figcaption>
+      </figure>
+      <figure class="editorial-img interstitial-8">
+        <img src="../assets/sanctuary-staircase.jpg"
+             alt="Wooden ceiling slats, iron-and-wood staircase, two wire chairs in the foreground, a small tree-lit niche under the stairs — the quietest frame in the house" loading="lazy" decoding="async">
+        <figcaption class="img-caption" lang="es-MX">L&aacute;m. XXII &mdash; Salita, esquina</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================
+       12. VISIT / EL HOTEL
+       ============================================ -->
+  <section class="visit" data-section="11" data-section-label="Visitar" id="visit">
+    <div class="section-marker reveal" lang="es-MX">11 / Visitar</div>
+    <div class="visit-header">
+      <h2 class="reveal">Visit <em>the House</em></h2>
+      <p class="visit-deck reveal" lang="es-MX">En el barrio m&aacute;s tranquilo del centro &mdash; <em>a dos cuadras del Parque de Santa Ana.</em></p>
+    </div>
+
+    <div class="visit-grid">
+      <div class="visit-card reveal">
+        <span class="visit-eyebrow" lang="es-MX">Direcci&oacute;n</span>
+        <h3>The Address</h3>
+        <p>
+          Tree House Boutique Hotel<br>
+          <span lang="es-MX">Calle 43 &times; 58 y 60, &num;489</span><br>
+          <span lang="es-MX">Barrio de Santa Ana</span><br>
+          <span lang="es-MX">M&eacute;rida, Yucat&aacute;n 97000, M&eacute;xico</span>
+        </p>
+        <span class="visit-detail-mono" lang="es-MX">A dos cuadras del Parque de Santa Ana</span>
+      </div>
+      <div class="visit-card reveal">
+        <span class="visit-eyebrow" lang="es-MX">Llegar</span>
+        <h3>Arrival</h3>
+        <p>
+          <span lang="es-MX">Aeropuerto Internacional de M&eacute;rida (MID)</span> &mdash; 18 minutos.<br>
+          Private transfer arranged on request &mdash; <em lang="es-MX">el chofer ya conoce la casa.</em>
+        </p>
+        <span class="visit-detail-mono" lang="es-MX">18 min &mdash; MID a la casa</span>
+      </div>
+      <div class="visit-card reveal">
+        <span class="visit-eyebrow" lang="es-MX">Recepci&oacute;n</span>
+        <h3>Front Desk</h3>
+        <p>
+          <span lang="es-MX">Atendido 24 horas</span> &mdash; in a house this small the desk is never quite closed.<br>
+          Check-in 3:00 pm &middot; Check-out 12:00 pm<br>
+          Late departures by arrangement.
+        </p>
+        <span class="visit-detail-mono" lang="es-MX">24 horas &mdash; por su nombre</span>
+      </div>
+      <div class="visit-card reveal visit-card--feature" id="reserve">
+        <span class="visit-eyebrow" lang="es-MX">Oferta de Temporada</span>
+        <h3 lang="es-MX">Estancia <em>Bajo el Dosel</em></h3>
+        <p>
+          <em lang="es-MX">Cinco noches, treinta por ciento menos.</em> Stay 5+ nights and the rate softens by thirty percent &mdash; combinable with the airport transfer and a small house gift on arrival. Through MMXXVI.
+        </p>
+        <a href="mailto:reservas@treehouseboutiquehotel.com" class="visit-cta"><span lang="es-MX">Reservar</span> &mdash; reservas@treehouseboutiquehotel.com</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============================================
+       13. COLOPHON FOOTER
+       ============================================ -->
+  <footer class="colophon" role="contentinfo">
+    <div class="colophon-rule" aria-hidden="true"></div>
+
+    <div class="colophon-grid">
+      <div class="colophon-brand-col">
+        <div class="colophon-brand-logo">
+          <img src="assets-external/footer-logo.png"
+               alt="Tree House Boutique Hotel" loading="lazy" decoding="async" width="120" height="48">
+        </div>
+        <div class="colophon-brand">Tree House <em>Boutique</em></div>
+        <p class="colophon-brand-desc">
+          An adults-only sanctuary of fifteen rooms in the Santa Ana <span lang="es-MX">barrio</span> of <span lang="es-MX">M&eacute;rida, Yucat&aacute;n</span>. Colonial walls inside a botanical canopy &mdash; the first Michelin Key awarded in the city, and the kind of quiet that only a garden can keep.
+        </p>
+        <p class="colophon-publication" lang="es-MX">Publicado en Santa Ana &middot; M&eacute;rida &middot; Yucat&aacute;n</p>
+      </div>
+
+      <div class="colophon-section">
+        <h4 lang="es-MX">Visitar</h4>
+        <p lang="es-MX"><strong>Calle 43 &times; 58 y 60</strong></p>
+        <p lang="es-MX">Barrio de Santa Ana</p>
+        <p lang="es-MX">M&eacute;rida, Yucat&aacute;n 97000</p>
+        <p>18 min &mdash; MID</p>
+      </div>
+
+      <div class="colophon-section">
+        <h4 lang="es-MX">Navegar</h4>
+        <a href="#sanctuary" lang="es-MX">El Santuario</a>
+        <a href="#michelin" lang="es-MX">La Llave</a>
+        <a href="#habitaciones" lang="es-MX">Las Habitaciones</a>
+        <a href="#treehouse">Treehouse &times; SoHo</a>
+        <a href="#diario" lang="es-MX">El Diario</a>
+        <a href="#merida">Curated M&eacute;rida</a>
+        <a href="#reserve">Reserve</a>
+      </div>
+
+      <div class="colophon-section">
+        <h4 lang="es-MX">Bolet&iacute;n</h4>
+        <p class="newsletter-blurb" lang="es-MX">Nuevas ediciones del diario, rotaciones de arte, ofertas reservadas a la casa.</p>
+        <form class="newsletter-form" action="/api/newsletter" method="post" novalidate>
+          <input type="email" name="email" class="newsletter-input"
+                 placeholder="tu@correo.com"
+                 aria-label="Email for the Tree House newsletter"
+                 aria-describedby="newsletter-status"
+                 required>
+          <button type="submit" class="newsletter-btn" lang="es-MX">Unirse</button>
+          <p id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <div class="colophon-masthead">
+      <span class="colophon-masthead-edition" lang="es-MX">Edici&oacute;n Bot&aacute;nica No. 1</span>
+      <span class="colophon-masthead-sep">&middot;</span>
+      <span class="colophon-masthead-place" lang="es-MX">Santa Ana, M&eacute;rida</span>
+      <span class="colophon-masthead-sep">&middot;</span>
+      <span class="colophon-masthead-year">MMXXVI</span>
+      <span class="colophon-masthead-sep">&middot;</span>
+      <span class="colophon-masthead-key">
+        <img src="assets-external/michelin-key.webp"
+             alt="One Michelin Key" width="14" height="14" loading="lazy" decoding="async">
+        One Michelin Key
+      </span>
+    </div>
+
+    <div class="colophon-bottom">
+      <div class="colophon-legal">&copy; 2026 Tree House Boutique Hotel &mdash; <span lang="es-MX">Publicado en M&eacute;rida, Yucat&aacute;n, M&eacute;xico. Todos los derechos reservados.</span></div>
+      <div class="colophon-social">
+        <a href="https://treehouseboutiquehotel.com" target="_blank" rel="noopener">Web</a>
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#diario">Notebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

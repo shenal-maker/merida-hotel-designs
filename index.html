@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Explorations — Mérida Hotels</title>
+<meta name="description" content="Six design directions for two boutique hotels in Mérida, Yucatán. Boutique by The Museo and Tree House Boutique Hotel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #f7f3eb;
+    --paper: #efe8da;
+    --ink: #14110d;
+    --bark: #5b4632;
+    --stone: #8a7e6b;
+    --ochre: #b58a4b;
+    --hairline: rgba(20, 17, 13, 0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.04;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  main { position: relative; z-index: 1; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
+
+  /* Masthead */
+  .masthead { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 4rem); border-bottom: 1px solid var(--hairline); }
+  .masthead-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1.5rem;
+  }
+  .masthead-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+  .masthead-title em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ochre);
+  }
+  .masthead-deck {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    line-height: 1.5;
+    color: var(--bark);
+    max-width: 38ch;
+  }
+  .masthead-meta {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .masthead-meta span { display: flex; gap: 0.5rem; align-items: center; }
+  .masthead-meta strong { color: var(--ink); font-weight: 500; }
+
+  /* Hotel section */
+  .hotel {
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .hotel:last-of-type { border-bottom: none; }
+  .hotel-header { margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .hotel-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .hotel-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+  .hotel-name em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--bark);
+  }
+  .hotel-deck {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--bark);
+    max-width: 55ch;
+    line-height: 1.5;
+  }
+
+  /* Variants grid */
+  .variants {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.8rem);
+  }
+  @media (max-width: 900px) {
+    .variants { grid-template-columns: 1fr; }
+  }
+  .variant {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--paper);
+    padding: clamp(1.4rem, 2.5vw, 2.2rem);
+    border: 1px solid var(--hairline);
+    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 320ms ease, background 320ms ease;
+    position: relative;
+  }
+  .variant:hover,
+  .variant:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--ochre);
+    background: var(--ivory);
+    outline: none;
+  }
+  .variant-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .variant-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+  }
+  .variant-name em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ochre);
+  }
+  .variant-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--bark);
+    margin-bottom: 1.4rem;
+  }
+  .variant-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1.4rem;
+  }
+  .variant-stack span::before { content: "·"; margin-right: 0.6rem; color: var(--ochre); }
+  .variant-stack span:first-child::before { content: ""; margin-right: 0; }
+  .variant-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.2rem;
+    transition: gap 280ms ease;
+  }
+  .variant:hover .variant-cta { gap: 0.8rem; }
+
+  /* Footer */
+  footer {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    border-top: 1px solid var(--hairline);
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  .footer-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--bark);
+    line-height: 1.6;
+    max-width: 42ch;
+  }
+  .footer-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .footer-col p, .footer-col a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--bark);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .footer-col a:hover { color: var(--ochre); }
+  .colophon {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hairline);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<main>
+  <header class="masthead">
+    <div class="container">
+      <div class="masthead-eyebrow">Mérida · Yucatán · MMXXVI</div>
+      <h1 class="masthead-title">Two hotels.<br>Three directions <em>each.</em></h1>
+      <p class="masthead-deck">Design explorations for <em style="font-style: italic;">Boutique by The Museo</em> and <em style="font-style: italic;">Tree House Boutique Hotel</em> — sister properties in the historic center of Mérida.</p>
+      <div class="masthead-meta">
+        <span><strong>6</strong> directions</span>
+        <span><strong>3</strong> rounds of refinement</span>
+        <span><strong>2</strong> houses</span>
+        <span><strong>1</strong> art collaboration</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="hotel" id="boutique">
+    <div class="container">
+      <div class="hotel-header">
+        <span class="hotel-num">House № 01</span>
+        <h2 class="hotel-name">Boutique by The Museo</h2>
+        <p class="hotel-deck">An intimate 15-room sanctuary in the historic center of Mérida. Steps from Palacio Cantón on Paseo de Montejo.</p>
+      </div>
+
+      <div class="variants">
+        <a class="variant" href="boutique/v1/">
+          <span class="variant-num">V1</span>
+          <h3 class="variant-name">Cinematic <em>Immersive</em></h3>
+          <p class="variant-desc">Full-bleed, refined, dark. A single sustained breath through the property — courtyards, rooms, the art collaboration, last light on Paseo de Montejo.</p>
+          <div class="variant-stack">
+            <span>Anchor — The Largo</span>
+            <span>Dark cinematic</span>
+            <span>Ink · ochre · cream</span>
+          </div>
+          <span class="variant-cta">View →</span>
+        </a>
+
+        <a class="variant" href="boutique/v2/">
+          <span class="variant-num">V2</span>
+          <h3 class="variant-name">Editorial <em>Magazine</em></h3>
+          <p class="variant-desc">Plates, drop caps, marginalia. The house treated as a single edition with a real editor's hand running from masthead to colophon.</p>
+          <div class="variant-stack">
+            <span>Anchor — Mas Girbau</span>
+            <span>Magazine apparatus</span>
+            <span>Ivory · sage · ochre</span>
+          </div>
+          <span class="variant-cta">View →</span>
+        </a>
+
+        <a class="variant" href="boutique/v3/">
+          <span class="variant-num">V3</span>
+          <h3 class="variant-name">Brutalist <em>Art-Forward</em></h3>
+          <p class="variant-desc">The hotel as catalog. Twelve-column grid, mono microcopy, plate captions in real museum register. The art collaboration the structural centerpiece.</p>
+          <div class="variant-stack">
+            <span>Anchor — Peter &amp; Paul</span>
+            <span>Brutalist catalog</span>
+            <span>Limestone · ink · terracotta</span>
+          </div>
+          <span class="variant-cta">View →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="hotel" id="treehouse">
+    <div class="container">
+      <div class="hotel-header">
+        <span class="hotel-num">House № 02</span>
+        <h2 class="hotel-name">Tree House <em>Boutique Hotel</em></h2>
+        <p class="hotel-deck">Adults-only. Fifteen rooms wrapped in canopy. First Michelin Key in Mérida. The namesake venue for the Treehouse × SoHo Galleries art program.</p>
+      </div>
+
+      <div class="variants">
+        <a class="variant" href="treehouse/v1/">
+          <span class="variant-num">V1</span>
+          <h3 class="variant-name">Cinematic <em>Immersive</em></h3>
+          <p class="variant-desc">Botanical re-tuning of the cinematic mode. The courtyard's mature ficus carries the hero; ochre warmth threaded through canopy green.</p>
+          <div class="variant-stack">
+            <span>Anchor — The Largo</span>
+            <span>Botanical dark</span>
+            <span>Canopy · leaf · ochre</span>
+          </div>
+          <span class="variant-cta">View →</span>
+        </a>
+
+        <a class="variant" href="treehouse/v2/">
+          <span class="variant-num">V2</span>
+          <h3 class="variant-name">Editorial <em>Magazine</em></h3>
+          <p class="variant-desc">A field journal signed by the green cuaderno. Drop caps, Latin botanical names, the gardener named, the inspector dated.</p>
+          <div class="variant-stack">
+            <span>Anchor — Mas Girbau</span>
+            <span>Field journal</span>
+            <span>Ivory · moss · ochre</span>
+          </div>
+          <span class="variant-cta">View →</span>
+        </a>
+
+        <a class="variant" href="treehouse/v3/">
+          <span class="variant-num">V3</span>
+          <h3 class="variant-name">Brutalist <em>Art-Forward</em></h3>
+          <p class="variant-desc">Hotel as botanical and art catalog. An Arboretum section unique to this house. Cetina the painter and Eulogio the gardener as the brand's spine.</p>
+          <div class="variant-stack">
+            <span>Anchor — Peter &amp; Paul</span>
+            <span>Brutalist + herbarium</span>
+            <span>Canopy · limestone · cenote</span>
+          </div>
+          <span class="variant-cta">View →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-note">
+          Six directions, each refined through three rounds of adversarial critique — visual hierarchy, narrative voice, then motion and accessibility. The Tree House variants are wired with curated property photography by E. Whitney; Boutique uses the live press selection.
+        </div>
+        <div class="footer-col">
+          <h4>Houses</h4>
+          <a href="https://boutiquebythemuseo.com/" target="_blank" rel="noopener">Boutique by The Museo ↗</a>
+          <a href="https://treehouseboutiquehotel.com/" target="_blank" rel="noopener">Tree House Hotel ↗</a>
+        </div>
+        <div class="footer-col">
+          <h4>Direct</h4>
+          <a href="#boutique">House № 01</a>
+          <a href="#treehouse">House № 02</a>
+        </div>
+      </div>
+      <div class="colophon">
+        <span>Mérida, Yucatán, México</span>
+        <span>Design explorations · MMXXVI</span>
+        <span>20.9674° N · 89.6243° W</span>
+      </div>
+    </div>
+  </footer>
+</main>
+</body>
+</html>

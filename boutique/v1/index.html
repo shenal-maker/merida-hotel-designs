@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique by The Museo — A Fifteen-Room Sanctuary on Paseo de Montejo, Mérida</title>
+  <meta name="description" content="An intimate 15-room boutique hotel on Paseo de Montejo in Mérida, Yucatán. Restored hacienda architecture, curated art rotations with Treehouse × SoHo Galleries, and a quiet kind of luxury.">
+  <meta name="theme-color" content="#1a1410">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts: DM Serif Display (display), Cormorant (display italic), Inter (UI), JetBrains Mono (data/labels) -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="assets/hero.jpg">
+
+  <!-- No-JS fallback: never lock scroll, hide intro overlay entirely -->
+  <noscript>
+    <style>
+      body { overflow: auto !important; cursor: auto !important; }
+      .intro-overlay { display: none !important; }
+      .cursor, .cursor-trail, .grain-overlay { display: none !important; }
+      .reveal, .reveal-img { opacity: 1 !important; transform: none !important; }
+      .origin-divider { width: 64px !important; }
+      .accent-line { transform: scaleX(1) !important; }
+      .hero-bg img { transform: scale(1) !important; }
+      .hero-eyebrow, .hero-tagline, .hero-cta, .hero-meta, .scroll-indicator { opacity: 1 !important; animation: none !important; }
+      .hero-title .char { opacity: 1 !important; transform: none !important; }
+      .room-specs { max-height: 240px !important; opacity: 1 !important; }
+      .room-card-cta { opacity: 1 !important; transform: none !important; }
+      .testimonial-item { position: static !important; opacity: 1 !important; transform: none !important; margin-bottom: 2rem; }
+      .testimonial-dots { display: none !important; }
+      .voices-content { min-height: 0 !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <!-- Skip Link -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Cinematic intro overlay: dissolves to reveal the hero -->
+  <div class="intro-overlay" id="introOverlay" aria-hidden="true">
+    <div class="intro-mark">
+      <span class="intro-mark__line"></span>
+      <span class="intro-mark__word">Boutique</span>
+      <span class="intro-mark__amp">·</span>
+      <span class="intro-mark__word">Museo</span>
+      <span class="intro-mark__line"></span>
+    </div>
+  </div>
+
+  <!-- Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-trail" aria-hidden="true"></div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" aria-hidden="true"></div>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-to-top" type="button" aria-label="Scroll to top"></button>
+
+  <!-- Navigation Dots -->
+  <nav class="nav-dots" aria-label="Section navigation">
+    <button class="nav-dot active" data-target="#hero" data-label="Inicio" aria-label="Go to Hero"></button>
+    <button class="nav-dot" data-target="#sanctuary" data-label="Sanctuary" aria-label="Go to Sanctuary"></button>
+    <button class="nav-dot" data-target="#rooms" data-label="Rooms" aria-label="Go to Rooms"></button>
+    <button class="nav-dot" data-target="#curated" data-label="Curated" aria-label="Go to Curated Mérida"></button>
+    <button class="nav-dot" data-target="#art" data-label="Treehouse" aria-label="Go to Art Collaboration"></button>
+    <button class="nav-dot" data-target="#location" data-label="Calle 43" aria-label="Go to Location"></button>
+    <button class="nav-dot" data-target="#voices" data-label="Voices" aria-label="Go to Voices"></button>
+    <button class="nav-dot" data-target="#footer" data-label="Reserve" aria-label="Go to Footer"></button>
+  </nav>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="logo">Boutique <span class="logo__amp">·</span> Museo</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#sanctuary">The Sanctuary</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#curated">Curated Mérida</a></li>
+        <li><a href="#art">Art</a></li>
+        <li><a href="#location">Calle 43</a></li>
+        <li><a href="#footer" class="nav-cta">Reserve</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+  <!-- ==================== SECTION 1: HERO ==================== -->
+  <section class="section-hero" id="hero" data-section="hero">
+    <div class="hero-bg">
+      <img src="assets/hero.jpg" alt="The interior courtyard of Boutique by The Museo, lit by colonial morning light" loading="eager">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow">Desde Mérida · Paseo de Montejo</span>
+      <h1 class="display-huge hero-title">Boutique <em>by</em> The&nbsp;Museo</h1>
+      <p class="hero-tagline">A courtyard, and fifteen rooms around it. Quietest at the hour before sunrise.</p>
+      <div class="hero-cta">
+        <a href="#footer" class="magnetic-btn">Reserve a key</a>
+        <a href="#sanctuary" class="hero-cta-secondary">Begin</a>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="hero-meta__item"><span class="hero-meta__num">15</span><span class="hero-meta__lbl">Keys</span></div>
+      <div class="hero-meta__divider"></div>
+      <div class="hero-meta__item"><span class="hero-meta__num">1909</span><span class="hero-meta__lbl">Estate</span></div>
+      <div class="hero-meta__divider"></div>
+      <div class="hero-meta__item"><span class="hero-meta__num">90m</span><span class="hero-meta__lbl">Palacio Cantón</span></div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 2: THE SANCTUARY ==================== -->
+  <section class="section-sanctuary" id="sanctuary" data-section="sanctuary">
+    <div class="sanctuary-image-wrap">
+      <img src="assets/sanctuary-corridor.jpg" alt="A quiet corridor inside the restored hacienda — limestone walls, late afternoon" loading="lazy">
+      <span class="sanctuary-caption">N° 01 · El corredor al mediodía</span>
+    </div>
+
+    <div class="sanctuary-content">
+      <span class="label reveal">La casa, despacio</span>
+      <p class="geo-caption reveal">20°58'N · 89°37'W — Centro Histórico, Mérida</p>
+      <h2 class="display-medium reveal">A quiet kind of luxury, <em>kept small</em> on purpose.</h2>
+      <div class="origin-divider reveal"></div>
+      <p class="body-large reveal">
+        Fifteen rooms. One courtyard. A restored colonial estate hidden one block from Paseo de Montejo. We did not build a hotel — we restored a house and then learned how to keep it whispering. The limestone holds yesterday's cool until afternoon, the mahogany doors swell in August and shrink by December, and the first light of day arrives through the courtyard before it finds the rooms.
+      </p>
+      <p class="body-large reveal sanctuary-secondary">
+        There is no concierge desk. There is a person who noticed which way you walked yesterday, who has an opinion about whether the cenote is worth driving to today, and who will tell you the truth about both.
+      </p>
+
+      <div class="sanctuary-pillars reveal">
+        <div class="pillar">
+          <span class="pillar__num">I</span>
+          <span class="pillar__title">Cal</span>
+          <span class="pillar__desc">The walls hold yesterday's cool until afternoon. Fifteen keys, no lobby traffic, and a courtyard that belongs to whoever is in it.</span>
+        </div>
+        <div class="pillar">
+          <span class="pillar__num">II</span>
+          <span class="pillar__title">Madera</span>
+          <span class="pillar__desc">Mahogany doors that need both hands. Ceilings raised back to their 1909 line, and tilework laid where the original tiles asked to stay.</span>
+        </div>
+        <div class="pillar">
+          <span class="pillar__num">III</span>
+          <span class="pillar__title">Patio</span>
+          <span class="pillar__desc">A door between Palacio Cantón and the rest of the city. Most days, it stays closed.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREATHING PULL QUOTE ==================== -->
+  <section class="section-breath" aria-label="Field-note pull quote">
+    <div class="breath-bg" aria-hidden="true">
+      <img src="assets/breath.jpg" alt="" loading="lazy">
+    </div>
+    <div class="breath-overlay" aria-hidden="true"></div>
+    <blockquote class="breath-content reveal">
+      <p class="breath-quote">"Some houses ask to be admired. Others ask to be lived in slowly. <em>This one is the second kind.</em>"</p>
+      <cite class="breath-attr">— T. Mendoza, Treehouse · Field notes, January 2026</cite>
+    </blockquote>
+  </section>
+
+  <!-- ==================== SECTION 3: ROOMS ==================== -->
+  <section class="section-rooms-wrap" id="rooms" data-section="rooms">
+    <div class="rooms-header">
+      <span class="label reveal">Cuatro llaves</span>
+      <h2 class="display-large reveal">Four ways <em>to stay.</em></h2>
+      <p class="rooms-subtitle reveal">Each room is named, not numbered. Each was restored as if it were the only one.</p>
+    </div>
+
+    <div class="section-rooms">
+      <!-- Room 1: Deluxe Boutique Room -->
+      <article class="room-card" data-expandable>
+        <div class="room-card-bg">
+          <img src="assets/room-deluxe.webp" alt="Deluxe Boutique Room — soft daylight on a high mahogany bed" loading="lazy">
+        </div>
+        <div class="room-card-overlay"></div>
+        <div class="room-card-content">
+          <span class="label">N° 01 · Habitación</span>
+          <h3 class="display-small">Deluxe Boutique Room</h3>
+          <p class="room-summary">The first room. You hear the courtyard before you see it.</p>
+
+          <div class="room-specs">
+            <div class="room-spec">
+              <div class="room-spec-label">Sleeps</div>
+              <div class="room-spec-value">Two</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">Bed</div>
+              <div class="room-spec-value">King</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">Outlook</div>
+              <div class="room-spec-value">Courtyard</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">m²</div>
+              <div class="room-spec-value">28</div>
+            </div>
+          </div>
+
+          <div class="room-card-cta">
+            <a href="#footer">Reserve N° 01 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Room 2: Deluxe Boutique Suite -->
+      <article class="room-card" data-expandable>
+        <div class="room-card-bg">
+          <img src="assets/room-suite.jpg" alt="Deluxe Boutique Suite — sitting area beside tall louvered doors" loading="lazy">
+        </div>
+        <div class="room-card-overlay"></div>
+        <div class="room-card-content">
+          <span class="label">N° 02 · Suite</span>
+          <h3 class="display-small">Deluxe Boutique Suite</h3>
+          <p class="room-summary">A sitting room. A second light. Mornings stretch.</p>
+
+          <div class="room-specs">
+            <div class="room-spec">
+              <div class="room-spec-label">Sleeps</div>
+              <div class="room-spec-value">Two</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">Bed</div>
+              <div class="room-spec-value">King</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">Outlook</div>
+              <div class="room-spec-value">Garden</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">m²</div>
+              <div class="room-spec-value">42</div>
+            </div>
+          </div>
+
+          <div class="room-card-cta">
+            <a href="#footer">Reserve N° 02 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Room 3: Grand Boutique Suite -->
+      <article class="room-card" data-expandable>
+        <div class="room-card-bg">
+          <img src="assets/room-grand.jpg" alt="Grand Boutique Suite — soaring ceilings and a hand-laid floor" loading="lazy">
+        </div>
+        <div class="room-card-overlay"></div>
+        <div class="room-card-content">
+          <span class="label">N° 03 · Grand Suite</span>
+          <h3 class="display-small">Grand Boutique Suite</h3>
+          <p class="room-summary">The estate's principal room. The balcony over the Paseo, the bath you sit in too long.</p>
+
+          <div class="room-specs">
+            <div class="room-spec">
+              <div class="room-spec-label">Sleeps</div>
+              <div class="room-spec-value">Two — Three</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">Bed</div>
+              <div class="room-spec-value">King + Day Bed</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">Outlook</div>
+              <div class="room-spec-value">Paseo</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">m²</div>
+              <div class="room-spec-value">58</div>
+            </div>
+          </div>
+
+          <div class="room-card-cta">
+            <a href="#footer">Reserve N° 03 →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Room 4: Penthouse Suite -->
+      <article class="room-card" data-expandable>
+        <div class="room-card-bg">
+          <img src="assets/room-penthouse.jpg" alt="Penthouse Suite — open-air roof terrace at dusk" loading="lazy">
+        </div>
+        <div class="room-card-overlay"></div>
+        <div class="room-card-content">
+          <span class="label">N° 04 · Penthouse</span>
+          <h3 class="display-small">Penthouse Suite</h3>
+          <p class="room-summary">The whole top floor. A private rooftop. The longest sky in Mérida.</p>
+
+          <div class="room-specs">
+            <div class="room-spec">
+              <div class="room-spec-label">Sleeps</div>
+              <div class="room-spec-value">Two — Four</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">Bed</div>
+              <div class="room-spec-value">King + Sofa</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">Outlook</div>
+              <div class="room-spec-value">Rooftop</div>
+            </div>
+            <div class="room-spec">
+              <div class="room-spec-label">m²</div>
+              <div class="room-spec-value">92</div>
+            </div>
+          </div>
+
+          <div class="room-card-cta">
+            <a href="#footer">Reserve the top floor →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 4: CURATED MÉRIDA ==================== -->
+  <section class="section-curated" id="curated" data-section="curated">
+    <div class="curated-header">
+      <span class="label reveal">Itinerarios de la casa</span>
+      <h2 class="display-large reveal">Curated <em>Mérida.</em></h2>
+      <p class="curated-intro reveal">Four ways to step into the city — designed in-house, taken at your pace.</p>
+    </div>
+
+    <div class="curated-grid">
+      <div class="curated-card reveal">
+        <span class="curated-num">01</span>
+        <span class="curated-tag">Honeymoon</span>
+        <h3 class="curated-title">The Honeymoon</h3>
+        <p class="curated-desc">Private breakfast in the courtyard. A cenote at dawn. A photographer for a single hour. The kind of week you remember out of order.</p>
+        <span class="curated-meta">5 — 7 nights · Penthouse Suite</span>
+      </div>
+
+      <div class="curated-card reveal">
+        <span class="curated-num">02</span>
+        <span class="curated-tag">Expediciones</span>
+        <h3 class="curated-title">Cenotes &amp; Haciendas</h3>
+        <p class="curated-desc">A private driver, a swim through limestone, lunch in a working henequen estate. Drive slowly. Return for siesta.</p>
+        <span class="curated-meta">Day excursions · By appointment</span>
+      </div>
+
+      <div class="curated-card reveal">
+        <span class="curated-num">03</span>
+        <span class="curated-tag">Wellness</span>
+        <h3 class="curated-title">In-Suite Wellness</h3>
+        <p class="curated-desc">Mayan-trained therapists at your door. Copal, cacao, cool stone. You will not be the same shape afterward.</p>
+        <span class="curated-meta">90 — 180 min · In-suite</span>
+      </div>
+
+      <div class="curated-card reveal">
+        <span class="curated-num">04</span>
+        <span class="curated-tag">Transfers</span>
+        <h3 class="curated-title">Private Airport Transfers</h3>
+        <p class="curated-desc">A car waiting before you land, and a driver who waits without checking the time. Fifteen minutes from Manuel Crescencio Rejón to the courtyard, where the first thing you smell is rain on limestone, even when it isn't raining.</p>
+        <span class="curated-meta">MID → Paseo de Montejo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5: THE ART COLLABORATION (CENTERPIECE) ==================== -->
+  <section class="section-art" id="art" data-section="art">
+
+    <!-- Art Hero / Manifesto -->
+    <div class="art-hero">
+      <div class="art-hero-bg" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1577720580479-7d839d829c73?w=1600&q=80" alt="" loading="lazy" onerror="this.style.opacity=0; this.parentElement.style.background='linear-gradient(135deg, var(--ink-deep), var(--ink-soft))';">
+      </div>
+      <div class="art-hero-overlay"></div>
+
+      <div class="art-hero-content">
+        <span class="label art-eyebrow reveal">An Ongoing Collaboration · Estd. 2025</span>
+        <h2 class="display-huge art-title reveal">Treehouse <span class="art-cross">×</span> SoHo Galleries</h2>
+        <p class="art-deck reveal">A rotating exhibition lives inside the hotel. You are not visiting it. You are sleeping in it.</p>
+        <div class="art-divider reveal"></div>
+        <p class="art-manifesto reveal">
+          <span class="dropcap">T</span>reehouse curates for places that aren't museums. A hotel, a restaurant, a private courtyard — the rooms have a job, and the art has to share them. We installed a rotating collection at Boutique with <em>SoHo Galleries</em> in Mérida: drawings, ceramics, photography, the occasional uncomfortable thing, turning over four times a year. Guests live inside the exhibition rather than walking through it. Some pieces are for sale. Most are not.
+        </p>
+        <p class="art-manifesto-coda reveal">None of them are for the lobby.</p>
+      </div>
+    </div>
+
+    <!-- Art Specs Marquee -->
+    <div class="art-marquee" aria-hidden="true">
+      <div class="art-marquee-track">
+        <span>Treehouse × SoHo Galleries</span><span class="art-marquee-dot">●</span>
+        <span>Four rotations a year</span><span class="art-marquee-dot">●</span>
+        <span>Mérida — México</span><span class="art-marquee-dot">●</span>
+        <span>Cur. Treehouse / 2026</span><span class="art-marquee-dot">●</span>
+        <span>Treehouse × SoHo Galleries</span><span class="art-marquee-dot">●</span>
+        <span>Four rotations a year</span><span class="art-marquee-dot">●</span>
+        <span>Mérida — México</span><span class="art-marquee-dot">●</span>
+        <span>Cur. Treehouse / 2026</span><span class="art-marquee-dot">●</span>
+      </div>
+    </div>
+
+    <!-- Current Rotation -->
+    <div class="art-rotation">
+      <div class="art-rotation-header">
+        <span class="label reveal">La Rotación Actual</span>
+        <h3 class="display-small reveal">Rotation N° IV — <em>Calor Lento</em></h3>
+        <p class="art-rotation-deck reveal">Six artists working in and against the Yucatán summer — drawings made in the hour the courtyard refuses to cool, ceramics fired in henequen ash, a photographer who only shoots between two and four. On view through August.</p>
+      </div>
+
+      <div class="art-pieces">
+        <figure class="art-piece reveal-img">
+          <div class="art-piece-img">
+            <img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=1200&q=80" alt="Mixed-media canvas from the current rotation" loading="lazy" onerror="this.style.opacity=0; this.parentElement.style.background='linear-gradient(135deg, var(--ink-deep), var(--ink-soft))';">
+          </div>
+          <figcaption>
+            <span class="art-piece-num">N° 01</span>
+            <span class="art-piece-title">Inés Aldama</span>
+            <span class="art-piece-meta">Mixed media on linen · 2025</span>
+          </figcaption>
+        </figure>
+
+        <figure class="art-piece reveal-img">
+          <div class="art-piece-img">
+            <img src="https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=1200&q=80" alt="Ceramic vessels from the rotation" loading="lazy" onerror="this.style.opacity=0; this.parentElement.style.background='linear-gradient(135deg, var(--ink-deep), var(--ink-soft))';">
+          </div>
+          <figcaption>
+            <span class="art-piece-num">N° 02</span>
+            <span class="art-piece-title">Tomás Pérez Caín</span>
+            <span class="art-piece-meta">Stoneware, henequen ash · 2024</span>
+          </figcaption>
+        </figure>
+
+        <figure class="art-piece reveal-img">
+          <div class="art-piece-img">
+            <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=1200&q=80" alt="Photographic study installed in the courtyard" loading="lazy" onerror="this.style.opacity=0; this.parentElement.style.background='linear-gradient(135deg, var(--ink-deep), var(--ink-soft))';">
+          </div>
+          <figcaption>
+            <span class="art-piece-num">N° 03</span>
+            <span class="art-piece-title">Carla Méndez</span>
+            <span class="art-piece-meta">Silver gelatin print, ed. of 8 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="art-cta-row reveal">
+        <a href="#footer" class="art-cta">Book a curator-led walkthrough →</a>
+        <span class="art-cta-meta">Complimentary for in-house guests · Fri &amp; Sat, 5pm</span>
+      </div>
+    </div>
+
+    <!-- Curator Quote -->
+    <div class="art-quote">
+      <p class="art-quote-text">"We didn't want the rooms to be backdrops for the art. We wanted the art to be the reason the rooms held still."</p>
+      <span class="art-quote-attr">— Treehouse, on the founding rotation</span>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 6: LOCATION ==================== -->
+  <section class="section-location" id="location" data-section="location">
+    <div class="location-image-wrap">
+      <img src="assets/location.png" alt="Paseo de Montejo by evening, viewed from a colonial balcony" loading="lazy">
+    </div>
+
+    <div class="location-content">
+      <span class="label reveal">Calle 43, esquina con el Paseo</span>
+      <h2 class="display-medium reveal">A block from <em>Palacio Cantón.</em></h2>
+      <div class="accent-line reveal"></div>
+
+      <p class="body-large reveal">
+        Boutique by The Museo sits at the head of Paseo de Montejo — the city's grand avenue, planted with laurels in the 1900s and never finished hurrying. The Museum of Anthropology is one block away, the cathedral is a slow walk, and the airport is fifteen minutes by car.
+      </p>
+
+      <div class="location-grid reveal">
+        <div class="location-row">
+          <span class="location-key">Address</span>
+          <span class="location-val">Paseo de Montejo · Centro · Mérida, Yucatán</span>
+        </div>
+        <div class="location-row">
+          <span class="location-key">Palacio Cantón</span>
+          <span class="location-val">90 metres · 2 min on foot</span>
+        </div>
+        <div class="location-row">
+          <span class="location-key">Plaza Grande</span>
+          <span class="location-val">1.4 km · 18 min on foot</span>
+        </div>
+        <div class="location-row">
+          <span class="location-key">Airport — MID</span>
+          <span class="location-val">15 min by car · Private transfer available</span>
+        </div>
+        <div class="location-row">
+          <span class="location-key">Nearest Cenote</span>
+          <span class="location-val">Cuzamá · 60 min by car</span>
+        </div>
+      </div>
+
+      <div class="location-cta reveal">
+        <a href="https://maps.google.com/?q=Paseo+de+Montejo+Merida" target="_blank" rel="noopener" class="magnetic-btn">Open in maps →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PHOTO STRIP ==================== -->
+  <section class="section-photo-strip" aria-hidden="true">
+    <div class="photo-strip-track">
+      <div class="photo-strip-item">
+        <img src="assets/photo-1.png" alt="" loading="lazy">
+      </div>
+      <div class="photo-strip-item">
+        <img src="assets/photo-2.png" alt="" loading="lazy">
+      </div>
+      <div class="photo-strip-item">
+        <img src="assets/photo-3.png" alt="" loading="lazy">
+      </div>
+      <div class="photo-strip-item">
+        <img src="assets/breath.jpg" alt="" loading="lazy">
+      </div>
+      <div class="photo-strip-item">
+        <img src="assets/sanctuary-corridor.jpg" alt="" loading="lazy">
+      </div>
+      <!-- Duplicated for seamless loop -->
+      <div class="photo-strip-item">
+        <img src="assets/photo-1.png" alt="" loading="lazy">
+      </div>
+      <div class="photo-strip-item">
+        <img src="assets/photo-2.png" alt="" loading="lazy">
+      </div>
+      <div class="photo-strip-item">
+        <img src="assets/photo-3.png" alt="" loading="lazy">
+      </div>
+      <div class="photo-strip-item">
+        <img src="assets/breath.jpg" alt="" loading="lazy">
+      </div>
+      <div class="photo-strip-item">
+        <img src="assets/sanctuary-corridor.jpg" alt="" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 7: VOICES ==================== -->
+  <section class="section-voices" id="voices" data-section="voices" aria-roledescription="carousel" aria-label="Guest voices">
+    <div class="voices-bg" aria-hidden="true">
+      <img src="assets/hero.jpg" alt="" loading="lazy">
+    </div>
+
+    <div class="voices-content" aria-live="polite" aria-atomic="true">
+      <span class="label voices-label">Las Voces — Notes left at checkout</span>
+
+      <div class="testimonial-item active">
+        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+        <p class="testimonial-text">We arrived for three nights and rearranged a flight to stay four. The house has a way of asking you to be still.</p>
+        <span class="testimonial-author">— L &amp; M · Brooklyn</span>
+      </div>
+
+      <div class="testimonial-item">
+        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+        <p class="testimonial-text">The Penthouse rooftop at the last light of day, and a piece of art on the wall I quietly priced before I went to sleep.</p>
+        <span class="testimonial-author">— Cécile · Paris</span>
+      </div>
+
+      <div class="testimonial-item">
+        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+        <p class="testimonial-text">Fifteen rooms, and somehow they remembered we take our coffee differently. That is not service. That is attention.</p>
+        <span class="testimonial-author">— Andrés · CDMX</span>
+      </div>
+
+      <div class="testimonial-item">
+        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+        <p class="testimonial-text">A cenote at dawn, mezcal at sunset, and absolutely nobody else in the courtyard. I cannot recommend a hotel more honestly.</p>
+        <span class="testimonial-author">— Iris · Copenhagen</span>
+      </div>
+
+      <div class="testimonial-item">
+        <div class="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
+        <p class="testimonial-text">My husband does not nap. He napped here. Twice — and once with the courtyard birds going at sunrise.</p>
+        <span class="testimonial-author">— Mariana · Monterrey</span>
+      </div>
+    </div>
+
+    <div class="testimonial-controls">
+      <button class="testimonial-arrow testimonial-prev" type="button" aria-label="Previous voice">&lsaquo;</button>
+      <div class="testimonial-dots" role="tablist">
+        <button class="testimonial-dot active" type="button" role="tab" aria-label="Voice 1" aria-selected="true"></button>
+        <button class="testimonial-dot" type="button" role="tab" aria-label="Voice 2" aria-selected="false"></button>
+        <button class="testimonial-dot" type="button" role="tab" aria-label="Voice 3" aria-selected="false"></button>
+        <button class="testimonial-dot" type="button" role="tab" aria-label="Voice 4" aria-selected="false"></button>
+        <button class="testimonial-dot" type="button" role="tab" aria-label="Voice 5" aria-selected="false"></button>
+      </div>
+      <button class="testimonial-arrow testimonial-next" type="button" aria-label="Next voice">&rsaquo;</button>
+    </div>
+  </section>
+
+  <!-- ==================== INTERSTITIAL ==================== -->
+  <section class="section-interstitial" aria-label="Spanish coda">
+    <div class="interstitial-bg" aria-hidden="true">
+      <img src="assets/photo-2.png" alt="" loading="lazy">
+    </div>
+    <div class="interstitial-overlay" aria-hidden="true"></div>
+    <blockquote class="interstitial-content reveal">
+      <p class="pull-quote">"Un refugio en el corazón de cal."</p>
+      <cite class="interstitial-attr">— A sanctuary in the limestone heart of the city.</cite>
+    </blockquote>
+  </section>
+
+  <!-- ==================== SECTION 8: OFFERS + FOOTER ==================== -->
+  <section class="section-footer" id="footer" data-section="footer">
+
+    <!-- Offers -->
+    <div class="offers-section">
+      <div class="offers-bg" aria-hidden="true">
+        <img src="assets/room-suite.jpg" alt="" loading="lazy">
+      </div>
+
+      <div class="offers-content">
+        <span class="label reveal">Maneras de quedarse</span>
+        <h2 class="display-medium reveal">Two ways to stay <em>a little longer.</em></h2>
+
+        <div class="offers-grid reveal">
+          <div class="offer">
+            <span class="offer-num">01</span>
+            <span class="offer-tag">Resident's Allocation</span>
+            <h3 class="offer-title">Six nights, slower.</h3>
+            <p class="offer-desc">Stay six nights or more and receive a complimentary private airport transfer, a welcome amenity from the house, and a curator-led walkthrough of the current rotation.</p>
+            <span class="offer-fine">Available year-round · Subject to availability</span>
+          </div>
+
+          <div class="offer">
+            <span class="offer-num">02</span>
+            <span class="offer-tag">Verano</span>
+            <h3 class="offer-title">The slow season.</h3>
+            <p class="offer-desc">June through August, the city quiets. The courtyard cools after dark, the rotations breathe, and the house opens at twenty percent less. Honeymoons especially welcome.</p>
+            <span class="offer-fine">Use code <strong>VERANO26</strong> · Minimum 3 nights · Jun 1 — Aug 31, 2026</span>
+          </div>
+        </div>
+
+        <form class="reserve-form reveal" aria-label="Reservation enquiry">
+          <div class="reserve-field">
+            <label for="arrival">Arrival</label>
+            <input type="date" id="arrival" name="arrival" required>
+          </div>
+          <div class="reserve-field">
+            <label for="departure">Departure</label>
+            <input type="date" id="departure" name="departure" required>
+          </div>
+          <div class="reserve-field">
+            <label for="guests">Guests</label>
+            <select id="guests" name="guests">
+              <option>1 guest</option>
+              <option selected>2 guests</option>
+              <option>3 guests</option>
+              <option>4 guests</option>
+            </select>
+          </div>
+          <button type="submit" class="reserve-submit magnetic-btn">Write the house</button>
+        </form>
+
+        <p class="reserve-status" role="status" aria-live="polite"></p>
+        <p class="reserve-helper">A preview enquiry form. Real bookings travel through <a href="mailto:reservations@boutiquebythemuseo.com">reservations@boutiquebythemuseo.com</a>.</p>
+
+        <p class="offers-direct reveal">
+          Or write directly — <a href="mailto:reservations@boutiquebythemuseo.com">reservations@boutiquebythemuseo.com</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">Boutique <span class="logo__amp">·</span> Museo</div>
+          <p>A fifteen-room house on Paseo de Montejo. Restored colonial architecture, curated art, the quiet kind of luxury. Mérida, Yucatán, México.</p>
+          <p class="footer-spanish"><em>Un refugio. Una casa. Quince llaves.</em></p>
+        </div>
+
+        <div class="footer-col">
+          <h4>The House</h4>
+          <ul>
+            <li><a href="#sanctuary">The Sanctuary</a></li>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#art">Art Programme</a></li>
+            <li><a href="#location">Location</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Curated</h4>
+          <ul>
+            <li><a href="#curated">Honeymoon</a></li>
+            <li><a href="#curated">Cenotes &amp; Haciendas</a></li>
+            <li><a href="#curated">In-Suite Wellness</a></li>
+            <li><a href="#curated">Private Transfers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Reserve</h4>
+          <ul>
+            <li><a href="mailto:reservations@boutiquebythemuseo.com">Email Reservations</a></li>
+            <li><a href="tel:+529999000000">+52 (999) 900 0000</a></li>
+            <li><a href="https://boutiquebythemuseo.com/" target="_blank" rel="noopener">Original site</a></li>
+            <li><a href="#footer">Resident's Allocation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Boutique by The Museo · Paseo de Montejo · Mérida, Yucatán · México</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="mailto:reservations@boutiquebythemuseo.com" aria-label="Email">EM</a>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
