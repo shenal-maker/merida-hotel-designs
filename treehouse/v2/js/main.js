@@ -173,8 +173,94 @@
     });
   }
 
+  // ---------- Reservation card: date defaults + integrity ----------
+  // Port of the V4 booking pattern, kept self-contained.
+  const fmtDate = (d) => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  };
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const plusFour = new Date(today);
+  plusFour.setDate(plusFour.getDate() + 4);
+
+  const reservationForm = document.querySelector('.reservation-card');
+  if (reservationForm) {
+    const arrival = reservationForm.querySelector('input[data-role="arrival"]');
+    const departure = reservationForm.querySelector('input[data-role="departure"]');
+    const guests = reservationForm.querySelector('select[data-role="guests"]');
+    const roomField = reservationForm.querySelector('input[data-role="room"]');
+    const submitBtn = reservationForm.querySelector('.reservation-submit');
+
+    if (arrival) {
+      arrival.min = fmtDate(today);
+      if (!arrival.value) arrival.value = fmtDate(tomorrow);
+    }
+    if (departure) {
+      departure.min = fmtDate(tomorrow);
+      if (!departure.value) departure.value = fmtDate(plusFour);
+    }
+
+    if (arrival && departure) {
+      arrival.addEventListener('change', () => {
+        const a = new Date(arrival.value);
+        if (isNaN(a)) return;
+        const minDep = new Date(a);
+        minDep.setDate(minDep.getDate() + 1);
+        departure.min = fmtDate(minDep);
+        if (new Date(departure.value) <= a) {
+          departure.value = fmtDate(minDep);
+        }
+      });
+    }
+
+    reservationForm.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      if (!submitBtn) return;
+      const a = arrival ? arrival.value : '';
+      const d = departure ? departure.value : '';
+      const g = guests ? guests.value : '2';
+      const r = roomField && roomField.value ? ` · ${roomField.value}` : '';
+      const labelEl = submitBtn.querySelector('.reservation-submit-label');
+      if (!labelEl) return;
+      const original = submitBtn.dataset.label || labelEl.textContent.trim();
+      submitBtn.dataset.label = original;
+      labelEl.textContent = `Checking ${a} → ${d} · ${g}${r}`;
+      setTimeout(() => { labelEl.textContent = original; }, 1800);
+    });
+
+    // ---------- Room-card Reserve: prefill room + guests, then scroll ----------
+    document.querySelectorAll('a.room-cta[data-room]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href !== '#booking') return;
+        e.preventDefault();
+        const room = link.dataset.room || '';
+        const g = link.dataset.guests;
+        if (roomField) roomField.value = room;
+        if (guests && g) {
+          const opt = guests.querySelector(`option[value="${g}"]`);
+          if (opt) guests.value = g;
+        }
+        reservationForm.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        // Surface the chosen room in the title region (visually-quiet, focus arrival)
+        if (arrival) {
+          // small delay so scroll begins first
+          setTimeout(() => { try { arrival.focus({ preventScroll: true }); } catch (_) { arrival.focus(); } }, reduce ? 0 : 320);
+        }
+      });
+    });
+  }
+
   // ---------- Smooth scroll for in-page links ----------
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    // Skip room-CTA prefill links — handled above.
+    if (link.matches('a.room-cta[data-room]')) return;
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       if (href === '#' || href.length < 2) return;

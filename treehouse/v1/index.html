@@ -84,7 +84,7 @@
         <li><a href="#art">Treehouse &middot; SoHo</a></li>
         <li><a href="#location">Santa Ana</a></li>
         <li><a href="#offers">Offers</a></li>
-        <li><a href="#footer" class="nav-cta">Reserve</a></li>
+        <li><a href="#booking" class="nav-cta">Reserve</a></li>
       </ul>
     </nav>
   </header>
@@ -104,9 +104,38 @@
       <h1 class="display-huge hero-title">Tree <em>House</em></h1>
       <p class="hero-tagline">Colonial charm, contemporary comfort. <em>Fifteen rooms under the canopy.</em></p>
       <div class="hero-cta">
-        <a href="#footer" class="magnetic-btn primary-cta">Reserve →</a>
+        <a href="#booking" class="magnetic-btn primary-cta">Reserve →</a>
         <a href="#rooms" class="hero-cta-secondary">Walk under the leaves →</a>
       </div>
+
+      <!-- Booking widget: ivory "brass plate" under hero CTAs -->
+      <form class="hero-booking cinematic-rise" id="booking" aria-label="Check availability">
+        <label class="booking-field">
+          <span class="booking-label">Arrival</span>
+          <input type="date" data-role="arrival" aria-label="Arrival date" required>
+        </label>
+        <span class="booking-divider" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 C 7 6, 5 12, 7 17 C 9 22, 15 22, 17 17 C 19 12, 17 6, 12 2 Z M 12 4 L 12 21" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+        </span>
+        <label class="booking-field">
+          <span class="booking-label">Departure</span>
+          <input type="date" data-role="departure" aria-label="Departure date" required>
+        </label>
+        <span class="booking-divider" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 C 7 6, 5 12, 7 17 C 9 22, 15 22, 17 17 C 19 12, 17 6, 12 2 Z M 12 4 L 12 21" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+        </span>
+        <label class="booking-field">
+          <span class="booking-label">Guests</span>
+          <select data-role="guests" aria-label="Number of guests">
+            <option value="1">1 guest</option>
+            <option value="2" selected>2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+          </select>
+        </label>
+        <input type="hidden" data-role="room" name="room" value="">
+        <button type="submit" class="booking-submit">Reserve →</button>
+      </form>
     </div>
 
     <!-- Michelin Key accolade strip — in-hero, not a dedicated section -->
@@ -160,9 +189,12 @@
         <div class="room-card-content">
           <span class="label">N° 01</span>
           <h3 class="display-small">King Garden Room</h3>
+          <!-- placeholder pricing; replace with real rates -->
+          <p class="room-price" data-placeholder="true">From <span class="room-price-num">$325</span> <span class="room-price-unit">/ night</span></p>
+          <p class="room-specs" data-placeholder="true"><span>Sleeps 2</span><span class="room-specs-dot">·</span><span>32 m²</span><span class="room-specs-dot">·</span><span>Garden view</span></p>
           <p class="room-summary">A king bed, a balcony into the courtyard, and the morning light through leaves.</p>
           <div class="room-card-cta">
-            <a href="#footer">Reserve →</a>
+            <a href="#booking" data-room="King Garden Room">Reserve →</a>
           </div>
         </div>
       </article>
@@ -175,9 +207,12 @@
         <div class="room-card-content">
           <span class="label">N° 02</span>
           <h3 class="display-small">Queen Courtyard Suite</h3>
+          <!-- placeholder pricing; replace with real rates -->
+          <p class="room-price" data-placeholder="true">From <span class="room-price-num">$425</span> <span class="room-price-unit">/ night</span></p>
+          <p class="room-specs" data-placeholder="true"><span>Sleeps 4</span><span class="room-specs-dot">·</span><span>48 m²</span><span class="room-specs-dot">·</span><span>Courtyard view</span></p>
           <p class="room-summary">A terrace over the courtyard, the murmur of the fountain, and room enough to host the friends you came with.</p>
           <div class="room-card-cta">
-            <a href="#footer">Reserve →</a>
+            <a href="#booking" data-room="Queen Courtyard Suite">Reserve →</a>
           </div>
         </div>
       </article>
@@ -190,9 +225,12 @@
         <div class="room-card-content">
           <span class="label">N° 03</span>
           <h3 class="display-small">Grand Foliage Suite</h3>
+          <!-- placeholder pricing; replace with real rates -->
+          <p class="room-price" data-placeholder="true">From <span class="room-price-num">$595</span> <span class="room-price-unit">/ night</span></p>
+          <p class="room-specs" data-placeholder="true"><span>Sleeps 6</span><span class="room-specs-dot">·</span><span>72 m²</span><span class="room-specs-dot">·</span><span>Courtyard + garden</span></p>
           <p class="room-summary">Limestone, skylights, leaves on three sides. Our principal room.</p>
           <div class="room-card-cta">
-            <a href="#footer">Reserve →</a>
+            <a href="#booking" data-room="Grand Foliage Suite">Reserve →</a>
           </div>
         </div>
       </article>
@@ -205,9 +243,12 @@
         <div class="room-card-content">
           <span class="label">N° 04</span>
           <h3 class="display-small">Penthouse Canopy</h3>
+          <!-- placeholder pricing; replace with real rates -->
+          <p class="room-price" data-placeholder="true">From <span class="room-price-num">$950</span> <span class="room-price-unit">/ night</span></p>
+          <p class="room-specs" data-placeholder="true"><span>Sleeps 6</span><span class="room-specs-dot">·</span><span>95 m²</span><span class="room-specs-dot">·</span><span>Private terrace</span></p>
           <p class="room-summary">A private rooftop and the whole Mérida sky between you and anyone who isn't here.</p>
           <div class="room-card-cta">
-            <a href="#footer">Reserve →</a>
+            <a href="#booking" data-room="Penthouse Canopy">Reserve →</a>
           </div>
         </div>
       </article>

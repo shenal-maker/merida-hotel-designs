@@ -25,7 +25,7 @@
   <!-- NAVIGATION -->
   <nav class="nav" aria-label="Primary navigation">
     <div class="nav-logo">BOUTIQUE / MUSEO</div>
-    <a href="#rooms" class="nav-cta">ENTER →</a>
+    <a href="#booking" class="nav-cta">RESERVE →</a>
     <button class="nav-menu-btn" aria-expanded="false" aria-controls="site-index">INDEX</button>
   </nav>
 
@@ -73,11 +73,36 @@
       AN INTIMATE 15-ROOM SANCTUARY / PASEO DE MONTEJO / CENTRO HISTÓRICO, MÉRIDA
     </div>
 
-    <a href="#rooms" class="landing-cta brutalist-snap">ENTER THE HOUSE →</a>
+    <a href="#booking" class="landing-cta brutalist-snap">ENTER THE HOUSE →</a>
 
     <div class="landing-coords">LAT 20.9674° N &nbsp;·&nbsp; LON 89.6243° W</div>
     <div class="landing-scroll-indicator">SCROLL ↓ INDEX</div>
   </section>
+
+  <!-- BOOKING STRIP — 4-cell data row, brutalist-snap reveal with 40ms stagger -->
+  <form class="booking-strip" id="booking" aria-label="Check availability">
+    <div class="booking-cell brutalist-snap">
+      <label class="booking-cell-label" for="booking-arrival">ARRIVAL →</label>
+      <input class="booking-cell-input" id="booking-arrival" type="date" data-role="arrival" aria-label="Arrival date" required>
+    </div>
+    <div class="booking-cell brutalist-snap">
+      <label class="booking-cell-label" for="booking-departure">DEPARTURE →</label>
+      <input class="booking-cell-input" id="booking-departure" type="date" data-role="departure" aria-label="Departure date" required>
+    </div>
+    <div class="booking-cell brutalist-snap">
+      <span class="booking-cell-label" id="booking-guests-label">GUESTS →</span>
+      <div class="booking-stepper" role="group" aria-labelledby="booking-guests-label">
+        <button type="button" class="booking-step booking-step--down" aria-label="Decrease guests">−</button>
+        <input class="booking-stepper-input" type="text" inputmode="numeric" pattern="[1-9]" data-role="guests" value="2" aria-label="Number of guests" readonly>
+        <button type="button" class="booking-step booking-step--up" aria-label="Increase guests">+</button>
+      </div>
+      <input type="hidden" data-role="room" value="">
+    </div>
+    <button type="submit" class="booking-cell booking-cell--cta brutalist-snap">
+      <span class="booking-cta-label">[ ENTER →</span>
+      <span class="booking-cta-bracket">]</span>
+    </button>
+  </form>
 
   <!-- SECTION 2: ROOMS -->
   <div class="section-label brutalist-snap">01 / <span lang="es">LAS HABITACIONES</span> — ROOMS AS CATALOG</div>
@@ -88,8 +113,16 @@
       <div class="room-header">
         <div class="room-num">№ I</div>
         <h3 class="room-name">DELUXE<br>BOUTIQUE<br>ROOM</h3>
+        <!-- placeholder pricing; replace with real rates -->
+        <div class="room-price-stamp" data-placeholder="true">
+          <span class="room-price-amount">$295</span>
+          <span class="room-price-unit">/ NT</span>
+          <span class="room-price-from">— FROM</span>
+        </div>
       </div>
       <div class="room-version">> CATALOG ENTRY 01 / 04 &nbsp;·&nbsp; OCC. 2</div>
+      <!-- placeholder specs; replace with real specs -->
+      <div class="room-specs-row" data-placeholder="true">OCC.2 / 32M² / VIEW.GARDEN</div>
       <div class="room-image-wrap">
         <img src="assets/boutique-room-01.webp" alt="Deluxe Boutique Room interior" loading="lazy" width="2560" height="1707">
       </div>
@@ -99,7 +132,7 @@
         <div class="room-spec"><span class="room-spec-label">SETTING</span><span class="room-spec-value">CENTRO HISTÓRICO, MÉRIDA</span></div>
         <div class="room-spec"><span class="room-spec-label">RESERVE</span><span class="room-spec-value">DIRECT</span></div>
       </div>
-      <a href="https://boutiquebythemuseo.com" class="room-cta brutalist-snap" target="_blank" rel="noopener">ENTER №&nbsp;I →</a>
+      <a href="#booking" class="room-cta brutalist-snap" data-room="Deluxe Boutique Room" data-room-guests="2">ENTER №&nbsp;I →</a>
     </article>
 
     <!-- DELUXE BOUTIQUE SUITE -->
@@ -107,18 +140,26 @@
       <div class="room-header">
         <div class="room-num">№ II</div>
         <h3 class="room-name">DELUXE<br>BOUTIQUE<br>SUITE</h3>
+        <!-- placeholder pricing; replace with real rates -->
+        <div class="room-price-stamp" data-placeholder="true">
+          <span class="room-price-amount">$395</span>
+          <span class="room-price-unit">/ NT</span>
+          <span class="room-price-from">— FROM</span>
+        </div>
       </div>
-      <div class="room-version">> CATALOG ENTRY 02 / 04 &nbsp;·&nbsp; OCC. 2</div>
+      <div class="room-version">> CATALOG ENTRY 02 / 04 &nbsp;·&nbsp; OCC. 4</div>
+      <!-- placeholder specs; replace with real specs -->
+      <div class="room-specs-row" data-placeholder="true">OCC.4 / 48M² / VIEW.COURTYARD</div>
       <div class="room-image-wrap">
         <img src="assets/boutique-room-02-suite.jpg" alt="Deluxe Boutique Suite with sitting area" loading="lazy" width="1024" height="683">
       </div>
       <div class="room-specs">
         <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">DELUXE BOUTIQUE SUITE</span></div>
-        <div class="room-spec"><span class="room-spec-label">OCC.</span><span class="room-spec-value">2 ADULTS</span></div>
+        <div class="room-spec"><span class="room-spec-label">OCC.</span><span class="room-spec-value">4 ADULTS</span></div>
         <div class="room-spec"><span class="room-spec-label">SETTING</span><span class="room-spec-value">CENTRO HISTÓRICO, MÉRIDA</span></div>
         <div class="room-spec"><span class="room-spec-label">RESERVE</span><span class="room-spec-value">DIRECT</span></div>
       </div>
-      <a href="https://boutiquebythemuseo.com" class="room-cta brutalist-snap" target="_blank" rel="noopener">ENTER №&nbsp;II →</a>
+      <a href="#booking" class="room-cta brutalist-snap" data-room="Deluxe Boutique Suite" data-room-guests="4">ENTER №&nbsp;II →</a>
     </article>
 
     <!-- GRAND BOUTIQUE SUITE -->
@@ -126,18 +167,26 @@
       <div class="room-header">
         <div class="room-num">№ III</div>
         <h3 class="room-name">GRAND<br>BOUTIQUE<br>SUITE</h3>
+        <!-- placeholder pricing; replace with real rates -->
+        <div class="room-price-stamp" data-placeholder="true">
+          <span class="room-price-amount">$545</span>
+          <span class="room-price-unit">/ NT</span>
+          <span class="room-price-from">— FROM</span>
+        </div>
       </div>
-      <div class="room-version">> CATALOG ENTRY 03 / 04 &nbsp;·&nbsp; OCC. 3</div>
+      <div class="room-version">> CATALOG ENTRY 03 / 04 &nbsp;·&nbsp; OCC. 6</div>
+      <!-- placeholder specs; replace with real specs -->
+      <div class="room-specs-row" data-placeholder="true">OCC.6 / 72M² / VIEW.COURTYARD+GARDEN</div>
       <div class="room-image-wrap">
         <img src="assets/boutique-room-03-grand.jpg" alt="Grand Boutique Suite" loading="lazy" width="1024" height="683">
       </div>
       <div class="room-specs">
         <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">GRAND BOUTIQUE SUITE</span></div>
-        <div class="room-spec"><span class="room-spec-label">OCC.</span><span class="room-spec-value">3 ADULTS</span></div>
+        <div class="room-spec"><span class="room-spec-label">OCC.</span><span class="room-spec-value">6 ADULTS</span></div>
         <div class="room-spec"><span class="room-spec-label">SETTING</span><span class="room-spec-value">CENTRO HISTÓRICO, MÉRIDA</span></div>
         <div class="room-spec"><span class="room-spec-label">RESERVE</span><span class="room-spec-value">DIRECT</span></div>
       </div>
-      <a href="https://boutiquebythemuseo.com" class="room-cta brutalist-snap" target="_blank" rel="noopener">ENTER №&nbsp;III →</a>
+      <a href="#booking" class="room-cta brutalist-snap" data-room="Grand Boutique Suite" data-room-guests="6">ENTER №&nbsp;III →</a>
     </article>
 
     <!-- PENTHOUSE SUITE -->
@@ -145,18 +194,26 @@
       <div class="room-header">
         <div class="room-num">№ IV</div>
         <h3 class="room-name">PENTHOUSE<br>SUITE</h3>
+        <!-- placeholder pricing; replace with real rates -->
+        <div class="room-price-stamp" data-placeholder="true">
+          <span class="room-price-amount">$895</span>
+          <span class="room-price-unit">/ NT</span>
+          <span class="room-price-from">— FROM</span>
+        </div>
       </div>
-      <div class="room-version">> CATALOG ENTRY 04 / 04 &nbsp;·&nbsp; OCC. 4 / PRIVATE TERRACE</div>
+      <div class="room-version">> CATALOG ENTRY 04 / 04 &nbsp;·&nbsp; OCC. 6 / PRIVATE TERRACE</div>
+      <!-- placeholder specs; replace with real specs -->
+      <div class="room-specs-row" data-placeholder="true">OCC.6 / 95M² / VIEW.PRIVATE-TERRACE</div>
       <div class="room-image-wrap">
         <img src="assets/boutique-room-04-penthouse.jpg" alt="Penthouse Suite with private rooftop terrace" loading="lazy" width="2560" height="1707">
       </div>
       <div class="room-specs">
         <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">PENTHOUSE SUITE</span></div>
-        <div class="room-spec"><span class="room-spec-label">OCC.</span><span class="room-spec-value">4 ADULTS</span></div>
+        <div class="room-spec"><span class="room-spec-label">OCC.</span><span class="room-spec-value">6 ADULTS</span></div>
         <div class="room-spec"><span class="room-spec-label">SETTING</span><span class="room-spec-value">PRIVATE ROOFTOP TERRACE</span></div>
         <div class="room-spec"><span class="room-spec-label">RESERVE</span><span class="room-spec-value">DIRECT</span></div>
       </div>
-      <a href="https://boutiquebythemuseo.com" class="room-cta brutalist-snap" target="_blank" rel="noopener">TAKE THE PENTHOUSE →</a>
+      <a href="#booking" class="room-cta brutalist-snap" data-room="Penthouse Suite" data-room-guests="6">TAKE THE PENTHOUSE →</a>
     </article>
 
   </section>
@@ -231,7 +288,7 @@
         <p class="offer-body">
           Stay six nights or more and receive a complimentary airport transfer on arrival, plus a surprise gift in your suite.
         </p>
-        <a href="https://boutiquebythemuseo.com" class="offer-cta brutalist-snap" target="_blank" rel="noopener">ENTER ALLOCATION →</a>
+        <a href="#booking" class="offer-cta brutalist-snap">ENTER ALLOCATION →</a>
       </article>
       <article class="offer-block offer-block--accent brutalist-snap">
         <div class="offer-tag">SUMMER SPECIAL — 2026</div>
@@ -239,7 +296,7 @@
         <p class="offer-body">
           Twenty percent off all suite categories for stays between June 1 and August 31, 2026. Direct bookings only.
         </p>
-        <a href="https://boutiquebythemuseo.com" class="offer-cta brutalist-snap" target="_blank" rel="noopener">TAKE THE RATE →</a>
+        <a href="#booking" class="offer-cta brutalist-snap">TAKE THE RATE →</a>
       </article>
     </div>
   </section>
@@ -266,7 +323,7 @@
           <a href="#rooms">ROOMS</a> / <a href="#art">ART</a> / <a href="#location">LOCATION</a> / <a href="#offers">OFFERS</a>
         </div>
       </div>
-      <a href="https://boutiquebythemuseo.com" class="footer-cta brutalist-snap" target="_blank" rel="noopener">ENTER &amp; RESERVE →</a>
+      <a href="#booking" class="footer-cta brutalist-snap">ENTER &amp; RESERVE →</a>
     </div>
     <div class="footer-stamp">
       <span>20.9674° N · 89.6243° W</span>

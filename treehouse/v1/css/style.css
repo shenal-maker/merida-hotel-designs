@@ -620,8 +620,16 @@ em { font-style: italic; color: inherit; }
   position: relative;
   z-index: 10;
   text-align: center;
-  padding: 0 5vw;
+  /* Reserve breathing room above the absolutely-positioned accolade + scroll indicator */
+  padding: 80px 5vw 160px;
   max-width: 1100px;
+}
+@media (max-width: 900px) {
+  /* Accolade stacks here — needs more room below the booking widget */
+  .hero-content { padding-bottom: 220px; padding-top: 60px; }
+}
+@media (max-width: 768px) {
+  .hero-content { padding-bottom: 200px; padding-top: 40px; }
 }
 
 /* Hero copy fades up with 250ms stagger between lines */
@@ -745,6 +753,156 @@ em { font-style: italic; color: inherit; }
   color: var(--leaf-bright);
   opacity: 1;
   border-bottom-color: var(--leaf-bright);
+}
+
+/* --- Hero booking widget: translucent ivory "brass plate" under hero CTAs --- */
+.hero-booking {
+  margin: 2.8rem auto 0;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 14px 14px 14px 22px;
+  /* Lifted opacity for canopy-dark backdrop legibility */
+  background: rgba(247, 243, 235, 0.94);
+  border: 1px solid var(--ochre-dim);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 0 rgba(247, 243, 235, 0.5) inset,
+    0 18px 50px rgba(15, 28, 18, 0.55),
+    0 0 0 1px rgba(198, 153, 96, 0.16);
+  max-width: 760px;
+  flex-wrap: nowrap;
+  /* This element uses .cinematic-rise — translateY(40px) → 0 over 1200ms */
+}
+
+.hero-booking .booking-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 18px;
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: left;
+  cursor: none;
+}
+
+.hero-booking .booking-label {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--label-sm);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 500;
+  opacity: 0.78;
+}
+
+.hero-booking input[type="date"],
+.hero-booking select {
+  font-family: 'Cormorant', serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--canopy-deep);
+  background: transparent;
+  border: 0;
+  padding: 4px 0;
+  width: 100%;
+  letter-spacing: 0.01em;
+  cursor: none;
+  /* Hide the default focus ring; we paint our own */
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.hero-booking input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(40%) sepia(35%) saturate(370%) hue-rotate(355deg) brightness(94%) contrast(86%);
+  cursor: none;
+  opacity: 0.65;
+  transition: opacity 0.2s ease;
+}
+.hero-booking input[type="date"]:hover::-webkit-calendar-picker-indicator { opacity: 1; }
+
+.hero-booking input[type="date"]:focus-visible,
+.hero-booking select:focus-visible {
+  outline: 2px solid var(--ochre);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Leaf-glyph divider — Tree House signature, between fields */
+.hero-booking .booking-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  flex: 0 0 22px;
+  color: var(--leaf);
+  opacity: 0.55;
+}
+.hero-booking .booking-divider svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Reserve button — picks up the cinematic primary CTA register (ochre + glow) */
+.hero-booking .booking-submit {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: var(--ls-mid);
+  text-transform: uppercase;
+  color: var(--canopy-deep);
+  background: var(--ochre);
+  border: 1px solid var(--ochre);
+  padding: 14px 28px;
+  margin-left: 14px;
+  font-weight: 500;
+  cursor: none;
+  transition: transform 300ms ease, background 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  align-self: stretch;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.hero-booking .booking-submit:hover {
+  background: var(--ochre-warm);
+  border-color: var(--ochre-warm);
+  transform: scale(1.025);
+  box-shadow: 0 0 0 6px var(--ochre-glow), 0 8px 30px rgba(198, 153, 96, 0.3);
+}
+
+.hero-booking .booking-submit:focus-visible {
+  outline: 2px solid var(--ivory);
+  outline-offset: 3px;
+}
+
+/* Coarse pointer: restore native cursor over inputs/button */
+body.coarse-pointer .hero-booking input,
+body.coarse-pointer .hero-booking select,
+body.coarse-pointer .hero-booking .booking-submit,
+body.coarse-pointer .hero-booking .booking-field { cursor: auto; }
+body.coarse-pointer .hero-booking .booking-submit { cursor: pointer; }
+
+@media (max-width: 768px) {
+  .hero-booking {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 16px 16px;
+    margin-top: 2rem;
+    gap: 8px;
+  }
+  .hero-booking .booking-field {
+    padding: 6px 4px;
+    border-bottom: 1px solid rgba(47, 74, 50, 0.12);
+  }
+  .hero-booking .booking-field:last-of-type { border-bottom: 0; }
+  .hero-booking .booking-divider { display: none; }
+  .hero-booking .booking-submit {
+    margin-left: 0;
+    margin-top: 6px;
+    padding: 14px 22px;
+    width: 100%;
+    min-height: 48px;
+  }
 }
 
 /* Hero accolade strip (Michelin Key + Travellers' Choice + room count) */
@@ -942,6 +1100,48 @@ em { font-style: italic; color: inherit; }
   margin-bottom: 1.4rem;
   max-width: 460px;
   font-weight: 400;
+}
+
+/* Room price — tight Inter caps, ochre accent on dollar amount */
+.room-price {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--label-md);
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  font-weight: 500;
+  margin: 0.25rem 0 0.7rem;
+}
+.room-price .room-price-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.18rem;
+  letter-spacing: 0.02em;
+  color: var(--ochre-warm);
+  text-transform: none;
+  margin: 0 0.18em;
+}
+.room-price .room-price-unit {
+  color: var(--fg-faint);
+  letter-spacing: var(--ls-tight);
+}
+
+/* Room specs — small-caps row, leaf-bright dot separator */
+.room-specs {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--label-sm);
+  letter-spacing: var(--ls-mid);
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  font-weight: 500;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 1rem;
+}
+.room-specs .room-specs-dot {
+  color: var(--leaf-bright);
+  opacity: 0.75;
 }
 
 .room-card-cta a {
@@ -1483,7 +1683,8 @@ select:focus-visible {
   .hero-accolade {
     bottom: 52px;
   }
-  .section-hero { min-height: 640px; }
+  /* Booking widget stacks at this width — give the hero more vertical room */
+  .section-hero { min-height: 820px; height: auto; padding: 14vh 0 22vh; }
 }
 
 @media (max-width: 480px) {

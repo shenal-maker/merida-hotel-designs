@@ -34,7 +34,7 @@
   <nav class="nav" aria-label="Primary navigation">
     <div class="nav-logo">TREE HOUSE / SANTA ANA</div>
     <div class="nav-right">
-      <a class="nav-cta" href="https://treehouseboutiquehotel.com" target="_blank" rel="noopener">RESERVE</a>
+      <a class="nav-cta" href="#booking">RESERVE</a>
       <button class="nav-menu-btn" aria-expanded="false" aria-controls="menu-overlay">INDEX</button>
     </div>
   </nav>
@@ -47,7 +47,7 @@
     <a href="#art"><span class="menu-num">02</span><span>Art Collaboration</span></a>
     <a href="#location"><span class="menu-num">03</span><span>Location</span></a>
     <a href="#offers"><span class="menu-num">04</span><span>Offers</span></a>
-    <a href="https://treehouseboutiquehotel.com" target="_blank" rel="noopener"><span class="menu-num">05</span><span>Reserve</span></a>
+    <a href="#booking"><span class="menu-num">05</span><span>Reserve</span></a>
     <div class="menu-foot"><span lang="es-MX">BARRIO DE SANTA ANA</span>, MÉRIDA, YUC.</div>
   </div>
 
@@ -101,6 +101,32 @@
     <div class="landing-scroll-indicator">SCROLL ↓ CATALOG</div>
   </section>
 
+  <!-- BOOKING WIDGET — 4-cell data row, brutalist 12-col strip, mono micro labels, 1px hairlines.
+       Reveal: brutalist-snap with 40ms stagger across the 4 cells. Hard cut, no fade. -->
+  <form class="booking" id="booking" aria-label="Reserve a stay" novalidate>
+    <div class="booking-cell booking-cell--field brutalist-snap">
+      <label class="booking-label" for="booking-arrival">ARRIVAL <span class="booking-arrow" aria-hidden="true">→</span></label>
+      <input class="booking-input" id="booking-arrival" name="arrival" type="date" data-role="arrival" required>
+    </div>
+    <div class="booking-cell booking-cell--field brutalist-snap">
+      <label class="booking-label" for="booking-departure">DEPARTURE <span class="booking-arrow" aria-hidden="true">→</span></label>
+      <input class="booking-input" id="booking-departure" name="departure" type="date" data-role="departure" required>
+    </div>
+    <div class="booking-cell booking-cell--field brutalist-snap">
+      <span class="booking-label" id="booking-guests-label">GUESTS <span class="booking-arrow" aria-hidden="true">→</span></span>
+      <div class="booking-stepper" role="group" aria-labelledby="booking-guests-label">
+        <button type="button" class="booking-step" data-step="-1" aria-label="Decrease guests">−</button>
+        <input class="booking-input booking-input--num" id="booking-guests" name="guests" type="number" inputmode="numeric" min="1" max="6" step="1" value="2" data-role="guests" aria-label="Guests" readonly>
+        <button type="button" class="booking-step" data-step="+1" aria-label="Increase guests">+</button>
+      </div>
+      <input type="hidden" name="room" id="booking-room" value="">
+    </div>
+    <div class="booking-cell booking-cell--cta brutalist-snap">
+      <button type="submit" class="booking-cta">[ ENTER <span aria-hidden="true">→</span> ]</button>
+      <span class="booking-cta-meta" aria-live="polite" id="booking-cta-meta">— DIRECT BOOKING</span>
+    </div>
+  </form>
+
   <!-- SECTION 2: ROOMS — 4 categories, brutalist catalog register -->
   <div class="section-label">01 / <span lang="es-MX">LA COLECCIÓN</span> — ROOMS</div>
   <section class="collection" id="rooms" aria-labelledby="rooms-heading">
@@ -108,6 +134,12 @@
 
     <!-- ROOM I -->
     <article class="room-block brutalist-snap">
+      <!-- PRICE STAMP — top-right mono data stamp. Placeholder per CONVERSION_POLISH brief. -->
+      <div class="room-price-stamp" data-placeholder="true">
+        <span class="room-price-amt">$325</span>
+        <span class="room-price-unit">/ NT</span>
+        <span class="room-price-from">— FROM</span>
+      </div>
       <div class="room-header">
         <div class="room-num">№ I</div>
         <h3 class="room-name">KING<br>GARDEN<br>ROOM</h3>
@@ -115,17 +147,24 @@
       <div class="room-image-wrap">
         <img src="../assets/room-balcony-doors.jpg" alt="King Garden Room — French doors opening onto a wrought-iron balcony with a tree just outside" width="1600" height="1067" loading="lazy" decoding="async">
       </div>
+      <!-- SPECS ROW — mono micro tier, placeholder. -->
+      <div class="room-quickspecs" data-placeholder="true">OCC.2 / 32M² / VIEW.GARDEN</div>
       <div class="room-specs">
         <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">01 / 04</span></div>
         <div class="room-spec"><span class="room-spec-label">BED</span><span class="room-spec-value">KING</span></div>
         <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">02 ADULTOS</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">PRICE ON REQUEST</span></div>
+        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value" data-placeholder="true">$325 / NT</span></div>
       </div>
-      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">RESERVE — №&nbsp;I →</a>
+      <a href="#booking" class="room-cta" data-room="king-garden-room" data-room-label="King Garden Room" data-room-occ="2">[ ENTER — №&nbsp;I <span aria-hidden="true">→</span> ]</a>
     </article>
 
     <!-- ROOM II -->
     <article class="room-block brutalist-snap">
+      <div class="room-price-stamp" data-placeholder="true">
+        <span class="room-price-amt">$425</span>
+        <span class="room-price-unit">/ NT</span>
+        <span class="room-price-from">— FROM</span>
+      </div>
       <div class="room-header">
         <div class="room-num">№ II</div>
         <h3 class="room-name">QUEEN<br>COURTYARD<br>SUITE</h3>
@@ -133,17 +172,23 @@
       <div class="room-image-wrap">
         <img src="../assets/room-slat-headboard.jpg" alt="Queen Courtyard Suite with slat headboard, sitting corner, and decorative tile floor strip" width="1600" height="1067" loading="lazy" decoding="async">
       </div>
+      <div class="room-quickspecs" data-placeholder="true">OCC.4 / 48M² / VIEW.COURTYARD</div>
       <div class="room-specs">
         <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">02 / 04</span></div>
         <div class="room-spec"><span class="room-spec-label">BED</span><span class="room-spec-value">QUEEN</span></div>
-        <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">02 ADULTOS</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">PRICE ON REQUEST</span></div>
+        <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">04 ADULTOS</span></div>
+        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value" data-placeholder="true">$425 / NT</span></div>
       </div>
-      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">RESERVE — №&nbsp;II →</a>
+      <a href="#booking" class="room-cta" data-room="queen-courtyard-suite" data-room-label="Queen Courtyard Suite" data-room-occ="4">[ ENTER — №&nbsp;II <span aria-hidden="true">→</span> ]</a>
     </article>
 
     <!-- ROOM III -->
     <article class="room-block brutalist-snap">
+      <div class="room-price-stamp" data-placeholder="true">
+        <span class="room-price-amt">$595</span>
+        <span class="room-price-unit">/ NT</span>
+        <span class="room-price-from">— FROM</span>
+      </div>
       <div class="room-header">
         <div class="room-num">№ III</div>
         <h3 class="room-name">KING<br>GARDEN<br>SUITE</h3>
@@ -151,17 +196,23 @@
       <div class="room-image-wrap">
         <img src="../assets/room-staggered-stick.jpg" alt="King Garden Suite with sculptural vertical wood-stick headboard, onyx wall sconces, and geometric floor tile" width="1600" height="1067" loading="lazy" decoding="async">
       </div>
+      <div class="room-quickspecs" data-placeholder="true">OCC.6 / 72M² / VIEW.COURTYARD+GARDEN</div>
       <div class="room-specs">
         <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">03 / 04</span></div>
         <div class="room-spec"><span class="room-spec-label">BED</span><span class="room-spec-value">KING</span></div>
-        <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">02 ADULTOS</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">PRICE ON REQUEST</span></div>
+        <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">06 ADULTOS</span></div>
+        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value" data-placeholder="true">$595 / NT</span></div>
       </div>
-      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">RESERVE — №&nbsp;III →</a>
+      <a href="#booking" class="room-cta" data-room="king-garden-suite" data-room-label="King Garden Suite" data-room-occ="6">[ ENTER — №&nbsp;III <span aria-hidden="true">→</span> ]</a>
     </article>
 
     <!-- ROOM IV -->
     <article class="room-block brutalist-snap">
+      <div class="room-price-stamp" data-placeholder="true">
+        <span class="room-price-amt">$950</span>
+        <span class="room-price-unit">/ NT</span>
+        <span class="room-price-from">— FROM</span>
+      </div>
       <div class="room-header">
         <div class="room-num">№ IV</div>
         <h3 class="room-name">PENT-<br>HOUSE<br>CANOPY</h3>
@@ -169,13 +220,14 @@
       <div class="room-image-wrap">
         <img src="../assets/room-limestone-skylight.jpg" alt="Penthouse Canopy — raw cut-stone limestone feature wall, three rectangular skylights, walnut bed frame" width="1600" height="1067" loading="lazy" decoding="async">
       </div>
+      <div class="room-quickspecs" data-placeholder="true">OCC.6 / 95M² / VIEW.PRIVATE-TERRACE</div>
       <div class="room-specs">
         <div class="room-spec"><span class="room-spec-label">CATEGORY</span><span class="room-spec-value">04 / 04</span></div>
         <div class="room-spec"><span class="room-spec-label">BED</span><span class="room-spec-value">KING</span></div>
-        <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">02 ADULTOS</span></div>
-        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value">PRICE ON REQUEST</span></div>
+        <div class="room-spec"><span class="room-spec-label">OCC. MAX</span><span class="room-spec-value" lang="es-MX">06 ADULTOS</span></div>
+        <div class="room-spec"><span class="room-spec-label" lang="es-MX">DESDE</span><span class="room-spec-value" data-placeholder="true">$950 / NT</span></div>
       </div>
-      <a href="https://treehouseboutiquehotel.com" class="room-cta" target="_blank" rel="noopener">RESERVE — №&nbsp;IV →</a>
+      <a href="#booking" class="room-cta" data-room="penthouse-canopy" data-room-label="Penthouse Canopy" data-room-occ="6">[ ENTER — №&nbsp;IV <span aria-hidden="true">→</span> ]</a>
     </article>
 
   </section>
@@ -257,7 +309,7 @@
       </div>
       <div class="offers-body">
         <p>Stay five nights or more and the room rate drops by thirty percent across all categories. Bookable directly through the property.</p>
-        <a href="https://treehouseboutiquehotel.com" class="offers-cta" target="_blank" rel="noopener">RESERVE →</a>
+        <a href="#booking" class="offers-cta">RESERVE →</a>
       </div>
     </div>
   </section>

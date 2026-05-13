@@ -34,7 +34,7 @@
         <li><a href="#art">Art</a></li>
         <li><a href="#visit">Visit</a></li>
         <li><a href="#offer">Offer</a></li>
-        <li><a href="#reserve" class="masthead-nav-cta">Reserve</a></li>
+        <li><a href="#booking" class="masthead-nav-cta">Reserve</a></li>
       </ul>
     </nav>
   </header>
@@ -66,9 +66,46 @@
     </div>
 
     <div class="hero-cta-row editorial-sweep">
-      <a href="#reserve" class="hero-cta">Reserve <span class="hero-cta-arrow">&rarr;</span></a>
+      <a href="#booking" class="hero-cta">Reserve <span class="hero-cta-arrow">&rarr;</span></a>
       <a href="#rooms" class="hero-cta hero-cta--ghost">See Rooms <span class="hero-cta-arrow">&darr;</span></a>
     </div>
+
+    <!-- Reservation card — paper card, ochre hairline, library-slip register -->
+    <form class="reservation-card editorial-sweep" id="booking" aria-labelledby="reservation-card-title">
+      <div class="reservation-card-head">
+        <h2 class="reservation-card-title" id="reservation-card-title">
+          <span lang="es-MX">Reservar</span> <span class="reservation-card-dot" aria-hidden="true">&middot;</span> <em>Reserve</em>
+        </h2>
+        <span class="reservation-card-edition" aria-hidden="true"><em>Edici&oacute;n &middot; MMXXVI</em></span>
+      </div>
+
+      <div class="reservation-card-fields">
+        <label class="reservation-field">
+          <span class="reservation-field-label" lang="es-MX">Llegada <span class="reservation-field-sep" aria-hidden="true">&middot;</span> <span lang="en">Arrival</span></span>
+          <input type="date" data-role="arrival" aria-label="Arrival date" required>
+        </label>
+        <label class="reservation-field">
+          <span class="reservation-field-label" lang="es-MX">Salida <span class="reservation-field-sep" aria-hidden="true">&middot;</span> <span lang="en">Departure</span></span>
+          <input type="date" data-role="departure" aria-label="Departure date" required>
+        </label>
+        <label class="reservation-field">
+          <span class="reservation-field-label" lang="es-MX">Hu&eacute;spedes <span class="reservation-field-sep" aria-hidden="true">&middot;</span> <span lang="en">Guests</span></span>
+          <select data-role="guests" aria-label="Number of guests">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </label>
+        <input type="hidden" data-role="room" name="room" value="">
+        <button type="submit" class="reservation-submit">
+          <span class="reservation-submit-label">Reserve</span>
+          <span class="reservation-submit-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+    </form>
 
     <!-- Michelin Key accolade strip — small, in-hero, not a section -->
     <div class="accolade-strip editorial-sweep" aria-label="Accolades">
@@ -111,9 +148,11 @@
         </div>
         <h3 class="room-name">Garden Room</h3>
         <p class="room-tasting">A first room &mdash; cool, square, opening through cedar shutters onto the lowest tier of the garden.</p>
+        <p class="room-specs" data-placeholder="true" lang="es-MX">2 hu&eacute;spedes <span class="room-specs-sep" aria-hidden="true">&middot;</span> 32 m&sup2; <span class="room-specs-sep" aria-hidden="true">&middot;</span> vista al jard&iacute;n</p>
+        <!-- placeholder pricing; replace with real rate -->
+        <p class="room-price room-price--editorial"><em>From <span data-placeholder="true">$325</span> per night</em></p>
         <div class="room-foot">
-          <span class="room-price">From <strong>$285</strong> / night</span>
-          <a href="#reserve" class="room-cta">Reserve</a>
+          <a href="#booking" class="room-cta" data-room="Garden Room">Reserve</a>
         </div>
       </article>
 
@@ -125,9 +164,11 @@
         </div>
         <h3 class="room-name">Courtyard Suite</h3>
         <p class="room-tasting">A sitting room and a bedroom divided by cedar doors. The window opens onto the canopy &mdash; you read by green light.</p>
+        <p class="room-specs" data-placeholder="true" lang="es-MX">4 hu&eacute;spedes <span class="room-specs-sep" aria-hidden="true">&middot;</span> 48 m&sup2; <span class="room-specs-sep" aria-hidden="true">&middot;</span> vista al patio</p>
+        <!-- placeholder pricing; replace with real rate -->
+        <p class="room-price room-price--editorial"><em>From <span data-placeholder="true">$425</span> per night</em></p>
         <div class="room-foot">
-          <span class="room-price">From <strong>$365</strong> / night</span>
-          <a href="#reserve" class="room-cta">Reserve</a>
+          <a href="#booking" class="room-cta" data-room="Courtyard Suite" data-guests="4">Reserve</a>
         </div>
       </article>
 
@@ -139,9 +180,11 @@
         </div>
         <h3 class="room-name">Garden Suite</h3>
         <p class="room-tasting">Our widest room &mdash; a sculptural headboard, a private walled garden, an outdoor shower under the leaves.</p>
+        <p class="room-specs" data-placeholder="true" lang="es-MX">6 hu&eacute;spedes <span class="room-specs-sep" aria-hidden="true">&middot;</span> 72 m&sup2; <span class="room-specs-sep" aria-hidden="true">&middot;</span> vista al patio y jard&iacute;n</p>
+        <!-- placeholder pricing; replace with real rate -->
+        <p class="room-price room-price--editorial"><em>From <span data-placeholder="true">$595</span> per night</em></p>
         <div class="room-foot">
-          <span class="room-price">From <strong>$465</strong> / night</span>
-          <a href="#reserve" class="room-cta">Reserve</a>
+          <a href="#booking" class="room-cta" data-room="Garden Suite" data-guests="6">Reserve</a>
         </div>
       </article>
 
@@ -153,9 +196,11 @@
         </div>
         <h3 class="room-name">Penthouse Suite</h3>
         <p class="room-tasting">The top of the house &mdash; rough limestone, skylights overhead, a private terrace and the long blue evening of Santa Ana below.</p>
+        <p class="room-specs" data-placeholder="true" lang="es-MX">6 hu&eacute;spedes <span class="room-specs-sep" aria-hidden="true">&middot;</span> 95 m&sup2; <span class="room-specs-sep" aria-hidden="true">&middot;</span> terraza privada</p>
+        <!-- placeholder pricing; replace with real rate -->
+        <p class="room-price room-price--editorial"><em>From <span data-placeholder="true">$950</span> per night</em></p>
         <div class="room-foot">
-          <span class="room-price">From <strong>$595</strong> / night</span>
-          <a href="#reserve" class="room-cta room-cta--filled">Reserve</a>
+          <a href="#booking" class="room-cta room-cta--filled" data-room="Penthouse Suite" data-guests="6">Reserve</a>
         </div>
       </article>
     </div>
@@ -240,7 +285,7 @@
       <p>
         Book five nights or more at Tree House and the rate softens by 30%. Combinable with airport transfer on arrival, and available through 2026.
       </p>
-      <a href="#reserve" class="offer-cta" id="reserve">Reserve <span class="offer-cta-arrow">&rarr;</span></a>
+      <a href="#booking" class="offer-cta">Reserve <span class="offer-cta-arrow">&rarr;</span></a>
     </div>
   </section>
 
@@ -277,7 +322,7 @@
         <a href="#art">Art</a>
         <a href="#visit">Visit</a>
         <a href="#offer">Offer</a>
-        <a href="#reserve">Reserve</a>
+        <a href="#booking">Reserve</a>
       </div>
     </div>
 

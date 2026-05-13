@@ -185,10 +185,119 @@
   }
 
   // --- CTA CLICK VIBRATION (room + offers + footer Reserve buttons) ---
-  document.querySelectorAll('.room-cta, .offers-cta, .footer-cta, .landing-cta, .nav-cta').forEach((cta) => {
+  document.querySelectorAll('.room-cta, .offers-cta, .footer-cta, .landing-cta, .nav-cta, .booking-cta').forEach((cta) => {
     cta.addEventListener('click', () => {
       cta.classList.add('vibrate');
       setTimeout(() => cta.classList.remove('vibrate'), 150);
+    });
+  });
+
+  // --- BOOKING WIDGET ---
+  // Date defaults: arrival = tomorrow, departure = arrival + 3 nights.
+  // Departure auto-shifts forward if arrival is changed past it. Both inputs clamped via min.
+  // Stepper: +/- buttons mutate guests, clamped [1, 6].
+  // Submit: prevented (portfolio build) — flashes confirmation in the CTA copy.
+  // Per-card CTA prefill: smooth-scroll to #booking, set hidden room, bump guests to room occupancy.
+  const fmtDate = (d) => d.toISOString().slice(0, 10);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
+  const plusFour = new Date(today); plusFour.setDate(plusFour.getDate() + 4);
+
+  document.querySelectorAll('input[type="date"][data-role="arrival"]').forEach((el) => {
+    el.min = fmtDate(today);
+    if (!el.value) el.value = fmtDate(tomorrow);
+  });
+  document.querySelectorAll('input[type="date"][data-role="departure"]').forEach((el) => {
+    el.min = fmtDate(tomorrow);
+    if (!el.value) el.value = fmtDate(plusFour);
+  });
+
+  const bookingForm = document.querySelector('.booking');
+  if (bookingForm) {
+    const arrival = bookingForm.querySelector('[data-role="arrival"]');
+    const departure = bookingForm.querySelector('[data-role="departure"]');
+    const guests = bookingForm.querySelector('[data-role="guests"]');
+    const cta = bookingForm.querySelector('.booking-cta');
+    const ctaMeta = bookingForm.querySelector('#booking-cta-meta');
+    const roomField = bookingForm.querySelector('#booking-room');
+
+    if (arrival && departure) {
+      arrival.addEventListener('change', () => {
+        const a = new Date(arrival.value);
+        if (isNaN(a)) return;
+        const minDep = new Date(a); minDep.setDate(minDep.getDate() + 1);
+        departure.min = fmtDate(minDep);
+        if (new Date(departure.value) <= a) departure.value = fmtDate(minDep);
+      });
+    }
+
+    // Stepper
+    bookingForm.querySelectorAll('.booking-step').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (!guests) return;
+        const delta = parseInt(btn.dataset.step, 10) || 0;
+        const min = parseInt(guests.min, 10) || 1;
+        const max = parseInt(guests.max, 10) || 6;
+        const cur = parseInt(guests.value, 10) || min;
+        const next = Math.max(min, Math.min(max, cur + delta));
+        guests.value = String(next);
+      });
+    });
+
+    // Submit — portfolio build: confirmation flash. Production would forward to PMS.
+    bookingForm.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      if (!cta) return;
+      const original = cta.dataset.label || cta.textContent.trim();
+      cta.dataset.label = original;
+      const a = arrival ? arrival.value : '';
+      const d = departure ? departure.value : '';
+      const g = guests ? guests.value : '2';
+      const room = roomField && roomField.value ? roomField.value.toUpperCase().replace(/-/g, ' ') : 'ANY ROOM';
+      cta.textContent = `CHECKING ${a} → ${d}`;
+      if (ctaMeta) ctaMeta.textContent = `— ${g} GUEST${g === '1' ? '' : 'S'} · ${room}`;
+      setTimeout(() => {
+        cta.textContent = original;
+        if (ctaMeta) ctaMeta.textContent = '— DIRECT BOOKING';
+      }, 1800);
+    });
+
+    // Per-card Reserve prefill — smooth-scroll, set room, bump guests to room occupancy.
+    document.querySelectorAll('.room-cta[data-room]').forEach((roomCta) => {
+      roomCta.addEventListener('click', (ev) => {
+        const room = roomCta.dataset.room;
+        const label = roomCta.dataset.roomLabel || room;
+        const occ = parseInt(roomCta.dataset.roomOcc, 10);
+        if (roomField) roomField.value = room;
+        if (guests && !isNaN(occ)) {
+          const max = parseInt(guests.max, 10) || 6;
+          guests.value = String(Math.max(1, Math.min(max, occ)));
+        }
+        if (ctaMeta) ctaMeta.textContent = `— PREFILLED · ${label.toUpperCase()}`;
+        // Defer scroll to next tick so the anchor + smooth-scroll handler can fire cleanly
+        // even though the href is "#booking" (no preventDefault — let anchor jump happen).
+      });
+    });
+  }
+
+  // --- SMOOTH-SCROLL FOR IN-PAGE ANCHORS ---
+  // Tree House V3 disables CSS smooth-scroll (brutalist). For booking-prefill flow we still
+  // want users to *land* on the widget rather than be flung past it, so we hijack only the
+  // anchors that point to #booking and scroll with a fixed 64px nav offset.
+  document.querySelectorAll('a[href="#booking"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector('#booking');
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 64;
+      // 'auto' keeps the brutalist register; the anchor jump is a hard cut, no easing.
+      window.scrollTo({ top, behavior: 'auto' });
+      // Move focus into the widget for keyboard / screen-reader continuity
+      const firstInput = target.querySelector('input, button');
+      if (firstInput && typeof firstInput.focus === 'function') {
+        // Defer so any anchor-default behaviors complete first
+        requestAnimationFrame(() => firstInput.focus({ preventScroll: true }));
+      }
     });
   });
 

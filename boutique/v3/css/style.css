@@ -498,6 +498,185 @@ input:focus-visible,
 }
 
 /* ============================================
+   BOOKING STRIP — 4-cell data row, 12-col grid
+   Lives just below the hero on limestone. Sister to
+   the room-specs grid: 1px hairlines, no rounding,
+   no shadows, no icons. Snap reveal via .brutalist-snap.
+   ============================================ */
+.booking-strip {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  background: var(--limestone);
+  color: var(--ink);
+  border-bottom: var(--line-on-limestone);
+  scroll-margin-top: 72px;
+}
+
+.booking-cell {
+  /* 4 cells of 3 cols each = 12 */
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 1.4rem 1.6rem;
+  border-right: var(--line-on-limestone);
+  font-family: var(--mono);
+  background: var(--limestone);
+  color: var(--ink);
+  min-height: 96px;
+}
+.booking-cell:last-child { border-right: none; }
+
+.booking-cell-label {
+  font-family: var(--mono);
+  font-size: var(--mono-micro-size);
+  letter-spacing: var(--mono-micro-track);
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.55;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.booking-cell-input {
+  font-family: var(--mono);
+  font-size: var(--mono-data-size);
+  letter-spacing: var(--mono-data-track);
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  min-height: 44px;
+  line-height: 1.5;
+  cursor: crosshair;
+}
+.booking-cell-input::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+  opacity: 0.55;
+  cursor: crosshair;
+  margin-left: 0.4em;
+}
+.booking-cell-input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.booking-stepper {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0;
+  min-height: 44px;
+}
+
+.booking-step {
+  font-family: var(--mono);
+  font-size: var(--mono-data-size);
+  font-weight: 700;
+  letter-spacing: 0;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(26, 20, 16, 0.22);
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  transition: none;
+}
+.booking-step:hover {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--limestone);
+}
+.booking-step:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.booking-stepper-input {
+  font-family: var(--mono);
+  font-size: var(--mono-data-size);
+  letter-spacing: var(--mono-data-track);
+  font-weight: 700;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
+  width: 100%;
+  min-width: 2.5ch;
+  padding: 0 0.4rem;
+}
+
+.booking-cell--cta {
+  background: var(--terracotta);
+  color: var(--limestone);
+  border-right: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  font-family: var(--mono);
+  font-size: var(--mono-data-size);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: none;
+  border-left: var(--line-on-limestone);
+  transition: none;
+  padding: 1.4rem 1.6rem;
+  text-align: left;
+}
+.booking-cell--cta:hover {
+  background: var(--ink);
+  color: var(--limestone);
+}
+.booking-cell--cta:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -4px;
+}
+.booking-cta-label,
+.booking-cta-bracket {
+  font-family: var(--mono);
+  font-weight: 700;
+}
+.booking-cta-bracket { opacity: 0.85; }
+
+.booking-cell--cta.vibrate { animation: vibrate 0.15s steps(3); }
+
+/* Reserved post-submit micro state */
+.booking-cell--cta.is-checking {
+  background: var(--cenote);
+  color: var(--limestone);
+}
+
+/* Prefill ack — single-frame flash, no fade */
+.booking-strip--prefilled .booking-cell {
+  animation: prefill-flash 0.25s steps(2) 1;
+}
+@keyframes prefill-flash {
+  0%   { background: var(--limestone); }
+  50%  { background: rgba(var(--cenote-rgb), 0.12); }
+  100% { background: var(--limestone); }
+}
+.booking-strip--prefilled .booking-cell--cta {
+  animation: none;
+}
+
+/* ============================================
    SECTION LABELS
    ============================================ */
 .section-label {
@@ -556,6 +735,42 @@ input:focus-visible,
   gap: 2rem;
   padding: 2.5rem 2rem 1.5rem;
   border-bottom: var(--line-on-limestone);
+  position: relative;
+}
+
+/* Price stamp — top-right, mono data tier, no rounding, no shadow */
+.room-price-stamp {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--limestone);
+  line-height: 1;
+}
+.room-price-amount {
+  font-size: var(--mono-data-size);
+  letter-spacing: var(--mono-data-track);
+  color: var(--terracotta);
+  font-weight: 700;
+}
+.room-price-unit {
+  font-size: var(--mono-meta-size);
+  letter-spacing: var(--mono-meta-track);
+  opacity: 0.7;
+}
+.room-price-from {
+  font-size: var(--mono-micro-size);
+  letter-spacing: var(--mono-micro-track);
+  opacity: 0.55;
+  margin-left: 0.3rem;
 }
 
 .room-num {
@@ -579,6 +794,7 @@ input:focus-visible,
   letter-spacing: -0.045em;
   text-transform: uppercase;
   flex: 1;
+  padding-right: clamp(0px, 12vw, 200px);
 }
 
 .room-version {
@@ -591,6 +807,24 @@ input:focus-visible,
   color: var(--ink);
   opacity: 0.55;
   font-weight: 500;
+}
+
+/* Explicit specs row — mono micro tier, sits between catalog line and image */
+.room-specs-row {
+  font-family: var(--mono);
+  font-size: var(--mono-micro-size);
+  letter-spacing: var(--mono-micro-track);
+  text-transform: uppercase;
+  padding: 0.7rem 2rem;
+  border-bottom: var(--line-on-limestone);
+  color: var(--ink);
+  font-weight: 500;
+  background: var(--limestone);
+}
+.room-specs-row::before {
+  content: '> ';
+  color: var(--terracotta);
+  opacity: 0.7;
 }
 
 .room-image-wrap {
@@ -1093,6 +1327,12 @@ input:focus-visible,
   .room-image-wrap { height: 54vh; }
   .room-specs { grid-template-columns: repeat(2, 1fr); }
 
+  /* Booking strip: 2x2 grid */
+  .booking-strip { grid-template-columns: repeat(2, 1fr); }
+  .booking-cell { grid-column: auto; border-bottom: var(--line-on-limestone); }
+  .booking-cell:nth-child(2n) { border-right: none; }
+  .booking-cell--cta { border-left: none; }
+
   .cursor-readout { display: none; }
 }
 
@@ -1112,9 +1352,27 @@ input:focus-visible,
 
   .room-header { padding: 2rem 1.2rem 1rem; gap: 1.2rem; flex-wrap: wrap; }
   .room-version { padding: 0.7rem 1.2rem; }
+  .room-specs-row { padding: 0.6rem 1.2rem; }
   .room-image-wrap { height: 42vh; }
   .room-spec { padding: 1rem 1.2rem; }
   .room-cta { margin: 2rem 1.2rem; padding: 1.1rem 2rem; font-size: var(--mono-micro-size); letter-spacing: 0.18em; }
+
+  /* Booking strip: full-stack on mobile */
+  .booking-strip { grid-template-columns: 1fr; }
+  .booking-cell {
+    border-right: none;
+    border-bottom: var(--line-on-limestone);
+    padding: 1.1rem 1.2rem;
+    min-height: 80px;
+  }
+  .booking-cell--cta { border-left: none; padding: 1.2rem 1.2rem; }
+
+  /* Price stamp moves into header flow on mobile, no longer absolute */
+  .room-price-stamp {
+    position: static;
+    align-self: flex-start;
+    margin-top: 0.3rem;
+  }
 
   .art-collab { padding: 8vh 1.2rem; }
   .art-collab-title-line--ital { padding-left: 0.5em; }

@@ -158,6 +158,11 @@
   const riseElements = document.querySelectorAll('.cinematic-rise');
   const groupIndex = new WeakMap();
   riseElements.forEach(el => {
+    // Honor explicit delay override (e.g. hero booking-plate joins late)
+    if (el.dataset.riseDelay) {
+      el.style.transitionDelay = el.dataset.riseDelay;
+      return;
+    }
     const parent = el.parentElement;
     if (!parent) return;
     const count = groupIndex.get(parent) || 0;
@@ -235,6 +240,95 @@
       }
     });
   });
+
+  // ============================================
+  // BOOKING WIDGET — date defaults, validation, room prefill
+  // (Ported from V4 minimal pattern; re-styled to V1's brass-plate voice)
+  // ============================================
+  const bookingPlate = document.querySelector('.booking-plate');
+  if (bookingPlate) {
+    const fmt = (d) => d.toISOString().slice(0, 10);
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
+    const plusFour = new Date(today); plusFour.setDate(plusFour.getDate() + 4);
+
+    const arrival = bookingPlate.querySelector('[data-role="arrival"]');
+    const departure = bookingPlate.querySelector('[data-role="departure"]');
+    const guests = bookingPlate.querySelector('[data-role="guests"]');
+    const roomField = bookingPlate.querySelector('[data-role="room"]');
+    const submitBtn = bookingPlate.querySelector('.booking-plate__submit');
+
+    if (arrival) {
+      arrival.min = fmt(today);
+      if (!arrival.value) arrival.value = fmt(tomorrow);
+    }
+    if (departure) {
+      departure.min = fmt(tomorrow);
+      if (!departure.value) departure.value = fmt(plusFour);
+    }
+
+    // Departure must follow arrival
+    if (arrival && departure) {
+      arrival.addEventListener('change', () => {
+        const a = new Date(arrival.value);
+        if (isNaN(a)) return;
+        const minDep = new Date(a); minDep.setDate(minDep.getDate() + 1);
+        departure.min = fmt(minDep);
+        if (new Date(departure.value) <= a) departure.value = fmt(minDep);
+      });
+    }
+
+    // Submit: non-blocking confirmation (portfolio build)
+    bookingPlate.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      if (!submitBtn) return;
+      const a = arrival && arrival.value;
+      const d = departure && departure.value;
+      const g = guests && guests.value;
+      const original = submitBtn.dataset.label || submitBtn.textContent.trim();
+      submitBtn.dataset.label = original;
+      submitBtn.textContent = `Checking ${a} → ${d} · ${g}`;
+      setTimeout(() => { submitBtn.textContent = original; }, 1800);
+    });
+
+    // Room-card Reserve CTAs: prefill + smooth scroll
+    const roomReserveLinks = document.querySelectorAll('.room-reserve[data-room]');
+    roomReserveLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const roomKey = link.getAttribute('data-room') || '';
+        const maxGuests = parseInt(link.getAttribute('data-max-guests') || '0', 10);
+
+        if (roomField) roomField.value = roomKey;
+
+        // Bump guest count if current < room's max capacity (don't lower it)
+        if (guests && maxGuests > 0) {
+          const current = parseInt(guests.value || '0', 10);
+          if (current < maxGuests) {
+            const target = String(maxGuests);
+            const hasOption = Array.from(guests.options).some(o => o.value === target);
+            if (hasOption) guests.value = target;
+          }
+        }
+
+        // Visual prefill flash
+        bookingPlate.classList.add('is-prefilled');
+        setTimeout(() => bookingPlate.classList.remove('is-prefilled'), 1400);
+
+        // Smooth scroll to widget
+        const targetTop = bookingPlate.getBoundingClientRect().top + window.scrollY - 96;
+        window.scrollTo({
+          top: targetTop,
+          behavior: prefersReducedMotion ? 'auto' : 'smooth'
+        });
+
+        // Focus arrival for keyboard users (after scroll settles)
+        setTimeout(() => {
+          if (arrival) arrival.focus({ preventScroll: true });
+        }, prefersReducedMotion ? 0 : 700);
+      });
+    });
+  }
 
   // --- Unified scroll handler ---
   let ticking = false;

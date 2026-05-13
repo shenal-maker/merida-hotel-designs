@@ -66,7 +66,7 @@
         <li><a href="#art">Art</a></li>
         <li><a href="#location">Location</a></li>
         <li><a href="#offers">Offers</a></li>
-        <li><a href="#offers" class="nav-cta">Reserve</a></li>
+        <li><a href="#booking" class="nav-cta">Reserve</a></li>
       </ul>
     </nav>
   </header>
@@ -85,9 +85,39 @@
       <h1 class="display-huge hero-title">Boutique <em>by</em> The&nbsp;Museo</h1>
       <p class="hero-tagline">An intimate 15-room sanctuary in the historic center of Mérida.</p>
       <div class="hero-cta">
-        <a href="#offers" class="magnetic-btn">Check Availability</a>
+        <a href="#booking" class="magnetic-btn">Check Availability</a>
         <a href="#rooms" class="hero-cta-secondary">View the rooms</a>
       </div>
+
+      <!-- ============ BOOKING WIDGET — brass plate ============ -->
+      <form class="booking-plate cinematic-rise" id="booking" data-rise-delay="1.9s" aria-label="Check availability">
+        <span class="booking-plate__eyebrow">Reservations · Direct</span>
+        <div class="booking-plate__row">
+          <label class="booking-field">
+            <span class="booking-field__label">Arrival</span>
+            <input type="date" data-role="arrival" aria-label="Arrival date" required>
+          </label>
+          <span class="booking-plate__rule" aria-hidden="true"></span>
+          <label class="booking-field">
+            <span class="booking-field__label">Departure</span>
+            <input type="date" data-role="departure" aria-label="Departure date" required>
+          </label>
+          <span class="booking-plate__rule" aria-hidden="true"></span>
+          <label class="booking-field">
+            <span class="booking-field__label">Guests</span>
+            <select data-role="guests" aria-label="Number of guests">
+              <option value="1">1 guest</option>
+              <option value="2" selected>2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+              <option value="5">5 guests</option>
+              <option value="6">6 guests</option>
+            </select>
+          </label>
+          <input type="hidden" name="room" data-role="room" value="">
+          <button type="submit" class="booking-plate__submit">Reserve</button>
+        </div>
+      </form>
     </div>
 
     <div class="hero-meta">
@@ -113,7 +143,8 @@
     </div>
 
     <div class="section-rooms">
-      <article class="room-card" data-expandable>
+      <!-- placeholder pricing; replace with real rates -->
+      <article class="room-card" data-expandable data-room="deluxe-room" data-max-guests="2">
         <div class="room-card-bg">
           <img src="assets/room-deluxe.webp" alt="Deluxe Boutique Room" loading="lazy">
         </div>
@@ -121,13 +152,20 @@
         <div class="room-card-content">
           <span class="label">Habitación</span>
           <h3 class="display-small">Deluxe Boutique Room</h3>
+          <p class="room-price">From <strong class="room-price__amount" data-placeholder="true">$295</strong> <span class="room-price__unit">/ night</span></p>
+          <ul class="room-specs" data-placeholder="true" aria-label="Room specifications">
+            <li>Sleeps 2</li>
+            <li>32 m²</li>
+            <li>Garden view</li>
+          </ul>
           <div class="room-card-cta">
-            <a href="#offers">Reserve →</a>
+            <a href="#booking" class="room-reserve" data-room="deluxe-room" data-max-guests="2">Reserve this room →</a>
           </div>
         </div>
       </article>
 
-      <article class="room-card" data-expandable>
+      <!-- placeholder pricing; replace with real rates -->
+      <article class="room-card" data-expandable data-room="deluxe-suite" data-max-guests="4">
         <div class="room-card-bg">
           <img src="assets/room-suite.jpg" alt="Deluxe Boutique Suite" loading="lazy">
         </div>
@@ -135,13 +173,20 @@
         <div class="room-card-content">
           <span class="label">Suite</span>
           <h3 class="display-small">Deluxe Boutique Suite</h3>
+          <p class="room-price">From <strong class="room-price__amount" data-placeholder="true">$395</strong> <span class="room-price__unit">/ night</span></p>
+          <ul class="room-specs" data-placeholder="true" aria-label="Room specifications">
+            <li>Sleeps 4</li>
+            <li>48 m²</li>
+            <li>Courtyard view</li>
+          </ul>
           <div class="room-card-cta">
-            <a href="#offers">Reserve →</a>
+            <a href="#booking" class="room-reserve" data-room="deluxe-suite" data-max-guests="4">Reserve this room →</a>
           </div>
         </div>
       </article>
 
-      <article class="room-card" data-expandable>
+      <!-- placeholder pricing; replace with real rates -->
+      <article class="room-card" data-expandable data-room="grand-suite" data-max-guests="6">
         <div class="room-card-bg">
           <img src="assets/room-grand.jpg" alt="Grand Boutique Suite" loading="lazy">
         </div>
@@ -149,13 +194,20 @@
         <div class="room-card-content">
           <span class="label">Grand Suite</span>
           <h3 class="display-small">Grand Boutique Suite</h3>
+          <p class="room-price">From <strong class="room-price__amount" data-placeholder="true">$545</strong> <span class="room-price__unit">/ night</span></p>
+          <ul class="room-specs" data-placeholder="true" aria-label="Room specifications">
+            <li>Sleeps 6</li>
+            <li>72 m²</li>
+            <li>Courtyard + garden</li>
+          </ul>
           <div class="room-card-cta">
-            <a href="#offers">Reserve →</a>
+            <a href="#booking" class="room-reserve" data-room="grand-suite" data-max-guests="6">Reserve this room →</a>
           </div>
         </div>
       </article>
 
-      <article class="room-card" data-expandable>
+      <!-- placeholder pricing; replace with real rates -->
+      <article class="room-card" data-expandable data-room="penthouse-suite" data-max-guests="6">
         <div class="room-card-bg">
           <img src="assets/room-penthouse.jpg" alt="Penthouse Suite" loading="lazy">
         </div>
@@ -163,8 +215,14 @@
         <div class="room-card-content">
           <span class="label">Penthouse</span>
           <h3 class="display-small">Penthouse Suite</h3>
+          <p class="room-price">From <strong class="room-price__amount" data-placeholder="true">$895</strong> <span class="room-price__unit">/ night</span></p>
+          <ul class="room-specs" data-placeholder="true" aria-label="Room specifications">
+            <li>Sleeps 6</li>
+            <li>95 m²</li>
+            <li>Private terrace</li>
+          </ul>
           <div class="room-card-cta">
-            <a href="#offers">Reserve →</a>
+            <a href="#booking" class="room-reserve" data-room="penthouse-suite" data-max-guests="6">Reserve this room →</a>
           </div>
         </div>
       </article>
@@ -246,7 +304,7 @@
       </div>
 
       <div class="offers-cta cinematic-rise">
-        <a href="mailto:reservations@boutiquebythemuseo.com" class="magnetic-btn">Reserve a room</a>
+        <a href="#booking" class="magnetic-btn">Reserve a room</a>
         <p class="offers-direct">Or write directly — <a href="mailto:reservations@boutiquebythemuseo.com">reservations@boutiquebythemuseo.com</a></p>
       </div>
     </div>

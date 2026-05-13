@@ -41,7 +41,7 @@
         <li><a href="#art">Art</a></li>
         <li><a href="#location" lang="es-MX">M&eacute;rida</a></li>
         <li><a href="#offers">Offers</a></li>
-        <li><a href="#reserve" class="masthead-nav-cta">Reserve</a></li>
+        <li><a href="#booking" class="masthead-nav-cta">Reserve</a></li>
       </ul>
     </nav>
   </header>
@@ -73,9 +73,47 @@
       </div>
 
       <div class="hero-cta-row editorial-sweep">
-        <a href="#reserve" class="hero-cta">Reserve <span class="hero-cta-arrow">&rarr;</span></a>
+        <a href="#booking" class="hero-cta">Reserve <span class="hero-cta-arrow">&rarr;</span></a>
         <a href="#rooms" class="hero-cta hero-cta--ghost">View Rooms <span class="hero-cta-arrow">&darr;</span></a>
       </div>
+
+      <!-- ============================================
+           Reservation Card — paper tear-out, editorial register
+           ============================================ -->
+      <form class="reservation-card editorial-sweep" id="booking" aria-label="Reservation" novalidate>
+        <div class="reservation-card-head">
+          <span class="reservation-card-eyebrow" lang="es-MX">Reservar &middot; Reserve</span>
+          <span class="reservation-card-edition" lang="es-MX" aria-hidden="true">Edici&oacute;n &middot; MMXXVI</span>
+        </div>
+        <div class="reservation-card-fields">
+          <label class="reservation-field">
+            <span class="reservation-field-label" lang="es-MX">Llegada <span class="reservation-field-label-en">&middot; Arrival</span></span>
+            <input type="date" data-role="arrival" aria-label="Arrival date" required>
+          </label>
+          <label class="reservation-field">
+            <span class="reservation-field-label" lang="es-MX">Salida <span class="reservation-field-label-en">&middot; Departure</span></span>
+            <input type="date" data-role="departure" aria-label="Departure date" required>
+          </label>
+          <label class="reservation-field">
+            <span class="reservation-field-label" lang="es-MX">Hu&eacute;spedes <span class="reservation-field-label-en">&middot; Guests</span></span>
+            <select data-role="guests" aria-label="Number of guests">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </label>
+          <input type="hidden" data-role="room" name="room" value="">
+        </div>
+        <div class="reservation-card-foot">
+          <span class="reservation-card-room" data-role="room-label" aria-live="polite"></span>
+          <button type="submit" class="reservation-cta">
+            Reserve <span class="reservation-cta-arrow" aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </form>
 
       <div class="hero-image-wrap editorial-img">
         <img src="assets/boutique-hero-interior.jpg"
@@ -107,8 +145,11 @@
           </div>
           <span class="room-type">Deluxe</span>
           <h3 class="room-name">Deluxe<br><em>Boutique Room</em></h3>
+          <!-- placeholder pricing; replace with real rates -->
+          <p class="room-price"><em>From <span data-placeholder="true">$295</span> per night</em></p>
+          <p class="room-specs" data-placeholder="true" lang="es-MX">2 hu&eacute;spedes &middot; 32 m&sup2; &middot; vista al jard&iacute;n</p>
           <p class="room-tasting">The entry room &mdash; quiet, generously linened, shutters that open onto the side street.</p>
-          <a href="#reserve" class="room-cta">Reserve</a>
+          <a href="#booking" class="room-cta" data-room="Deluxe Boutique Room" data-guests="2">Reserve this room</a>
         </article>
 
         <article class="room-card editorial-sweep room-card--offset">
@@ -121,8 +162,11 @@
           </div>
           <span class="room-type">Suite</span>
           <h3 class="room-name">Deluxe<br><em>Boutique Suite</em></h3>
+          <!-- placeholder pricing; replace with real rates -->
+          <p class="room-price"><em>From <span data-placeholder="true">$395</span> per night</em></p>
+          <p class="room-specs" data-placeholder="true" lang="es-MX">4 hu&eacute;spedes &middot; 48 m&sup2; &middot; vista al patio</p>
           <p class="room-tasting">A small sitting room and a bedroom separated by a pair of cedar doors. A frequent honeymoon choice.</p>
-          <a href="#reserve" class="room-cta">Reserve</a>
+          <a href="#booking" class="room-cta" data-room="Deluxe Boutique Suite" data-guests="4">Reserve this room</a>
         </article>
 
         <article class="room-card editorial-sweep">
@@ -135,8 +179,11 @@
           </div>
           <span class="room-type">Grand Suite</span>
           <h3 class="room-name">Grand<br><em>Boutique Suite</em></h3>
+          <!-- placeholder pricing; replace with real rates -->
+          <p class="room-price"><em>From <span data-placeholder="true">$545</span> per night</em></p>
+          <p class="room-specs" data-placeholder="true" lang="es-MX">6 hu&eacute;spedes &middot; 72 m&sup2; &middot; vista al patio y jard&iacute;n</p>
           <p class="room-tasting">A long room with a private terrace and an iron-framed daybed that has read more books than any of us.</p>
-          <a href="#reserve" class="room-cta">Reserve</a>
+          <a href="#booking" class="room-cta" data-room="Grand Boutique Suite" data-guests="6">Reserve this room</a>
         </article>
 
         <article class="room-card editorial-sweep room-card--offset">
@@ -149,8 +196,11 @@
           </div>
           <span class="room-type">Penthouse</span>
           <h3 class="room-name">The<br><em>Penthouse</em></h3>
+          <!-- placeholder pricing; replace with real rates -->
+          <p class="room-price"><em>From <span data-placeholder="true">$895</span> per night</em></p>
+          <p class="room-specs" data-placeholder="true" lang="es-MX">6 hu&eacute;spedes &middot; 95 m&sup2; &middot; terraza privada</p>
           <p class="room-tasting">The top of the house &mdash; a plunge pool, a private roof, a long view down Paseo de Montejo at dusk.</p>
-          <a href="#reserve" class="room-cta room-cta--filled">Reserve</a>
+          <a href="#booking" class="room-cta room-cta--filled" data-room="The Penthouse" data-guests="6">Reserve this room</a>
         </article>
       </div>
     </section>
@@ -228,7 +278,7 @@
       </div>
 
       <div class="offers-grid">
-        <article class="offer-card editorial-sweep" id="reserve">
+        <article class="offer-card editorial-sweep">
           <span class="offer-eyebrow">Resident's Allocation</span>
           <h3 class="offer-title">Six nights or more</h3>
           <p>
@@ -278,7 +328,7 @@
         <a href="#art">Art Collaboration</a>
         <a href="#location">Location</a>
         <a href="#offers">Offers</a>
-        <a href="#reserve">Reserve</a>
+        <a href="#booking">Reserve</a>
       </div>
 
       <div class="footer-section">

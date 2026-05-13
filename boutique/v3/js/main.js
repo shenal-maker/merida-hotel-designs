@@ -161,7 +161,7 @@
     // Group by nearest section / room-block / landing — set --i per group
     const groups = new Map();
     snapEls.forEach((el) => {
-      const group = el.closest('section, .footer-inner, .room-block, .offer-block, .location-grid') || el.parentElement;
+      const group = el.closest('section, .footer-inner, .room-block, .offer-block, .location-grid, .booking-strip') || el.parentElement;
       if (!groups.has(group)) groups.set(group, []);
       groups.get(group).push(el);
     });
@@ -210,12 +210,110 @@
   }
 
   // --- ROOM / CTA CLICK VIBRATION (kept — brutalist micro-feedback) ---
-  document.querySelectorAll('.room-cta, .art-collab-cta, .offer-cta, .landing-cta, .footer-cta').forEach((cta) => {
+  document.querySelectorAll('.room-cta, .art-collab-cta, .offer-cta, .landing-cta, .footer-cta, .booking-cell--cta').forEach((cta) => {
     cta.addEventListener('click', () => {
       cta.classList.add('vibrate');
       setTimeout(() => cta.classList.remove('vibrate'), 150);
     });
   });
+
+  // --- BOOKING WIDGET ---
+  // Date defaults: arrival = tomorrow, departure = arrival + 3 nights.
+  // Keep departure >= arrival + 1 day. Pure vanilla, ported from V4 pattern.
+  const bookingForm = document.getElementById('booking');
+  if (bookingForm) {
+    const fmt = (d) => d.toISOString().slice(0, 10);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
+    const plusFour = new Date(today); plusFour.setDate(plusFour.getDate() + 4);
+
+    const arrival = bookingForm.querySelector('[data-role="arrival"]');
+    const departure = bookingForm.querySelector('[data-role="departure"]');
+    const guests = bookingForm.querySelector('[data-role="guests"]');
+    const roomField = bookingForm.querySelector('[data-role="room"]');
+    const stepUp = bookingForm.querySelector('.booking-step--up');
+    const stepDown = bookingForm.querySelector('.booking-step--down');
+    const submitBtn = bookingForm.querySelector('.booking-cell--cta');
+
+    if (arrival) {
+      arrival.min = fmt(today);
+      if (!arrival.value) arrival.value = fmt(tomorrow);
+    }
+    if (departure) {
+      departure.min = fmt(tomorrow);
+      if (!departure.value) departure.value = fmt(plusFour);
+    }
+
+    // Keep arrival/departure consistent — auto-shift departure forward
+    if (arrival && departure) {
+      arrival.addEventListener('change', () => {
+        const a = new Date(arrival.value);
+        if (isNaN(a)) return;
+        const minDep = new Date(a); minDep.setDate(minDep.getDate() + 1);
+        departure.min = fmt(minDep);
+        if (new Date(departure.value) <= a) departure.value = fmt(minDep);
+      });
+    }
+
+    // Stepper buttons (1–9)
+    const clampGuests = (n) => Math.max(1, Math.min(9, n));
+    const setGuests = (n) => {
+      if (!guests) return;
+      guests.value = String(clampGuests(parseInt(n, 10) || 2));
+    };
+    if (stepUp && guests) {
+      stepUp.addEventListener('click', () => setGuests(parseInt(guests.value, 10) + 1));
+    }
+    if (stepDown && guests) {
+      stepDown.addEventListener('click', () => setGuests(parseInt(guests.value, 10) - 1));
+    }
+
+    // Submit: surface confirmation without leaving page (placeholder booking engine)
+    bookingForm.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const a = arrival ? arrival.value : '';
+      const d = departure ? departure.value : '';
+      const g = guests ? guests.value : '2';
+      const room = roomField && roomField.value ? roomField.value : null;
+      if (submitBtn) {
+        const labelEl = submitBtn.querySelector('.booking-cta-label');
+        const bracketEl = submitBtn.querySelector('.booking-cta-bracket');
+        const originalLabel = submitBtn.dataset.label || (labelEl ? labelEl.textContent : '[ ENTER →');
+        submitBtn.dataset.label = originalLabel;
+        submitBtn.classList.add('is-checking');
+        if (labelEl) {
+          const summary = room
+            ? `[ ${room.toUpperCase()} · ${a} → ${d} · ${g}`
+            : `[ ${a} → ${d} · ${g}`;
+          labelEl.textContent = summary;
+        }
+        if (bracketEl) bracketEl.textContent = ']';
+        setTimeout(() => {
+          if (labelEl) labelEl.textContent = originalLabel;
+          submitBtn.classList.remove('is-checking');
+        }, 2200);
+      }
+    });
+
+    // Per-room prefill — any anchor with [data-room] populates hidden field +
+    // bumps guest count to the room's capacity, then scrolls to widget.
+    document.querySelectorAll('[data-room]').forEach((cta) => {
+      cta.addEventListener('click', () => {
+        const roomName = cta.getAttribute('data-room');
+        const roomGuests = parseInt(cta.getAttribute('data-room-guests'), 10);
+        if (roomField) roomField.value = roomName || '';
+        if (guests && !isNaN(roomGuests)) {
+          // Match capacity, but never less than current selection
+          const current = parseInt(guests.value, 10) || 2;
+          setGuests(Math.max(current, roomGuests));
+        }
+        // Light visual ack on the widget
+        bookingForm.classList.add('booking-strip--prefilled');
+        setTimeout(() => bookingForm.classList.remove('booking-strip--prefilled'), 600);
+      });
+    });
+  }
 
   // --- SECTION LABEL LINE-DRAW ---
   const sectionLabels = document.querySelectorAll('.section-label');

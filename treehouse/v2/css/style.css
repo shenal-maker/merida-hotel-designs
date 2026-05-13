@@ -491,6 +491,166 @@ main {
   aspect-ratio: 3/4;
 }
 
+/* --- Reservation card (booking widget) — library-slip / boarding-pass register --- */
+.reservation-card {
+  margin-top: 2.4rem;
+  padding: 1.6rem 1.8rem 1.4rem;
+  background: var(--ivory);
+  border: 1px solid var(--ochre);
+  box-shadow: 0 1px 0 rgba(168, 123, 68, 0.08);
+  max-width: 620px;
+  position: relative;
+  z-index: 3;
+  width: fit-content;
+}
+
+.reservation-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(168, 123, 68, 0.45);
+}
+
+.reservation-card-title {
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.reservation-card-title em {
+  font-style: italic;
+  color: var(--moss);
+}
+.reservation-card-dot {
+  color: var(--ochre);
+  padding: 0 0.15em;
+}
+
+.reservation-card-edition {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--stone);
+}
+
+.reservation-card-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.7fr auto;
+  gap: 1rem 1.1rem;
+  align-items: end;
+}
+
+.reservation-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.reservation-field-label {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+.reservation-field-sep {
+  color: var(--ochre);
+  font-weight: 400;
+}
+
+.reservation-field input,
+.reservation-field select {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--warm-gray);
+  padding: 0.55rem 0 0.45rem;
+  min-height: 44px;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  transition: border-color 280ms ease-out;
+  font-variant-numeric: tabular-nums;
+}
+.reservation-field input:focus,
+.reservation-field select:focus {
+  outline: none;
+  border-bottom-color: var(--moss);
+}
+.reservation-field input:focus-visible,
+.reservation-field select:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 4px;
+}
+.reservation-field select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--stone) 50%),
+                    linear-gradient(135deg, var(--stone) 50%, transparent 50%);
+  background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 1.5rem;
+  cursor: pointer;
+}
+.reservation-field input::-webkit-calendar-picker-indicator {
+  opacity: 0.45;
+  cursor: pointer;
+}
+
+.reservation-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: var(--canopy);
+  padding: 0.95rem 1.5rem;
+  border: 1px solid var(--canopy);
+  cursor: pointer;
+  position: relative;
+  min-height: 48px;
+  transition: background 0.4s, color 0.4s, border-color 0.4s;
+}
+.reservation-submit::after {
+  /* V2 underline rule print L→R on hover, matches .hero-cta */
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
+  width: 0;
+  background: var(--ochre);
+  transition: width 280ms ease-out;
+}
+.reservation-submit:hover {
+  background: var(--moss);
+  border-color: var(--moss);
+}
+.reservation-submit:hover::after { width: 100%; }
+.reservation-submit-arrow {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+.reservation-submit:hover .reservation-submit-arrow { transform: translateX(3px); }
+
 /* ============================================
    2. ROOMS
    ============================================ */
@@ -557,34 +717,51 @@ main {
   font-style: italic;
   color: var(--bark);
   line-height: 1.6;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1rem;
   max-width: 40ch;
+}
+
+.room-specs {
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 0.7rem;
+  line-height: 1.5;
+}
+.room-specs-sep {
+  color: var(--ochre);
+  padding: 0 0.25em;
+}
+
+.room-price--editorial {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-style: normal;
+  color: var(--bark);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.room-price--editorial em {
+  font-style: italic;
+}
+.room-price--editorial span[data-placeholder="true"] {
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .room-foot {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: auto;
   padding-top: 1.2rem;
   border-top: 1px solid var(--warm-gray);
-}
-.room-price {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--stone);
-}
-.room-price strong {
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--ink);
 }
 
 .room-cta {
@@ -1020,6 +1197,29 @@ main {
     width: 100%;
   }
   .hero-cta { justify-content: center; }
+
+  .reservation-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.4rem 1.3rem 1.3rem;
+  }
+  .reservation-card-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .reservation-card-fields {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+  }
+  .reservation-field:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+  .reservation-submit {
+    grid-column: 1 / -1;
+    justify-content: center;
+    width: 100%;
+  }
   .accolade-strip {
     width: 100%;
     justify-content: center;

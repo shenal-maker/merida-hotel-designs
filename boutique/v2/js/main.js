@@ -199,4 +199,80 @@
     });
   });
 
+  // ============================================
+  // Reservation card — date defaults, min clamps,
+  // submit confirmation, room prefill from room cards.
+  // Ported from v4-minimal, restyled for V2 editorial register.
+  // ============================================
+  const fmt = (d) => d.toISOString().slice(0, 10);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
+  const plusFour = new Date(today); plusFour.setDate(plusFour.getDate() + 4);
+
+  document.querySelectorAll('input[type="date"][data-role="arrival"]').forEach((el) => {
+    el.min = fmt(today);
+    if (!el.value) el.value = fmt(tomorrow);
+  });
+  document.querySelectorAll('input[type="date"][data-role="departure"]').forEach((el) => {
+    el.min = fmt(tomorrow);
+    if (!el.value) el.value = fmt(plusFour);
+  });
+
+  const reservationForms = document.querySelectorAll('.reservation-card');
+  reservationForms.forEach((form) => {
+    const arrival = form.querySelector('[data-role="arrival"]');
+    const departure = form.querySelector('[data-role="departure"]');
+    if (arrival && departure) {
+      arrival.addEventListener('change', () => {
+        const a = new Date(arrival.value);
+        if (isNaN(a)) return;
+        const minDep = new Date(a); minDep.setDate(minDep.getDate() + 1);
+        departure.min = fmt(minDep);
+        if (new Date(departure.value) <= a) departure.value = fmt(minDep);
+      });
+    }
+
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const a = arrival ? arrival.value : '';
+      const d = departure ? departure.value : '';
+      const guestsEl = form.querySelector('[data-role="guests"]');
+      const g = guestsEl ? guestsEl.value : '2';
+      // Portfolio build — surface a non-blocking confirmation.
+      const btn = form.querySelector('.reservation-cta');
+      if (!btn) return;
+      if (!btn.dataset.label) btn.dataset.label = btn.innerHTML;
+      btn.textContent = `Checking ${a} → ${d} · ${g}`;
+      setTimeout(() => { btn.innerHTML = btn.dataset.label; }, 1800);
+    });
+  });
+
+  // Prefill from per-room "Reserve this room" CTAs.
+  // Each room CTA carries data-room (label) + data-guests (capacity).
+  // On click: set hidden room input, update the visible label,
+  // bump guests select to capacity (clamped to existing options),
+  // then let the existing smooth-scroll handler do the scroll.
+  const bookingForm = document.getElementById('booking');
+  const roomLabelEl = bookingForm ? bookingForm.querySelector('[data-role="room-label"]') : null;
+  const roomHiddenEl = bookingForm ? bookingForm.querySelector('input[data-role="room"]') : null;
+  const guestsSelect = bookingForm ? bookingForm.querySelector('select[data-role="guests"]') : null;
+
+  document.querySelectorAll('.room-cta[data-room]').forEach((cta) => {
+    cta.addEventListener('click', () => {
+      const room = cta.getAttribute('data-room') || '';
+      const guests = cta.getAttribute('data-guests');
+      if (roomHiddenEl) roomHiddenEl.value = room;
+      if (roomLabelEl && room) {
+        roomLabelEl.innerHTML = 'For <strong>' + room + '</strong>';
+      }
+      if (guestsSelect && guests) {
+        // Clamp to highest available option <= requested guests.
+        const requested = parseInt(guests, 10);
+        const options = Array.from(guestsSelect.options).map((o) => parseInt(o.value, 10));
+        const match = options.filter((v) => !isNaN(v) && v <= requested).pop();
+        if (typeof match === 'number') guestsSelect.value = String(match);
+      }
+    });
+  });
+
 })();

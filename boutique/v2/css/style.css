@@ -461,6 +461,181 @@ main {
 
 
 /* ============================================
+   1a. RESERVATION CARD — "tear-out" paper widget
+   Lives in the hero; reveals via editorial-sweep clip-path.
+   Inherits the L→R hairline on the submit button.
+   ============================================ */
+
+.reservation-card {
+  position: relative;
+  z-index: 2;
+  margin-top: 3.2rem;
+  max-width: 640px;
+  padding: 1.8rem 2rem 1.6rem;
+  background: var(--limestone);
+  border: 1px solid var(--ochre);
+  /* paper-stock feel: nothing fancy — a 1px hairline frame, slight inset shadow */
+  box-shadow:
+    0 1px 0 rgba(26, 20, 16, 0.04),
+    inset 0 0 0 4px var(--limestone),
+    inset 0 0 0 5px rgba(198, 153, 96, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.reservation-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px dashed rgba(168, 123, 68, 0.45);
+}
+
+.reservation-card-eyebrow {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.35rem;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+}
+
+.reservation-card-edition {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--stone);
+  letter-spacing: 0.02em;
+}
+
+.reservation-card-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.7fr;
+  gap: 1rem 1.4rem;
+  align-items: end;
+}
+
+.reservation-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.reservation-field-label {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.reservation-field-label-en {
+  color: var(--ochre);
+}
+
+.reservation-field input,
+.reservation-field select {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(168, 123, 68, 0.55);
+  padding: 0.55rem 0 0.45rem;
+  min-height: 44px;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  width: 100%;
+  cursor: text;
+}
+.reservation-field select { cursor: pointer; }
+
+.reservation-field input:focus,
+.reservation-field select:focus {
+  outline: none;
+  border-bottom-color: var(--ink);
+}
+.reservation-field input:focus-visible,
+.reservation-field select:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* iOS date placeholder polish */
+.reservation-field input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+.reservation-card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.reservation-card-room {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--earth);
+  min-height: 1.2em;
+}
+.reservation-card-room:empty::before {
+  /* keep height stable when no room is selected yet */
+  content: '\00a0';
+}
+.reservation-card-room strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ink);
+  font-family: var(--display);
+}
+
+.reservation-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  position: relative;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: var(--ink);
+  padding: 1rem 1.8rem;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  min-height: 48px;
+  transition: background 0.4s, color 0.4s, border-color 0.4s;
+  overflow: hidden;
+  isolation: isolate;
+}
+.reservation-cta::after {
+  /* L→R hairline print, same vocabulary as other CTAs */
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 0;
+  background: var(--ochre);
+  transition: width 280ms ease-out;
+}
+.reservation-cta:hover {
+  background: var(--ochre-deep);
+  border-color: var(--ochre-deep);
+}
+.reservation-cta:hover::after { width: 100%; }
+.reservation-cta-arrow { display: inline-block; }
+
+
+/* ============================================
    2. ROOMS
    ============================================ */
 
@@ -521,13 +696,43 @@ main {
   font-family: var(--display);
   font-size: clamp(2.4rem, 3.6vw, 3.6rem);
   font-weight: 400;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.2rem;
   line-height: 1.05;
   color: var(--ink);
 }
 .room-name em {
   font-style: italic;
   color: var(--sage-deep);
+}
+
+/* Editorial price caption — italic Cormorant, ochre accent on dollar amount */
+.room-price {
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  line-height: 1.4;
+  color: var(--earth);
+  margin-bottom: 0.5rem;
+}
+.room-price em {
+  font-style: italic;
+}
+.room-price [data-placeholder="true"] {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ochre-deep);
+  letter-spacing: 0.01em;
+}
+
+/* Spec caption — bilingual small-caps in Inter */
+.room-specs {
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 1.6rem;
+  line-height: 1.6;
 }
 
 .room-tasting {
@@ -986,6 +1191,25 @@ main {
     justify-content: center;
   }
 
+  .reservation-card {
+    margin-top: 2.4rem;
+    padding: 1.4rem 1.4rem 1.3rem;
+  }
+  .reservation-card-fields {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .reservation-card-fields .reservation-field:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+  .reservation-card-foot {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .reservation-cta {
+    justify-content: center;
+  }
+
   .rooms, .art-collab, .location, .offers {
     padding: 6rem 1.5rem;
   }
@@ -1023,6 +1247,17 @@ main {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+  .reservation-card-fields {
+    grid-template-columns: 1fr;
+  }
+  .reservation-card-fields .reservation-field:nth-child(3) {
+    grid-column: auto;
+  }
+  .reservation-card-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
   }
 }
 

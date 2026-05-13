@@ -195,15 +195,79 @@
 
   revealElements.forEach(el => revealObserver.observe(el));
 
-  // ---------- Smooth anchor scroll ----------
+  // ---------- Smooth anchor scroll + room prefill on Reserve CTA ----------
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');
       if (targetId === '#' || targetId.length <= 1) return;
       const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      if (!target) return;
+      e.preventDefault();
+
+      // If this link carries a data-room, prefill the booking form before scrolling.
+      const room = anchor.dataset.room;
+      if (room && targetId === '#booking') {
+        const form = document.getElementById('booking');
+        if (form) {
+          const roomField = form.querySelector('[data-role="room"]');
+          if (roomField) roomField.value = room;
+          // Briefly tag the form so we can paint a momentary "selected room" hint
+          form.dataset.prefilledRoom = room;
+          const submit = form.querySelector('.booking-submit');
+          if (submit) {
+            const prev = submit.dataset.label || submit.textContent.trim();
+            submit.dataset.label = prev;
+            submit.textContent = `Reserve · ${room} →`;
+          }
+        }
+      }
+
+      target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    });
+  });
+
+  // ---------- Booking form: date defaults, min clamps, departure auto-shift ----------
+  const fmtDate = (d) => d.toISOString().slice(0, 10);
+  const todayD = new Date(); todayD.setHours(0, 0, 0, 0);
+  const tomorrowD = new Date(todayD); tomorrowD.setDate(tomorrowD.getDate() + 1);
+  const plusFourD = new Date(todayD); plusFourD.setDate(plusFourD.getDate() + 4);
+
+  document.querySelectorAll('input[type="date"][data-role="arrival"]').forEach((el) => {
+    el.min = fmtDate(todayD);
+    if (!el.value) el.value = fmtDate(tomorrowD);
+  });
+  document.querySelectorAll('input[type="date"][data-role="departure"]').forEach((el) => {
+    el.min = fmtDate(tomorrowD);
+    if (!el.value) el.value = fmtDate(plusFourD);
+  });
+
+  document.querySelectorAll('.hero-booking').forEach((form) => {
+    const arrival = form.querySelector('[data-role="arrival"]');
+    const departure = form.querySelector('[data-role="departure"]');
+    if (arrival && departure) {
+      arrival.addEventListener('change', () => {
+        const a = new Date(arrival.value);
+        if (isNaN(a)) return;
+        const minDep = new Date(a); minDep.setDate(minDep.getDate() + 1);
+        departure.min = fmtDate(minDep);
+        if (new Date(departure.value) <= a) departure.value = fmtDate(minDep);
+      });
+    }
+
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const a = arrival ? arrival.value : '';
+      const d = departure ? departure.value : '';
+      const g = (form.querySelector('[data-role="guests"]') || {}).value || '2';
+      const r = (form.querySelector('[data-role="room"]') || {}).value || '';
+      const btn = form.querySelector('.booking-submit');
+      if (btn) {
+        const original = btn.dataset.label || btn.textContent.trim();
+        btn.dataset.label = original;
+        btn.textContent = r
+          ? `Checking ${a} → ${d} · ${g} · ${r}`
+          : `Checking ${a} → ${d} · ${g}`;
+        setTimeout(() => { btn.textContent = original; }, 1800);
       }
     });
   });
