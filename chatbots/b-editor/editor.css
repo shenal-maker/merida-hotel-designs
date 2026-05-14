@@ -1,0 +1,379 @@
+/* ============================================
+   Launcher B — "Ask the editor" inline column
+   Used on: boutique/v2 + treehouse/v2 (V2 Editorial)
+   References: Sierra.ai embedded hero, NYT magazine Q&A spread.
+   Scoped to .editor-chat-* BEM. Inherits palette from each V2 stylesheet
+   (--ivory, --ink, --ochre, --ochre-deep, --terracotta, --paper-deep, --serif, --display, --sans).
+   ============================================ */
+
+.editor-chat {
+  /* Magazine column — generous margins, paper background, no border on the section itself.
+     A single 1px ink hairline at top and a wider hairline below the heading do the visual framing. */
+  background: var(--ivory, #faf6ee);
+  color: var(--ink, #1a1410);
+  padding: clamp(4rem, 9vw, 7.5rem) clamp(1.5rem, 6vw, 5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.editor-chat::before {
+  /* Quiet top hairline — separates section from hero without a box */
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: rgba(26, 20, 16, 0.08);
+}
+
+.editor-chat__inner {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* --- Heading block --- */
+.editor-chat__overline {
+  display: block;
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--ochre-deep, #a87b44);
+  margin-bottom: 0.9rem;
+}
+
+.editor-chat__heading {
+  font-family: var(--display, 'DM Serif Display', Georgia, serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+  color: var(--ink, #1a1410);
+  margin: 0;
+}
+
+.editor-chat__heading em {
+  font-style: italic;
+  color: var(--ochre-deep, #a87b44);
+}
+
+/* Hairline that "draws" under the heading on reveal — reuses .editorial-sweep
+   motion fingerprint (clip-path L→R, 520ms cubic-bezier). */
+.editor-chat__rule {
+  display: block;
+  height: 1px;
+  background: var(--ochre, #c69960);
+  border: 0;
+  width: 100%;
+  max-width: 220px;
+  margin: 1.6rem 0 2.4rem 0;
+}
+
+/* --- Input row --- */
+.editor-chat__form {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.editor-chat__input-wrap {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  border-bottom: 1px solid var(--ink, #1a1410);
+  padding: 0.25rem 0 0.85rem 0;
+}
+
+.editor-chat__prompt-glyph {
+  /* Small italic "—" before the input, like a magazine column lead */
+  flex: 0 0 auto;
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--ochre-deep, #a87b44);
+  margin-right: 0.85rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.editor-chat__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink, #1a1410);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  caret-color: transparent; /* we draw our own caret on focus */
+}
+
+.editor-chat__input::placeholder {
+  color: rgba(26, 20, 16, 0.42);
+  font-style: italic;
+}
+
+/* Custom blinking ochre caret — only visible while input is focused AND empty/at-rest.
+   We attach .is-focused on the wrap from JS so we don't rely on :focus-within everywhere. */
+.editor-chat__caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.55rem;
+  background: var(--ochre, #c69960);
+  align-self: center;
+  margin-left: 0.2rem;
+  opacity: 0;
+  transform: translateY(0.08em);
+}
+
+.editor-chat__input-wrap.is-focused .editor-chat__caret {
+  opacity: 1;
+  animation: editor-chat-caret-blink 1.05s steps(2, end) infinite;
+}
+
+@keyframes editor-chat-caret-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.editor-chat__submit {
+  /* Small serif "Send" link, no chrome — magazine restraint */
+  flex: 0 0 auto;
+  margin-left: 1.2rem;
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ochre-deep, #a87b44);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0.15rem 0;
+  letter-spacing: 0.01em;
+  transition: color 200ms ease;
+}
+
+.editor-chat__submit:hover { color: var(--ink, #1a1410); }
+.editor-chat__submit:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.editor-chat__submit-arrow {
+  display: inline-block;
+  margin-left: 0.3em;
+}
+
+/* --- Suggested prompts (chips) --- */
+.editor-chat__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  margin: 1.4rem 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.editor-chat__chip {
+  font-family: var(--sans, 'Inter', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ochre-deep, #a87b44);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(198, 153, 96, 0.35);
+  padding: 0.35rem 0 0.45rem 0;
+  cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease;
+  text-align: left;
+}
+
+.editor-chat__chip:hover,
+.editor-chat__chip:focus-visible {
+  color: var(--ink, #1a1410);
+  border-bottom-color: var(--ink, #1a1410);
+  outline: none;
+}
+
+/* --- Thread --- */
+.editor-chat__thread {
+  margin-top: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.editor-chat__thread:empty {
+  margin-top: 0;
+}
+
+.editor-chat__view-earlier {
+  font-family: var(--sans, 'Inter', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ochre-deep, #a87b44);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(198, 153, 96, 0.35);
+  padding: 0.35rem 0 0.4rem 0;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.editor-chat__view-earlier:hover { color: var(--ink, #1a1410); border-bottom-color: var(--ink, #1a1410); }
+
+.editor-chat__turn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.editor-chat__turn--collapsed { display: none; }
+
+/* User question — printed as small italic line, no bubble */
+.editor-chat__q {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.45;
+  color: var(--ink, #1a1410);
+  margin: 0;
+  padding-left: 1.4rem;
+  border-left: 1px solid var(--ochre, #c69960);
+}
+
+.editor-chat__q-label {
+  display: block;
+  font-family: var(--sans, 'Inter', sans-serif);
+  font-style: normal;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.5);
+  margin-bottom: 0.45rem;
+}
+
+/* Editor answer — Cormorant body paragraph with bracketed marginalia tag */
+.editor-chat__a {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--ink, #1a1410);
+  margin: 0;
+}
+
+.editor-chat__a-tag {
+  display: inline-block;
+  font-family: var(--sans, 'Inter', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ochre, #c69960);
+  margin-right: 0.7rem;
+  vertical-align: 0.18em;
+}
+
+/* word reveal — each word starts hidden, fades to opaque in 220ms */
+.editor-chat__word {
+  display: inline;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+.editor-chat__word.is-in { opacity: 1; }
+.editor-chat__word-space { white-space: pre; }
+
+/* Feedback prompt */
+.editor-chat__feedback {
+  margin-top: 2.4rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid rgba(168, 123, 68, 0.35);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.editor-chat__feedback-q {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--ink, #1a1410);
+  margin: 0;
+}
+
+.editor-chat__feedback-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+}
+
+.editor-chat__feedback-btn {
+  font-family: var(--sans, 'Inter', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ochre-deep, #a87b44);
+  background: transparent;
+  border: 1px solid rgba(168, 123, 68, 0.45);
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.editor-chat__feedback-btn:hover {
+  color: var(--ivory, #faf6ee);
+  background: var(--ochre-deep, #a87b44);
+  border-color: var(--ochre-deep, #a87b44);
+}
+
+.editor-chat__feedback-thanks {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ochre-deep, #a87b44);
+  margin: 0;
+}
+
+/* Demo notice — small marginalia under the input row */
+.editor-chat__demo-note {
+  margin-top: 1rem;
+  font-family: var(--sans, 'Inter', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.4);
+}
+
+/* Masthead deep-link styling — adds slight italic flourish; uses existing nav color */
+.masthead-nav-ask em {
+  font-style: italic;
+  color: var(--ochre-deep, #a87b44);
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .editor-chat__word { opacity: 1 !important; transition: none !important; }
+  .editor-chat__caret { animation: none !important; opacity: 1; }
+  .editor-chat__rule { transition: none !important; }
+}
+
+/* --- Mobile --- */
+@media (max-width: 700px) {
+  .editor-chat { padding: 4rem 1.4rem; }
+  .editor-chat__input { font-size: 1.25rem; }
+  .editor-chat__prompt-glyph { font-size: 1.2rem; margin-right: 0.55rem; }
+  .editor-chat__submit { margin-left: 0.6rem; font-size: 0.95rem; }
+  .editor-chat__a { font-size: 1.05rem; }
+  .editor-chat__q { font-size: 1.1rem; padding-left: 1rem; }
+  .editor-chat__chips { gap: 0.5rem 1rem; }
+}

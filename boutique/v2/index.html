@@ -10,6 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/boutique-hero-interior.jpg">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../../chatbots/b-editor/editor.css">
+  <script src="../../chatbots/shared/responses.js" defer></script>
+  <script src="../../chatbots/shared/feedback.js" defer></script>
+  <script src="../../chatbots/b-editor/editor.js" defer data-hotel="boutique"></script>
   <noscript>
     <style>
       .editorial-sweep, .editorial-img { opacity: 1 !important; transform: none !important; clip-path: none !important; }
@@ -17,6 +21,9 @@
       main { opacity: 1 !important; }
     </style>
   </noscript>
+
+  <!-- Opt into intro/sweep animations only when JS is ready and able to drive them. -->
+  <script>document.documentElement.classList.add('js-anim');</script>
 </head>
 <body>
 
@@ -41,6 +48,7 @@
         <li><a href="#art">Art</a></li>
         <li><a href="#location" lang="es-MX">M&eacute;rida</a></li>
         <li><a href="#offers">Offers</a></li>
+        <li><a href="#ask-editor" class="masthead-nav-ask" data-ask-editor-link>Ask the <em>editor</em> <span aria-hidden="true">&rarr;</span></a></li>
         <li><a href="#booking" class="masthead-nav-cta">Reserve</a></li>
       </ul>
     </nav>
@@ -121,6 +129,47 @@
              width="1200" height="1600"
              loading="eager"
              onerror="this.onerror=null;this.style.display='none';this.parentElement.classList.add('img-failed');">
+      </div>
+    </section>
+
+    <!-- ============================================
+         1b. ASK THE EDITOR — inline conversational column (Launcher B)
+         Survives no-JS: static heading + input + chips render and remain usable.
+         JS adds the response thread, word reveal, and feedback prompt.
+         ============================================ -->
+    <section class="editor-chat" id="ask-editor" data-hotel="boutique" aria-labelledby="ask-editor-heading">
+      <div class="editor-chat__inner">
+        <span class="editor-chat__overline editorial-sweep" lang="es-MX">Cuaderno &middot; <span lang="en">Open hours</span></span>
+        <h2 class="editor-chat__heading editorial-sweep" id="ask-editor-heading">Ask the <em>editor</em></h2>
+        <hr class="editor-chat__rule editorial-sweep" aria-hidden="true">
+
+        <form class="editor-chat__form editorial-sweep" autocomplete="off" novalidate>
+          <div class="editor-chat__input-wrap">
+            <span class="editor-chat__prompt-glyph" aria-hidden="true">&mdash;</span>
+            <input
+              type="text"
+              class="editor-chat__input"
+              name="ask"
+              aria-label="Ask the editor a question"
+              placeholder="Type something the editor should know &mdash; your dates, your reason for coming, a question..."
+              maxlength="240">
+            <span class="editor-chat__caret" aria-hidden="true"></span>
+            <button type="submit" class="editor-chat__submit">
+              Send <span class="editor-chat__submit-arrow" aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
+
+          <ul class="editor-chat__chips" aria-label="Suggested questions">
+            <li><button type="button" class="editor-chat__chip" data-prompt="When can I visit?">When can I visit?</button></li>
+            <li><button type="button" class="editor-chat__chip" data-prompt="Tell me about the rooms">Tell me about the rooms</button></li>
+            <li><button type="button" class="editor-chat__chip" data-prompt="What's the art program?">What&rsquo;s the art program?</button></li>
+            <li><button type="button" class="editor-chat__chip" data-prompt="Tell me about The Penthouse">The Penthouse</button></li>
+          </ul>
+
+          <p class="editor-chat__demo-note">A scripted demo &middot; for feedback only</p>
+        </form>
+
+        <div class="editor-chat__thread" aria-live="polite" aria-atomic="false"></div>
       </div>
     </section>
 

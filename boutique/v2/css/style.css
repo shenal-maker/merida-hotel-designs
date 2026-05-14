@@ -85,19 +85,23 @@ img { display: block; max-width: 100%; height: auto; }
    Clip-path L→R curtain. No opacity fade on reveals.
    ============================================ */
 
-/* Page intro — 280ms paper-stock fade-in of <main> */
-main {
-  opacity: 0;
-  animation: paper-stock-in 280ms ease-out forwards;
-}
+/* Page intro — 280ms paper-stock fade-in of <main>
+   Only applied when JS opts in via html.js-anim; otherwise page renders normally. */
 @keyframes paper-stock-in {
+  from { opacity: 0; }
   to { opacity: 1; }
 }
+html.js-anim main {
+  animation: paper-stock-in 280ms ease-out;
+}
 
-/* Scroll reveal — left-to-right curtain, 520ms */
+/* Scroll reveal — left-to-right curtain, 520ms
+   Default: visible. Hidden only when JS-anim is active AND .visible not yet added. */
 .editorial-sweep {
-  clip-path: inset(0 100% 0 0);
   transition: clip-path 520ms cubic-bezier(0.45, 0, 0.15, 1);
+}
+html.js-anim .editorial-sweep:not(.visible) {
+  clip-path: inset(0 100% 0 0);
 }
 .editorial-sweep.visible {
   clip-path: inset(0 0 0 0);

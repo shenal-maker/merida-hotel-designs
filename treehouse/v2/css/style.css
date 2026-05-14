@@ -92,13 +92,13 @@ input:focus-visible {
 
 img { display: block; max-width: 100%; height: auto; }
 
-/* Page intro — 280ms paper-stock fade-in of <main> */
-main {
-  animation: paper-fade-in 280ms ease-out both;
-}
+/* Page intro — 280ms paper-stock fade-in, only when JS-anim is opted in */
 @keyframes paper-fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+html.js-anim main {
+  animation: paper-fade-in 280ms ease-out;
 }
 
 /* --- Section Marker --- */
@@ -140,8 +140,10 @@ main {
    Class: .editorial-sweep
    ============================================ */
 .editorial-sweep {
-  clip-path: inset(0 100% 0 0);
   transition: clip-path 520ms cubic-bezier(0.45, 0, 0.15, 1);
+}
+html.js-anim .editorial-sweep:not(.visible) {
+  clip-path: inset(0 100% 0 0);
 }
 .editorial-sweep.visible {
   clip-path: inset(0 0 0 0);
@@ -150,8 +152,10 @@ main {
 /* Hero image — image fills in 300ms after text, cross-dissolve 400ms */
 .hero-image-wrap.editorial-sweep {
   clip-path: none;
-  opacity: 0;
   transition: opacity 400ms ease-out 300ms;
+}
+html.js-anim .hero-image-wrap.editorial-sweep:not(.visible) {
+  opacity: 0;
 }
 .hero-image-wrap.editorial-sweep.visible {
   opacity: 1;
