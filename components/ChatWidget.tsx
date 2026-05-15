@@ -102,18 +102,20 @@ export function ChatWidget() {
     <>
       <button
         type="button"
-        aria-label="Open concierge chat"
+        aria-label="Open AI Concierge chat"
         onClick={() => setOpen(true)}
         className={
-          "fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-full " +
-          "bg-treehouse-ink text-treehouse-paper shadow-[0_10px_30px_-12px_rgba(26,24,21,0.45)] " +
-          "transition hover:bg-treehouse-olive focus:outline-none focus-visible:ring-2 " +
-          "focus-visible:ring-treehouse-terracotta focus-visible:ring-offset-2 " +
+          "fixed bottom-6 right-6 z-[60] flex items-center gap-3 rounded-full " +
+          "bg-treehouse-olive px-6 py-4 text-treehouse-paper " +
+          "shadow-[0_14px_40px_-14px_rgba(45,74,53,0.55)] " +
+          "transition hover:bg-treehouse-ink focus:outline-none focus-visible:ring-2 " +
+          "focus-visible:ring-treehouse-olive focus-visible:ring-offset-2 " +
           "focus-visible:ring-offset-treehouse-paper " +
           (open ? "pointer-events-none opacity-0" : "opacity-100")
         }
       >
         <ChatGlyph />
+        <span className="font-serif text-[17px] leading-none">AI Concierge</span>
       </button>
 
       {open && (
@@ -156,8 +158,12 @@ export function ChatWidget() {
             ref={scrollRef}
             className="flex-1 overflow-y-auto px-5 py-5"
           >
-            {messages.map((m) => (
-              <MessageBubble key={m.id} message={m} />
+            {messages.map((m, i) => (
+              <MessageBubble
+                key={m.id}
+                message={m}
+                isStreaming={i === messages.length - 1 && status === "streaming"}
+              />
             ))}
 
             {showWriting && (

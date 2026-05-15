@@ -61,6 +61,68 @@ function buildSegment(name: MarkerName, body: string): Segment | null {
   };
 }
 
+// Matches a full URL (http/https) or a phone number in the human-readable
+// format "+52 999 931 8351" / "+1 (619) 398-7156" / similar.
+const LINKIFY_RE =
+  /(https?:\/\/[^\s)<>"']+)|(\+\d{1,3}[\s().-]*\d{3}[\s().-]*\d{3}[\s().-]*\d{4})/g;
+
+function linkify(text: string): React.ReactNode[] {
+  const out: React.ReactNode[] = [];
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+  LINKIFY_RE.lastIndex = 0;
+
+  while ((match = LINKIFY_RE.exec(text)) !== null) {
+    const start = match.index;
+    const end = start + match[0].length;
+
+    if (start > cursor) {
+      out.push(text.slice(cursor, start));
+    }
+
+    if (match[1]) {
+      // URL. Strip trailing punctuation that grammar would attach
+      // (period, comma, parens, semicolons, colons).
+      const raw = match[1];
+      const trailingMatch = raw.match(/[.,;:!?)]+$/);
+      const url = trailingMatch ? raw.slice(0, raw.length - trailingMatch[0].length) : raw;
+      const trailing = trailingMatch ? trailingMatch[0] : "";
+      out.push(
+        <a
+          key={start}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-treehouse-olive/40 underline-offset-2 text-treehouse-olive hover:decoration-treehouse-olive hover:text-treehouse-ink"
+        >
+          {url}
+        </a>
+      );
+      if (trailing) out.push(trailing);
+    } else if (match[2]) {
+      const display = match[2].trim();
+      const tel = display.replace(/[^\d+]/g, "");
+      out.push(
+        <a
+          key={start}
+          href={`tel:${tel}`}
+          className="underline decoration-treehouse-olive/40 underline-offset-2 text-treehouse-olive hover:decoration-treehouse-olive hover:text-treehouse-ink"
+        >
+          {display}
+        </a>
+      );
+    }
+
+    cursor = end;
+  }
+
+  if (cursor < text.length) {
+    out.push(text.slice(cursor));
+  }
+
+  return out;
+}
+
 function parseAssistantText(raw: string): Segment[] {
   const segments: Segment[] = [];
   let cursor = 0;
@@ -94,17 +156,13 @@ function parseAssistantText(raw: string): Segment[] {
   return segments;
 }
 
-function TextSegment({ text }: { text: string }) {
-  const cleaned = text.replace(/^\n+|\n+$/g, "");
-  if (cleaned.length === 0) return null;
-  return (
-    <p className="font-serif text-[20px] leading-relaxed text-treehouse-ink whitespace-pre-wrap">
-      {cleaned}
-    </p>
-  );
-}
-
-export function MessageBubble({ message }: { message: UIMessage }) {
+export function MessageBubble({
+  message,
+  isStreaming = false,
+}: {
+  message: UIMessage;
+  isStreaming?: boolean;
+}) {
   const isUser = message.role === "user";
   const text = (message.parts ?? [])
     .filter((p): p is { type: "text"; text: string } => p.type === "text")
@@ -127,11 +185,23 @@ export function MessageBubble({ message }: { message: UIMessage }) {
   const segments = parseAssistantText(text);
   if (segments.length === 0) return null;
 
+  const lastIndex = segments.length - 1;
+
   return (
     <div className="mb-5 space-y-3">
       {segments.map((seg, i) => {
+        const isLastTextSegment = isStreaming && seg.kind === "text" && i === lastIndex;
         if (seg.kind === "text") {
-          return <TextSegment key={i} text={seg.text} />;
+          const cleaned = seg.text.replace(/^\n+|\n+$/g, "");
+          return (
+            <p
+              key={i}
+              className="font-serif text-[20px] leading-relaxed text-treehouse-ink whitespace-pre-wrap"
+            >
+              {linkify(cleaned)}
+              {isLastTextSegment && <TypewriterCursor />}
+            </p>
+          );
         }
         if (seg.kind === "offer") {
           return <DiscountOffer key={i} payload={seg.payload} />;
@@ -139,5 +209,14 @@ export function MessageBubble({ message }: { message: UIMessage }) {
         return <EscalationCard key={i} payload={seg.payload} />;
       })}
     </div>
+  );
+}
+
+function TypewriterCursor() {
+  return (
+    <span
+      aria-hidden="true"
+      className="ml-0.5 inline-block h-[1em] w-[0.5ch] -translate-y-[0.05em] translate-x-0 bg-treehouse-olive align-middle animate-pulse"
+    />
   );
 }

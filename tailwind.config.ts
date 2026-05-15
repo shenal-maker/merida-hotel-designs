@@ -13,23 +13,28 @@ const config: Config = {
       },
       colors: {
         treehouse: {
-          // Dark green-tinted charcoal for body text.
-          ink: "#1c2a20",
-          // Warm ivory background — the cream the TreeHouse site rests on.
-          paper: "#f4ede0",
-          // Deep forest green — primary brand accent.
-          // Used wherever the old palette used olive: headings, labels,
-          // hover, the Writing indicator, the send button.
-          olive: "#1f3a26",
-          // Mid-sage green for softer accents and dividers.
-          sage: "#8a9a82",
-          // Warm clay (not orange) — the secondary accent for CTAs and
-          // the percent number on the discount card. Pops against the
-          // green palette without fighting it. Replaces the older
-          // terracotta-orange under the same class name.
-          terracotta: "#a07a55",
-          // Warm sand neutral for the user message bubble and card borders.
-          sand: "#dfd3bb",
+          // Deep forest-green text. Reads as charcoal on near-white background
+          // but with a clear green undertone that ties the whole palette together.
+          ink: "#1f3a26",
+          // Near-white page background. The TreeHouse website rests on
+          // crisp white with the slightest cream warmth.
+          paper: "#fcfcf8",
+          // Primary deep forest green. Used wherever the old palette used
+          // "olive" — labels, hover states, the thinking indicator, the
+          // send button. The single most visible accent color.
+          olive: "#2d4a35",
+          // Pale sage green. Soft accent for borders and dividers in a
+          // green-dominant palette.
+          sage: "#c5d6c0",
+          // Mid forest green for higher-emphasis CTAs (Call button on
+          // the escalation card, the percent number on the discount card,
+          // focus rings). Used wherever the old palette had "terracotta"
+          // — but green now, to keep the whole UI white-and-green.
+          terracotta: "#4a6e54",
+          // Very pale cream. Used for the user message bubble background
+          // and subtle card borders. Adds a small breath of warmth so the
+          // palette isn't entirely cool, without ever feeling dominant.
+          sand: "#ece7d6",
         },
       },
     },
