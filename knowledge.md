@@ -11,7 +11,8 @@ Source: treehouseboutiquehotel.com, extracted 2026-05-15. All copy below is verb
 **Address:** Calle 43 x 58 y 60 #489, Santa Ana, Mérida, México 97000
 
 **Phones:**
-- Mexico: +52 (999) 931 8351 / +52 (999) 268 1456
+- Front desk (call, landline): +52 (999) 931 8351
+- Front desk (WhatsApp): +52 (999) 268 1456
 - USA: +1 (619) 398 7156
 - Reservations line: +52 (999) 931 8352
 
@@ -99,11 +100,11 @@ The hotel has 15 rooms total, all adults-only, all double occupancy (2 guests ma
 
 ## Amenities
 
-**Coffee Service:** "Coffee is served daily from 8:00 until 10:00 AM." (Coffee is also available before 8 AM upon request.)
+**Coffee Service:** Coffee is brewed fresh and served daily from 8:00 until 10:00 AM. Coffee is also available before 8 AM upon request. The hotel's coffee and bread come from its café down the street, Pan & Kof.feé.
 
-**Breakfast Service:** Continental breakfast is served daily from 8:00 until 10:00 AM on the terrace. Continental breakfast is included for all direct bookings. If booked through a third party, breakfast may be included depending on the terms of the reservation.
+**Breakfast Service:** A full breakfast is served daily from 8:00 until 10:00 AM on the terrace. The menu rotates and uses fresh ingredients. Coffee is brewed, and the bread is baked down the street at the hotel's café Pan & Kof.feé. A full breakfast is included for all direct bookings. If booked through a third party, breakfast may be included depending on the terms of the reservation.
 
-**Wine Bar (Roots):** "Open to guests from 1:00 PM. to 10:00 PM."
+**Bar (Roots):** Open to guests staying at the hotel from 12:00 PM to 10:00 PM. Roots is a full-service bar. Outside alcohol is not permitted on the property.
 
 **Wi-Fi:** "Wi-Fi is available for all guests."
 
@@ -154,6 +155,8 @@ Accepted: "Visa, Mastercard and bank transfers" (American Express not accepted)
 
 "Each room accommodates single or double occupancy. No more than two individuals per room are allowed."
 
+A solo traveler can book a room for single occupancy. A couple can book a room for double occupancy. Three or more guests need a second room, or the family-friendly sister property Boutique by the Museo.
+
 ### Pets
 
 "Pets are not allowed."
@@ -195,13 +198,22 @@ A: We have street parking available outside of the hotel.
 A: All of our rooms feature hot and cold water.
 
 **Q: Is breakfast included?**
-A: Continental breakfast is included for all direct bookings. If you booked through a third party, breakfast may be included depending on the terms of your reservation.
+A: A full breakfast is included for all direct bookings. If you booked through a third party, breakfast may be included depending on the terms of your reservation.
+
+**Q: What's included in breakfast?**
+A: A full breakfast with a rotating menu of items made using fresh ingredients. Coffee is brewed, and bread is baked down the street at our café Pan & Kof.feé. Specific dishes vary day to day. (Detailed menu options will be listed on the hotel page on the website.)
 
 **Q: What time is breakfast served?**
 A: Breakfast is served from 8 AM to 10 AM on the outside terrace.
 
 **Q: Does the hotel have morning coffee service?**
 A: Coffee is available before 8 AM upon request.
+
+**Q: Do you offer a day pass?**
+A: We do not offer day passes at the moment. The team is happy to help you make a reservation if that's something you'd like.
+
+**Q: What is the alcohol policy? Can I bring my own drinks?**
+A: Beverages are available at Roots, the on-site bar, open to guests staying in the hotel from 12:00 PM to 10:00 PM. Outside alcohol is not permitted, as Roots is a full-service bar.
 
 **Q: Does the hotel have air conditioner?**
 A: Yes, all the rooms have air conditioner.
@@ -232,10 +244,12 @@ Where The TreeHouse is adults-only luxury, Boutique by the Museo is family-frien
 
 Guests who book direct through the website (and not through Booking.com, Expedia, or other OTAs) receive:
 
-- Continental breakfast every morning (8:00 to 10:00 AM on the terrace)
-- A complimentary cocktail every evening at the Roots wine bar (open 1:00 to 10:00 PM)
+- A full breakfast every morning (8:00 to 10:00 AM on the terrace), with a rotating menu, brewed coffee, and bread from the hotel's café Pan & Kof.feé
+- A complimentary beverage every evening at the Roots bar (open 12:00 PM to 10:00 PM)
 
 These perks are not extended to OTA bookings. When discussing price differences with OTAs, surface these perks as part of the value of booking direct.
+
+A 10% direct-booking discount is currently available under code THDIRECT. Excluded dates: December 20 through January 31. The discount is intended for new direct bookings within the 24-hour window after it is offered.
 
 ---
 
@@ -270,7 +284,7 @@ These perks are not extended to OTA bookings. When discussing price differences 
 1. **Check-out time conflict.** Policies page says "Check-Out: 11:00 PM" — Guest Services page says "11:00 AM." Almost certainly a typo on the Policies page; should be 11 AM. The bot will currently see both and may give inconsistent answers until the website is corrected.
    - Pages: https://treehouseboutiquehotel.com/policies/ and https://treehouseboutiquehotel.com/guest-services/
 
-2. **Breakfast description inconsistency.** FAQ says "Continental breakfast." Guest Services page says "American breakfast." Standardizing on Continental per Selena.
+2. **Breakfast description inconsistency.** FAQ says "Continental breakfast." Guest Services page says "American breakfast." Per current direction from the owner, neither label is used; breakfast is described as a full breakfast with a rotating menu, fresh ingredients, brewed coffee, and bread from the hotel's café Pan & Kof.feé.
    - Pages: https://treehouseboutiquehotel.com/faqs/ and https://treehouseboutiquehotel.com/guest-services/
 
 3. **Massage description is a copy-paste of Tours.** The Massage entry on Guest Services repeats the Tours description verbatim ("For information regarding tours we offer, please stop by reception.") — should describe the massage service instead.
